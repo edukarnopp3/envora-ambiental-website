@@ -2,7 +2,7 @@ import type { Metadata, Viewport } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://envora-consultoria-ambiental.site"),
+  metadataBase: new URL("https://envora-consultoria-ambiental.eduardo-karnopp2111.chatgpt.site"),
   title: "Consultoria Ambiental em Joinville | Envora",
   description:
     "Consultoria ambiental em Joinville para licenciamento, DANC, CCA, renovação, PGRS, PGRSS e regularização empresarial.",
