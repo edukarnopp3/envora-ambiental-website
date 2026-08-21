@@ -2,7 +2,7 @@ import type { Metadata, Viewport } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://envora-consultoria-ambiental.eduardo-karnopp2111.chatgpt.site"),
+  metadataBase: new URL("https://envora-consultoria-ambiental.pages.dev"),
   title: "Consultoria Ambiental em Joinville | Envora",
   description:
     "Consultoria ambiental em Joinville para licenciamento, DANC, CCA, renovação, PGRS, PGRSS e regularização empresarial.",
@@ -15,6 +15,7 @@ export const metadata: Metadata = {
     "PGRS Joinville",
     "PGRSS Joinville",
   ],
+  alternates: { canonical: "/" },
   openGraph: {
     title: "Consultoria Ambiental em Joinville | Envora",
     description:
@@ -22,6 +23,7 @@ export const metadata: Metadata = {
     type: "website",
     locale: "pt_BR",
     siteName: "Envora Consultoria Ambiental",
+    url: "/",
     images: [{ url: "/og.png", width: 1731, height: 909, alt: "Consultoria Ambiental em Joinville — Envora" }],
   },
   twitter: {
