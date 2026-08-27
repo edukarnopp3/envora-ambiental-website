@@ -113,8 +113,8 @@ export default function RootLayout({
         />
         {children}
         <GoogleConsent
-          tagId={process.env.NEXT_PUBLIC_GOOGLE_TAG_ID ?? ""}
-          conversionLabel={process.env.NEXT_PUBLIC_GOOGLE_ADS_WHATSAPP_CONVERSION_LABEL ?? ""}
+          tagId={process.env.NEXT_PUBLIC_GOOGLE_TAG_ID ?? "AW-18413899550"}
+          conversionLabel={process.env.NEXT_PUBLIC_GOOGLE_ADS_WHATSAPP_CONVERSION_LABEL ?? "HU26COPXjOkcEJ6et8xE"}
         />
       </body>
     </html>

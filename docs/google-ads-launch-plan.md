@@ -10,7 +10,7 @@ Status previsto: campanha de Pesquisa criada como rascunho/pausada. Nenhuma cobr
 - Local: Joinville, Santa Catarina.
 - Opção de localização: presença — pessoas que estão ou costumam estar na área segmentada.
 - Idioma: português.
-- URL final: `https://envora-consultoria-ambiental.pages.dev/?utm_source=google&utm_medium=cpc&utm_campaign=pesquisa_joinville_licenciamento&utm_content={creative}&utm_term={keyword}`
+- URL final: `https://envorambiental.com.br/?utm_source=google&utm_medium=cpc&utm_campaign=pesquisa_joinville_licenciamento&utm_content={creative}&utm_term={keyword}`
 - Estratégia inicial: maximizar cliques com campanha pausada até a conversão ser testada; migrar para maximizar conversões somente após volume confiável.
 - Conversão primária: clique que abre o WhatsApp ou envio do formulário que abre o WhatsApp.
 
