@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1080" height="1080" viewBox="0 0 1080 1080" role="img" aria-labelledby="title desc">
+  <title id="title">Foto de perfil da Envora Ambiental</title>
+  <desc id="desc">Símbolo da Envora Ambiental em verde e tons claros, preparado para recorte circular.</desc>
+  <rect width="1080" height="1080" fill="#F7F7F5"/>
+  <g transform="translate(328 105) scale(6.625)">
+    <path fill="#0F6E56" d="M32 2C13 12 3 30 3 51c0 20 11 37 29 49 18-12 29-29 29-49C61 30 51 12 32 2Z"/>
+    <path fill="none" stroke="#075A49" stroke-linecap="round" stroke-width="2.8" d="M32 13v76M32 53 9 43m23 10 23-10"/>
+    <path fill="#5DCAA5" d="M32 105c-5 8-6 16 0 25 6-9 5-17 0-25Z"/>
+  </g>
+</svg>

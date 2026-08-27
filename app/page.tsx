@@ -1,5 +1,6 @@
 import EnvoraLanding from "./envora-landing";
+import EnvoraSplash from "./envora-splash";
 
 export default function Home() {
-  return <EnvoraLanding />;
+  return <EnvoraSplash><EnvoraLanding /></EnvoraSplash>;
 }

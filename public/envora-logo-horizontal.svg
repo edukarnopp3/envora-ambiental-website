@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 88" role="img" aria-labelledby="title">
+  <title id="title">Envora Ambiental</title>
+  <g transform="translate(4 3) scale(.52)">
+    <path fill="#0F6E56" d="M32 2C13 12 3 30 3 51c0 20 11 37 29 49 18-12 29-29 29-49C61 30 51 12 32 2Z"/>
+    <path fill="none" stroke="#075A49" stroke-linecap="round" stroke-width="2" d="M32 13v76M32 53 9 43m23 10 23-10"/>
+    <path fill="#5DCAA5" d="M32 105c-5 8-6 16 0 25 6-9 5-17 0-25Z"/>
+  </g>
+  <text x="52" y="45" fill="#0F6E56" font-family="Arial, sans-serif" font-size="43" font-weight="700" letter-spacing="1">envora</text>
+  <text x="55" y="70" fill="#444441" font-family="Arial, sans-serif" font-size="17" letter-spacing="8">ambiental</text>
+</svg>

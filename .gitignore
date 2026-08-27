@@ -2,6 +2,7 @@
 
 # dependencies
 /node_modules
+/.pnpm-store/
 /.pnp
 .pnp.*
 .yarn/*
@@ -39,3 +40,12 @@ yarn-error.log*
 /.wrangler/
 /outputs/
 /work/
+
+# local deployment packages and backups
+/*.tar.gz
+/*.zip
+
+# local editor and OS metadata
+/.idea/
+/.vscode/
+Thumbs.db
