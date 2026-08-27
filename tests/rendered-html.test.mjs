@@ -1,36 +1,53 @@
 import assert from "node:assert/strict";
-import test from "node:test";
+import { spawn } from "node:child_process";
+import { fileURLToPath } from "node:url";
+import test, { after, before } from "node:test";
+
+const projectRoot = fileURLToPath(new URL("..", import.meta.url));
+const nextCli = fileURLToPath(new URL("../node_modules/next/dist/bin/next", import.meta.url));
+const port = 32100 + (process.pid % 1000);
+const siteUrl = `http://127.0.0.1:${port}`;
+let server;
+
+before(async () => {
+  server = spawn(process.execPath, [nextCli, "start", "-p", String(port)], {
+    cwd: projectRoot,
+    env: { ...process.env, NEXT_TELEMETRY_DISABLED: "1" },
+    stdio: "ignore",
+  });
+
+  for (let attempt = 0; attempt < 80; attempt += 1) {
+    try {
+      const response = await fetch(siteUrl);
+      if (response.ok) return;
+    } catch {
+      // O servidor pode ainda não ter aberto a porta durante o build de inicialização.
+    }
+    await new Promise((resolve) => setTimeout(resolve, 100));
+  }
+  throw new Error("O servidor Next.js não iniciou a tempo para os testes.");
+});
+
+after(() => {
+  server?.kill();
+});
 
 async function render() {
-  const workerUrl = new URL("../dist/server/index.js", import.meta.url);
-  workerUrl.searchParams.set("test", `${process.pid}-${Date.now()}`);
-  const { default: worker } = await import(workerUrl.href);
-
-  return worker.fetch(
-    new Request("https://envora-consultoria-ambiental.pages.dev/", {
-      headers: { accept: "text/html" },
-    }),
-    {
-      ASSETS: {
-        fetch: async () => new Response("Not found", { status: 404 }),
-      },
-    },
-    {
-      waitUntil() {},
-      passThroughOnException() {},
-    },
-  );
+  return fetch(siteUrl, { headers: { accept: "text/html" } });
 }
 
 test("server-renders the Envora landing page with production metadata", async () => {
   const response = await render();
   assert.equal(response.status, 200);
   assert.match(response.headers.get("content-type") ?? "", /^text\/html\b/i);
+  assert.match(response.headers.get("content-security-policy") ?? "", /default-src 'self'/);
+  assert.equal(response.headers.get("x-frame-options"), "DENY");
+  assert.equal(response.headers.get("x-content-type-options"), "nosniff");
 
   const html = await response.text();
   assert.match(html, /<title>envora<\/title>/i);
   assert.match(html, /Recebeu um auto de infração <em>ambiental\?<\/em>/i);
-  assert.match(html, /https:\/\/envora-consultoria-ambiental\.pages\.dev/);
+  assert.match(html, /https:\/\/envora-ambiental-website\.vercel\.app/);
   assert.match(html, /https:\/\/wa\.me\/5547984551622/);
   assert.match(html, /mailto:envoraambiental@gmail\.com/);
   assert.match(html, /id="splash"/);

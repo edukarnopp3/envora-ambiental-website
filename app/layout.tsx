@@ -1,9 +1,10 @@
 import type { Metadata, Viewport } from "next";
 import "./globals.css";
 import GoogleConsent from "./google-consent";
+import { SITE_URL } from "./site-url";
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://envora-consultoria-ambiental.pages.dev"),
+  metadataBase: new URL(SITE_URL),
   title: "envora",
   description:
     "Consultoria ambiental em Joinville para autos de infração e exigências ambientais, licenciamento, DANC, CCA, PGRS, PGRSS, PGRCC, resíduos e controle acústico.",
@@ -62,9 +63,9 @@ const localBusinessSchema = {
   "@context": "https://schema.org",
   "@type": "ProfessionalService",
   name: "Envora Consultoria Ambiental",
-  url: "https://envora-consultoria-ambiental.pages.dev",
-  logo: "https://envora-consultoria-ambiental.pages.dev/envora-mark.svg",
-  image: "https://envora-consultoria-ambiental.pages.dev/og.png",
+  url: SITE_URL,
+  logo: `${SITE_URL}/envora-mark.svg`,
+  image: `${SITE_URL}/og.png`,
   telephone: "+55 47 98455-1622",
   email: "envoraambiental@gmail.com",
   founder: {

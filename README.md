@@ -4,9 +4,8 @@ Landing page institucional e de conversão da Envora Ambiental, com foco em cons
 
 ## Tecnologias
 
-- React 19 e TypeScript
-- vinext/Vite
-- Cloudflare Pages
+- Next.js 16, React 19 e TypeScript
+- Vercel
 - CSS próprio, sem biblioteca visual externa
 
 ## Desenvolvimento local
@@ -25,7 +24,7 @@ npm run lint
 npm test
 ```
 
-O comando `npm test` também gera o pacote de produção em `dist-pages/` e testa o HTML renderizado.
+O comando `npm test` também gera o build de produção e testa o HTML servido pelo Next.js.
 
 ## Variáveis opcionais
 
@@ -33,17 +32,13 @@ As integrações de medição são desativadas quando estas variáveis não exis
 
 - `NEXT_PUBLIC_GOOGLE_TAG_ID`
 - `NEXT_PUBLIC_GOOGLE_ADS_WHATSAPP_CONVERSION_LABEL`
+- `NEXT_PUBLIC_SITE_URL` (use o domínio definitivo quando ele for conectado)
 
 Use um arquivo `.env.local` apenas no computador ou configure as variáveis no provedor de hospedagem. Arquivos `.env*` são ignorados pelo Git e nunca devem conter credenciais versionadas.
 
-## Publicação no Cloudflare Pages
+## Publicação na Vercel
 
-```bash
-npm run build
-npx wrangler pages deploy dist-pages --project-name envora-consultoria-ambiental
-```
-
-O arquivo `public/_headers` configura políticas de segurança e cache aplicadas pelo Cloudflare Pages. O diretório de build, logs locais do Wrangler, pacotes compactados e arquivos de ambiente não são versionados.
+Conecte este repositório à Vercel e mantenha o preset **Next.js**, o comando `next build` e o diretório de saída automático. As políticas HTTP ficam em `next.config.ts` e são aplicadas pela própria aplicação.
 
 ## Segurança
 
@@ -55,7 +50,7 @@ O arquivo `public/_headers` configura políticas de segurança e cache aplicadas
 ## Estrutura principal
 
 - `app/`: página, metadados, triagem, consentimento e política de privacidade
-- `public/`: identidade visual, favicons e cabeçalhos do Cloudflare Pages
-- `scripts/`: build e geração de recursos gráficos
+- `public/`: identidade visual e favicons
+- `scripts/`: geração de recursos gráficos
 - `tests/`: verificações do HTML final
 - `docs/`: material operacional da campanha de Google Ads
