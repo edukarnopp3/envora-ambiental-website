@@ -47,7 +47,7 @@ test("server-renders the Envora landing page with production metadata", async ()
   const html = await response.text();
   assert.match(html, /<title>envora<\/title>/i);
   assert.match(html, /Recebeu um auto de infração <em>ambiental\?<\/em>/i);
-  assert.match(html, /https:\/\/envora-ambiental-website\.vercel\.app/);
+  assert.match(html, /https:\/\/envorambiental\.com\.br/);
   assert.match(html, /https:\/\/wa\.me\/5547984551622/);
   assert.match(html, /mailto:envoraambiental@gmail\.com/);
   assert.match(html, /id="splash"/);
