@@ -5,7 +5,7 @@ import { SITE_URL } from "./site-url";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
-  title: "envora",
+  title: "Envora",
   description:
     "Consultoria ambiental em Joinville para autos de infração e exigências ambientais, licenciamento, DANC, CCA, PGRS, PGRSS, PGRCC, resíduos e controle acústico.",
   keywords: [

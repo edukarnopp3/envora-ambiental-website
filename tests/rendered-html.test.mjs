@@ -45,7 +45,7 @@ test("server-renders the Envora landing page with production metadata", async ()
   assert.equal(response.headers.get("x-content-type-options"), "nosniff");
 
   const html = await response.text();
-  assert.match(html, /<title>envora<\/title>/i);
+  assert.match(html, /<title>Envora<\/title>/);
   assert.match(html, /Recebeu um auto de infração <em>ambiental\?<\/em>/i);
   assert.match(html, /https:\/\/envorambiental\.com\.br/);
   assert.match(html, /https:\/\/wa\.me\/5547984551622/);
