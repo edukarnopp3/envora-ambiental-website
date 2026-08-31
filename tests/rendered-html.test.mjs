@@ -32,8 +32,8 @@ after(() => {
   server?.kill();
 });
 
-async function render() {
-  return fetch(siteUrl, { headers: { accept: "text/html" } });
+async function render(path = "/") {
+  return fetch(`${siteUrl}${path}`, { headers: { accept: "text/html" } });
 }
 
 test("server-renders the Envora landing page with production metadata", async () => {
@@ -105,4 +105,18 @@ test("publishes only the approved service scope and complete contact details", a
   assert.doesNotMatch(html, /ART quando aplicável|Responsabilidade técnica e ART/i);
   assert.doesNotMatch(html, /cancelamento de multa|cancelar multa|garantia de aprovação/i);
   assert.doesNotMatch(html, /#(?:ef6b3f|d85a30)|var\(--orange\)/i);
+});
+
+test("serves the isolated Instagram links hub with only the three approved channels", async () => {
+  const response = await render("/links");
+  assert.equal(response.status, 200);
+
+  const html = await response.text();
+  assert.match(html, /<title>Envora \| Contato<\/title>/);
+  assert.match(html, /name="robots" content="noindex, follow"/);
+  assert.match(html, /WhatsApp/);
+  assert.match(html, /https:\/\/wa\.me\/5547984551622/);
+  assert.match(html, /Conhecer a consultoria/);
+  assert.match(html, /mailto:envoraambiental@gmail\.com/);
+  assert.doesNotMatch(html, /<strong>(?:Instagram|LinkedIn|Google Maps|Triagem inicial)<\/strong>/);
 });
