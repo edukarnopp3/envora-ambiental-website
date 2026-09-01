@@ -389,6 +389,7 @@ export default function EnvoraLanding() {
             <span>Engenheiro Ambiental e Sanitarista</span>
             <a href="tel:+5547984551622" onClick={() => track("phone_click", { source: "footer" })}>(47) 98455-1622</a>
             <a href="mailto:envoraambiental@gmail.com" onClick={() => track("email_click", { source: "footer" })}>envoraambiental@gmail.com</a>
+            <a className="instagram-link" href="https://www.instagram.com/envoraambiental/" target="_blank" rel="noopener noreferrer" onClick={() => track("instagram_click", { source: "footer" })}>Instagram · @envoraambiental <span aria-hidden="true">↗</span></a>
             <a className="privacy-text" href="/privacidade">Privacidade</a>
           </div>
         </div>

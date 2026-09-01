@@ -143,6 +143,8 @@ footer .brand img { width:min(100%,520px); }
 .footer-details span:first-child { color:var(--brand-soft); font-weight:700; letter-spacing:.08em; text-transform:uppercase; }
 .footer-details strong { color:white; font-size:14px; }
 .footer-details a { width:max-content; margin-top:8px; color:white; border-bottom:1px solid rgba(255,255,255,.45); }
+.footer-details .instagram-link { margin-top:4px; color:var(--brand-soft); border-bottom-color:rgba(93,202,165,.48); font-weight:700; }
+.footer-details .instagram-link span { margin-left:4px; color:inherit; font-weight:inherit; letter-spacing:normal; text-transform:none; }
 .footer-details .privacy-text { margin-top:8px; color:rgba(255,255,255,.58); }
 .mobile-sticky { display:none; }
 .cookie-banner { position:fixed; right:24px; bottom:24px; z-index:100; display:grid; grid-template-columns:minmax(0,1fr) auto; align-items:center; gap:24px; width:min(720px,calc(100vw - 48px)); padding:20px 22px; background:#071d1a; color:white; box-shadow:0 18px 60px rgba(0,0,0,.26); }

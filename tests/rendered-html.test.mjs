@@ -100,6 +100,7 @@ test("publishes only the approved service scope and complete contact details", a
   assert.match(html, /Engenheiro Ambiental e Sanitarista/);
   assert.match(html, /\(47\) 98455-1622/);
   assert.match(html, /href="tel:\+5547984551622"/);
+  assert.match(html, /https:\/\/www\.instagram\.com\/envoraambiental\//);
   assert.match(html, /href="\/privacidade">Privacidade<\/a>/);
   assert.doesNotMatch(html, /passivos ambientais|investigação (?:ambiental )?de solo|movimentação de solo|supressão|gestão ambiental de obras|canteiro|projeto de sistema de tratamento de efluentes|alvará sanitário/i);
   assert.doesNotMatch(html, /ART quando aplicável|Responsabilidade técnica e ART/i);
