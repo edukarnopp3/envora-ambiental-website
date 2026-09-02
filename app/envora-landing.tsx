@@ -396,6 +396,19 @@ export default function EnvoraLanding() {
           <div className="contact-copy"><p className="eyebrow">Consultoria ambiental em Joinville</p><h2>O que está impedindo sua empresa de avançar?</h2><p>Envie os dados essenciais. O WhatsApp abre com a mensagem pronta para iniciar a triagem.</p><div className="contact-place"><b>JOINVILLE</b><span>Santa Catarina · Brasil</span></div></div>
           <form onSubmit={submitLead} className="lead-form"><label>Nome<input required value={lead.name} onChange={(e) => setLead({ ...lead, name: e.target.value })} placeholder="Seu nome" /></label><label>WhatsApp<input required type="tel" value={lead.phone} onChange={(e) => setLead({ ...lead, phone: e.target.value })} placeholder="(47) 99999-9999" /></label><label>Empresa ou atividade<input required value={lead.company} onChange={(e) => setLead({ ...lead, company: e.target.value })} placeholder="Ex.: indústria metalúrgica" /></label><label>Cidade<input required value={lead.city} onChange={(e) => setLead({ ...lead, city: e.target.value })} /></label><button className="button button-accent full" type="submit">Iniciar triagem pelo WhatsApp <span>↗</span></button><small id="privacidade">Os dados são usados apenas para iniciar o atendimento solicitado pelo WhatsApp.</small></form>
         </section>
+
+        <section className="about-footer" id="sobre" aria-labelledby="about-title">
+          <div className="about-footer-heading">
+            <div className="section-index light">Sobre a Envora</div>
+            <h2 id="about-title">Consultoria ambiental em Joinville para empresas.</h2>
+          </div>
+          <div className="about-signals" aria-label="Credenciais da Envora">
+            <div><small>01</small><b>Atendimento local</b><span>Joinville e região</span></div>
+            <div><small>02</small><b>Experiência prática</b><span>Licenciamento municipal</span></div>
+            <div><small>03</small><b>Formação técnica</b><span>Engenharia Ambiental e Sanitária</span></div>
+            <div><small>04</small><b>Escopo transparente</b><span>Etapas e responsabilidades definidas</span></div>
+          </div>
+        </section>
       </main>
 
       <footer>
@@ -411,6 +424,7 @@ export default function EnvoraLanding() {
             <a href="tel:+5547984551622" onClick={() => track("phone_click", { source: "footer" })}>(47) 98455-1622</a>
             <a href="mailto:envoraambiental@gmail.com" onClick={() => track("email_click", { source: "footer" })}>envoraambiental@gmail.com</a>
             <a className="instagram-link" href="https://www.instagram.com/envoraambiental/" target="_blank" rel="noopener noreferrer" onClick={() => track("instagram_click", { source: "footer" })}>Instagram · @envoraambiental <span aria-hidden="true">↗</span></a>
+            <a href="#sobre">Sobre a Envora</a>
             <a className="privacy-text" href="/privacidade">Privacidade</a>
           </div>
         </div>

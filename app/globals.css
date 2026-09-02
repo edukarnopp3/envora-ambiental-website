@@ -151,6 +151,15 @@ select:focus,input:focus,textarea:focus { border-color:var(--forest); box-shadow
 .lead-form input { margin-top:8px; }
 .lead-form label:nth-child(3),.lead-form label:nth-child(4),.lead-form .button,.lead-form small { grid-column:1/-1; }
 .lead-form small { color:rgba(29,36,34,.5); line-height:1.5; }
+.about-footer { display:grid; grid-template-columns:minmax(260px,.72fr) minmax(0,1.28fr); gap:7vw; padding:82px 7vw; background:var(--forest); color:white; }
+.about-footer-heading { align-self:center; }
+.about-footer-heading .section-index { margin-bottom:20px; }
+.about-footer-heading h2 { max-width:520px; margin:0; font:700 clamp(32px,3.3vw,52px)/1.08 "Manrope",sans-serif; letter-spacing:-.045em; text-wrap:balance; }
+.about-signals { display:grid; grid-template-columns:1fr 1fr; border-top:1px solid rgba(255,255,255,.16); border-left:1px solid rgba(255,255,255,.16); }
+.about-signals div { display:grid; align-content:center; min-height:132px; padding:24px 28px; border-right:1px solid rgba(255,255,255,.16); border-bottom:1px solid rgba(255,255,255,.16); }
+.about-signals small { color:var(--brand-soft); font-size:10px; font-weight:700; letter-spacing:.14em; }
+.about-signals b { margin-top:9px; color:white; font-size:14px; }
+.about-signals span { margin-top:4px; color:rgba(255,255,255,.58); font-size:12px; }
 footer { display:grid; grid-template-columns:minmax(360px,1.15fr) minmax(440px,.85fr); min-height:310px; padding:0 7vw; background:#071d1a; color:rgba(255,255,255,.58); font-size:12px; }
 .footer-brand-panel { display:flex; align-items:center; padding:64px 6vw 64px 0; border-right:1px solid rgba(255,255,255,.12); }
 footer .inverted { width:100%; color:white; }
@@ -207,6 +216,7 @@ footer .brand img { width:min(100%,520px); }
   .hero-visual { min-height:auto; }
   .hero-focus { min-height:520px; padding:42px 28px; }
   .section-heading,.sectors-head,.triage-section,.faq-section,.contact-section { grid-template-columns:1fr; }
+  .about-footer { grid-template-columns:1fr; gap:42px; padding:72px 24px; }
   .service-grid { grid-template-columns:1fr; }
   .service-card.featured { grid-column:auto; grid-template-columns:42px 1fr 24px; }
   .service-card.featured p { grid-column:2; grid-row:auto; }
@@ -255,6 +265,8 @@ footer .brand img { width:min(100%,520px); }
   .service-card.featured { grid-template-columns:34px 1fr 20px; }
   .sector-row h3 { font-size:21px; }
   .choice-grid.two { grid-template-columns:1fr; }
+  .about-signals { grid-template-columns:1fr; }
+  .about-signals div { min-height:104px; }
   .process-list li { grid-template-columns:46px 1fr; }
   .faq-section,.contact-section { min-height:0; }
   .faq-section { gap:48px; }
