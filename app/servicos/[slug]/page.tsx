@@ -93,7 +93,6 @@ export default async function ServicePage({ params }: ServicePageProps) {
             <p className="section-index light">Entrega técnica</p>
             <h2>{service.deliverable}</h2>
           </div>
-          <aside><strong>Limite do trabalho</strong><p>{service.boundary}</p></aside>
           <ServiceWhatsAppLink service={service.shortTitle} className="button service-primary">Explicar minha situação <span aria-hidden="true">↗</span></ServiceWhatsAppLink>
         </section>
       </main>
