@@ -38,7 +38,6 @@ export default async function ServicePage({ params }: ServicePageProps) {
   const service = servicePageBySlug.get(slug);
   if (!service) notFound();
 
-  const related = servicePages.filter((item) => item.slug !== service.slug).slice(0, 3);
   const serviceSchema = {
     "@context": "https://schema.org",
     "@type": "Service",
@@ -77,44 +76,25 @@ export default async function ServicePage({ params }: ServicePageProps) {
           </div>
         </section>
 
-        <section className="service-content-block service-when">
-          <div><p className="section-index">Quando faz sentido</p><h2>Sinais de que vale analisar este serviço.</h2></div>
-          <ul>{service.situations.map((situation) => <li key={situation}>{situation}</li>)}</ul>
+        <section className="service-explainer">
+          <div className="service-applies">
+            <p className="section-index">Quando se aplica</p>
+            <h2>O que essa situação significa.</h2>
+            <p>{service.applies}</p>
+          </div>
+          <div className="service-process">
+            <p className="section-index">O que acontece na prática</p>
+            <ol>{service.process.map((item, index) => <li key={item}><span>{String(index + 1).padStart(2, "0")}</span><p>{item}</p></li>)}</ol>
+          </div>
         </section>
 
-        {service.comparison ? (
-          <section className="service-comparison" aria-labelledby="comparison-title">
-            <div><p className="section-index light">Diferença prática</p><h2 id="comparison-title">Dois documentos, enquadramentos diferentes.</h2></div>
-            <div className="comparison-grid">{service.comparison.map((item) => <article key={item.title}><span>{item.title}</span><p>{item.text}</p></article>)}</div>
-          </section>
-        ) : null}
-
-        <section className="service-content-block service-scope">
-          <div><p className="section-index">Escopo técnico</p><h2>Como a Envora organiza o trabalho.</h2></div>
-          <ol>{service.scope.map((item, index) => <li key={item}><span>{String(index + 1).padStart(2, "0")}</span><p>{item}</p></li>)}</ol>
-        </section>
-
-        <section className="service-inputs">
-          <div><p className="section-index light">Para começar</p><h2>O que precisamos analisar.</h2></div>
-          <ul>{service.inputs.map((item) => <li key={item}>{item}</li>)}</ul>
-        </section>
-
-        <section className="service-delivery">
-          <div><p className="section-index">Entrega esperada</p><h2>{service.deliverable}</h2></div>
-          <aside><strong>Limite do escopo</strong><p>{service.boundary}</p></aside>
-        </section>
-
-        <section className="service-final-cta">
-          <p className="eyebrow">Próximo passo</p>
-          <h2>Explique sua situação antes de definir o escopo.</h2>
-          <p>A triagem inicial organiza atividade, documentos e objetivo para indicar o que precisa ser conferido.</p>
-          <ServiceWhatsAppLink service={service.shortTitle} className="button service-primary">Falar com a Envora <span aria-hidden="true">↗</span></ServiceWhatsAppLink>
-        </section>
-
-        <section className="related-services" aria-labelledby="related-title">
-          <p className="section-index">Outros serviços</p>
-          <h2 id="related-title">Demandas relacionadas.</h2>
-          <div>{related.map((item) => <Link key={item.slug} href={`/servicos/${item.slug}`}><span>{item.shortTitle}</span><b aria-hidden="true">↗</b></Link>)}</div>
+        <section className="service-result">
+          <div>
+            <p className="section-index light">Entrega técnica</p>
+            <h2>{service.deliverable}</h2>
+          </div>
+          <aside><strong>Limite do trabalho</strong><p>{service.boundary}</p></aside>
+          <ServiceWhatsAppLink service={service.shortTitle} className="button service-primary">Explicar minha situação <span aria-hidden="true">↗</span></ServiceWhatsAppLink>
         </section>
       </main>
 

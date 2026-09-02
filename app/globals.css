@@ -192,7 +192,7 @@ footer .brand img { width:min(100%,520px); }
 .privacy-updated { margin-top:20px; font-size:13px; }
 
 /* Páginas de serviços — variação institucional da identidade principal. */
-.service-page-shell { min-height:100svh; background:var(--paper); }
+.service-page-shell { min-height:100svh; overflow-x:clip; background:var(--paper); }
 .service-topbar { position:relative; z-index:10; display:grid; grid-template-columns:auto 1fr auto; align-items:center; gap:4vw; min-height:88px; padding:0 7vw; border-bottom:1px solid var(--line); background:var(--paper); }
 .service-topbar nav { display:flex; justify-content:center; gap:34px; color:rgba(29,36,34,.64); font-size:14px; font-weight:700; }
 .service-topbar nav a { padding:12px 4px; border-bottom:1px solid transparent; }
@@ -202,6 +202,7 @@ footer .brand img { width:min(100%,520px); }
 .service-breadcrumb a:hover,.service-breadcrumb a:focus-visible { color:var(--brand-soft); }
 .service-breadcrumb b { color:rgba(255,255,255,.82); font-weight:600; }
 .service-hero-grid { display:grid; grid-template-columns:minmax(0,1.25fr) minmax(300px,.75fr); align-items:end; gap:8vw; }
+.service-hero-grid>* { min-width:0; }
 .service-hero .eyebrow { margin-bottom:22px; color:var(--brand-soft); }
 .service-hero h1 { max-width:980px; margin:0; font:700 clamp(48px,6vw,92px)/.98 "Manrope",sans-serif; letter-spacing:-.06em; text-wrap:balance; }
 .service-hero-intro { max-width:760px; margin:32px 0 0; color:rgba(255,255,255,.68); font-size:clamp(17px,1.4vw,21px); line-height:1.65; }
@@ -249,6 +250,18 @@ footer .brand img { width:min(100%,520px); }
 .service-footer strong { color:white; font-size:16px; }
 .service-footer a:not(.brand) { width:max-content; border-bottom:1px solid rgba(255,255,255,.3); }
 .service-page-shell a:focus-visible,.service-page-shell button:focus-visible { outline:3px solid var(--brand-soft); outline-offset:4px; }
+.service-explainer { display:grid; grid-template-columns:minmax(280px,.85fr) minmax(0,1.15fr); align-items:center; gap:9vw; min-height:720px; padding:96px 7vw; background:var(--paper); }
+.service-explainer h2,.service-result h2 { max-width:720px; margin:0; font:700 clamp(38px,4.25vw,66px)/1.03 "Manrope",sans-serif; letter-spacing:-.055em; text-wrap:balance; }
+.service-applies>p:last-child { max-width:620px; margin:34px 0 0; color:rgba(29,36,34,.68); font-size:17px; line-height:1.78; }
+.service-process ol { list-style:none; margin:0; padding:0; border-top:1px solid var(--line); }
+.service-process li { display:grid; grid-template-columns:52px 1fr; gap:20px; align-items:start; padding:27px 0; border-bottom:1px solid var(--line); }
+.service-process li span { padding-top:4px; color:var(--brand); font-size:11px; font-weight:700; letter-spacing:.12em; }
+.service-process li p { max-width:680px; margin:0; font-size:16px; line-height:1.7; }
+.service-result { display:grid; grid-template-columns:minmax(0,1.15fr) minmax(300px,.85fr); align-content:center; align-items:start; gap:42px 9vw; min-height:670px; padding:100px 7vw; background:var(--forest-dark); color:white; }
+.service-result aside { padding:30px 32px; border-left:3px solid var(--brand-soft); background:rgba(255,255,255,.05); }
+.service-result aside strong { color:var(--brand-soft); font-size:11px; letter-spacing:.13em; text-transform:uppercase; }
+.service-result aside p { margin:18px 0 0; color:rgba(255,255,255,.7); line-height:1.7; }
+.service-result .service-primary { grid-column:1; width:max-content; margin-top:4px; }
 
 @media (max-width:1220px) {
   .topbar { grid-template-columns:1fr auto; height:78px; padding:0 22px; }
@@ -296,6 +309,8 @@ footer .brand img { width:min(100%,520px); }
   .service-content-block,.service-comparison,.service-inputs,.service-delivery,.service-final-cta,.related-services { padding:78px 24px; }
   .related-services>div { grid-template-columns:1fr; }
   .service-footer { padding:50px 24px 82px; }
+  .service-explainer,.service-result { grid-template-columns:1fr; gap:52px; min-height:0; padding:82px 24px; }
+  .service-result .service-primary { grid-column:1; }
 }
 
 @media (min-width:901px) and (max-height:820px) {
@@ -349,7 +364,7 @@ footer .brand img { width:min(100%,520px); }
   footer .brand img { width:min(100%,330px); }
   .footer-content { gap:24px; padding:44px 0 52px; }
   .mobile-sticky { position:fixed; right:0; bottom:0; left:0; z-index:60; display:flex; align-items:center; justify-content:center; gap:16px; height:58px; background:var(--brand); color:white; font-size:13px; font-weight:700; }
-  .cookie-banner { right:12px; bottom:70px; grid-template-columns:1fr; gap:16px; width:calc(100vw - 24px); padding:18px; }
+  .cookie-banner { right:12px; bottom:70px; grid-template-columns:1fr; gap:16px; width:calc(100% - 24px); padding:18px; }
   .cookie-banner>div { justify-content:flex-end; }
   .privacy-page { padding:0 24px 70px; }
   .privacy-page>header { min-height:78px; }
@@ -368,6 +383,12 @@ footer .brand img { width:min(100%,520px); }
   .service-delivery aside { padding:26px 22px; }
   .service-footer { display:grid; gap:34px; }
   .service-footer .brand img { width:min(100%,300px); }
+  .service-explainer h2,.service-result h2 { font-size:38px; }
+  .service-applies>p:last-child { margin-top:26px; font-size:16px; }
+  .service-process li { grid-template-columns:40px 1fr; gap:12px; padding:23px 0; }
+  .service-process li p { font-size:15px; }
+  .service-result aside { padding:26px 22px; }
+  .service-result .service-primary { width:100%; }
 }
 
 @media (prefers-reduced-motion:reduce) {

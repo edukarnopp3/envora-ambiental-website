@@ -1,8 +1,3 @@
-export type ServiceComparison = {
-  title: string;
-  text: string;
-};
-
 export type ServicePageData = {
   slug: string;
   shortTitle: string;
@@ -11,12 +6,10 @@ export type ServicePageData = {
   description: string;
   intro: string;
   highlights: string[];
-  situations: string[];
-  scope: string[];
-  inputs: string[];
+  applies: string;
+  process: string[];
   deliverable: string;
   boundary: string;
-  comparison?: ServiceComparison[];
 };
 
 export const servicePages: ServicePageData[] = [
@@ -24,143 +17,103 @@ export const servicePages: ServicePageData[] = [
     slug: "auto-de-infracao-ambiental",
     shortTitle: "Auto de infração ambiental",
     title: "Recebeu um auto de infração ambiental?",
-    eyebrow: "Resposta técnica e organização documental",
-    description: "Análise técnica de auto de infração ambiental em Joinville, com organização de prazos, fatos, documentos e itens ambientais da resposta.",
-    intro: "O primeiro passo é entender exatamente o que o órgão registrou, quais prazos constam no documento e que evidências ambientais precisam ser reunidas.",
-    highlights: ["Leitura do documento", "Organização das evidências", "Escopo técnico definido"],
-    situations: [
-      "A empresa recebeu auto de infração, notificação ou exigência de órgão ambiental.",
-      "O documento cita obrigações, fatos ou documentos técnicos que precisam ser esclarecidos.",
-      "É necessário separar o conteúdo ambiental da estratégia jurídica antes de responder.",
+    eyebrow: "Análise técnica da ocorrência e dos documentos",
+    description: "Análise técnica de auto de infração ambiental em Joinville, com conferência do fato apontado, prazo e documentos ambientais relacionados.",
+    intro: "Antes de responder, é preciso separar o fato técnico, o prazo indicado e o que pertence à defesa jurídica.",
+    highlights: ["Documento conferido", "Evidências relacionadas", "Limite técnico definido"],
+    applies: "Quando um órgão ambiental registra uma possível irregularidade e estabelece prazo para defesa, manifestação ou correção. O documento deve ser analisado junto das licenças, autorizações, registros operacionais e evidências do fato.",
+    process: [
+      "Conferimos órgão emissor, fato descrito, fundamento indicado, prazo e medidas exigidas.",
+      "Relacionamos o auto ao histórico do processo, às licenças existentes e aos comprovantes disponíveis.",
+      "Organizamos a manifestação técnica ou os subsídios ambientais que serão usados na resposta.",
     ],
-    scope: [
-      "Leitura técnica do documento e identificação dos pontos ambientais.",
-      "Organização de prazos, fatos, licenças, comprovantes e histórico disponível.",
-      "Definição dos documentos e esclarecimentos técnicos necessários dentro do escopo profissional.",
-      "Preparação da parte técnica da resposta e interface com advogado quando houver matéria jurídica.",
-    ],
-    inputs: ["Auto de infração ou notificação completa", "Licenças e autorizações existentes", "Comprovantes, registros e comunicações anteriores", "Breve relato do ocorrido"],
-    deliverable: "Uma leitura organizada do caso, com pendências identificadas, documentos a reunir e escopo técnico para a resposta.",
-    boundary: "A atuação ambiental não substitui defesa jurídica. Quando o caso envolver impugnação, recurso ou tese legal, o trabalho deve ser complementado por advogado.",
+    deliverable: "Diagnóstico técnico do auto, relação de evidências e definição objetiva do que precisa ser respondido ou regularizado.",
+    boundary: "Defesa, recurso e tese jurídica exigem advogado. A Envora responde pela parte ambiental contratada.",
   },
   {
     slug: "licenciamento-ambiental",
     shortTitle: "Licenciamento ambiental",
-    title: "Licenciamento ambiental com uma rota clara desde o início.",
-    eyebrow: "Enquadramento, documentação e acompanhamento",
-    description: "Consultoria para licenciamento ambiental em Joinville: enquadramento da atividade, organização documental, protocolo e acompanhamento conforme o escopo.",
-    intro: "Antes de listar documentos, é preciso confirmar atividade, porte, localização, características da operação e órgão competente.",
-    highlights: ["Enquadramento inicial", "Documentação por escopo", "Acompanhamento do processo"],
-    situations: [
-      "A empresa vai iniciar uma atividade ou instalar uma nova operação.",
-      "Haverá ampliação, alteração de processo, mudança de endereço ou regularização.",
-      "Existe dúvida sobre modalidade, órgão competente ou documentação aplicável.",
+    title: "Licenciamento ambiental começa pelo enquadramento correto.",
+    eyebrow: "Atividade, porte, localização e órgão competente",
+    description: "Consultoria para licenciamento ambiental em Joinville, com enquadramento da operação, documentação técnica, protocolo e acompanhamento.",
+    intro: "A lista de documentos só faz sentido depois de confirmar qual atividade ocorre no local e qual procedimento se aplica.",
+    highlights: ["Atividade real", "Modalidade aplicável", "Documentação técnica"],
+    applies: "Para implantação, operação, ampliação, alteração de processo ou mudança de endereço de atividade potencialmente sujeita a controle ambiental. O CNAE ajuda na triagem, mas não substitui a descrição da operação.",
+    process: [
+      "Levantamos processo produtivo, capacidade, áreas, equipamentos, resíduos, efluentes e localização.",
+      "Conferimos o enquadramento e identificamos a modalidade e o órgão competente para o caso.",
+      "Preparamos os documentos técnicos contratados, protocolamos e acompanhamos as exigências do processo.",
     ],
-    scope: [
-      "Levantamento da atividade, porte, localização e características ambientais relevantes.",
-      "Definição da rota provável e confirmação das exigências aplicáveis ao caso.",
-      "Organização e elaboração dos documentos técnicos contratados.",
-      "Protocolo e acompanhamento das etapas previstas no escopo.",
-    ],
-    inputs: ["CNPJ e atividades exercidas", "Endereço e dados do imóvel", "Descrição do processo e capacidade", "Licenças, plantas e documentos já existentes"],
-    deliverable: "Escopo de licenciamento definido, relação objetiva de informações necessárias e condução das entregas contratadas.",
-    boundary: "A modalidade e a documentação final dependem do enquadramento e da análise do órgão competente. A aprovação e o prazo de análise não podem ser garantidos pela consultoria.",
+    deliverable: "Rota de licenciamento definida e processo organizado com as peças técnicas previstas no escopo contratado.",
+    boundary: "A emissão da licença e o prazo de análise dependem do órgão ambiental e não podem ser garantidos pela consultoria.",
   },
   {
     slug: "renovacao-e-regularizacao",
     shortTitle: "Renovação e regularização",
-    title: "Renove ou regularize sem perder de vista a operação real.",
-    eyebrow: "Continuidade documental e controle de pendências",
-    description: "Renovação de licença e regularização ambiental em Joinville, com revisão da situação documental, condicionantes e alterações da operação.",
-    intro: "A renovação não deve ser tratada como uma simples repetição do processo anterior: licenças, condicionantes e mudanças da empresa precisam ser conferidas em conjunto.",
-    highlights: ["Revisão da licença", "Conferência de condicionantes", "Atualização documental"],
-    situations: [
-      "A licença está próxima do vencimento ou o prazo de renovação gera dúvida.",
-      "A operação mudou desde a emissão da licença atual.",
-      "Há pendências documentais, condicionantes ou processo antigo a organizar.",
+    title: "Renovação e regularização sem repetir erros do processo anterior.",
+    eyebrow: "Licença, condicionantes e alterações da operação",
+    description: "Renovação de licença e regularização ambiental em Joinville, com revisão de prazos, condicionantes e mudanças ocorridas na empresa.",
+    intro: "Renovar não é apenas reapresentar a licença: a situação atual precisa ser comparada com o que foi autorizado.",
+    highlights: ["Prazo verificado", "Condicionantes conferidas", "Operação atualizada"],
+    applies: "Quando a licença está próxima do vencimento, quando a empresa opera com documentação desatualizada ou quando houve mudança de atividade, capacidade, equipamento ou estrutura desde a última autorização.",
+    process: [
+      "Revisamos a licença, o processo anterior, os prazos e as condicionantes aplicáveis.",
+      "Comparamos o que foi autorizado com a operação atual e registramos as alterações relevantes.",
+      "Definimos a rota de renovação ou regularização e preparamos as entregas técnicas contratadas.",
     ],
-    scope: [
-      "Revisão da licença vigente, processo disponível e prazos aplicáveis.",
-      "Conferência das condicionantes e das evidências de atendimento existentes.",
-      "Levantamento das alterações de atividade, porte, equipamentos ou estrutura.",
-      "Preparação e acompanhamento da renovação ou regularização conforme o escopo.",
-    ],
-    inputs: ["Licença atual e processo anterior", "Relatórios e comprovantes de condicionantes", "Descrição das mudanças ocorridas", "Documentos cadastrais e técnicos atualizados"],
-    deliverable: "Diagnóstico das pendências, rota de regularização e organização das entregas necessárias para o processo contratado.",
-    boundary: "O procedimento adequado depende do histórico e das mudanças da operação. Protocolar sem essa conferência pode gerar exigências adicionais.",
+    deliverable: "Mapa de pendências e processo de renovação ou regularização coerente com a situação atual da empresa.",
+    boundary: "Mudanças relevantes podem exigir procedimento diferente de uma renovação simples; isso é definido após a conferência documental.",
   },
   {
     slug: "danc-e-cca",
     shortTitle: "DANC e CCA",
-    title: "DANC ou CCA: qual documento se aplica à sua atividade?",
-    eyebrow: "Enquadramento ambiental para atividades de menor impacto ou porte",
-    description: "Análise de enquadramento para DANC e CCA em Joinville, considerando atividade, porte, localização e características da operação.",
-    intro: "Os dois documentos não são equivalentes. A escolha depende da listagem da atividade, do porte e das condições verificadas no caso concreto.",
-    highlights: ["Atividade verificada", "Porte conferido", "Documento compatível"],
-    situations: [
-      "A empresa precisa comprovar sua situação ambiental para funcionar ou contratar.",
-      "Existe dúvida se a atividade consta da listagem sujeita ao licenciamento.",
-      "A atividade pode estar abaixo do porte de licenciamento e precisa de análise formal.",
+    title: "DANC ou CCA: o documento depende do enquadramento.",
+    eyebrow: "Comprovação ambiental para atividades específicas",
+    description: "Análise técnica para DANC e CCA em Joinville, considerando atividade efetiva, porte, localização e critérios do órgão ambiental.",
+    intro: "DANC e CCA não são nomes diferentes para o mesmo documento. Cada uma responde a uma situação de enquadramento.",
+    highlights: ["Atividade conferida", "Porte calculado", "Documento compatível"],
+    applies: "Quando a empresa precisa demonstrar sua situação ambiental, mas há dúvida se a atividade está sujeita ao licenciamento ou se opera abaixo do porte previsto. A análise considera a atividade efetiva, não apenas o CNAE cadastrado.",
+    process: [
+      "Descrevemos a operação e conferimos localização, capacidade, área e equipamentos relevantes.",
+      "Verificamos se a atividade consta da listagem aplicável e se alcança o porte sujeito a licenciamento.",
+      "Se não constar, avaliamos a DANC; se constar abaixo do porte, avaliamos a CCA e suas condições.",
     ],
-    comparison: [
-      { title: "DANC", text: "Em linhas gerais, formaliza a análise de atividade que não consta da listagem sujeita ao licenciamento ambiental." },
-      { title: "CCA", text: "Pode se aplicar quando a atividade consta da listagem, mas está abaixo do porte de licenciamento, conforme as condições do caso." },
-    ],
-    scope: [
-      "Conferência das atividades efetivamente exercidas e dos dados cadastrais.",
-      "Análise de porte, localização e características relevantes da operação.",
-      "Definição do documento provável e confirmação das exigências aplicáveis.",
-      "Preparação e acompanhamento do requerimento contratado.",
-    ],
-    inputs: ["CNPJ, CNAEs e descrição das atividades", "Endereço e inscrição imobiliária", "Capacidade, área e equipamentos", "Documentos ambientais anteriores, se existirem"],
-    deliverable: "Conclusão de enquadramento fundamentada nas informações disponíveis e preparação do documento aplicável dentro do escopo.",
-    boundary: "CNAE isolado não resolve o enquadramento. A atividade real, o porte, a localização e os critérios do órgão precisam ser analisados em conjunto.",
+    deliverable: "Conclusão de enquadramento e preparação do requerimento compatível com a situação identificada.",
+    boundary: "A conclusão depende dos dados reais da operação e dos critérios vigentes do órgão competente.",
   },
   {
     slug: "pgrs",
     shortTitle: "PGRS",
-    title: "PGRS conectado à rotina real da empresa.",
+    title: "PGRS baseado nos resíduos que a empresa realmente gera.",
     eyebrow: "Plano de Gerenciamento de Resíduos Sólidos",
-    description: "Elaboração e revisão de PGRS em Joinville, com diagnóstico dos resíduos, responsabilidades, armazenamento e comprovação de destinação.",
-    intro: "O plano precisa representar os resíduos realmente gerados e indicar como cada etapa será controlada — da segregação à destinação.",
-    highlights: ["Resíduos mapeados", "Responsabilidades definidas", "Evidências organizadas"],
-    situations: [
-      "A empresa precisa elaborar ou atualizar seu plano de gerenciamento.",
-      "O PGRS existente não acompanha mais a operação ou os resíduos atuais.",
-      "Manifestos, comprovantes e rotinas de segregação estão dispersos.",
+    description: "Elaboração e revisão de PGRS em Joinville, com caracterização dos resíduos, fluxos internos, responsáveis e destinação.",
+    intro: "Um plano útil precisa corresponder à rotina da empresa e aos documentos que comprovam a destinação.",
+    highlights: ["Fontes geradoras", "Fluxos de manejo", "Destinação comprovável"],
+    applies: "Quando a atividade precisa elaborar ou atualizar o plano, quando surgiram novos resíduos ou quando o documento existente não representa mais a operação. A análise alcança geração, segregação, armazenamento, coleta e destinação.",
+    process: [
+      "Identificamos setores geradores, tipos de resíduos, volumes disponíveis e formas atuais de manejo.",
+      "Conferimos acondicionamento, armazenamento, transportadores, receptores, MTRs e comprovantes.",
+      "Estruturamos procedimentos, responsabilidades e registros que a empresa deverá manter.",
     ],
-    scope: [
-      "Levantamento das atividades, setores e resíduos gerados.",
-      "Organização das informações de segregação, acondicionamento, armazenamento, coleta e destinação.",
-      "Definição de responsabilidades, registros e rotinas de controle.",
-      "Elaboração ou revisão do PGRS conforme o escopo e os dados fornecidos.",
-    ],
-    inputs: ["Descrição do processo e setores", "Relação de resíduos e quantidades disponíveis", "Contratos, MTRs e comprovantes de destinação", "Fotos ou informações das áreas de armazenamento"],
-    deliverable: "PGRS organizado para a realidade informada da empresa, acompanhado da relação de controles e evidências que precisam ser mantidos.",
-    boundary: "A qualidade do plano depende de dados coerentes sobre geração e destinação. Inventário, visitas, treinamentos ou implantação operacional devem constar expressamente no escopo contratado.",
+    deliverable: "PGRS compatível com a operação informada, acompanhado das rotinas e evidências necessárias para sua manutenção.",
+    boundary: "Treinamento, implantação e acompanhamento periódico são etapas separadas quando não constarem no escopo.",
   },
   {
     slug: "pgrcc",
     shortTitle: "PGRCC",
-    title: "PGRCC para organizar os resíduos antes e durante a obra.",
-    eyebrow: "Plano de Gerenciamento de Resíduos da Construção Civil",
-    description: "Elaboração de PGRCC em Joinville, com previsão de resíduos, segregação, acondicionamento, transporte e comprovação de destinação.",
-    intro: "O planejamento antecipado reduz improvisos no canteiro e facilita a comprovação de transporte e destinação dos resíduos da construção.",
-    highlights: ["Geração prevista", "Fluxos de destinação", "Comprovantes organizados"],
-    situations: [
-      "A obra precisa apresentar PGRCC para aprovação, contratação ou controle interno.",
-      "É necessário definir previamente segregação, armazenamento e destinação.",
-      "A documentação de transportadores e receptores precisa ser organizada.",
+    title: "PGRCC para controlar os resíduos ao longo da obra.",
+    eyebrow: "Resíduos da Construção Civil",
+    description: "Elaboração de PGRCC em Joinville, com estimativa de geração, segregação, armazenamento, transporte e destinação dos resíduos da obra.",
+    intro: "O plano define o fluxo antes da geração e estabelece quais registros deverão comprovar a destinação durante a execução.",
+    highlights: ["Resíduos estimados", "Manejo no canteiro", "Destino documentado"],
+    applies: "Para obras que precisam apresentar um plano de gerenciamento ou organizar previamente os resíduos da construção. Projeto, etapa da obra, métodos construtivos e destinos previstos influenciam o conteúdo.",
+    process: [
+      "Caracterizamos a obra e estimamos as classes de resíduos esperadas em cada etapa.",
+      "Definimos segregação, acondicionamento, armazenamento temporário, coleta e transporte.",
+      "Relacionamos transportadores, destinos e comprovantes que deverão ser mantidos durante a obra.",
     ],
-    scope: [
-      "Caracterização da obra e estimativa das classes de resíduos esperadas.",
-      "Definição das diretrizes de segregação, acondicionamento e armazenamento temporário.",
-      "Organização das rotas de transporte, destinação e documentos comprobatórios.",
-      "Elaboração do PGRCC conforme as informações e o escopo contratado.",
-    ],
-    inputs: ["Dados, endereço e fase da obra", "Projeto, áreas e cronograma disponível", "Estimativas ou histórico de resíduos", "Transportadores e destinos previstos, quando definidos"],
-    deliverable: "PGRCC com fluxos de gerenciamento definidos e orientação sobre os registros necessários durante a execução.",
-    boundary: "O plano não substitui a execução e a fiscalização diária das rotinas no canteiro. A comprovação depende dos documentos emitidos ao longo da obra.",
+    deliverable: "PGRCC com fluxos de gerenciamento e controle documental definidos para a obra informada.",
+    boundary: "A execução diária do plano e a guarda dos comprovantes são responsabilidades da obra, salvo contratação específica de acompanhamento.",
   },
 ];
 
