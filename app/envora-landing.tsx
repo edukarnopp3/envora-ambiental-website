@@ -1,6 +1,7 @@
 "use client";
 
 import { FormEvent, useEffect, useMemo, useState } from "react";
+import HeroBackgroundVideo from "./hero-background-video";
 
 const WA_NUMBER = "5547984551622";
 
@@ -71,23 +72,6 @@ const situations = [
   "Preciso de laudo ou controle acústico",
   "Outra situação",
 ];
-
-function AnimatedEnvoraMark() {
-  return (
-    <div className="hero-logo-stage" aria-hidden="true">
-      <div className="hero-logo-3d">
-        <svg className="hero-leaf-motion" viewBox="0 0 200 300" xmlns="http://www.w3.org/2000/svg">
-          <path className="leaf-outline" d="M100,10 C150,40 180,110 100,230 C20,110 50,40 100,10 Z" />
-          <path className="leaf-fill" d="M100,10 C150,40 180,110 100,230 C20,110 50,40 100,10 Z" />
-          <line className="leaf-vein" x1="100" y1="30" x2="100" y2="220" />
-          <line className="leaf-vein leaf-vein-side" x1="100" y1="110" x2="60" y2="80" />
-          <line className="leaf-vein leaf-vein-side" x1="100" y1="110" x2="140" y2="80" />
-          <path className="drop" d="M100,235 C108,250 112,262 100,270 C88,262 92,250 100,235 Z" />
-        </svg>
-      </div>
-    </div>
-  );
-}
 
 const docsOptions = [
   "Ainda não tenho processo",
@@ -248,8 +232,8 @@ export default function EnvoraLanding() {
 
   return (
     <div className="site-shell">
-      <header className="topbar">
-        <a className="brand" href="#inicio" aria-label="Envora Ambiental - início"><img src="/envora-logo-horizontal.svg" alt="Envora Ambiental" /></a>
+      <header className={`topbar${activeSection === "inicio" && !menuOpen ? " on-hero" : ""}`}>
+        <a className="brand" href="#inicio" aria-label="Envora Ambiental - início"><img src={activeSection === "inicio" && !menuOpen ? "/envora-logo-horizontal-dark.svg" : "/envora-logo-horizontal.svg"} alt="Envora Ambiental" /></a>
         <nav className={menuOpen ? "nav-links open" : "nav-links"} aria-label="Navegação principal">
           <a className={activeSection === "inicio" ? "active" : ""} aria-current={activeSection === "inicio" ? "location" : undefined} href="#inicio" onClick={() => selectSection("inicio")}>Início</a>
           <a className={activeSection === "solucoes" ? "active" : ""} aria-current={activeSection === "solucoes" ? "location" : undefined} href="#solucoes" onClick={() => selectSection("solucoes")}>Serviços</a>
@@ -264,25 +248,20 @@ export default function EnvoraLanding() {
       </header>
 
       <main>
-        <section className="hero" id="inicio" data-scroll-panel>
+        <section className="hero hero-home" id="inicio" data-scroll-panel>
+          <HeroBackgroundVideo />
+          <div className="hero-scrim" aria-hidden="true" />
           <div className="hero-copy">
-            <p className="eyebrow">Consultoria Ambiental em Joinville · SC</p>
-            <h1>Recebeu um auto de infração <em>ambiental?</em></h1>
-            <p className="hero-text hero-summary">Envie o documento para uma triagem técnica e entenda o que foi solicitado.</p>
+            <p className="eyebrow">Consultoria Ambiental · Joinville</p>
+            <h1>Clareza para sua empresa avançar.</h1>
+            <p className="hero-text hero-summary">Licenciamento, regularização e gestão ambiental com orientação técnica.</p>
             <div className="hero-actions">
               <WhatsAppLink
-                className="button button-dark"
-                source="hero_auto_infracao"
-                message="Olá, recebi um auto de infração ambiental e gostaria de iniciar uma triagem técnica."
-              >Enviar auto de infração para triagem <span>↗</span></WhatsAppLink>
-              <a className="text-link" href="#solucoes">Preciso de outro serviço <span>↓</span></a>
-            </div>
-          </div>
-          <div className="hero-visual hero-focus" aria-label="Envora Ambiental — atendimento técnico em Joinville">
-            <AnimatedEnvoraMark />
-            <div className="hero-focus-foot">
-              <span>Envora Ambiental</span>
-              <b>Atendimento técnico em Joinville</b>
+                className="button hero-primary"
+                source="hero_triagem"
+                message={baseMessage}
+              >Fazer triagem inicial <span>↗</span></WhatsAppLink>
+              <WhatsAppLink className="text-link hero-secondary" source="hero_whatsapp" message={baseMessage}>Falar no WhatsApp <span>→</span></WhatsAppLink>
             </div>
           </div>
         </section>
