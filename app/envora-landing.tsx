@@ -1,6 +1,7 @@
 "use client";
 
 import { FormEvent, useEffect, useMemo, useState } from "react";
+import Link from "next/link";
 import HeroBackgroundVideo from "./hero-background-video";
 
 const WA_NUMBER = "5547984551622";
@@ -49,16 +50,16 @@ const sectors = [
 ];
 
 const services = [
-  { code: "01", title: "Autos de infração e exigências ambientais", text: "Análise técnica do documento, levantamento do que foi solicitado e organização da resposta dentro do escopo profissional.", featured: true },
+  { code: "01", title: "Autos de infração e exigências ambientais", text: "Análise técnica do documento, levantamento do que foi solicitado e organização da resposta dentro do escopo profissional.", featured: true, href: "/servicos/auto-de-infracao-ambiental" },
   { code: "02", title: "Diagnóstico e enquadramento ambiental", text: "Análise da atividade, porte, localização e situação documental para definir a rota aplicável.", featured: false },
-  { code: "03", title: "DANC", text: "Preparação e acompanhamento da Declaração de Atividade Não Constante.", featured: false },
-  { code: "04", title: "CCA", text: "Certidão de Conformidade Ambiental para atividades abaixo do porte de licenciamento.", featured: false },
-  { code: "05", title: "Licenciamento ambiental", text: "LAP, LAI, LAO e AuA para indústrias e atividades diversas.", featured: false },
-  { code: "06", title: "Renovação e regularização", text: "Análise da licença existente e organização da documentação para continuidade da operação.", featured: false },
+  { code: "03", title: "DANC", text: "Preparação e acompanhamento da Declaração de Atividade Não Constante.", featured: false, href: "/servicos/danc-e-cca" },
+  { code: "04", title: "CCA", text: "Certidão de Conformidade Ambiental para atividades abaixo do porte de licenciamento.", featured: false, href: "/servicos/danc-e-cca" },
+  { code: "05", title: "Licenciamento ambiental", text: "LAP, LAI, LAO e AuA para indústrias e atividades diversas.", featured: false, href: "/servicos/licenciamento-ambiental" },
+  { code: "06", title: "Renovação e regularização", text: "Análise da licença existente e organização da documentação para continuidade da operação.", featured: false, href: "/servicos/renovacao-e-regularizacao" },
   { code: "07", title: "Gestão de condicionantes", text: "Organização de obrigações, evidências, prazos e entregas previstas na licença.", featured: false },
-  { code: "08", title: "PGRS", text: "Plano de Gerenciamento de Resíduos Sólidos para a operação da empresa.", featured: false },
+  { code: "08", title: "PGRS", text: "Plano de Gerenciamento de Resíduos Sólidos para a operação da empresa.", featured: false, href: "/servicos/pgrs" },
   { code: "09", title: "PGRSS", text: "Plano de Gerenciamento de Resíduos de Serviços de Saúde para clínicas e geradores.", featured: false },
-  { code: "10", title: "PGRCC", text: "Plano de Gerenciamento de Resíduos da Construção Civil.", featured: false },
+  { code: "10", title: "PGRCC", text: "Plano de Gerenciamento de Resíduos da Construção Civil.", featured: false, href: "/servicos/pgrcc" },
   { code: "11", title: "MTR e documentação de resíduos", text: "Organização de manifestos e comprovantes de transporte e destinação.", featured: false },
   { code: "12", title: "Laudo e controle acústico", text: "Avaliação técnica, documentação e protocolo conforme as exigências aplicáveis.", featured: false },
 ];
@@ -312,16 +313,13 @@ export default function EnvoraLanding() {
           <div className="section-index">01 — Serviços</div>
           <div className="section-heading section-heading-solo"><h2>Serviços ambientais<br />para sua empresa.</h2></div>
           <div className="service-grid">
-            {services.map((service) => (
-              <WhatsAppLink
-                key={service.code}
-                className={`service-card${service.featured ? " featured" : ""}`}
-                source={`servico_${service.title}`}
-                message={`Olá, encontrei a Envora pesquisando por consultoria ambiental em Joinville. Preciso de informações sobre ${service.title}.`}
-              >
-                <span>{service.code}</span><h3>{service.title}</h3><p>{service.text}</p><b>↗</b>
-              </WhatsAppLink>
-            ))}
+            {services.map((service) => {
+              const cardContent = <><span>{service.code}</span><h3>{service.title}</h3><p>{service.text}</p><b>↗</b></>;
+              const className = `service-card${service.featured ? " featured" : ""}`;
+              return service.href
+                ? <Link key={service.code} className={className} href={service.href}>{cardContent}</Link>
+                : <WhatsAppLink key={service.code} className={className} source={`servico_${service.title}`} message={`Olá, encontrei a Envora pesquisando por consultoria ambiental em Joinville. Preciso de informações sobre ${service.title}.`}>{cardContent}</WhatsAppLink>;
+            })}
           </div>
         </section>
 
