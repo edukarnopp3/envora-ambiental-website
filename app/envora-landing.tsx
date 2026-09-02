@@ -109,7 +109,7 @@ export default function EnvoraLanding() {
   [sector, situationDetail, docs]);
 
   useEffect(() => {
-    const navigationSections = ["inicio", "solucoes", "setores", "triagem", "processo", "faq", "contato"];
+    const navigationSections = ["inicio", "solucoes", "setores", "triagem", "processo", "faq", "contato", "sobre"];
     let frame = 0;
 
     function updateActiveSection() {
@@ -280,6 +280,7 @@ export default function EnvoraLanding() {
           <a className={activeSection === "processo" ? "active" : ""} aria-current={activeSection === "processo" ? "location" : undefined} href="#processo" onClick={() => selectSection("processo")}>Como funciona</a>
           <a className={activeSection === "faq" ? "active" : ""} aria-current={activeSection === "faq" ? "location" : undefined} href="#faq" onClick={() => selectSection("faq")}>Dúvidas</a>
           <a className={activeSection === "contato" ? "active" : ""} aria-current={activeSection === "contato" ? "location" : undefined} href="#contato" onClick={() => selectSection("contato")}>Contato</a>
+          <a className={activeSection === "sobre" ? "active" : ""} aria-current={activeSection === "sobre" ? "location" : undefined} href="#sobre" onClick={() => selectSection("sobre")}>Envora</a>
         </nav>
         <WhatsAppLink className="button button-small header-cta" source="header" message={baseMessage}>Falar com especialista</WhatsAppLink>
         <button className="menu-button" onClick={() => setMenuOpen(!menuOpen)} aria-label="Abrir menu" aria-expanded={menuOpen}>{menuOpen ? "Fechar" : "Menu"}</button>
@@ -395,7 +396,7 @@ export default function EnvoraLanding() {
           <form onSubmit={submitLead} className="lead-form"><label>Nome<input required value={lead.name} onChange={(e) => setLead({ ...lead, name: e.target.value })} placeholder="Seu nome" /></label><label>WhatsApp<input required type="tel" value={lead.phone} onChange={(e) => setLead({ ...lead, phone: e.target.value })} placeholder="(47) 99999-9999" /></label><label>Empresa ou atividade<input required value={lead.company} onChange={(e) => setLead({ ...lead, company: e.target.value })} placeholder="Ex.: indústria metalúrgica" /></label><label>Cidade<input required value={lead.city} onChange={(e) => setLead({ ...lead, city: e.target.value })} /></label><button className="button button-accent full" type="submit">Iniciar triagem pelo WhatsApp <span>↗</span></button><small id="privacidade">Os dados são usados apenas para iniciar o atendimento solicitado pelo WhatsApp.</small></form>
         </section>
 
-        <section className="about-footer" id="sobre" aria-labelledby="about-title">
+        <section className="about-footer" id="sobre" aria-labelledby="about-title" data-scroll-panel>
           <div className="about-footer-heading">
             <div className="section-index light">Sobre a Envora</div>
             <h2 id="about-title">Consultoria ambiental em Joinville para empresas.</h2>
