@@ -9,7 +9,7 @@ button,input,select,textarea { font:inherit; }
 button { color:inherit; }
 .site-shell { overflow:hidden; padding-top:0; }
 .topbar { position:fixed; top:0; right:0; left:0; z-index:50; height:88px; display:grid; grid-template-columns:auto minmax(0,1fr) auto; align-items:center; gap:3vw; padding:0 4.5vw; background:rgba(242,240,232,.94); border-bottom:1px solid var(--line); backdrop-filter:blur(12px); transition:background-color .25s ease,border-color .25s ease,color .25s ease; }
-.topbar.on-hero { color:white; background:linear-gradient(180deg,rgba(4,31,27,.68),rgba(4,31,27,0)); border-bottom-color:transparent; backdrop-filter:none; }
+.topbar.on-hero { color:white; background:transparent; border-bottom:0; backdrop-filter:none; }
 .topbar.on-hero .nav-links { color:rgba(255,255,255,.78); }
 .topbar.on-hero .nav-links a:hover { color:white; }
 .topbar.on-hero .nav-links a.active { color:white; background:rgba(15,110,86,.72); }
