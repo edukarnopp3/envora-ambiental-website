@@ -145,6 +145,43 @@ export default function EnvoraLanding() {
     setMenuOpen(false);
   }
 
+  function scrollToSection(id: string) {
+    const target = document.getElementById(id);
+    if (!target) return;
+
+    const headerHeight = document.querySelector<HTMLElement>(".topbar")?.offsetHeight ?? 88;
+    const destination = Math.max(0, target.offsetTop - headerHeight);
+    window.history.pushState(null, "", `#${id}`);
+
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      window.scrollTo(0, destination);
+      return;
+    }
+
+    const start = window.scrollY;
+    const distance = destination - start;
+    const duration = 520;
+    const startedAt = performance.now();
+    const root = document.documentElement;
+    const previousScrollBehavior = root.style.scrollBehavior;
+    root.style.scrollBehavior = "auto";
+
+    function step(now: number) {
+      const progress = Math.min(1, (now - startedAt) / duration);
+      const eased = progress < 0.5
+        ? 4 * progress * progress * progress
+        : 1 - Math.pow(-2 * progress + 2, 3) / 2;
+      window.scrollTo(0, start + distance * eased);
+      if (progress < 1) {
+        window.requestAnimationFrame(step);
+      } else {
+        root.style.scrollBehavior = previousScrollBehavior;
+      }
+    }
+
+    window.requestAnimationFrame(step);
+  }
+
   useEffect(() => {
     const desktopPointer = window.matchMedia("(min-width: 901px) and (pointer: fine)");
     const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
@@ -256,11 +293,16 @@ export default function EnvoraLanding() {
             <h1>Clareza para sua empresa avançar.</h1>
             <p className="hero-text hero-summary">Licenciamento, regularização e gestão ambiental com orientação técnica.</p>
             <div className="hero-actions">
-              <WhatsAppLink
+              <a
                 className="button hero-primary"
-                source="hero_triagem"
-                message={baseMessage}
-              >Fazer triagem inicial <span>↗</span></WhatsAppLink>
+                href="#triagem"
+                onClick={(event) => {
+                  event.preventDefault();
+                  selectSection("triagem");
+                  track("triage_start", { source: "hero" });
+                  scrollToSection("triagem");
+                }}
+              >Fazer triagem inicial <span aria-hidden="true">↓</span></a>
               <WhatsAppLink className="text-link hero-secondary" source="hero_whatsapp" message={baseMessage}>Falar no WhatsApp <span>→</span></WhatsAppLink>
             </div>
           </div>
