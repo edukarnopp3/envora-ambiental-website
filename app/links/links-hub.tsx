@@ -64,7 +64,7 @@ export default function LinksHub() {
             height={88}
             priority
           />
-          <p id="links-title">Consultoria ambiental para empresas em Joinville e região.</p>
+          <p id="links-title">Consultoria ambiental em Joinville e região.</p>
         </header>
 
         <nav className={styles.links} aria-label="Canais oficiais da Envora">

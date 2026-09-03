@@ -54,14 +54,16 @@ const services = [
   { code: "02", title: "Diagnóstico e enquadramento ambiental", text: "Análise da atividade, porte, localização e situação documental para definir a rota aplicável.", featured: false, href: "/servicos/diagnostico-e-enquadramento-ambiental" },
   { code: "03", title: "DANC", text: "Preparação e acompanhamento da Declaração de Atividade Não Constante.", featured: false, href: "/servicos/danc" },
   { code: "04", title: "CCA", text: "Certidão de Conformidade Ambiental para atividades abaixo do porte de licenciamento.", featured: false, href: "/servicos/cca" },
-  { code: "05", title: "Licenciamento ambiental", text: "LAP, LAI, LAO e AuA para indústrias e atividades diversas.", featured: false, href: "/servicos/licenciamento-ambiental" },
-  { code: "06", title: "Renovação e regularização", text: "Análise da licença existente e organização da documentação para continuidade da operação.", featured: false, href: "/servicos/renovacao-e-regularizacao" },
-  { code: "07", title: "Gestão de condicionantes", text: "Organização de obrigações, evidências, prazos e entregas previstas na licença.", featured: false, href: "/servicos/gestao-de-condicionantes" },
-  { code: "08", title: "PGRS", text: "Plano de Gerenciamento de Resíduos Sólidos para a operação da empresa.", featured: false, href: "/servicos/pgrs" },
-  { code: "09", title: "PGRSS", text: "Plano de Gerenciamento de Resíduos de Serviços de Saúde para clínicas e geradores.", featured: false, href: "/servicos/pgrss" },
-  { code: "10", title: "PGRCC", text: "Plano de Gerenciamento de Resíduos da Construção Civil.", featured: false, href: "/servicos/pgrcc" },
-  { code: "11", title: "MTR e documentação de resíduos", text: "Organização de manifestos e comprovantes de transporte e destinação.", featured: false, href: "/servicos/mtr-e-documentacao-de-residuos" },
-  { code: "12", title: "Laudo e controle acústico", text: "Avaliação técnica, documentação e protocolo conforme as exigências aplicáveis.", featured: false, href: "/servicos/laudo-e-controle-acustico" },
+  { code: "05", title: "Licenciamento ambiental", text: "Enquadramento, documentação técnica, protocolo e acompanhamento do processo.", featured: false, href: "/servicos/licenciamento-ambiental" },
+  { code: "06", title: "Obtenção de LAP, LAI e LAO", text: "Preparação e acompanhamento das licenças prévia, de instalação e de operação.", featured: false, href: "/servicos/lap-lai-lao" },
+  { code: "07", title: "Obtenção de Autorização Ambiental (AuA)", text: "Processo ambiental em ato único para atividades enquadradas nessa modalidade.", featured: false, href: "/servicos/autorizacao-ambiental-aua" },
+  { code: "08", title: "Renovação e regularização", text: "Análise da licença existente e organização da documentação para continuidade da operação.", featured: false, href: "/servicos/renovacao-e-regularizacao" },
+  { code: "09", title: "Gestão de condicionantes", text: "Organização de obrigações, evidências, prazos e entregas previstas na licença.", featured: false, href: "/servicos/gestao-de-condicionantes" },
+  { code: "10", title: "PGRS", text: "Plano de Gerenciamento de Resíduos Sólidos para a atividade.", featured: false, href: "/servicos/pgrs" },
+  { code: "11", title: "PGRSS", text: "Plano de Gerenciamento de Resíduos de Serviços de Saúde para clínicas e geradores.", featured: false, href: "/servicos/pgrss" },
+  { code: "12", title: "PGRCC", text: "Plano de Gerenciamento de Resíduos da Construção Civil.", featured: false, href: "/servicos/pgrcc" },
+  { code: "13", title: "MTR e documentação de resíduos", text: "Organização de manifestos e comprovantes de transporte e destinação.", featured: false, href: "/servicos/mtr-e-documentacao-de-residuos" },
+  { code: "14", title: "Laudo e controle acústico", text: "Avaliação técnica, documentação e protocolo conforme as exigências aplicáveis.", featured: false, href: "/servicos/laudo-e-controle-acustico" },
 ];
 
 const situations = [
@@ -292,7 +294,7 @@ export default function EnvoraLanding() {
           <div className="hero-scrim" aria-hidden="true" />
           <div className="hero-copy">
             <p className="eyebrow">Consultoria Ambiental · Joinville</p>
-            <h1>Clareza para sua empresa avançar.</h1>
+            <h1>Clareza para seu projeto avançar.</h1>
             <p className="hero-text hero-summary">Licenciamento, regularização e gestão ambiental com orientação técnica.</p>
             <div className="hero-actions">
               <a
@@ -312,7 +314,7 @@ export default function EnvoraLanding() {
 
         <section className="intro-section" id="solucoes" data-scroll-panel>
           <div className="section-index">01 — Serviços</div>
-          <div className="section-heading section-heading-solo"><h2>Serviços ambientais<br />para sua empresa.</h2></div>
+          <div className="section-heading section-heading-solo"><h2>Serviços ambientais<br />para sua atividade.</h2></div>
           <div className="service-grid">
             {services.map((service) => {
               const cardContent = <><span>{service.code}</span><h3>{service.title}</h3><p>{service.text}</p><b>↗</b></>;
@@ -392,14 +394,14 @@ export default function EnvoraLanding() {
         </section>
 
         <section className="contact-section" id="contato" data-scroll-panel>
-          <div className="contact-copy"><p className="eyebrow">Consultoria ambiental em Joinville</p><h2>O que está impedindo sua empresa de avançar?</h2><p>Envie os dados essenciais. O WhatsApp abre com a mensagem pronta para iniciar a triagem.</p><div className="contact-place"><b>JOINVILLE</b><span>Santa Catarina · Brasil</span></div></div>
+          <div className="contact-copy"><p className="eyebrow">Consultoria ambiental em Joinville</p><h2>O que está impedindo seu projeto de avançar?</h2><p>Envie os dados essenciais. O WhatsApp abre com a mensagem pronta para iniciar a triagem.</p><div className="contact-place"><b>JOINVILLE</b><span>Santa Catarina · Brasil</span></div></div>
           <form onSubmit={submitLead} className="lead-form"><label>Nome<input required value={lead.name} onChange={(e) => setLead({ ...lead, name: e.target.value })} placeholder="Seu nome" /></label><label>WhatsApp<input required type="tel" value={lead.phone} onChange={(e) => setLead({ ...lead, phone: e.target.value })} placeholder="(47) 99999-9999" /></label><label>Empresa ou atividade<input required value={lead.company} onChange={(e) => setLead({ ...lead, company: e.target.value })} placeholder="Ex.: indústria metalúrgica" /></label><label>Cidade<input required value={lead.city} onChange={(e) => setLead({ ...lead, city: e.target.value })} /></label><button className="button button-accent full" type="submit">Iniciar triagem pelo WhatsApp <span>↗</span></button><small id="privacidade">Os dados são usados apenas para iniciar o atendimento solicitado pelo WhatsApp.</small></form>
         </section>
 
         <section className="about-footer" id="sobre" aria-labelledby="about-title" data-scroll-panel>
           <div className="about-footer-heading">
             <div className="section-index light">Sobre a Envora</div>
-            <h2 id="about-title">Consultoria ambiental em Joinville para empresas.</h2>
+            <h2 id="about-title">Consultoria ambiental em Joinville.</h2>
           </div>
           <div className="about-signals" aria-label="Credenciais da Envora">
             <div><small>01</small><b>Atendimento local</b><span>Joinville e região</span></div>
@@ -415,10 +417,9 @@ export default function EnvoraLanding() {
           <a className="brand inverted" href="#inicio" aria-label="Envora Ambiental - início"><img src="/envora-logo-horizontal-dark.svg" alt="Envora Ambiental" /></a>
         </div>
         <div className="footer-content">
-          <p className="footer-lead">Consultoria ambiental em Joinville para empresas.</p>
+          <p className="footer-lead">Consultoria ambiental em Joinville.</p>
           <div className="footer-details">
             <span>Joinville · Santa Catarina</span>
-            <strong>Eduardo Karnopp</strong>
             <span>Engenheiro Ambiental e Sanitarista</span>
             <a href="tel:+5547984551622" onClick={() => track("phone_click", { source: "footer" })}>(47) 98455-1622</a>
             <a href="mailto:envoraambiental@gmail.com" onClick={() => track("email_click", { source: "footer" })}>envoraambiental@gmail.com</a>

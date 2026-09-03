@@ -26,7 +26,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Consultoria Ambiental em Joinville | Envora",
     description:
-      "Regularize sua empresa com clareza técnica, escopo transparente e acompanhamento ambiental em Joinville.",
+      "Regularização com clareza técnica, escopo transparente e acompanhamento ambiental em Joinville.",
     type: "website",
     locale: "pt_BR",
     siteName: "Envora Consultoria Ambiental",
@@ -36,7 +36,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "Consultoria Ambiental em Joinville | Envora",
-    description: "Licenciamento e regularização ambiental para empresas em Joinville.",
+    description: "Licenciamento e regularização ambiental em Joinville.",
     images: ["/og.png"],
   },
   icons: {
@@ -89,6 +89,10 @@ const localBusinessSchema = {
   },
   knowsAbout: [
     "Licenciamento ambiental",
+    "Licença Ambiental Prévia (LAP)",
+    "Licença Ambiental de Instalação (LAI)",
+    "Licença Ambiental de Operação (LAO)",
+    "Autorização Ambiental (AuA)",
     "Autos de infração e exigências ambientais",
     "DANC",
     "CCA",

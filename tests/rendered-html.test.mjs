@@ -46,7 +46,7 @@ test("server-renders the Envora landing page with production metadata", async ()
 
   const html = await response.text();
   assert.match(html, /<title>Envora<\/title>/);
-  assert.match(html, /Clareza para sua empresa avançar\./i);
+  assert.match(html, /Clareza para seu projeto avançar\./i);
   assert.match(html, /https:\/\/envorambiental\.com\.br/);
   assert.match(html, /https:\/\/wa\.me\/5547984551622/);
   assert.match(html, /mailto:envoraambiental@gmail\.com/);
@@ -94,7 +94,8 @@ test("publishes only the approved service scope and complete contact details", a
   assert.match(html, /PGRCC/);
   assert.match(html, /Laudo e controle acústico/);
   assert.match(html, /Outra situação/);
-  assert.match(html, /Eduardo Karnopp/);
+  assert.doesNotMatch(html, />Eduardo Karnopp</);
+  assert.doesNotMatch(html, /Consultoria ambiental em Joinville para empresas/i);
   assert.match(html, /Engenheiro Ambiental e Sanitarista/);
   assert.match(html, /\(47\) 98455-1622/);
   assert.match(html, /href="tel:\+5547984551622"/);
@@ -114,6 +115,8 @@ test("links every service card to a dedicated official-source page", async () =>
     "danc",
     "cca",
     "licenciamento-ambiental",
+    "lap-lai-lao",
+    "autorizacao-ambiental-aua",
     "renovacao-e-regularizacao",
     "gestao-de-condicionantes",
     "pgrs",
