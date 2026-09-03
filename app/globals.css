@@ -257,6 +257,13 @@ footer .brand img { width:min(100%,520px); }
 .service-process li { display:grid; grid-template-columns:52px 1fr; gap:20px; align-items:start; padding:27px 0; border-bottom:1px solid var(--line); }
 .service-process li span { padding-top:4px; color:var(--brand); font-size:11px; font-weight:700; letter-spacing:.12em; }
 .service-process li p { max-width:680px; margin:0; font-size:16px; line-height:1.7; }
+.service-sources { display:grid; grid-template-columns:minmax(280px,.75fr) minmax(0,1.25fr); gap:9vw; padding:72px 7vw; border-top:1px solid var(--line); background:#e5e1d6; }
+.service-sources>div>p:last-child { max-width:620px; margin:18px 0 0; color:rgba(29,36,34,.68); font-size:14px; line-height:1.7; }
+.service-sources ul { list-style:none; margin:0; padding:0; border-top:1px solid var(--line); }
+.service-sources li { border-bottom:1px solid var(--line); }
+.service-sources a { display:flex; justify-content:space-between; gap:24px; padding:20px 0; color:var(--forest-dark); font:700 14px/1.5 "Manrope",sans-serif; }
+.service-sources a span { flex:0 0 auto; color:var(--brand); }
+.service-sources a:hover,.service-sources a:focus-visible { color:var(--brand); }
 .service-result { display:grid; grid-template-columns:minmax(0,1fr); align-content:center; align-items:start; gap:46px; min-height:670px; padding:100px 7vw; background:var(--forest-dark); color:white; }
 .service-result>div { width:min(100%,1480px); }
 .service-result h2 { max-width:1480px; font-size:clamp(48px,5.4vw,86px); }
@@ -308,7 +315,7 @@ footer .brand img { width:min(100%,520px); }
   .service-content-block,.service-comparison,.service-inputs,.service-delivery,.service-final-cta,.related-services { padding:78px 24px; }
   .related-services>div { grid-template-columns:1fr; }
   .service-footer { padding:50px 24px 82px; }
-  .service-explainer,.service-result { grid-template-columns:1fr; gap:52px; min-height:0; padding:82px 24px; }
+  .service-explainer,.service-sources,.service-result { grid-template-columns:1fr; gap:52px; min-height:0; padding:82px 24px; }
   .service-result .service-primary { grid-column:1; }
 }
 

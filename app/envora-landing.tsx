@@ -51,17 +51,17 @@ const sectors = [
 
 const services = [
   { code: "01", title: "Autos de infração e exigências ambientais", text: "Análise técnica do documento, levantamento do que foi solicitado e organização da resposta dentro do escopo profissional.", featured: true, href: "/servicos/auto-de-infracao-ambiental" },
-  { code: "02", title: "Diagnóstico e enquadramento ambiental", text: "Análise da atividade, porte, localização e situação documental para definir a rota aplicável.", featured: false },
-  { code: "03", title: "DANC", text: "Preparação e acompanhamento da Declaração de Atividade Não Constante.", featured: false, href: "/servicos/danc-e-cca" },
-  { code: "04", title: "CCA", text: "Certidão de Conformidade Ambiental para atividades abaixo do porte de licenciamento.", featured: false, href: "/servicos/danc-e-cca" },
+  { code: "02", title: "Diagnóstico e enquadramento ambiental", text: "Análise da atividade, porte, localização e situação documental para definir a rota aplicável.", featured: false, href: "/servicos/diagnostico-e-enquadramento-ambiental" },
+  { code: "03", title: "DANC", text: "Preparação e acompanhamento da Declaração de Atividade Não Constante.", featured: false, href: "/servicos/danc" },
+  { code: "04", title: "CCA", text: "Certidão de Conformidade Ambiental para atividades abaixo do porte de licenciamento.", featured: false, href: "/servicos/cca" },
   { code: "05", title: "Licenciamento ambiental", text: "LAP, LAI, LAO e AuA para indústrias e atividades diversas.", featured: false, href: "/servicos/licenciamento-ambiental" },
   { code: "06", title: "Renovação e regularização", text: "Análise da licença existente e organização da documentação para continuidade da operação.", featured: false, href: "/servicos/renovacao-e-regularizacao" },
-  { code: "07", title: "Gestão de condicionantes", text: "Organização de obrigações, evidências, prazos e entregas previstas na licença.", featured: false },
+  { code: "07", title: "Gestão de condicionantes", text: "Organização de obrigações, evidências, prazos e entregas previstas na licença.", featured: false, href: "/servicos/gestao-de-condicionantes" },
   { code: "08", title: "PGRS", text: "Plano de Gerenciamento de Resíduos Sólidos para a operação da empresa.", featured: false, href: "/servicos/pgrs" },
-  { code: "09", title: "PGRSS", text: "Plano de Gerenciamento de Resíduos de Serviços de Saúde para clínicas e geradores.", featured: false },
+  { code: "09", title: "PGRSS", text: "Plano de Gerenciamento de Resíduos de Serviços de Saúde para clínicas e geradores.", featured: false, href: "/servicos/pgrss" },
   { code: "10", title: "PGRCC", text: "Plano de Gerenciamento de Resíduos da Construção Civil.", featured: false, href: "/servicos/pgrcc" },
-  { code: "11", title: "MTR e documentação de resíduos", text: "Organização de manifestos e comprovantes de transporte e destinação.", featured: false },
-  { code: "12", title: "Laudo e controle acústico", text: "Avaliação técnica, documentação e protocolo conforme as exigências aplicáveis.", featured: false },
+  { code: "11", title: "MTR e documentação de resíduos", text: "Organização de manifestos e comprovantes de transporte e destinação.", featured: false, href: "/servicos/mtr-e-documentacao-de-residuos" },
+  { code: "12", title: "Laudo e controle acústico", text: "Avaliação técnica, documentação e protocolo conforme as exigências aplicáveis.", featured: false, href: "/servicos/laudo-e-controle-acustico" },
 ];
 
 const situations = [

@@ -46,7 +46,7 @@ test("server-renders the Envora landing page with production metadata", async ()
 
   const html = await response.text();
   assert.match(html, /<title>Envora<\/title>/);
-  assert.match(html, /Recebeu um auto de infração <em>ambiental\?<\/em>/i);
+  assert.match(html, /Clareza para sua empresa avançar\./i);
   assert.match(html, /https:\/\/envorambiental\.com\.br/);
   assert.match(html, /https:\/\/wa\.me\/5547984551622/);
   assert.match(html, /mailto:envoraambiental@gmail\.com/);
@@ -64,10 +64,9 @@ test("server-renders the Envora landing page with production metadata", async ()
 test("keeps the conversion sections and removes the requested transparency note", async () => {
   const html = await (await render()).text();
 
-  assert.match(html, /Enviar auto de infração para triagem/);
-  assert.match(html, /Atendimento técnico em Joinville/);
-  assert.match(html, /Envie o documento para uma triagem técnica/);
-  assert.match(html, /hero-logo-3d/);
+  assert.match(html, /Fazer triagem inicial/);
+  assert.match(html, /Consultoria Ambiental · Joinville/);
+  assert.match(html, /hero-rio-4k\.mp4/);
   assert.doesNotMatch(html, /Órgão emissor, prazo informado e assunto|Exigências e documentos ambientais envolvidos|Escopo técnico e próximos passos possíveis/);
   assert.doesNotMatch(html, /Leitura técnica/);
   assert.match(html, /Indústrias/);
@@ -77,7 +76,6 @@ test("keeps the conversion sections and removes the requested transparency note"
   assert.match(html, /Comércios e serviços/);
   assert.doesNotMatch(html, /Transparência:<\/b> a Envora não promete aprovação nem prazo controlado pelo órgão público/);
   assert.match(html, /data-scroll-panel/);
-  assert.match(html, /envora-logo-horizontal\.svg/);
   assert.match(html, /envora-logo-horizontal-dark\.svg/);
   assert.doesNotMatch(html, /Demandas organizadas por setor, sem pacotes genéricos/);
   assert.doesNotMatch(html, /A contratação começa pelo entendimento da atividade/);
@@ -106,6 +104,32 @@ test("publishes only the approved service scope and complete contact details", a
   assert.doesNotMatch(html, /ART quando aplicável|Responsabilidade técnica e ART/i);
   assert.doesNotMatch(html, /cancelamento de multa|cancelar multa|garantia de aprovação/i);
   assert.doesNotMatch(html, /#(?:ef6b3f|d85a30)|var\(--orange\)/i);
+});
+
+test("links every service card to a dedicated official-source page", async () => {
+  const html = await (await render()).text();
+  const servicePaths = [
+    "auto-de-infracao-ambiental",
+    "diagnostico-e-enquadramento-ambiental",
+    "danc",
+    "cca",
+    "licenciamento-ambiental",
+    "renovacao-e-regularizacao",
+    "gestao-de-condicionantes",
+    "pgrs",
+    "pgrss",
+    "pgrcc",
+    "mtr-e-documentacao-de-residuos",
+    "laudo-e-controle-acustico",
+  ];
+
+  for (const path of servicePaths) {
+    assert.match(html, new RegExp(`href="/servicos/${path}"`));
+    const response = await render(`/servicos/${path}`);
+    assert.equal(response.status, 200);
+    const serviceHtml = await response.text();
+    assert.match(serviceHtml, /Fontes oficiais consultadas/);
+  }
 });
 
 test("serves the isolated Instagram links hub with only the three approved channels", async () => {

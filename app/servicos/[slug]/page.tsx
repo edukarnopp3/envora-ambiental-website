@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
-import { notFound } from "next/navigation";
+import { notFound, redirect } from "next/navigation";
 import ServiceWhatsAppLink from "../../service-whatsapp-link";
 import { SITE_URL } from "../../site-url";
 import { servicePageBySlug, servicePages } from "../service-data";
@@ -35,6 +35,7 @@ export async function generateMetadata({ params }: ServicePageProps): Promise<Me
 
 export default async function ServicePage({ params }: ServicePageProps) {
   const { slug } = await params;
+  if (slug === "danc-e-cca") redirect("/servicos/danc");
   const service = servicePageBySlug.get(slug);
   if (!service) notFound();
 
@@ -87,6 +88,18 @@ export default async function ServicePage({ params }: ServicePageProps) {
             <ol>{service.process.map((item, index) => <li key={item}><span>{String(index + 1).padStart(2, "0")}</span><p>{item}</p></li>)}</ol>
           </div>
         </section>
+
+        <aside className="service-sources" aria-labelledby="service-sources-title">
+          <div>
+            <p className="section-index" id="service-sources-title">Fontes oficiais consultadas</p>
+            <p>Conteúdo técnico resumido a partir de orientações publicadas pelos órgãos responsáveis. O enquadramento final depende dos dados do caso e da análise do órgão competente.</p>
+          </div>
+          <ul>
+            {service.sources.map((source) => (
+              <li key={source.url}><a href={source.url} target="_blank" rel="noreferrer">{source.label}<span aria-hidden="true">↗</span></a></li>
+            ))}
+          </ul>
+        </aside>
 
         <section className="service-result">
           <div>
