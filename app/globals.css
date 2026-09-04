@@ -219,6 +219,21 @@ footer .brand img { width:min(100%,520px); }
 .service-hero .eyebrow { margin-bottom:22px; color:var(--brand-soft); }
 .service-hero h1 { max-width:980px; margin:0; font:700 clamp(48px,6vw,92px)/.98 "Manrope",sans-serif; letter-spacing:-.06em; text-wrap:balance; }
 .service-hero-intro { max-width:760px; margin:32px 0 0; color:rgba(255,255,255,.68); font-size:clamp(17px,1.4vw,21px); line-height:1.65; }
+.service-visual-hero { position:relative; isolation:isolate; display:flex; align-items:end; min-height:calc(100svh - 88px); padding:90px 7vw; overflow:hidden; color:white; text-decoration:none; background:linear-gradient(90deg,rgba(9,24,22,.92) 0%,rgba(9,24,22,.72) 36%,rgba(9,24,22,.18) 68%,rgba(9,24,22,.12) 100%),var(--service-visual) center/cover no-repeat; }
+.service-visual-hero::after { content:""; position:absolute; inset:0; z-index:-1; background:linear-gradient(to top,rgba(8,19,18,.42),transparent 48%); pointer-events:none; }
+.service-visual-copy { width:min(100%,760px); }
+.service-visual-copy .eyebrow { margin:0 0 24px; color:var(--brand-soft); }
+.service-visual-copy h1 { max-width:760px; margin:0; font:700 clamp(50px,6.1vw,94px)/.97 "Manrope",sans-serif; letter-spacing:-.065em; text-wrap:balance; }
+.service-visual-copy>p:not(.eyebrow) { max-width:590px; margin:30px 0 0; color:rgba(255,255,255,.76); font-size:clamp(17px,1.4vw,21px); line-height:1.65; }
+.service-visual-link { display:flex; align-items:center; justify-content:space-between; gap:36px; width:min(100%,330px); min-height:58px; margin-top:38px; padding:0 20px; border:1px solid rgba(255,255,255,.45); font-size:12px; font-weight:700; transition:background .2s ease,color .2s ease,transform .2s ease; }
+.service-visual-link b { color:var(--brand-soft); font-size:18px; }
+.service-visual-hero:hover .service-visual-link,.service-visual-hero:focus-visible .service-visual-link { color:var(--forest-dark); background:var(--brand-soft); border-color:var(--brand-soft); transform:translateY(-2px); }
+.service-visual-hero:hover .service-visual-link b,.service-visual-hero:focus-visible .service-visual-link b { color:var(--forest-dark); }
+.service-execution { display:grid; grid-template-columns:minmax(0,1.15fr) minmax(360px,.85fr); align-items:center; gap:9vw; min-height:88svh; padding:96px 7vw; background:var(--forest-dark); color:white; }
+.service-execution h2 { max-width:900px; margin:0; font:700 clamp(48px,5.8vw,86px)/.98 "Manrope",sans-serif; letter-spacing:-.06em; text-wrap:balance; }
+.service-execution>div:last-child>p { max-width:620px; margin:0; color:rgba(255,255,255,.72); font-size:clamp(18px,1.6vw,23px); line-height:1.65; }
+.service-execution .service-primary { width:min(100%,500px); min-height:82px; margin-top:34px; font-size:16px; }
+.service-execution small { display:block; max-width:560px; margin-top:22px; color:rgba(255,255,255,.43); font-size:11px; line-height:1.6; }
 .service-primary { min-width:min(100%,330px); min-height:68px; margin-top:38px; padding:0 34px; color:var(--forest-dark); background:var(--brand-soft); font-size:15px; }
 .service-highlights { border-top:1px solid rgba(255,255,255,.18); }
 .service-highlights div { display:grid; grid-template-columns:44px 1fr; align-items:center; min-height:92px; border-bottom:1px solid rgba(255,255,255,.18); }
@@ -372,6 +387,12 @@ footer .brand img { width:min(100%,520px); }
   .service-topbar nav { display:none; }
   .service-topbar .button { min-width:0; min-height:42px; padding:0 16px; font-size:11px; }
   .service-hero { padding:48px 24px 72px; }
+  .service-visual-hero { min-height:calc(100svh - 78px); padding:72px 24px; background-position:62% center; }
+  .service-visual-copy h1 { font-size:clamp(43px,12vw,66px); }
+  .service-visual-copy>p:not(.eyebrow) { font-size:16px; }
+  .service-execution { grid-template-columns:1fr; gap:52px; min-height:0; padding:86px 24px; }
+  .service-execution h2 { font-size:52px; }
+  .service-execution .service-primary { width:100%; }
   .service-breadcrumb { margin-bottom:58px; }
   .service-hero-grid,.service-content-block,.service-comparison,.service-inputs,.service-delivery { grid-template-columns:1fr; gap:48px; }
   .service-highlights { margin-top:10px; }

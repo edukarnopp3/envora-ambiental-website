@@ -139,6 +139,9 @@ test("links every service card to a dedicated official-source page", async () =>
       assert.match(serviceHtml, /Deixar a Envora resolver/);
       assert.match(serviceHtml, /A emissão da licença e o prazo de análise são decisões do órgão ambiental competente/);
     } else {
+      assert.match(serviceHtml, /service-visual-hero/);
+      assert.match(serviceHtml, /Você explica o que precisa/);
+      assert.match(serviceHtml, /Deixar a Envora resolver/);
       assert.match(serviceHtml, /Fontes oficiais consultadas/);
       assert.match(serviceHtml, /Informações para a análise/);
       assert.match(serviceHtml, /Limites do escopo/);

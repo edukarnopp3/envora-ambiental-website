@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import type { CSSProperties } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { notFound, redirect } from "next/navigation";
@@ -34,6 +35,82 @@ const licenseStages = [
     contact: "Licença Ambiental de Operação (LAO)",
   },
 ] as const;
+
+type ServiceVisual = {
+  image: string;
+  headline: string;
+  description: string;
+  execution: string;
+};
+
+const serviceVisualBySlug: Record<string, ServiceVisual> = {
+  "auto-de-infracao-ambiental": {
+    image: "/auto-infracao-visual.webp",
+    headline: "Auto recebido. Prazo correndo.",
+    description: "Organize a resposta ambiental com método antes de perder o prazo.",
+    execution: "Você envia o auto e o que já tem em mãos. A Envora organiza a análise técnica, as evidências e a resposta ambiental prevista no escopo contratado.",
+  },
+  "diagnostico-e-enquadramento-ambiental": {
+    image: "/diagnostico-enquadramento-visual.webp",
+    headline: "Antes de protocolar, defina a rota certa.",
+    description: "Atividade, porte, estrutura e localização definem o caminho técnico.",
+    execution: "Você explica a operação. A Envora identifica o enquadramento, organiza as informações e aponta a rota ambiental aplicável ao seu caso.",
+  },
+  danc: {
+    image: "/danc-visual.webp",
+    headline: "Comprovar a dispensa começa pelo enquadramento.",
+    description: "A atividade precisa ser lida como ela realmente funciona.",
+    execution: "Você descreve a atividade e o local. A Envora organiza o enquadramento e a documentação necessária para o procedimento aplicável.",
+  },
+  cca: {
+    image: "/cca-visual.webp",
+    headline: "Abaixo do porte também precisa estar documentado.",
+    description: "Porte, capacidade e atividade precisam conversar entre si.",
+    execution: "Você informa os dados reais da operação. A Envora confere o porte, organiza o enquadramento e conduz a documentação técnica necessária.",
+  },
+  "licenciamento-ambiental": {
+    image: "/licenciamento-ambiental-visual.webp",
+    headline: "A licença começa antes do protocolo.",
+    description: "O caminho correto aparece quando se entende a operação por inteiro.",
+    execution: "Você explica o empreendimento. A Envora identifica a modalidade, prepara a documentação técnica contratada, protocola e acompanha o processo.",
+  },
+  "autorizacao-ambiental-aua": {
+    image: "/aua-visual.webp",
+    headline: "Uma autorização para a atividade certa.",
+    description: "Quando a AuA se aplica, a rota precisa ser precisa desde o início.",
+    execution: "Você apresenta a atividade e a estrutura. A Envora confirma o enquadramento, organiza as peças técnicas e conduz o processo de Autorização Ambiental.",
+  },
+  "renovacao-e-regularizacao": {
+    image: "/renovacao-regularizacao-visual.webp",
+    headline: "Sua licença ainda representa sua operação?",
+    description: "A empresa muda; a licença precisa acompanhar a realidade atual.",
+    execution: "Você envia a licença e explica o que mudou. A Envora compara a operação atual, identifica a rota necessária e organiza a renovação ou regularização.",
+  },
+  "gestao-de-condicionantes": {
+    image: "/condicionantes-visual.webp",
+    headline: "Prazo, responsável e evidência.",
+    description: "Condicionante só está controlada quando pode ser comprovada.",
+    execution: "Você envia a licença e os registros disponíveis. A Envora estrutura obrigações, prazos, responsáveis e evidências para a condução técnica contratada.",
+  },
+  "planos-de-gerenciamento-de-residuos": {
+    image: "/residuos-visual.webp",
+    headline: "Resíduos mapeados. Rotina funcionando.",
+    description: "O plano precisa caber na operação e resistir à conferência.",
+    execution: "Você mostra como os resíduos são gerados e movimentados. A Envora identifica o plano aplicável e estrutura a rotina e a documentação técnica necessária.",
+  },
+  "mtr-e-documentacao-de-residuos": {
+    image: "/mtr-documentacao-visual.webp",
+    headline: "Sem registro, a rastreabilidade quebra.",
+    description: "Geração, transporte e destinação precisam deixar evidências coerentes.",
+    execution: "Você apresenta a rotina e os documentos existentes. A Envora organiza o controle de MTR, DMR, CDF e comprovantes conforme o escopo contratado.",
+  },
+  "laudo-e-controle-acustico": {
+    image: "/acustico-visual.webp",
+    headline: "Identifique a fonte antes de controlar o ruído.",
+    description: "A solução técnica começa pela fonte, pelo entorno e pelo limite aplicável.",
+    execution: "Você explica a atividade, os equipamentos e o entorno. A Envora define a avaliação técnica necessária e orienta a documentação e as medidas aplicáveis.",
+  },
+};
 
 export function generateStaticParams() {
   return [
@@ -95,6 +172,12 @@ export default async function ServicePage({ params }: ServicePageProps) {
   };
   const inputs = serviceInputsBySlug[service.slug] ?? [];
   const isLicenseJourney = service.slug === "lap-lai-lao";
+  const visual = serviceVisualBySlug[service.slug] ?? {
+    image: "/licenciamento-ambiental-visual.webp",
+    headline: service.title,
+    description: service.intro,
+    execution: "Você explica o que precisa. A Envora organiza a condução técnica prevista no escopo contratado.",
+  };
   const relatedServices = (relatedServiceSlugs[service.slug] ?? [])
     .map((relatedSlug) => servicePageBySlug.get(relatedSlug))
     .filter((related): related is NonNullable<typeof related> => Boolean(related));
@@ -144,18 +227,26 @@ export default async function ServicePage({ params }: ServicePageProps) {
           </>
         ) : (
           <>
-            <section className="service-hero">
-              <div className="service-breadcrumb"><Link href="/">Início</Link><span>/</span><Link href="/#solucoes">Serviços</Link><span>/</span><b>{service.shortTitle}</b></div>
-              <div className="service-hero-grid">
-                <div>
-                  <p className="eyebrow">{service.eyebrow}</p>
-                  <h1>{service.title}</h1>
-                  <p className="service-hero-intro">{service.intro}</p>
-                  <ServiceWhatsAppLink service={service.shortTitle} className="button service-primary">Quero resolver esta situação <span aria-hidden="true">↗</span></ServiceWhatsAppLink>
+            <section aria-labelledby="service-visual-title">
+              <ServiceWhatsAppLink service={service.shortTitle} className="service-visual-hero" style={{ "--service-visual": `url('${visual.image}')` } as CSSProperties}>
+                <div className="service-visual-copy">
+                  <p className="eyebrow">{service.shortTitle}</p>
+                  <h1 id="service-visual-title">{visual.headline}</h1>
+                  <p>{visual.description}</p>
+                  <span className="service-visual-link">Explicar minha situação <b aria-hidden="true">↗</b></span>
                 </div>
-                <div className="service-highlights" aria-label="Resumo do serviço">
-                  {service.highlights.map((highlight, index) => <div key={highlight}><small>{String(index + 1).padStart(2, "0")}</small><strong>{highlight}</strong></div>)}
-                </div>
+              </ServiceWhatsAppLink>
+            </section>
+
+            <section className="service-execution" aria-labelledby="service-execution-title">
+              <div>
+                <p className="section-index light">A Envora conduz</p>
+                <h2 id="service-execution-title">Você explica o que precisa. A Envora resolve a parte técnica.</h2>
+              </div>
+              <div>
+                <p>{visual.execution}</p>
+                <ServiceWhatsAppLink service={service.shortTitle} className="button service-primary">Deixar a Envora resolver <span aria-hidden="true">↗</span></ServiceWhatsAppLink>
+                <small>A decisão do órgão competente, quando aplicável, permanece sujeita à análise oficial.</small>
               </div>
             </section>
 
@@ -216,12 +307,6 @@ export default async function ServicePage({ params }: ServicePageProps) {
           </div>
         </section>}
 
-        {!isLicenseJourney && <section className="service-final-cta">
-          <p className="eyebrow">Próximo passo</p>
-          <h2>Você explica o cenário. A Envora organiza a solução técnica.</h2>
-          <p>Envie o que já tem em mãos. Definimos o enquadramento inicial, os documentos necessários e o escopo para resolver a demanda.</p>
-          <ServiceWhatsAppLink service={service.shortTitle} className="button service-primary">Falar com a Envora agora <span aria-hidden="true">↗</span></ServiceWhatsAppLink>
-        </section>}
       </main>
 
       <footer className="service-footer">

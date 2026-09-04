@@ -1,11 +1,14 @@
 "use client";
 
+import type { CSSProperties } from "react";
+
 const WA_NUMBER = "5547984551622";
 
-export default function ServiceWhatsAppLink({ service, className, children }: {
+export default function ServiceWhatsAppLink({ service, className, children, style }: {
   service: string;
   className: string;
   children: React.ReactNode;
+  style?: CSSProperties;
 }) {
   const message = `Olá, encontrei a Envora pesquisando por ${service} em Joinville e gostaria de explicar minha situação.`;
   const href = `https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(message)}`;
@@ -22,5 +25,5 @@ export default function ServiceWhatsAppLink({ service, className, children }: {
     }
   }
 
-  return <a className={className} href={href} target="_blank" rel="noreferrer" onClick={trackClick}>{children}</a>;
+  return <a className={className} style={style} href={href} target="_blank" rel="noreferrer" onClick={trackClick}>{children}</a>;
 }
