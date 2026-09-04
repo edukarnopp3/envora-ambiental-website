@@ -86,7 +86,7 @@ export default async function ContentPage({ params }: ContentPageProps) {
 
         <section className="service-final-cta">
           <p className="eyebrow">Aplicação ao seu caso</p>
-          <h2>Você explica a situação. A Envora define o próximo passo.</h2>
+          <h2>Você conta o que está acontecendo. A Envora identifica o próximo passo.</h2>
           <ServiceWhatsAppLink service={article.category} className="button service-primary">Falar com a Envora <span aria-hidden="true">↗</span></ServiceWhatsAppLink>
         </section>
       </main>

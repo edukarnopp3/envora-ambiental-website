@@ -136,12 +136,12 @@ test("links every service card to a dedicated official-source page", async () =>
       assert.match(serviceHtml, /class="license-stage"/);
       assert.doesNotMatch(serviceHtml, /Falar sobre a/);
       assert.match(serviceHtml, /Você não precisa saber qual licença pedir/);
-      assert.match(serviceHtml, /Deixar a Envora resolver/);
+      assert.match(serviceHtml, /Quero que a Envora resolva/);
       assert.match(serviceHtml, /A emissão da licença e o prazo de análise são decisões do órgão ambiental competente/);
     } else {
       assert.match(serviceHtml, /service-visual-hero/);
-      assert.match(serviceHtml, /Você explica o que precisa/);
-      assert.match(serviceHtml, /Deixar a Envora resolver/);
+      assert.match(serviceHtml, /Você conta o que está acontecendo/);
+      assert.match(serviceHtml, /Quero que a Envora resolva/);
       assert.doesNotMatch(serviceHtml, /Fontes oficiais consultadas/);
       assert.doesNotMatch(serviceHtml, /Informações para a análise/);
       assert.doesNotMatch(serviceHtml, /Limites do escopo/);
