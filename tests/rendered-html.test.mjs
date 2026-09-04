@@ -45,7 +45,7 @@ test("server-renders the Envora landing page with production metadata", async ()
   assert.equal(response.headers.get("x-content-type-options"), "nosniff");
 
   const html = await response.text();
-  assert.match(html, /<title>Envora<\/title>/);
+  assert.match(html, /<title>Consultoria Ambiental em Joinville \| Envora<\/title>/);
   assert.match(html, /Clareza para seu projeto avançar\./i);
   assert.match(html, /https:\/\/envorambiental\.com\.br/);
   assert.match(html, /https:\/\/wa\.me\/5547984551622/);
@@ -65,6 +65,7 @@ test("keeps the conversion sections and removes the requested transparency note"
   const html = await (await render()).text();
 
   assert.match(html, /Fazer triagem inicial/);
+  assert.match(html, /Falar no WhatsApp/);
   assert.match(html, /Consultoria Ambiental · Joinville/);
   assert.match(html, /hero-rio-4k\.mp4/);
   assert.doesNotMatch(html, /Órgão emissor, prazo informado e assunto|Exigências e documentos ambientais envolvidos|Escopo técnico e próximos passos possíveis/);
@@ -89,9 +90,8 @@ test("publishes only the approved service scope and complete contact details", a
   assert.match(html, /Diagnóstico e enquadramento ambiental/);
   assert.match(html, /Autos de infração e exigências ambientais/);
   assert.match(html, /Recebi um auto de infração ambiental\. O que faço\?/);
-  assert.match(html, /PGRS/);
-  assert.match(html, /PGRSS/);
-  assert.match(html, /PGRCC/);
+  assert.match(html, /Planos de gerenciamento de resíduos/);
+  assert.match(html, /PGRS, PGRSS e PGRCC/);
   assert.match(html, /Laudo e controle acústico/);
   assert.match(html, /Outra situação/);
   assert.doesNotMatch(html, />Eduardo Karnopp</);
@@ -119,9 +119,7 @@ test("links every service card to a dedicated official-source page", async () =>
     "autorizacao-ambiental-aua",
     "renovacao-e-regularizacao",
     "gestao-de-condicionantes",
-    "pgrs",
-    "pgrss",
-    "pgrcc",
+    "planos-de-gerenciamento-de-residuos",
     "mtr-e-documentacao-de-residuos",
     "laudo-e-controle-acustico",
   ];
@@ -132,7 +130,32 @@ test("links every service card to a dedicated official-source page", async () =>
     assert.equal(response.status, 200);
     const serviceHtml = await response.text();
     assert.match(serviceHtml, /Fontes oficiais consultadas/);
+    assert.match(serviceHtml, /Informações para a análise/);
+    assert.match(serviceHtml, /Limites do escopo/);
+    assert.match(serviceHtml, /Serviços relacionados/);
   }
+
+  for (const legacyPath of ["pgrs", "pgrss", "pgrcc"]) {
+    const response = await render(`/servicos/${legacyPath}`);
+    assert.equal(response.status, 200);
+    assert.match(response.url, /\/servicos\/planos-de-gerenciamento-de-residuos$/);
+  }
+});
+
+test("labels the lead fields and publishes accurate privacy information", async () => {
+  const html = await (await render()).text();
+  assert.match(html, /for="triage-sector"/);
+  assert.match(html, /name="sector"/);
+  assert.match(html, /for="triage-situation"/);
+  assert.match(html, /name="situation"/);
+  assert.match(html, /Explicar minha situação no WhatsApp/);
+  assert.doesNotMatch(html, /id="contato"/);
+  assert.doesNotMatch(html, /name="company"|name="phone"|name="city"/);
+
+  const privacyHtml = await (await render("/privacidade")).text();
+  assert.match(privacyHtml, /hospedagem do site é realizada pela Vercel/i);
+  assert.match(privacyHtml, /armazenamento permanece negado/i);
+  assert.doesNotMatch(privacyHtml, /hospedagem do site é realizada pela Cloudflare/i);
 });
 
 test("serves the isolated Instagram links hub with only the three approved channels", async () => {

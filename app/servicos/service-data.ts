@@ -203,65 +203,24 @@ export const servicePages: ServicePageData[] = [
     ],
   },
   {
-    slug: "pgrs",
-    shortTitle: "PGRS",
-    title: "PGRS baseado nos resíduos que a empresa realmente gera.",
-    eyebrow: "Plano de Gerenciamento de Resíduos Sólidos",
-    description: "Elaboração e revisão de PGRS em Joinville, com caracterização dos resíduos, fluxos internos, responsáveis e destinação.",
-    intro: "Um plano útil precisa corresponder à rotina da empresa e aos documentos que comprovam a destinação.",
-    highlights: ["Fontes geradoras", "Fluxos de manejo", "Destinação comprovável"],
-    applies: "A Portaria IMA nº 009/2026 define o PGRS no Sistema MTR para os geradores alcançados pelo art. 20 da Política Nacional de Resíduos Sólidos. O plano deve representar a geração, o manejo e a destinação efetivamente praticados.",
+    slug: "planos-de-gerenciamento-de-residuos",
+    shortTitle: "Planos de gerenciamento de resíduos",
+    title: "Seu plano de resíduos precisa funcionar na operação — e resistir à conferência.",
+    eyebrow: "PGRS, PGRSS e PGRCC",
+    description: "Elaboração, revisão e atualização de PGRS, PGRSS e PGRCC em Joinville, com diagnóstico da geração, definição de rotinas e documentação de destinação.",
+    intro: "Identificamos qual plano se aplica, levantamos a rotina real e organizamos a documentação técnica para você seguir com segurança.",
+    highlights: ["Plano aplicável definido", "Rotina operacional mapeada", "Documentação organizada"],
+    applies: "PGRS atende operações que geram resíduos sólidos; PGRSS, serviços de saúde; e PGRCC, obras e resíduos da construção civil. O tipo de plano e o conteúdo necessário dependem da atividade, dos resíduos gerados e das exigências aplicáveis ao caso.",
     process: [
-      "Identificamos setores geradores, tipos de resíduos, volumes disponíveis e formas atuais de manejo.",
-      "Conferimos acondicionamento, armazenamento, transportadores, receptores, MTRs e comprovantes.",
-      "Estruturamos procedimentos, responsabilidades e registros que a empresa deverá manter.",
+      "Identificamos a atividade, as fontes geradoras, os resíduos, os volumes e o fluxo que ocorre na operação ou na obra.",
+      "Conferimos segregação, acondicionamento, armazenamento, coleta, transporte, destinação e os comprovantes disponíveis.",
+      "Elaboramos ou revisamos o plano aplicável, com responsabilidades, procedimentos e registros compatíveis com o escopo contratado.",
     ],
-    deliverable: "PGRS compatível com a operação informada, acompanhado das rotinas e evidências necessárias para sua manutenção.",
-    boundary: "Treinamento, implantação e acompanhamento periódico são etapas separadas quando não constarem no escopo.",
+    deliverable: "PGRS, PGRSS ou PGRCC estruturado para a realidade informada, com rotinas e documentação necessárias para a gestão dos resíduos.",
+    boundary: "A implantação diária, o treinamento de equipe, a contratação de transportadores e a guarda dos comprovantes são etapas próprias, salvo previsão expressa no escopo.",
     sources: [
       ima("Portaria nº 009/2026 do Sistema MTR", "https://consultas.ima.sc.gov.br/portarias/visualizar/4202"),
-      ima("Instruções Normativas", "https://in.ima.sc.gov.br/instrucaoNormativa/visualizar/331"),
-    ],
-  },
-  {
-    slug: "pgrss",
-    shortTitle: "PGRSS",
-    title: "PGRSS organiza todas as etapas dos resíduos de saúde.",
-    eyebrow: "Plano de Gerenciamento de Resíduos de Serviços de Saúde",
-    description: "Elaboração e atualização de PGRSS em Joinville para clínicas, laboratórios, farmácias, serviços veterinários e demais geradores.",
-    intro: "O plano precisa corresponder aos procedimentos realizados, aos grupos de resíduos gerados e à estrutura do estabelecimento.",
-    highlights: ["Grupos identificados", "Manejo descrito", "Protocolo organizado"],
-    applies: "A Prefeitura de Joinville informa que o PGRSS é obrigatório para serviços de saúde e profissionais autônomos que geram resíduos dessas atividades. O documento contempla geração, segregação, acondicionamento, armazenamento, transporte, tratamento e disposição final.",
-    process: [
-      "Levantamos procedimentos, ambientes, volumes e resíduos dos grupos A, B, C, D e E que se aplicarem.",
-      "Conferimos segregação, recipientes, armazenamento, coleta, tratamento, contratos e comprovantes.",
-      "Estruturamos o plano na modalidade aplicável e organizamos sua emissão ou atualização.",
-    ],
-    deliverable: "PGRSS compatível com a atividade e com o volume informado, acompanhado das orientações de implementação previstas no escopo.",
-    boundary: "O plano deve ser atualizado quando houver nova unidade, atividade, endereço ou alteração relevante do layout e da geração.",
-    sources: [
       pmj("Elaborar Plano de Gerenciamento de Resíduos de Serviços de Saúde", "servicos/elaborar-plano-de-gerenciamento-de-residuos-de-servicos-de-saude/"),
-      pmj("Unidade de Vigilância Sanitária", "institucional/ses/dvs/uvi/"),
-    ],
-  },
-  {
-    slug: "pgrcc",
-    shortTitle: "PGRCC",
-    title: "PGRCC para controlar os resíduos ao longo da obra.",
-    eyebrow: "Resíduos da Construção Civil",
-    description: "Elaboração de PGRCC em Joinville, com estimativa de geração, segregação, armazenamento, transporte e destinação dos resíduos da obra.",
-    intro: "O plano define o fluxo antes da geração e estabelece quais registros deverão comprovar a destinação durante a execução.",
-    highlights: ["Resíduos estimados", "Manejo no canteiro", "Destino documentado"],
-    applies: "Para obras que precisam apresentar um plano ou organizar previamente seus resíduos. A gestão abrange redução, segregação, acondicionamento, armazenamento, transporte e destinação, com uso de transportadores regulares e documentação compatível.",
-    process: [
-      "Caracterizamos a obra e estimamos as classes de resíduos esperadas em cada etapa.",
-      "Definimos segregação, acondicionamento, armazenamento temporário, coleta e transporte.",
-      "Relacionamos transportadores, destinos e comprovantes que deverão ser mantidos durante a obra.",
-    ],
-    deliverable: "PGRCC com fluxos de gerenciamento e controle documental definidos para a obra informada.",
-    boundary: "A execução diária do plano e a guarda dos comprovantes são responsabilidades da obra, salvo contratação específica de acompanhamento.",
-    sources: [
-      pmj("Transporte de resíduos de construção civil", "servicos/registrar-empresa-de-transporte-de-residuos-de-construcao-civil/"),
       pmj("Como descartar resíduos", "servicos/como-descartar-residuos/"),
     ],
   },
@@ -311,3 +270,81 @@ export const servicePages: ServicePageData[] = [
 ];
 
 export const servicePageBySlug = new Map(servicePages.map((service) => [service.slug, service]));
+
+export const serviceInputsBySlug: Record<string, string[]> = {
+  "auto-de-infracao-ambiental": [
+    "Auto recebido, prazo indicado e número do processo administrativo, se houver.",
+    "Licenças, autorizações, certidões e comunicações relacionadas ao fato apontado.",
+    "Fotografias, relatórios, comprovantes e demais evidências disponíveis.",
+  ],
+  "diagnostico-e-enquadramento-ambiental": [
+    "Descrição da atividade efetivamente realizada e do processo de operação.",
+    "Endereço, área, capacidade, equipamentos e estrutura utilizada.",
+    "Licenças, certidões, protocolos e documentos ambientais existentes, se houver.",
+  ],
+  danc: [
+    "Descrição objetiva da atividade realizada no endereço.",
+    "Dados do responsável, do estabelecimento e da localização.",
+    "Documentos cadastrais e informações operacionais solicitadas no procedimento aplicável.",
+  ],
+  cca: [
+    "Atividade realizada e parâmetro usado para determinar o porte.",
+    "Capacidade, área ou quantidade efetiva relacionada ao enquadramento.",
+    "Dados cadastrais, localização e documentos existentes da atividade.",
+  ],
+  "licenciamento-ambiental": [
+    "Atividade, processo produtivo, capacidade e fase atual do empreendimento.",
+    "Endereço, áreas, equipamentos, resíduos, efluentes e controles existentes.",
+    "Licenças anteriores, projetos, plantas e protocolos disponíveis, se houver.",
+  ],
+  "lap-lai-lao": [
+    "Fase do empreendimento: planejamento, instalação ou operação.",
+    "Atividade, porte, localização, projetos e características da estrutura.",
+    "Licenças anteriores e documentos do processo ambiental, quando existentes.",
+  ],
+  "autorizacao-ambiental-aua": [
+    "Atividade, porte, localização e condição atual da operação.",
+    "Descrição do processo, equipamentos e aspectos ambientais relevantes.",
+    "Documentos cadastrais, plantas e registros ambientais já disponíveis.",
+  ],
+  "renovacao-e-regularizacao": [
+    "Licença ou autorização vigente, processo anterior e data de validade.",
+    "Comprovantes de atendimento das condicionantes e comunicações do órgão.",
+    "Alterações de atividade, capacidade, equipamentos, processo ou estrutura.",
+  ],
+  "gestao-de-condicionantes": [
+    "Licença ou autorização completa e documentos vinculados ao processo.",
+    "Relatórios, protocolos e evidências já produzidas para cada obrigação.",
+    "Responsáveis internos, periodicidades e calendário de entregas existente.",
+  ],
+  "planos-de-gerenciamento-de-residuos": [
+    "Atividade, setores ou obra que geram resíduos e situação atual da operação.",
+    "Tipos, quantidades estimadas, acondicionamento, armazenamento e coleta praticados.",
+    "Transportadores, destinadores, contratos, MTRs, CDFs e comprovantes disponíveis, quando houver.",
+  ],
+  "mtr-e-documentacao-de-residuos": [
+    "Cadastro e perfil utilizado no Sistema MTR do IMA.",
+    "Relação de resíduos, transportadores e destinadores utilizados.",
+    "MTRs, relatórios de recebimento, DMRs e CDFs do período analisado.",
+  ],
+  "laudo-e-controle-acustico": [
+    "Atividade, equipamentos, fontes sonoras e horários de funcionamento.",
+    "Endereço, características do entorno e receptores sensíveis próximos.",
+    "Exigências, reclamações, medições ou documentos acústicos existentes.",
+  ],
+};
+
+export const relatedServiceSlugs: Record<string, string[]> = {
+  "auto-de-infracao-ambiental": ["diagnostico-e-enquadramento-ambiental", "renovacao-e-regularizacao", "licenciamento-ambiental"],
+  "diagnostico-e-enquadramento-ambiental": ["danc", "cca", "licenciamento-ambiental"],
+  danc: ["diagnostico-e-enquadramento-ambiental", "cca", "licenciamento-ambiental"],
+  cca: ["diagnostico-e-enquadramento-ambiental", "danc", "licenciamento-ambiental"],
+  "licenciamento-ambiental": ["lap-lai-lao", "autorizacao-ambiental-aua", "renovacao-e-regularizacao"],
+  "lap-lai-lao": ["licenciamento-ambiental", "autorizacao-ambiental-aua", "gestao-de-condicionantes"],
+  "autorizacao-ambiental-aua": ["licenciamento-ambiental", "lap-lai-lao", "renovacao-e-regularizacao"],
+  "renovacao-e-regularizacao": ["licenciamento-ambiental", "gestao-de-condicionantes", "diagnostico-e-enquadramento-ambiental"],
+  "gestao-de-condicionantes": ["renovacao-e-regularizacao", "licenciamento-ambiental", "mtr-e-documentacao-de-residuos"],
+  "planos-de-gerenciamento-de-residuos": ["mtr-e-documentacao-de-residuos", "licenciamento-ambiental", "gestao-de-condicionantes"],
+  "mtr-e-documentacao-de-residuos": ["planos-de-gerenciamento-de-residuos", "licenciamento-ambiental", "gestao-de-condicionantes"],
+  "laudo-e-controle-acustico": ["licenciamento-ambiental", "diagnostico-e-enquadramento-ambiental", "renovacao-e-regularizacao"],
+};

@@ -4,12 +4,15 @@ import Link from "next/link";
 import { notFound, redirect } from "next/navigation";
 import ServiceWhatsAppLink from "../../service-whatsapp-link";
 import { SITE_URL } from "../../site-url";
-import { servicePageBySlug, servicePages } from "../service-data";
+import { relatedServiceSlugs, serviceInputsBySlug, servicePageBySlug, servicePages } from "../service-data";
 
 type ServicePageProps = { params: Promise<{ slug: string }> };
 
 export function generateStaticParams() {
-  return servicePages.map(({ slug }) => ({ slug }));
+  return [
+    ...servicePages.map(({ slug }) => ({ slug })),
+    ...["pgrs", "pgrss", "pgrcc"].map((slug) => ({ slug })),
+  ];
 }
 
 export async function generateMetadata({ params }: ServicePageProps): Promise<Metadata> {
@@ -36,22 +39,41 @@ export async function generateMetadata({ params }: ServicePageProps): Promise<Me
 export default async function ServicePage({ params }: ServicePageProps) {
   const { slug } = await params;
   if (slug === "danc-e-cca") redirect("/servicos/danc");
+  if (["pgrs", "pgrss", "pgrcc"].includes(slug)) redirect("/servicos/planos-de-gerenciamento-de-residuos");
   const service = servicePageBySlug.get(slug);
   if (!service) notFound();
 
   const serviceSchema = {
-    "@context": "https://schema.org",
     "@type": "Service",
+    "@id": `${SITE_URL}/servicos/${service.slug}#service`,
+    mainEntityOfPage: `${SITE_URL}/servicos/${service.slug}`,
+    serviceType: service.shortTitle,
     name: service.shortTitle,
     description: service.description,
-    provider: { "@type": "ProfessionalService", name: "Envora Consultoria Ambiental", url: SITE_URL },
+    provider: { "@type": "ProfessionalService", "@id": `${SITE_URL}/#business`, name: "Envora Consultoria Ambiental", url: SITE_URL },
     areaServed: { "@type": "City", name: "Joinville" },
     url: `${SITE_URL}/servicos/${service.slug}`,
   };
+  const breadcrumbSchema = {
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Início", item: SITE_URL },
+      { "@type": "ListItem", position: 2, name: "Serviços", item: `${SITE_URL}/#solucoes` },
+      { "@type": "ListItem", position: 3, name: service.shortTitle, item: `${SITE_URL}/servicos/${service.slug}` },
+    ],
+  };
+  const structuredData = {
+    "@context": "https://schema.org",
+    "@graph": [serviceSchema, breadcrumbSchema],
+  };
+  const inputs = serviceInputsBySlug[service.slug] ?? [];
+  const relatedServices = (relatedServiceSlugs[service.slug] ?? [])
+    .map((relatedSlug) => servicePageBySlug.get(relatedSlug))
+    .filter((related): related is NonNullable<typeof related> => Boolean(related));
 
   return (
     <div className="service-page-shell">
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema).replace(/</g, "\\u003c") }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData).replace(/</g, "\\u003c") }} />
       <header className="service-topbar">
         <Link className="brand" href="/" aria-label="Envora Ambiental - início"><Image src="/envora-logo-horizontal.svg" alt="Envora Ambiental" width={360} height={88} priority /></Link>
         <nav aria-label="Navegação da página de serviço">
@@ -69,7 +91,7 @@ export default async function ServicePage({ params }: ServicePageProps) {
               <p className="eyebrow">{service.eyebrow}</p>
               <h1>{service.title}</h1>
               <p className="service-hero-intro">{service.intro}</p>
-              <ServiceWhatsAppLink service={service.shortTitle} className="button service-primary">Solicitar triagem inicial <span aria-hidden="true">↗</span></ServiceWhatsAppLink>
+              <ServiceWhatsAppLink service={service.shortTitle} className="button service-primary">Quero resolver esta situação <span aria-hidden="true">↗</span></ServiceWhatsAppLink>
             </div>
             <div className="service-highlights" aria-label="Resumo do serviço">
               {service.highlights.map((highlight, index) => <div key={highlight}><small>{String(index + 1).padStart(2, "0")}</small><strong>{highlight}</strong></div>)}
@@ -89,6 +111,25 @@ export default async function ServicePage({ params }: ServicePageProps) {
           </div>
         </section>
 
+        <section className="service-inputs" aria-labelledby="service-inputs-title">
+          <div>
+            <p className="section-index light">Informações para a análise</p>
+            <h2 id="service-inputs-title">O que é útil ter em mãos.</h2>
+          </div>
+          <ul>{inputs.map((item) => <li key={item}>{item}</li>)}</ul>
+        </section>
+
+        <section className="service-delivery" aria-labelledby="service-delivery-title">
+          <div>
+            <p className="section-index">Entrega técnica</p>
+            <h2 id="service-delivery-title">{service.deliverable}</h2>
+          </div>
+          <aside>
+            <strong>Limites do escopo</strong>
+            <p>{service.boundary}</p>
+          </aside>
+        </section>
+
         <aside className="service-sources" aria-labelledby="service-sources-title">
           <div>
             <p className="section-index" id="service-sources-title">Fontes oficiais consultadas</p>
@@ -101,12 +142,23 @@ export default async function ServicePage({ params }: ServicePageProps) {
           </ul>
         </aside>
 
-        <section className="service-result">
+        <section className="related-services" aria-labelledby="related-services-title">
+          <p className="section-index">Serviços relacionados</p>
+          <h2 id="related-services-title">Continue pela rota adequada ao caso.</h2>
           <div>
-            <p className="section-index light">Entrega técnica</p>
-            <h2>{service.deliverable}</h2>
+            {relatedServices.map((related) => (
+              <Link key={related.slug} href={`/servicos/${related.slug}`}>
+                {related.shortTitle}<b aria-hidden="true">↗</b>
+              </Link>
+            ))}
           </div>
-          <ServiceWhatsAppLink service={service.shortTitle} className="button service-primary">Explicar minha situação <span aria-hidden="true">↗</span></ServiceWhatsAppLink>
+        </section>
+
+        <section className="service-final-cta">
+          <p className="eyebrow">Próximo passo</p>
+          <h2>Você explica o cenário. A Envora organiza a solução técnica.</h2>
+          <p>Envie o que já tem em mãos. Definimos o enquadramento inicial, os documentos necessários e o escopo para resolver a demanda.</p>
+          <ServiceWhatsAppLink service={service.shortTitle} className="button service-primary">Falar com a Envora agora <span aria-hidden="true">↗</span></ServiceWhatsAppLink>
         </section>
       </main>
 

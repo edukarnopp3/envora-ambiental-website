@@ -1,6 +1,6 @@
 "use client";
 
-import { FormEvent, useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import Link from "next/link";
 import HeroBackgroundVideo from "./hero-background-video";
 
@@ -59,11 +59,9 @@ const services = [
   { code: "07", title: "Obtenção de Autorização Ambiental (AuA)", text: "Processo ambiental em ato único para atividades enquadradas nessa modalidade.", featured: false, href: "/servicos/autorizacao-ambiental-aua" },
   { code: "08", title: "Renovação e regularização", text: "Análise da licença existente e organização da documentação para continuidade da operação.", featured: false, href: "/servicos/renovacao-e-regularizacao" },
   { code: "09", title: "Gestão de condicionantes", text: "Organização de obrigações, evidências, prazos e entregas previstas na licença.", featured: false, href: "/servicos/gestao-de-condicionantes" },
-  { code: "10", title: "PGRS", text: "Plano de Gerenciamento de Resíduos Sólidos para a atividade.", featured: false, href: "/servicos/pgrs" },
-  { code: "11", title: "PGRSS", text: "Plano de Gerenciamento de Resíduos de Serviços de Saúde para clínicas e geradores.", featured: false, href: "/servicos/pgrss" },
-  { code: "12", title: "PGRCC", text: "Plano de Gerenciamento de Resíduos da Construção Civil.", featured: false, href: "/servicos/pgrcc" },
-  { code: "13", title: "MTR e documentação de resíduos", text: "Organização de manifestos e comprovantes de transporte e destinação.", featured: false, href: "/servicos/mtr-e-documentacao-de-residuos" },
-  { code: "14", title: "Laudo e controle acústico", text: "Avaliação técnica, documentação e protocolo conforme as exigências aplicáveis.", featured: false, href: "/servicos/laudo-e-controle-acustico" },
+  { code: "10", title: "Planos de gerenciamento de resíduos", text: "PGRS, PGRSS e PGRCC: identificação do plano aplicável, elaboração e revisão para a rotina real.", featured: false, href: "/servicos/planos-de-gerenciamento-de-residuos" },
+  { code: "11", title: "MTR e documentação de resíduos", text: "Organização de manifestos e comprovantes de transporte e destinação.", featured: false, href: "/servicos/mtr-e-documentacao-de-residuos" },
+  { code: "12", title: "Laudo e controle acústico", text: "Avaliação técnica, documentação e protocolo conforme as exigências aplicáveis.", featured: false, href: "/servicos/laudo-e-controle-acustico" },
 ];
 
 const situations = [
@@ -74,13 +72,6 @@ const situations = [
   "Preciso de PGRS, PGRSS, PGRCC ou documento de resíduos",
   "Preciso de laudo ou controle acústico",
   "Outra situação",
-];
-
-const docsOptions = [
-  "Ainda não tenho processo",
-  "Tenho licença, certidão ou autorização",
-  "Tenho um processo em andamento",
-  "Não sei informar",
 ];
 
 const faqs = [
@@ -99,19 +90,17 @@ export default function EnvoraLanding() {
   const [sector, setSector] = useState("");
   const [situation, setSituation] = useState("");
   const [otherSituation, setOtherSituation] = useState("");
-  const [docs, setDocs] = useState("");
-  const [lead, setLead] = useState({ name: "", phone: "", company: "", city: "Joinville" });
 
   const situationDetail = situation === "Outra situação"
     ? `Outra situação — ${otherSituation.trim() || "não descrita"}`
     : situation;
-  const triageReady = Boolean(sector && situation && docs && (situation !== "Outra situação" || otherSituation.trim()));
+  const triageReady = Boolean(sector && situation && (situation !== "Outra situação" || otherSituation.trim()));
   const triageMessage = useMemo(() =>
-    `Olá, encontrei a Envora pesquisando por consultoria ambiental em Joinville.\n\nSetor/atividade: ${sector || "não informado"}\nSituação: ${situationDetail || "não informada"}\nDocumentação atual: ${docs || "não informada"}\n\nGostaria de receber uma triagem inicial e entender o próximo passo.`,
-  [sector, situationDetail, docs]);
+    `Olá, encontrei a Envora pesquisando por consultoria ambiental em Joinville.\n\nSetor/atividade: ${sector || "não informado"}\nSituação: ${situationDetail || "não informada"}\n\nGostaria de explicar minha situação e entender o próximo passo.`,
+  [sector, situationDetail]);
 
   useEffect(() => {
-    const navigationSections = ["inicio", "solucoes", "setores", "triagem", "processo", "faq", "contato", "sobre"];
+    const navigationSections = ["inicio", "institucional", "solucoes", "setores", "triagem", "faq", "sobre"];
     let frame = 0;
 
     function updateActiveSection() {
@@ -263,25 +252,17 @@ export default function EnvoraLanding() {
     };
   }, []);
 
-  function submitLead(event: FormEvent<HTMLFormElement>) {
-    event.preventDefault();
-    track("generate_lead", { source: "contact_form", city: lead.city });
-    const message = `Olá, encontrei a Envora pesquisando por consultoria ambiental em Joinville.\n\nNome: ${lead.name}\nWhatsApp: ${lead.phone}\nEmpresa/atividade: ${lead.company}\nCidade: ${lead.city}\n\nGostaria de receber uma triagem inicial.`;
-    window.open(wa(message), "_blank", "noopener,noreferrer");
-  }
-
   return (
     <div className="site-shell">
       <header className={`topbar${activeSection === "inicio" && !menuOpen ? " on-hero" : ""}`}>
         <a className="brand" href="#inicio" aria-label="Envora Ambiental - início"><img src={activeSection === "inicio" && !menuOpen ? "/envora-logo-horizontal-dark.svg" : "/envora-logo-horizontal.svg"} alt="Envora Ambiental" /></a>
         <nav className={menuOpen ? "nav-links open" : "nav-links"} aria-label="Navegação principal">
           <a className={activeSection === "inicio" ? "active" : ""} aria-current={activeSection === "inicio" ? "location" : undefined} href="#inicio" onClick={() => selectSection("inicio")}>Início</a>
+          <a className={activeSection === "institucional" ? "active" : ""} aria-current={activeSection === "institucional" ? "location" : undefined} href="#institucional" onClick={() => selectSection("institucional")}>Institucional</a>
           <a className={activeSection === "solucoes" ? "active" : ""} aria-current={activeSection === "solucoes" ? "location" : undefined} href="#solucoes" onClick={() => selectSection("solucoes")}>Serviços</a>
           <a className={activeSection === "setores" ? "active" : ""} aria-current={activeSection === "setores" ? "location" : undefined} href="#setores" onClick={() => selectSection("setores")}>Setores</a>
           <a className={activeSection === "triagem" ? "active" : ""} aria-current={activeSection === "triagem" ? "location" : undefined} href="#triagem" onClick={() => selectSection("triagem")}>Triagem</a>
-          <a className={activeSection === "processo" ? "active" : ""} aria-current={activeSection === "processo" ? "location" : undefined} href="#processo" onClick={() => selectSection("processo")}>Como funciona</a>
           <a className={activeSection === "faq" ? "active" : ""} aria-current={activeSection === "faq" ? "location" : undefined} href="#faq" onClick={() => selectSection("faq")}>Dúvidas</a>
-          <a className={activeSection === "contato" ? "active" : ""} aria-current={activeSection === "contato" ? "location" : undefined} href="#contato" onClick={() => selectSection("contato")}>Contato</a>
           <a className={activeSection === "sobre" ? "active" : ""} aria-current={activeSection === "sobre" ? "location" : undefined} href="#sobre" onClick={() => selectSection("sobre")}>Envora</a>
         </nav>
         <WhatsAppLink className="button button-small header-cta" source="header" message={baseMessage}>Falar com especialista</WhatsAppLink>
@@ -297,8 +278,9 @@ export default function EnvoraLanding() {
             <h1>Clareza para seu projeto avançar.</h1>
             <p className="hero-text hero-summary">Licenciamento, regularização e gestão ambiental com orientação técnica.</p>
             <div className="hero-actions">
+              <WhatsAppLink className="button hero-primary" source="hero_whatsapp" message={baseMessage}>Falar no WhatsApp <span>↗</span></WhatsAppLink>
               <a
-                className="button hero-primary"
+                className="text-link hero-secondary"
                 href="#triagem"
                 onClick={(event) => {
                   event.preventDefault();
@@ -307,13 +289,28 @@ export default function EnvoraLanding() {
                   scrollToSection("triagem");
                 }}
               >Fazer triagem inicial <span aria-hidden="true">↓</span></a>
-              <WhatsAppLink className="text-link hero-secondary" source="hero_whatsapp" message={baseMessage}>Falar no WhatsApp <span>→</span></WhatsAppLink>
+            </div>
+          </div>
+        </section>
+
+        <section className="institutional-section" id="institucional" data-scroll-panel>
+          <div>
+            <div className="section-index">01 — Institucional</div>
+            <h2>Experiência técnica para tirar a demanda da frente.</h2>
+          </div>
+          <div className="institutional-copy">
+            <p>Experiência profissional de cinco anos em licenciamento ambiental, incluindo dois anos de atuação no licenciamento municipal e em processos envolvendo a Quimidrol e a Águas de Joinville.</p>
+            <p>Na Envora, a análise parte da operação real: o que aconteceu, o que o órgão exige e qual caminho técnico resolve a situação.</p>
+            <div className="institutional-signals" aria-label="Experiência profissional">
+              <span>Licenciamento ambiental</span>
+              <span>Engenharia Ambiental e Sanitária</span>
+              <span>Atendimento local em Joinville</span>
             </div>
           </div>
         </section>
 
         <section className="intro-section" id="solucoes" data-scroll-panel>
-          <div className="section-index">01 — Serviços</div>
+          <div className="section-index">02 — Serviços</div>
           <div className="section-heading section-heading-solo"><h2>Serviços ambientais<br />para sua atividade.</h2></div>
           <div className="service-grid">
             {services.map((service) => {
@@ -327,7 +324,7 @@ export default function EnvoraLanding() {
         </section>
 
         <section className="sectors-section" id="setores" data-scroll-panel>
-          <div className="section-index light">02 — Setores atendidos</div>
+          <div className="section-index light">03 — Setores atendidos</div>
           <div className="sectors-head sectors-head-solo"><h2>Cada operação exige<br />uma leitura própria.</h2></div>
           <div className="sector-list">
             {sectors.map((item) => (
@@ -340,15 +337,18 @@ export default function EnvoraLanding() {
 
         <section className="triage-section" id="triagem" data-scroll-panel>
           <div className="triage-copy">
-            <div className="section-index">03 — Triagem inicial</div>
-            <h2>Explique o cenário<br />em menos de 1 minuto.</h2>
-            <div className="triage-output"><span>Ao final você solicita</span><b>Rota inicial provável</b><b>Documentos a conferir</b><b>Próximo passo recomendado</b></div>
+            <div className="section-index">04 — Triagem inicial</div>
+            <h2>Explique o cenário<br />em poucos toques.</h2>
+            <div className="triage-output"><span>Você recebe</span><b>Entendimento inicial do caso</b><b>Próximo passo técnico</b></div>
           </div>
           <div className="triage-form">
-            <fieldset><legend><span>01</span> Qual é o setor ou atividade?</legend><select value={sector} onChange={(e) => setSector(e.target.value)}><option value="">Selecione uma opção</option>{["Indústria", "Clínica ou serviço de saúde", "Posto de combustível", "Construção civil", "Comércio ou serviço", "Outra atividade"].map((item) => <option key={item}>{item}</option>)}</select></fieldset>
+            <fieldset><legend><span>01</span> Qual é o setor ou atividade?</legend><label className="field-label" htmlFor="triage-sector">Selecione o setor ou a atividade</label><select id="triage-sector" name="sector" value={sector} onChange={(e) => setSector(e.target.value)}><option value="">Selecione uma opção</option>{["Indústria", "Clínica ou serviço de saúde", "Posto de combustível", "Construção civil", "Comércio ou serviço", "Outra atividade"].map((item) => <option key={item}>{item}</option>)}</select></fieldset>
             <fieldset>
               <legend><span>02</span> O que descreve a situação?</legend>
+              <label className="field-label" htmlFor="triage-situation">Selecione a situação ambiental atual</label>
               <select
+                id="triage-situation"
+                name="situation"
                 value={situation}
                 onChange={(event) => {
                   setSituation(event.target.value);
@@ -359,9 +359,11 @@ export default function EnvoraLanding() {
                 {situations.map((item) => <option key={item}>{item}</option>)}
               </select>
               {situation === "Outra situação" && (
-                <label className="other-situation">
+                <label className="other-situation" htmlFor="triage-other-situation">
                   Descreva brevemente a situação
                   <textarea
+                    id="triage-other-situation"
+                    name="otherSituation"
                     value={otherSituation}
                     onChange={(event) => setOtherSituation(event.target.value)}
                     placeholder="Ex.: recebi um documento do órgão e não sei qual providência tomar."
@@ -372,20 +374,8 @@ export default function EnvoraLanding() {
                 </label>
               )}
             </fieldset>
-            <fieldset><legend><span>03</span> Situação documental atual?</legend><div className="choice-grid two">{docsOptions.map((item) => <button className={docs === item ? "selected" : ""} type="button" key={item} onClick={() => setDocs(item)}>{item}</button>)}</div></fieldset>
-            <WhatsAppLink className={triageReady ? "button button-accent full" : "button button-disabled full"} source="triagem" message={triageMessage}>Enviar respostas pelo WhatsApp <span>↗</span></WhatsAppLink>
+            <WhatsAppLink className={triageReady ? "button button-accent full" : "button button-disabled full"} source="triagem" message={triageMessage}>Explicar minha situação no WhatsApp <span>↗</span></WhatsAppLink>
           </div>
-        </section>
-
-        <section className="process-section" id="processo" data-scroll-panel>
-          <div className="section-index">04 — Método Envora</div>
-          <div className="section-heading section-heading-solo"><h2>Do primeiro contato<br />ao acompanhamento.</h2></div>
-          <ol className="process-list">
-            <li><span>01</span><div><h3>Triagem</h3><p>Atividade, localização, documentos e objetivo da empresa.</p></div></li>
-            <li><span>02</span><div><h3>Enquadramento e escopo</h3><p>Rota provável, exigências a confirmar e proposta.</p></div></li>
-            <li><span>03</span><div><h3>Elaboração e protocolo</h3><p>Documentos e estudos contratados, revisão e formalização.</p></div></li>
-            <li><span>04</span><div><h3>Acompanhamento</h3><p>Tramitação e respostas técnicas dentro do escopo.</p></div></li>
-          </ol>
         </section>
 
         <section className="faq-section" id="faq" data-scroll-panel>
@@ -393,21 +383,22 @@ export default function EnvoraLanding() {
           <div className="faq-list">{faqs.map((item, index) => <div className="faq-item" key={item.q}><button onClick={() => setFaqOpen(faqOpen === index ? null : index)} aria-expanded={faqOpen === index}><span>{String(index + 1).padStart(2, "0")}</span>{item.q}<b>{faqOpen === index ? "−" : "+"}</b></button>{faqOpen === index && <p>{item.a}</p>}</div>)}</div>
         </section>
 
-        <section className="contact-section" id="contato" data-scroll-panel>
-          <div className="contact-copy"><p className="eyebrow">Consultoria ambiental em Joinville</p><h2>O que está impedindo seu projeto de avançar?</h2><p>Envie os dados essenciais. O WhatsApp abre com a mensagem pronta para iniciar a triagem.</p><div className="contact-place"><b>JOINVILLE</b><span>Santa Catarina · Brasil</span></div></div>
-          <form onSubmit={submitLead} className="lead-form"><label>Nome<input required value={lead.name} onChange={(e) => setLead({ ...lead, name: e.target.value })} placeholder="Seu nome" /></label><label>WhatsApp<input required type="tel" value={lead.phone} onChange={(e) => setLead({ ...lead, phone: e.target.value })} placeholder="(47) 99999-9999" /></label><label>Empresa ou atividade<input required value={lead.company} onChange={(e) => setLead({ ...lead, company: e.target.value })} placeholder="Ex.: indústria metalúrgica" /></label><label>Cidade<input required value={lead.city} onChange={(e) => setLead({ ...lead, city: e.target.value })} /></label><button className="button button-accent full" type="submit">Iniciar triagem pelo WhatsApp <span>↗</span></button><small id="privacidade">Os dados são usados apenas para iniciar o atendimento solicitado pelo WhatsApp.</small></form>
-        </section>
-
         <section className="about-footer" id="sobre" aria-labelledby="about-title" data-scroll-panel>
           <div className="about-footer-heading">
             <div className="section-index light">Sobre a Envora</div>
             <h2 id="about-title">Consultoria ambiental em Joinville.</h2>
           </div>
-          <div className="about-signals" aria-label="Credenciais da Envora">
-            <div><small>01</small><b>Atendimento local</b><span>Joinville e região</span></div>
-            <div><small>02</small><b>Experiência prática</b><span>Licenciamento municipal</span></div>
-            <div><small>03</small><b>Formação técnica</b><span>Engenharia Ambiental e Sanitária</span></div>
-            <div><small>04</small><b>Escopo transparente</b><span>Etapas e responsabilidades definidas</span></div>
+          <div className="about-details">
+            <div className="about-signals" aria-label="Credenciais da Envora">
+              <div><small>01</small><b>Atendimento local</b><span>Joinville e região</span></div>
+              <div><small>02</small><b>Experiência prática</b><span>Licenciamento municipal</span></div>
+              <div><small>03</small><b>Formação técnica</b><span>Engenharia Ambiental e Sanitária</span></div>
+              <div><small>04</small><b>Escopo transparente</b><span>Etapas e responsabilidades definidas</span></div>
+            </div>
+            <a className="about-instagram" href="https://www.instagram.com/envoraambiental/" target="_blank" rel="noopener noreferrer" onClick={() => track("instagram_click", { source: "institutional" })} aria-label="Instagram da Envora Ambiental">
+              <svg aria-hidden="true" viewBox="0 0 24 24" focusable="false"><rect x="3" y="3" width="18" height="18" rx="5" /><circle cx="12" cy="12" r="4" /><circle cx="17.5" cy="6.5" r="1" /></svg>
+              <span>Instagram</span><b>@envoraambiental</b><i aria-hidden="true">↗</i>
+            </a>
           </div>
         </section>
       </main>

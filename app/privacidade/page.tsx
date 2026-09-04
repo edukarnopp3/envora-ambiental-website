@@ -17,7 +17,7 @@ export default function PrivacyPage() {
       <article>
         <p className="eyebrow">Privacidade e dados</p>
         <h1>Política de Privacidade</h1>
-        <p className="privacy-updated">Última atualização: 24 de agosto de 2026.</p>
+        <p className="privacy-updated">Última atualização: 3 de setembro de 2026.</p>
 
         <h2>1. Quem trata os dados</h2>
         <p>A Envora Consultoria Ambiental, representada por Eduardo Karnopp, é responsável pelo tratamento dos dados descritos nesta política. Solicitações relacionadas à privacidade podem ser enviadas para <a href="mailto:envoraambiental@gmail.com">envoraambiental@gmail.com</a>.</p>
@@ -29,10 +29,10 @@ export default function PrivacyPage() {
         <p>Os dados são utilizados para responder ao contato, compreender a demanda, realizar a triagem inicial, elaborar proposta quando solicitada, executar serviços contratados e cumprir obrigações aplicáveis.</p>
 
         <h2>4. Cookies e medição</h2>
-        <p>Com sua autorização, o site pode carregar ferramentas do Google para medir visitas, cliques e conversões. Se você recusar, essas ferramentas opcionais não serão carregadas. A escolha fica armazenada no seu navegador e pode ser apagada ao remover os dados locais do site.</p>
+        <p>O site utiliza o Google Tag com o armazenamento de publicidade, análise e personalização negado por padrão. Se você aceitar, essas permissões são atualizadas para permitir a medição de visitas, cliques e conversões. Se você recusar, o armazenamento permanece negado. A escolha fica salva no seu navegador e pode ser apagada ao remover os dados locais do site.</p>
 
         <h2>5. Serviços de terceiros</h2>
-        <p>Ao utilizar WhatsApp, e-mail, Google ou outros serviços externos, o tratamento também segue as políticas desses fornecedores. A hospedagem do site é realizada pela Cloudflare. Esses fornecedores podem operar infraestrutura fora do Brasil.</p>
+        <p>Ao utilizar WhatsApp, e-mail, Google ou outros serviços externos, o tratamento também segue as políticas desses fornecedores. A hospedagem do site é realizada pela Vercel. Esses fornecedores podem operar infraestrutura fora do Brasil.</p>
 
         <h2>6. Compartilhamento e conservação</h2>
         <p>A Envora não comercializa dados pessoais. As informações podem ser compartilhadas com fornecedores necessários ao atendimento ou quando houver obrigação legal. Os dados são mantidos somente pelo período necessário às finalidades informadas, à prestação do serviço e ao cumprimento de obrigações aplicáveis.</p>

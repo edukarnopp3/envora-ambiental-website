@@ -5,23 +5,9 @@ import { SITE_URL } from "./site-url";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
-  title: "Envora",
+  title: "Consultoria Ambiental em Joinville | Envora",
   description:
     "Consultoria ambiental em Joinville para autos de infração e exigências ambientais, licenciamento, DANC, CCA, PGRS, PGRSS, PGRCC, resíduos e controle acústico.",
-  keywords: [
-    "consultoria ambiental em Joinville",
-    "licenciamento ambiental Joinville",
-    "licença ambiental Joinville",
-    "auto de infração ambiental Joinville",
-    "notificação ambiental Joinville",
-    "exigência ambiental Joinville",
-    "DANC Joinville",
-    "CCA Joinville",
-    "PGRS Joinville",
-    "PGRSS Joinville",
-    "PGRCC Joinville",
-    "laudo acústico Joinville",
-  ],
   alternates: { canonical: "/" },
   openGraph: {
     title: "Consultoria Ambiental em Joinville | Envora",
@@ -62,12 +48,15 @@ export const viewport: Viewport = {
 const localBusinessSchema = {
   "@context": "https://schema.org",
   "@type": "ProfessionalService",
+  "@id": `${SITE_URL}/#business`,
   name: "Envora Consultoria Ambiental",
+  description: "Consultoria ambiental independente em Joinville para licenciamento, regularização, resíduos, autos de infração e gestão de condicionantes.",
   url: SITE_URL,
   logo: `${SITE_URL}/envora-mark.svg`,
   image: `${SITE_URL}/og.png`,
   telephone: "+55 47 98455-1622",
   email: "envoraambiental@gmail.com",
+  sameAs: ["https://www.instagram.com/envoraambiental/"],
   founder: {
     "@type": "Person",
     name: "Eduardo Karnopp",
