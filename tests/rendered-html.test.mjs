@@ -142,10 +142,10 @@ test("links every service card to a dedicated official-source page", async () =>
       assert.match(serviceHtml, /service-visual-hero/);
       assert.match(serviceHtml, /Você explica o que precisa/);
       assert.match(serviceHtml, /Deixar a Envora resolver/);
-      assert.match(serviceHtml, /Fontes oficiais consultadas/);
-      assert.match(serviceHtml, /Informações para a análise/);
-      assert.match(serviceHtml, /Limites do escopo/);
-      assert.match(serviceHtml, /Serviços relacionados/);
+      assert.doesNotMatch(serviceHtml, /Fontes oficiais consultadas/);
+      assert.doesNotMatch(serviceHtml, /Informações para a análise/);
+      assert.doesNotMatch(serviceHtml, /Limites do escopo/);
+      assert.doesNotMatch(serviceHtml, /Serviços relacionados/);
     }
   }
 

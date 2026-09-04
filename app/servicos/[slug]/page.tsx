@@ -5,7 +5,7 @@ import Link from "next/link";
 import { notFound, redirect } from "next/navigation";
 import ServiceWhatsAppLink from "../../service-whatsapp-link";
 import { SITE_URL } from "../../site-url";
-import { relatedServiceSlugs, serviceInputsBySlug, servicePageBySlug, servicePages } from "../service-data";
+import { servicePageBySlug, servicePages } from "../service-data";
 
 type ServicePageProps = { params: Promise<{ slug: string }> };
 
@@ -170,7 +170,6 @@ export default async function ServicePage({ params }: ServicePageProps) {
     "@context": "https://schema.org",
     "@graph": [serviceSchema, breadcrumbSchema],
   };
-  const inputs = serviceInputsBySlug[service.slug] ?? [];
   const isLicenseJourney = service.slug === "lap-lai-lao";
   const visual = serviceVisualBySlug[service.slug] ?? {
     image: "/licenciamento-ambiental-visual.webp",
@@ -178,10 +177,6 @@ export default async function ServicePage({ params }: ServicePageProps) {
     description: service.intro,
     execution: "Você explica o que precisa. A Envora organiza a condução técnica prevista no escopo contratado.",
   };
-  const relatedServices = (relatedServiceSlugs[service.slug] ?? [])
-    .map((relatedSlug) => servicePageBySlug.get(relatedSlug))
-    .filter((related): related is NonNullable<typeof related> => Boolean(related));
-
   return (
     <div className="service-page-shell">
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData).replace(/</g, "\\u003c") }} />
@@ -250,62 +245,8 @@ export default async function ServicePage({ params }: ServicePageProps) {
               </div>
             </section>
 
-            <section className="service-explainer">
-              <div className="service-applies">
-                <p className="section-index">Quando se aplica</p>
-                <h2>O que essa situação significa.</h2>
-                <p>{service.applies}</p>
-              </div>
-              <div className="service-process">
-                <p className="section-index">O que acontece na prática</p>
-                <ol>{service.process.map((item, index) => <li key={item}><span>{String(index + 1).padStart(2, "0")}</span><p>{item}</p></li>)}</ol>
-              </div>
-            </section>
-
-            <section className="service-inputs" aria-labelledby="service-inputs-title">
-              <div>
-                <p className="section-index light">Informações para a análise</p>
-                <h2 id="service-inputs-title">O que é útil ter em mãos.</h2>
-              </div>
-              <ul>{inputs.map((item) => <li key={item}>{item}</li>)}</ul>
-            </section>
-
-            <section className="service-delivery" aria-labelledby="service-delivery-title">
-              <div>
-                <p className="section-index">Entrega técnica</p>
-                <h2 id="service-delivery-title">{service.deliverable}</h2>
-              </div>
-              <aside>
-                <strong>Limites do escopo</strong>
-                <p>{service.boundary}</p>
-              </aside>
-            </section>
           </>
         )}
-
-        {!isLicenseJourney && <aside className="service-sources" aria-labelledby="service-sources-title">
-          <div>
-            <p className="section-index" id="service-sources-title">Fontes oficiais consultadas</p>
-            <p>Conteúdo técnico resumido a partir de orientações publicadas pelos órgãos responsáveis. O enquadramento final depende dos dados do caso e da análise do órgão competente.</p>
-          </div>
-          <ul>
-            {service.sources.map((source) => (
-              <li key={source.url}><a href={source.url} target="_blank" rel="noreferrer">{source.label}<span aria-hidden="true">↗</span></a></li>
-            ))}
-          </ul>
-        </aside>}
-
-        {!isLicenseJourney && <section className="related-services" aria-labelledby="related-services-title">
-          <p className="section-index">Serviços relacionados</p>
-          <h2 id="related-services-title">Continue pela rota adequada ao caso.</h2>
-          <div>
-            {relatedServices.map((related) => (
-              <Link key={related.slug} href={`/servicos/${related.slug}`}>
-                {related.shortTitle}<b aria-hidden="true">↗</b>
-              </Link>
-            ))}
-          </div>
-        </section>}
 
       </main>
 
