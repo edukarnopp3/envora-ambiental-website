@@ -299,7 +299,7 @@ export default function EnvoraLanding() {
             <h2>Experiência técnica para tirar a demanda da frente.</h2>
           </div>
           <div className="institutional-copy">
-            <p>Experiência profissional de cinco anos em licenciamento ambiental, incluindo dois anos de atuação no licenciamento municipal e em processos envolvendo a Quimidrol e a Águas de Joinville.</p>
+            <p>Experiência profissional de cinco anos em licenciamento ambiental, incluindo atuação no licenciamento municipal e em processos de operações industriais e de infraestrutura.</p>
             <p>Na Envora, a análise parte da operação real: o que aconteceu, o que o órgão exige e qual caminho técnico resolve a situação.</p>
             <div className="institutional-signals" aria-label="Experiência profissional">
               <span>Licenciamento ambiental</span>
@@ -388,17 +388,11 @@ export default function EnvoraLanding() {
             <div className="section-index light">Sobre a Envora</div>
             <h2 id="about-title">Consultoria ambiental em Joinville.</h2>
           </div>
-          <div className="about-details">
-            <div className="about-signals" aria-label="Credenciais da Envora">
-              <div><small>01</small><b>Atendimento local</b><span>Joinville e região</span></div>
-              <div><small>02</small><b>Experiência prática</b><span>Licenciamento municipal</span></div>
-              <div><small>03</small><b>Formação técnica</b><span>Engenharia Ambiental e Sanitária</span></div>
-              <div><small>04</small><b>Escopo transparente</b><span>Etapas e responsabilidades definidas</span></div>
-            </div>
-            <a className="about-instagram" href="https://www.instagram.com/envoraambiental/" target="_blank" rel="noopener noreferrer" onClick={() => track("instagram_click", { source: "institutional" })} aria-label="Instagram da Envora Ambiental">
-              <svg aria-hidden="true" viewBox="0 0 24 24" focusable="false"><rect x="3" y="3" width="18" height="18" rx="5" /><circle cx="12" cy="12" r="4" /><circle cx="17.5" cy="6.5" r="1" /></svg>
-              <span>Instagram</span><b>@envoraambiental</b><i aria-hidden="true">↗</i>
-            </a>
+          <div className="about-signals" aria-label="Credenciais da Envora">
+            <div><small>01</small><b>Atendimento local</b><span>Joinville e região</span></div>
+            <div><small>02</small><b>Experiência prática</b><span>Licenciamento municipal</span></div>
+            <div><small>03</small><b>Formação técnica</b><span>Engenharia Ambiental e Sanitária</span></div>
+            <div><small>04</small><b>Escopo transparente</b><span>Etapas e responsabilidades definidas</span></div>
           </div>
         </section>
       </main>
@@ -414,10 +408,13 @@ export default function EnvoraLanding() {
             <span>Engenheiro Ambiental e Sanitarista</span>
             <a href="tel:+5547984551622" onClick={() => track("phone_click", { source: "footer" })}>(47) 98455-1622</a>
             <a href="mailto:envoraambiental@gmail.com" onClick={() => track("email_click", { source: "footer" })}>envoraambiental@gmail.com</a>
-            <a className="instagram-link" href="https://www.instagram.com/envoraambiental/" target="_blank" rel="noopener noreferrer" onClick={() => track("instagram_click", { source: "footer" })}>Instagram · @envoraambiental <span aria-hidden="true">↗</span></a>
             <a href="#sobre">Sobre a Envora</a>
             <a className="privacy-text" href="/privacidade">Privacidade</a>
           </div>
+          <a className="footer-instagram" href="https://www.instagram.com/envoraambiental/" target="_blank" rel="noopener noreferrer" onClick={() => track("instagram_click", { source: "footer" })} aria-label="Instagram da Envora Ambiental">
+            <svg aria-hidden="true" viewBox="0 0 24 24" focusable="false"><rect x="3" y="3" width="18" height="18" rx="5" /><circle cx="12" cy="12" r="4" /><circle cx="17.5" cy="6.5" r="1" /></svg>
+            <span>Instagram</span><b>@envoraambiental</b><i aria-hidden="true">↗</i>
+          </a>
         </div>
       </footer>
       <WhatsAppLink className="mobile-sticky" source="mobile_sticky" message={baseMessage}>Falar com a Envora no WhatsApp <span>↗</span></WhatsAppLink>

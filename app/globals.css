@@ -151,17 +151,11 @@ select:focus,input:focus,textarea:focus { border-color:var(--forest); box-shadow
 .about-footer-heading { align-self:center; }
 .about-footer-heading .section-index { margin-bottom:20px; }
 .about-footer-heading h2 { max-width:520px; margin:0; font:700 clamp(32px,3.3vw,52px)/1.08 "Manrope",sans-serif; letter-spacing:-.045em; text-wrap:balance; }
-.about-details { min-width:0; }
 .about-signals { display:grid; grid-template-columns:1fr 1fr; border-top:1px solid rgba(255,255,255,.16); border-left:1px solid rgba(255,255,255,.16); }
 .about-signals div { display:grid; align-content:center; min-height:132px; padding:24px 28px; border-right:1px solid rgba(255,255,255,.16); border-bottom:1px solid rgba(255,255,255,.16); }
 .about-signals small { color:var(--brand-soft); font-size:10px; font-weight:700; letter-spacing:.14em; }
 .about-signals b { margin-top:9px; color:white; font-size:14px; }
 .about-signals span { margin-top:4px; color:rgba(255,255,255,.58); font-size:12px; }
-.about-instagram { display:grid; grid-template-columns:28px auto 1fr auto; align-items:center; gap:12px; width:max-content; max-width:100%; margin-top:20px; padding:13px 0; color:var(--brand-soft); border-bottom:1px solid rgba(93,202,165,.45); font-size:12px; font-weight:700; transition:color .2s ease,border-color .2s ease; }
-.about-instagram svg { width:23px; height:23px; fill:none; stroke:currentColor; stroke-width:1.7; }
-.about-instagram b { color:white; font-size:13px; }
-.about-instagram i { font-size:18px; font-style:normal; }
-.about-instagram:hover,.about-instagram:focus-visible { color:white; border-bottom-color:white; }
 footer { display:grid; grid-template-columns:minmax(360px,1.15fr) minmax(440px,.85fr); min-height:310px; padding:0 7vw; background:#071d1a; color:rgba(255,255,255,.58); font-size:12px; }
 .footer-brand-panel { display:flex; align-items:center; padding:64px 6vw 64px 0; border-right:1px solid rgba(255,255,255,.12); }
 footer .inverted { width:100%; color:white; }
@@ -172,9 +166,12 @@ footer .brand img { width:min(100%,520px); }
 .footer-details span:first-child { color:var(--brand-soft); font-weight:700; letter-spacing:.08em; text-transform:uppercase; }
 .footer-details strong { color:white; font-size:14px; }
 .footer-details a { width:max-content; margin-top:8px; color:white; border-bottom:1px solid rgba(255,255,255,.45); }
-.footer-details .instagram-link { margin-top:4px; color:var(--brand-soft); border-bottom-color:rgba(93,202,165,.48); font-weight:700; }
-.footer-details .instagram-link span { margin-left:4px; color:inherit; font-weight:inherit; letter-spacing:normal; text-transform:none; }
 .footer-details .privacy-text { margin-top:8px; color:rgba(255,255,255,.58); }
+.footer-instagram { display:grid; grid-template-columns:28px auto 1fr auto; align-items:center; gap:12px; width:max-content; max-width:100%; margin-top:8px; padding:14px 0 0; color:var(--brand-soft); border-top:1px solid rgba(93,202,165,.28); font-size:12px; font-weight:700; transition:color .2s ease,border-color .2s ease; }
+.footer-instagram svg { width:23px; height:23px; fill:none; stroke:currentColor; stroke-width:1.7; }
+.footer-instagram b { color:white; font-size:13px; }
+.footer-instagram i { font-size:18px; font-style:normal; }
+.footer-instagram:hover,.footer-instagram:focus-visible { color:white; border-top-color:white; }
 .mobile-sticky { display:none; }
 .cookie-banner { position:fixed; right:24px; bottom:24px; z-index:100; display:grid; grid-template-columns:minmax(0,1fr) auto; align-items:center; gap:24px; width:min(720px,calc(100vw - 48px)); padding:20px 22px; background:#071d1a; color:white; box-shadow:0 18px 60px rgba(0,0,0,.26); }
 .cookie-banner p { margin:0; color:rgba(255,255,255,.72); font-size:13px; line-height:1.55; }
@@ -362,7 +359,7 @@ footer .brand img { width:min(100%,520px); }
   .choice-grid.two { grid-template-columns:1fr; }
   .about-signals { grid-template-columns:1fr; }
   .about-signals div { min-height:104px; }
-  .about-instagram { grid-template-columns:28px auto 1fr auto; width:100%; }
+  .footer-instagram { width:100%; }
   .process-list li { grid-template-columns:46px 1fr; }
   .faq-section { min-height:0; }
   .faq-section { gap:48px; }
