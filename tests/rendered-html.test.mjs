@@ -130,15 +130,42 @@ test("links every service card to a dedicated official-source page", async () =>
     assert.equal(response.status, 200);
     const serviceHtml = await response.text();
     assert.match(serviceHtml, /Fontes oficiais consultadas/);
-    assert.match(serviceHtml, /Informações para a análise/);
-    assert.match(serviceHtml, /Limites do escopo/);
-    assert.match(serviceHtml, /Serviços relacionados/);
+    if (path === "lap-lai-lao") {
+      assert.match(serviceHtml, /Validar a viabilidade/);
+      assert.match(serviceHtml, /Autorizar a instalação/);
+      assert.match(serviceHtml, /Autorizar a operação/);
+      assert.match(serviceHtml, /Você não precisa saber qual licença pedir/);
+      assert.match(serviceHtml, /A emissão da licença e o prazo de análise são decisões do órgão ambiental competente/);
+    } else {
+      assert.match(serviceHtml, /Informações para a análise/);
+      assert.match(serviceHtml, /Limites do escopo/);
+      assert.match(serviceHtml, /Serviços relacionados/);
+    }
   }
 
   for (const legacyPath of ["pgrs", "pgrss", "pgrcc"]) {
     const response = await render(`/servicos/${legacyPath}`);
     assert.equal(response.status, 200);
     assert.match(response.url, /\/servicos\/planos-de-gerenciamento-de-residuos$/);
+  }
+});
+
+test("publishes original environmental content pages with official sources", async () => {
+  const homeHtml = await (await render()).text();
+  assert.match(homeHtml, /Conteúdos e atualizações/);
+  assert.match(homeHtml, /O ambiental explicado sem rodeios/);
+
+  for (const path of [
+    "lap-lai-lao-entenda-as-etapas",
+    "licenca-ambiental-ou-autorizacao-ambiental",
+    "antes-de-instalar-ampliar-ou-operar",
+  ]) {
+    const response = await render(`/conteudos/${path}`);
+    assert.equal(response.status, 200);
+    const html = await response.text();
+    assert.match(html, /Fontes oficiais/);
+    assert.match(html, /application\/ld\+json/);
+    assert.match(html, /Prefeitura de Joinville|IMA\/SC/);
   }
 });
 

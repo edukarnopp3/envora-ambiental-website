@@ -8,6 +8,30 @@ import { relatedServiceSlugs, serviceInputsBySlug, servicePageBySlug, servicePag
 
 type ServicePageProps = { params: Promise<{ slug: string }> };
 
+const licenseStages = [
+  {
+    code: "LAP",
+    step: "01",
+    eyebrow: "Antes de implantar",
+    title: "Validar a viabilidade.",
+    text: "Aprova a localização e a concepção do empreendimento e define as condições para as próximas fases.",
+  },
+  {
+    code: "LAI",
+    step: "02",
+    eyebrow: "Antes de instalar",
+    title: "Autorizar a instalação.",
+    text: "Permite implantar o empreendimento conforme os projetos e controles ambientais aprovados.",
+  },
+  {
+    code: "LAO",
+    step: "03",
+    eyebrow: "Antes de operar",
+    title: "Autorizar a operação.",
+    text: "Permite iniciar a atividade após a verificação das exigências e medidas de controle aplicáveis.",
+  },
+] as const;
+
 export function generateStaticParams() {
   return [
     ...servicePages.map(({ slug }) => ({ slug })),
@@ -67,6 +91,7 @@ export default async function ServicePage({ params }: ServicePageProps) {
     "@graph": [serviceSchema, breadcrumbSchema],
   };
   const inputs = serviceInputsBySlug[service.slug] ?? [];
+  const isLicenseJourney = service.slug === "lap-lai-lao";
   const relatedServices = (relatedServiceSlugs[service.slug] ?? [])
     .map((relatedSlug) => servicePageBySlug.get(relatedSlug))
     .filter((related): related is NonNullable<typeof related> => Boolean(related));
@@ -99,36 +124,74 @@ export default async function ServicePage({ params }: ServicePageProps) {
           </div>
         </section>
 
-        <section className="service-explainer">
-          <div className="service-applies">
-            <p className="section-index">Quando se aplica</p>
-            <h2>O que essa situação significa.</h2>
-            <p>{service.applies}</p>
-          </div>
-          <div className="service-process">
-            <p className="section-index">O que acontece na prática</p>
-            <ol>{service.process.map((item, index) => <li key={item}><span>{String(index + 1).padStart(2, "0")}</span><p>{item}</p></li>)}</ol>
-          </div>
-        </section>
+        {isLicenseJourney ? (
+          <>
+            <section className="license-journey" aria-labelledby="license-journey-title">
+              <div className="license-journey-heading">
+                <p className="section-index">LAP · LAI · LAO</p>
+                <h2 id="license-journey-title">Da ideia à operação.</h2>
+                <p>Três etapas. Uma única condução técnica.</p>
+              </div>
+              <div className="license-stage-track" aria-label="Etapas do licenciamento ambiental">
+                {licenseStages.map((stage) => (
+                  <article className="license-stage" key={stage.code}>
+                    <div className="license-stage-top"><span>{stage.step}</span><strong>{stage.code}</strong></div>
+                    <div>
+                      <p>{stage.eyebrow}</p>
+                      <h3>{stage.title}</h3>
+                      <span>{stage.text}</span>
+                    </div>
+                  </article>
+                ))}
+              </div>
+            </section>
 
-        <section className="service-inputs" aria-labelledby="service-inputs-title">
-          <div>
-            <p className="section-index light">Informações para a análise</p>
-            <h2 id="service-inputs-title">O que é útil ter em mãos.</h2>
-          </div>
-          <ul>{inputs.map((item) => <li key={item}>{item}</li>)}</ul>
-        </section>
+            <section className="license-handoff" aria-labelledby="license-handoff-title">
+              <div>
+                <p className="section-index light">A Envora conduz</p>
+                <h2 id="license-handoff-title">Você não precisa saber qual licença pedir.</h2>
+              </div>
+              <div>
+                <p>Você explica o empreendimento. A Envora identifica a etapa, prepara a documentação técnica, protocola e acompanha o processo por você.</p>
+                <ServiceWhatsAppLink service={service.shortTitle} className="button service-primary">Deixar a Envora resolver <span aria-hidden="true">↗</span></ServiceWhatsAppLink>
+                <small>A emissão da licença e o prazo de análise são decisões do órgão ambiental competente.</small>
+              </div>
+            </section>
+          </>
+        ) : (
+          <>
+            <section className="service-explainer">
+              <div className="service-applies">
+                <p className="section-index">Quando se aplica</p>
+                <h2>O que essa situação significa.</h2>
+                <p>{service.applies}</p>
+              </div>
+              <div className="service-process">
+                <p className="section-index">O que acontece na prática</p>
+                <ol>{service.process.map((item, index) => <li key={item}><span>{String(index + 1).padStart(2, "0")}</span><p>{item}</p></li>)}</ol>
+              </div>
+            </section>
 
-        <section className="service-delivery" aria-labelledby="service-delivery-title">
-          <div>
-            <p className="section-index">Entrega técnica</p>
-            <h2 id="service-delivery-title">{service.deliverable}</h2>
-          </div>
-          <aside>
-            <strong>Limites do escopo</strong>
-            <p>{service.boundary}</p>
-          </aside>
-        </section>
+            <section className="service-inputs" aria-labelledby="service-inputs-title">
+              <div>
+                <p className="section-index light">Informações para a análise</p>
+                <h2 id="service-inputs-title">O que é útil ter em mãos.</h2>
+              </div>
+              <ul>{inputs.map((item) => <li key={item}>{item}</li>)}</ul>
+            </section>
+
+            <section className="service-delivery" aria-labelledby="service-delivery-title">
+              <div>
+                <p className="section-index">Entrega técnica</p>
+                <h2 id="service-delivery-title">{service.deliverable}</h2>
+              </div>
+              <aside>
+                <strong>Limites do escopo</strong>
+                <p>{service.boundary}</p>
+              </aside>
+            </section>
+          </>
+        )}
 
         <aside className="service-sources" aria-labelledby="service-sources-title">
           <div>
@@ -142,7 +205,7 @@ export default async function ServicePage({ params }: ServicePageProps) {
           </ul>
         </aside>
 
-        <section className="related-services" aria-labelledby="related-services-title">
+        {!isLicenseJourney && <section className="related-services" aria-labelledby="related-services-title">
           <p className="section-index">Serviços relacionados</p>
           <h2 id="related-services-title">Continue pela rota adequada ao caso.</h2>
           <div>
@@ -152,14 +215,14 @@ export default async function ServicePage({ params }: ServicePageProps) {
               </Link>
             ))}
           </div>
-        </section>
+        </section>}
 
-        <section className="service-final-cta">
+        {!isLicenseJourney && <section className="service-final-cta">
           <p className="eyebrow">Próximo passo</p>
           <h2>Você explica o cenário. A Envora organiza a solução técnica.</h2>
           <p>Envie o que já tem em mãos. Definimos o enquadramento inicial, os documentos necessários e o escopo para resolver a demanda.</p>
           <ServiceWhatsAppLink service={service.shortTitle} className="button service-primary">Falar com a Envora agora <span aria-hidden="true">↗</span></ServiceWhatsAppLink>
-        </section>
+        </section>}
       </main>
 
       <footer className="service-footer">

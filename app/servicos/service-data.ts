@@ -121,10 +121,10 @@ export const servicePages: ServicePageData[] = [
   {
     slug: "lap-lai-lao",
     shortTitle: "Obtenção de LAP, LAI e LAO",
-    title: "Cada etapa do empreendimento exige a licença correspondente.",
-    eyebrow: "Licenças Prévia, de Instalação e de Operação",
+    title: "Da viabilidade à operação, a Envora conduz cada licença.",
+    eyebrow: "LAP · LAI · LAO",
     description: "Consultoria para obtenção de LAP, LAI e LAO em Joinville, com documentação técnica, protocolo e acompanhamento do processo ambiental.",
-    intro: "A LAP avalia a viabilidade ambiental; a LAI autoriza a instalação conforme os projetos aprovados; e a LAO autoriza a operação após a verificação das condições aplicáveis.",
+    intro: "Você informa o que pretende fazer. A Envora identifica a etapa, prepara o processo e acompanha tudo até a decisão do órgão ambiental.",
     highlights: ["Etapa identificada", "Documentação preparada", "Processo acompanhado"],
     applies: "A Prefeitura de Joinville informa que a licença ambiental estabelece condições, restrições e medidas de controle nas fases de projeto, instalação e operação. A sequência aplicável depende da atividade, do porte e das características do empreendimento.",
     process: [

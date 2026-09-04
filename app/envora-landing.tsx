@@ -3,6 +3,7 @@
 import { useEffect, useMemo, useState } from "react";
 import Link from "next/link";
 import HeroBackgroundVideo from "./hero-background-video";
+import { contentArticles } from "./conteudos/content-data";
 
 const WA_NUMBER = "5547984551622";
 
@@ -100,7 +101,7 @@ export default function EnvoraLanding() {
   [sector, situationDetail]);
 
   useEffect(() => {
-    const navigationSections = ["inicio", "institucional", "solucoes", "setores", "triagem", "faq", "sobre"];
+    const navigationSections = ["inicio", "institucional", "solucoes", "setores", "triagem", "faq", "conteudos", "sobre"];
     let frame = 0;
 
     function updateActiveSection() {
@@ -263,6 +264,7 @@ export default function EnvoraLanding() {
           <a className={activeSection === "setores" ? "active" : ""} aria-current={activeSection === "setores" ? "location" : undefined} href="#setores" onClick={() => selectSection("setores")}>Setores</a>
           <a className={activeSection === "triagem" ? "active" : ""} aria-current={activeSection === "triagem" ? "location" : undefined} href="#triagem" onClick={() => selectSection("triagem")}>Triagem</a>
           <a className={activeSection === "faq" ? "active" : ""} aria-current={activeSection === "faq" ? "location" : undefined} href="#faq" onClick={() => selectSection("faq")}>Dúvidas</a>
+          <a className={activeSection === "conteudos" ? "active" : ""} aria-current={activeSection === "conteudos" ? "location" : undefined} href="#conteudos" onClick={() => selectSection("conteudos")}>Conteúdos</a>
           <a className={activeSection === "sobre" ? "active" : ""} aria-current={activeSection === "sobre" ? "location" : undefined} href="#sobre" onClick={() => selectSection("sobre")}>Envora</a>
         </nav>
         <WhatsAppLink className="button button-small header-cta" source="header" message={baseMessage}>Falar com especialista</WhatsAppLink>
@@ -381,6 +383,26 @@ export default function EnvoraLanding() {
         <section className="faq-section" id="faq" data-scroll-panel>
           <div><div className="section-index light">05 — Dúvidas frequentes</div><h2>Antes de contratar<br />uma consultoria ambiental.</h2></div>
           <div className="faq-list">{faqs.map((item, index) => <div className="faq-item" key={item.q}><button onClick={() => setFaqOpen(faqOpen === index ? null : index)} aria-expanded={faqOpen === index}><span>{String(index + 1).padStart(2, "0")}</span>{item.q}<b>{faqOpen === index ? "−" : "+"}</b></button>{faqOpen === index && <p>{item.a}</p>}</div>)}</div>
+        </section>
+
+        <section className="content-section" id="conteudos" aria-labelledby="content-title" data-scroll-panel>
+          <div className="content-section-heading">
+            <div>
+              <p className="section-index">Conteúdos e atualizações</p>
+              <h2 id="content-title">O ambiental explicado sem rodeios.</h2>
+            </div>
+            <p>Análise de regras e orientações oficiais, traduzida para decisões práticas em Joinville.</p>
+          </div>
+          <div className="content-card-grid">
+            {contentArticles.map((article, index) => (
+              <Link href={`/conteudos/${article.slug}`} className="content-card" key={article.slug}>
+                <div><span>{String(index + 1).padStart(2, "0")}</span><b>{article.category}</b></div>
+                <h3>{article.title}</h3>
+                <p>{article.description}</p>
+                <strong>Ler conteúdo <i aria-hidden="true">↗</i></strong>
+              </Link>
+            ))}
+          </div>
         </section>
 
         <section className="about-footer" id="sobre" aria-labelledby="about-title" data-scroll-panel>
