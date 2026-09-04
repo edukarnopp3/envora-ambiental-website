@@ -169,6 +169,13 @@ test("publishes original environmental content pages with official sources", asy
   }
 });
 
+test("serves the optimized licensing journey artwork", async () => {
+  const response = await render("/licenciamento-etapas-projeto.webp");
+  assert.equal(response.status, 200);
+  assert.match(response.headers.get("content-type") ?? "", /^image\/webp/i);
+  assert.ok(Number(response.headers.get("content-length") ?? 0) > 100_000);
+});
+
 test("labels the lead fields and publishes accurate privacy information", async () => {
   const html = await (await render()).text();
   assert.match(html, /for="triage-sector"/);

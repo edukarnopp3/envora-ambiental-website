@@ -287,9 +287,14 @@ footer .brand img { width:min(100%,520px); }
 .license-journey-heading h2,.license-handoff h2 { max-width:920px; margin:0; font:700 clamp(48px,6vw,88px)/.98 "Manrope",sans-serif; letter-spacing:-.06em; text-wrap:balance; }
 .license-journey-heading>p:last-child { max-width:300px; margin:0 0 8px; color:rgba(29,36,34,.6); font-size:15px; line-height:1.55; }
 .license-stage-track { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); min-height:calc(100svh - 280px); border-top:1px solid var(--line); border-left:1px solid var(--line); }
-.license-stage { display:flex; flex-direction:column; justify-content:space-between; min-width:0; padding:28px clamp(24px,3vw,48px) 48px; border-right:1px solid var(--line); background:rgba(255,255,255,.18); }
-.license-stage:nth-child(2) { background:#e5e1d6; }
-.license-stage:nth-child(3) { background:var(--forest); color:white; }
+.license-stage { --stage-bg:var(--paper); position:relative; isolation:isolate; display:flex; flex-direction:column; justify-content:space-between; min-width:0; overflow:hidden; padding:28px clamp(24px,3vw,48px) 48px; border-right:1px solid var(--line); background:var(--stage-bg); }
+.license-stage:nth-child(2) { --stage-bg:#e5e1d6; }
+.license-stage:nth-child(3) { --stage-bg:var(--forest); color:white; }
+.license-stage::before { content:""; position:absolute; inset:40px 0 24%; z-index:-2; background:url('/licenciamento-etapas-projeto.webp') no-repeat 0 center/300% auto; opacity:.86; transform:scale(1.025) translateY(0); animation:license-blueprint-drift 10s ease-in-out infinite alternate; }
+.license-stage:nth-child(2)::before { background-position:50% center; animation-delay:-3s; }
+.license-stage:nth-child(3)::before { background-position:100% center; opacity:.56; filter:saturate(.72) brightness(.72); animation-delay:-6s; }
+.license-stage::after { content:""; position:absolute; inset:0; z-index:-1; background:linear-gradient(to bottom,transparent 24%,color-mix(in srgb,var(--stage-bg) 24%,transparent) 46%,var(--stage-bg) 72%); pointer-events:none; }
+.license-stage>* { position:relative; z-index:1; }
 .license-stage-top { display:flex; align-items:flex-start; justify-content:space-between; gap:20px; }
 .license-stage-top span { color:var(--brand); font-size:11px; font-weight:700; letter-spacing:.12em; }
 .license-stage:nth-child(3) .license-stage-top span { color:var(--brand-soft); }
@@ -300,6 +305,7 @@ footer .brand img { width:min(100%,520px); }
 .license-stage h3 { max-width:360px; margin:0; font:700 clamp(28px,2.7vw,44px)/1.04 "Manrope",sans-serif; letter-spacing:-.045em; text-wrap:balance; }
 .license-stage>div:last-child>span { display:block; max-width:420px; margin-top:24px; color:rgba(29,36,34,.64); font-size:15px; line-height:1.7; }
 .license-stage:nth-child(3)>div:last-child>span { color:rgba(255,255,255,.68); }
+@keyframes license-blueprint-drift { from { transform:scale(1.025) translate3d(0,0,0); } to { transform:scale(1.055) translate3d(0,-7px,0); } }
 .license-handoff { display:grid; grid-template-columns:minmax(0,1.15fr) minmax(360px,.85fr); align-items:center; gap:9vw; min-height:88svh; padding:96px 7vw; background:var(--forest-dark); color:white; }
 .license-handoff>div:last-child>p { max-width:620px; margin:0; color:rgba(255,255,255,.72); font-size:clamp(18px,1.6vw,23px); line-height:1.65; }
 .license-handoff .service-primary { width:max-content; margin-top:34px; }
@@ -379,7 +385,8 @@ footer .brand img { width:min(100%,520px); }
   .license-journey-heading .section-index { grid-column:auto; }
   .license-journey-heading h2 { font-size:52px; }
   .license-journey-heading>p:last-child { margin:0; }
-  .license-stage-track { grid-template-columns:repeat(3,minmax(78vw,1fr)); min-height:610px; margin-right:-24px; overflow-x:auto; overscroll-behavior-inline:contain; scroll-snap-type:x mandatory; scrollbar-width:thin; }
+  .license-stage-track { grid-template-columns:repeat(3,minmax(78vw,1fr)); min-height:610px; margin-right:-24px; overflow-x:auto; overscroll-behavior-inline:contain; scroll-snap-type:x mandatory; scrollbar-width:none; }
+  .license-stage-track::-webkit-scrollbar { display:none; }
   .license-stage { min-height:610px; padding:26px 28px 42px; scroll-snap-align:start; }
   .license-handoff { grid-template-columns:1fr; gap:52px; min-height:0; padding:86px 24px; }
   .license-handoff h2 { font-size:52px; }
@@ -473,6 +480,7 @@ footer .brand img { width:min(100%,520px); }
   html { scroll-snap-type:none!important; }
   * { scroll-behavior:auto!important; transition:none!important; }
   .hero-video,.hero-video-control { display:none; }
+  .license-stage::before { animation:none!important; }
 }
 
 /* Splash aprovada: mesma estrutura visual do arquivo original, acelerada para cerca de 1 segundo. */
