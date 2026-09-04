@@ -134,6 +134,9 @@ test("links every service card to a dedicated official-source page", async () =>
       assert.match(serviceHtml, /Validar a viabilidade/);
       assert.match(serviceHtml, /Autorizar a instalação/);
       assert.match(serviceHtml, /Autorizar a operação/);
+      assert.match(serviceHtml, /Falar sobre a[\s\S]*?LAP/);
+      assert.match(serviceHtml, /Falar sobre a[\s\S]*?LAI/);
+      assert.match(serviceHtml, /Falar sobre a[\s\S]*?LAO/);
       assert.match(serviceHtml, /Você não precisa saber qual licença pedir/);
       assert.match(serviceHtml, /A emissão da licença e o prazo de análise são decisões do órgão ambiental competente/);
     } else {
@@ -170,7 +173,7 @@ test("publishes original environmental content pages with official sources", asy
 });
 
 test("serves the optimized licensing journey artwork", async () => {
-  const response = await render("/licenciamento-etapas-projeto.webp");
+  const response = await render("/licenciamento-etapas-projeto-v2.webp");
   assert.equal(response.status, 200);
   assert.match(response.headers.get("content-type") ?? "", /^image\/webp/i);
   assert.ok(Number(response.headers.get("content-length") ?? 0) > 100_000);

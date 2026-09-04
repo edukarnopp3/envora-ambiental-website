@@ -288,23 +288,22 @@ footer .brand img { width:min(100%,520px); }
 .license-journey-heading>p:last-child { max-width:300px; margin:0 0 8px; color:rgba(29,36,34,.6); font-size:15px; line-height:1.55; }
 .license-stage-track { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); min-height:calc(100svh - 280px); border-top:1px solid var(--line); border-left:1px solid var(--line); }
 .license-stage { --stage-bg:var(--paper); position:relative; isolation:isolate; display:flex; flex-direction:column; justify-content:space-between; min-width:0; overflow:hidden; padding:28px clamp(24px,3vw,48px) 48px; border-right:1px solid var(--line); background:var(--stage-bg); }
-.license-stage:nth-child(2) { --stage-bg:#e5e1d6; }
-.license-stage:nth-child(3) { --stage-bg:var(--forest); color:white; }
-.license-stage::before { content:""; position:absolute; inset:40px 0 24%; z-index:-2; background:url('/licenciamento-etapas-projeto.webp') no-repeat 0 center/300% auto; opacity:.86; transform:scale(1.025) translateY(0); animation:license-blueprint-drift 10s ease-in-out infinite alternate; }
+.license-stage:nth-child(2) { --stage-bg:#e9e7de; }
+.license-stage:nth-child(3) { --stage-bg:#e6ece5; }
+.license-stage::before { content:""; position:absolute; inset:40px 0 24%; z-index:-2; background:url('/licenciamento-etapas-projeto-v2.webp') no-repeat 0 center/300% auto; opacity:.96; transform:scale(1.025) translateY(0); animation:license-blueprint-drift 10s ease-in-out infinite alternate; }
 .license-stage:nth-child(2)::before { background-position:50% center; animation-delay:-3s; }
-.license-stage:nth-child(3)::before { background-position:100% center; opacity:.56; filter:saturate(.72) brightness(.72); animation-delay:-6s; }
-.license-stage::after { content:""; position:absolute; inset:0; z-index:-1; background:linear-gradient(to bottom,transparent 24%,color-mix(in srgb,var(--stage-bg) 24%,transparent) 46%,var(--stage-bg) 72%); pointer-events:none; }
+.license-stage:nth-child(3)::before { background-position:100% center; opacity:1; animation-delay:-6s; }
+.license-stage::after { content:""; position:absolute; inset:0; z-index:-1; background:linear-gradient(to bottom,transparent 22%,color-mix(in srgb,var(--stage-bg) 18%,transparent) 47%,var(--stage-bg) 70%); pointer-events:none; }
 .license-stage>* { position:relative; z-index:1; }
 .license-stage-top { display:flex; align-items:flex-start; justify-content:space-between; gap:20px; }
 .license-stage-top span { color:var(--brand); font-size:11px; font-weight:700; letter-spacing:.12em; }
-.license-stage:nth-child(3) .license-stage-top span { color:var(--brand-soft); }
 .license-stage-top strong { color:var(--brand); font:700 clamp(42px,4vw,66px)/1 "Manrope",sans-serif; letter-spacing:-.06em; }
-.license-stage:nth-child(3) .license-stage-top strong { color:var(--brand-soft); }
-.license-stage>div:last-child>p { margin:0 0 18px; color:var(--brand); font-size:10px; font-weight:700; letter-spacing:.14em; text-transform:uppercase; }
-.license-stage:nth-child(3)>div:last-child>p { color:var(--brand-soft); }
+.license-stage-copy>p { margin:0 0 18px; color:var(--brand); font-size:10px; font-weight:700; letter-spacing:.14em; text-transform:uppercase; }
 .license-stage h3 { max-width:360px; margin:0; font:700 clamp(28px,2.7vw,44px)/1.04 "Manrope",sans-serif; letter-spacing:-.045em; text-wrap:balance; }
-.license-stage>div:last-child>span { display:block; max-width:420px; margin-top:24px; color:rgba(29,36,34,.64); font-size:15px; line-height:1.7; }
-.license-stage:nth-child(3)>div:last-child>span { color:rgba(255,255,255,.68); }
+.license-stage-description { display:block; max-width:420px; margin-top:20px; color:rgba(29,36,34,.66); font-size:15px; line-height:1.65; }
+.license-stage-cta { display:flex; align-items:center; justify-content:space-between; gap:24px; width:min(100%,280px); min-height:52px; margin-top:26px; padding:0 20px; color:white; background:var(--brand); font-size:12px; font-weight:700; transition:background .2s ease,transform .2s ease; }
+.license-stage-cta:hover,.license-stage-cta:focus-visible { background:var(--forest-dark); transform:translateY(-2px); }
+.license-stage-cta span { font-size:17px; }
 @keyframes license-blueprint-drift { from { transform:scale(1.025) translate3d(0,0,0); } to { transform:scale(1.055) translate3d(0,-7px,0); } }
 .license-handoff { display:grid; grid-template-columns:minmax(0,1.15fr) minmax(360px,.85fr); align-items:center; gap:9vw; min-height:88svh; padding:96px 7vw; background:var(--forest-dark); color:white; }
 .license-handoff>div:last-child>p { max-width:620px; margin:0; color:rgba(255,255,255,.72); font-size:clamp(18px,1.6vw,23px); line-height:1.65; }
@@ -388,6 +387,7 @@ footer .brand img { width:min(100%,520px); }
   .license-stage-track { grid-template-columns:repeat(3,minmax(78vw,1fr)); min-height:610px; margin-right:-24px; overflow-x:auto; overscroll-behavior-inline:contain; scroll-snap-type:x mandatory; scrollbar-width:none; }
   .license-stage-track::-webkit-scrollbar { display:none; }
   .license-stage { min-height:610px; padding:26px 28px 42px; scroll-snap-align:start; }
+  .license-stage-cta { width:100%; }
   .license-handoff { grid-template-columns:1fr; gap:52px; min-height:0; padding:86px 24px; }
   .license-handoff h2 { font-size:52px; }
   .service-result .service-primary { grid-column:1; }

@@ -15,6 +15,7 @@ const licenseStages = [
     eyebrow: "Antes de implantar",
     title: "Validar a viabilidade.",
     text: "Aprova a localização e a concepção do empreendimento e define as condições para as próximas fases.",
+    contact: "Licença Ambiental Prévia (LAP)",
   },
   {
     code: "LAI",
@@ -22,6 +23,7 @@ const licenseStages = [
     eyebrow: "Antes de instalar",
     title: "Autorizar a instalação.",
     text: "Permite implantar o empreendimento conforme os projetos e controles ambientais aprovados.",
+    contact: "Licença Ambiental de Instalação (LAI)",
   },
   {
     code: "LAO",
@@ -29,6 +31,7 @@ const licenseStages = [
     eyebrow: "Antes de operar",
     title: "Autorizar a operação.",
     text: "Permite iniciar a atividade após a verificação das exigências e medidas de controle aplicáveis.",
+    contact: "Licença Ambiental de Operação (LAO)",
   },
 ] as const;
 
@@ -136,10 +139,13 @@ export default async function ServicePage({ params }: ServicePageProps) {
                 {licenseStages.map((stage) => (
                   <article className="license-stage" key={stage.code}>
                     <div className="license-stage-top"><span>{stage.step}</span><strong>{stage.code}</strong></div>
-                    <div>
+                    <div className="license-stage-copy">
                       <p>{stage.eyebrow}</p>
                       <h3>{stage.title}</h3>
-                      <span>{stage.text}</span>
+                      <span className="license-stage-description">{stage.text}</span>
+                      <ServiceWhatsAppLink service={stage.contact} className="license-stage-cta">
+                        Falar sobre a {stage.code} <span aria-hidden="true">↗</span>
+                      </ServiceWhatsAppLink>
                     </div>
                   </article>
                 ))}
