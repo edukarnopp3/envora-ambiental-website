@@ -129,17 +129,17 @@ test("links every service card to a dedicated official-source page", async () =>
     const response = await render(`/servicos/${path}`);
     assert.equal(response.status, 200);
     const serviceHtml = await response.text();
-    assert.match(serviceHtml, /Fontes oficiais consultadas/);
     if (path === "lap-lai-lao") {
       assert.match(serviceHtml, /Validar a viabilidade/);
       assert.match(serviceHtml, /Autorizar a instalação/);
       assert.match(serviceHtml, /Autorizar a operação/);
-      assert.match(serviceHtml, /Falar sobre a[\s\S]*?LAP/);
-      assert.match(serviceHtml, /Falar sobre a[\s\S]*?LAI/);
-      assert.match(serviceHtml, /Falar sobre a[\s\S]*?LAO/);
+      assert.match(serviceHtml, /class="license-stage"/);
+      assert.doesNotMatch(serviceHtml, /Falar sobre a/);
       assert.match(serviceHtml, /Você não precisa saber qual licença pedir/);
+      assert.match(serviceHtml, /Deixar a Envora resolver/);
       assert.match(serviceHtml, /A emissão da licença e o prazo de análise são decisões do órgão ambiental competente/);
     } else {
+      assert.match(serviceHtml, /Fontes oficiais consultadas/);
       assert.match(serviceHtml, /Informações para a análise/);
       assert.match(serviceHtml, /Limites do escopo/);
       assert.match(serviceHtml, /Serviços relacionados/);

@@ -112,42 +112,20 @@ export default async function ServicePage({ params }: ServicePageProps) {
       </header>
 
       <main>
-        <section className="service-hero">
-          <div className="service-breadcrumb"><Link href="/">Início</Link><span>/</span><Link href="/#solucoes">Serviços</Link><span>/</span><b>{service.shortTitle}</b></div>
-          <div className="service-hero-grid">
-            <div>
-              <p className="eyebrow">{service.eyebrow}</p>
-              <h1>{service.title}</h1>
-              <p className="service-hero-intro">{service.intro}</p>
-              <ServiceWhatsAppLink service={service.shortTitle} className="button service-primary">Quero resolver esta situação <span aria-hidden="true">↗</span></ServiceWhatsAppLink>
-            </div>
-            <div className="service-highlights" aria-label="Resumo do serviço">
-              {service.highlights.map((highlight, index) => <div key={highlight}><small>{String(index + 1).padStart(2, "0")}</small><strong>{highlight}</strong></div>)}
-            </div>
-          </div>
-        </section>
-
         {isLicenseJourney ? (
           <>
-            <section className="license-journey" aria-labelledby="license-journey-title">
-              <div className="license-journey-heading">
-                <p className="section-index">LAP · LAI · LAO</p>
-                <h2 id="license-journey-title">Da ideia à operação.</h2>
-                <p>Três etapas. Uma única condução técnica.</p>
-              </div>
+            <section className="license-journey" aria-label="Etapas do licenciamento ambiental">
+              <h1 className="visually-hidden">{service.title}</h1>
               <div className="license-stage-track" aria-label="Etapas do licenciamento ambiental">
                 {licenseStages.map((stage) => (
-                  <article className="license-stage" key={stage.code}>
+                  <ServiceWhatsAppLink service={stage.contact} className="license-stage" key={stage.code}>
                     <div className="license-stage-top"><span>{stage.step}</span><strong>{stage.code}</strong></div>
                     <div className="license-stage-copy">
                       <p>{stage.eyebrow}</p>
                       <h3>{stage.title}</h3>
                       <span className="license-stage-description">{stage.text}</span>
-                      <ServiceWhatsAppLink service={stage.contact} className="license-stage-cta">
-                        Falar sobre a {stage.code} <span aria-hidden="true">↗</span>
-                      </ServiceWhatsAppLink>
                     </div>
-                  </article>
+                  </ServiceWhatsAppLink>
                 ))}
               </div>
             </section>
@@ -158,7 +136,7 @@ export default async function ServicePage({ params }: ServicePageProps) {
                 <h2 id="license-handoff-title">Você não precisa saber qual licença pedir.</h2>
               </div>
               <div>
-                <p>Você explica o empreendimento. A Envora identifica a etapa, prepara a documentação técnica, protocola e acompanha o processo por você.</p>
+                <p>Você explica o que precisa. A Envora identifica a etapa, organiza a documentação, protocola e executa a condução técnica do processo por você.</p>
                 <ServiceWhatsAppLink service={service.shortTitle} className="button service-primary">Deixar a Envora resolver <span aria-hidden="true">↗</span></ServiceWhatsAppLink>
                 <small>A emissão da licença e o prazo de análise são decisões do órgão ambiental competente.</small>
               </div>
@@ -166,6 +144,21 @@ export default async function ServicePage({ params }: ServicePageProps) {
           </>
         ) : (
           <>
+            <section className="service-hero">
+              <div className="service-breadcrumb"><Link href="/">Início</Link><span>/</span><Link href="/#solucoes">Serviços</Link><span>/</span><b>{service.shortTitle}</b></div>
+              <div className="service-hero-grid">
+                <div>
+                  <p className="eyebrow">{service.eyebrow}</p>
+                  <h1>{service.title}</h1>
+                  <p className="service-hero-intro">{service.intro}</p>
+                  <ServiceWhatsAppLink service={service.shortTitle} className="button service-primary">Quero resolver esta situação <span aria-hidden="true">↗</span></ServiceWhatsAppLink>
+                </div>
+                <div className="service-highlights" aria-label="Resumo do serviço">
+                  {service.highlights.map((highlight, index) => <div key={highlight}><small>{String(index + 1).padStart(2, "0")}</small><strong>{highlight}</strong></div>)}
+                </div>
+              </div>
+            </section>
+
             <section className="service-explainer">
               <div className="service-applies">
                 <p className="section-index">Quando se aplica</p>
@@ -199,7 +192,7 @@ export default async function ServicePage({ params }: ServicePageProps) {
           </>
         )}
 
-        <aside className="service-sources" aria-labelledby="service-sources-title">
+        {!isLicenseJourney && <aside className="service-sources" aria-labelledby="service-sources-title">
           <div>
             <p className="section-index" id="service-sources-title">Fontes oficiais consultadas</p>
             <p>Conteúdo técnico resumido a partir de orientações publicadas pelos órgãos responsáveis. O enquadramento final depende dos dados do caso e da análise do órgão competente.</p>
@@ -209,7 +202,7 @@ export default async function ServicePage({ params }: ServicePageProps) {
               <li key={source.url}><a href={source.url} target="_blank" rel="noreferrer">{source.label}<span aria-hidden="true">↗</span></a></li>
             ))}
           </ul>
-        </aside>
+        </aside>}
 
         {!isLicenseJourney && <section className="related-services" aria-labelledby="related-services-title">
           <p className="section-index">Serviços relacionados</p>
