@@ -61,6 +61,7 @@ export default function HeroBackgroundVideo() {
           preload="metadata"
           poster="/hero-rio-poster.jpg"
         >
+          <source src="/hero-rio-mobile.mp4" type="video/mp4" media="(max-width: 767px)" />
           <source
             src="/hero-rio-4k.mp4"
             type="video/mp4"

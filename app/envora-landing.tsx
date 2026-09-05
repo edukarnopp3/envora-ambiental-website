@@ -277,8 +277,8 @@ export default function EnvoraLanding() {
           <div className="hero-scrim" aria-hidden="true" />
           <div className="hero-copy">
             <p className="eyebrow">Consultoria Ambiental · Joinville</p>
-            <h1>Clareza para seu projeto avançar.</h1>
-            <p className="hero-text hero-summary">Licenciamento, regularização e gestão ambiental com orientação técnica.</p>
+            <h1>Licenciamento, regularização e resíduos em Joinville.</h1>
+            <p className="hero-text hero-summary">Você explica o que precisa. A Envora conduz a parte técnica.</p>
             <div className="hero-actions">
               <WhatsAppLink className="button hero-primary" source="hero_whatsapp" message={baseMessage}>Falar no WhatsApp <span>↗</span></WhatsAppLink>
               <a
