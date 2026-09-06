@@ -10,12 +10,12 @@ const WHATSAPP_CONVERSION_LABEL =
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
-  title: "Consultoria Ambiental em Joinville | Envora",
+  title: "Envora | Consultoria Ambiental em Joinville",
   description:
     "Consultoria ambiental em Joinville para autos de infração e exigências ambientais, licenciamento, DANC, CCA, PGRS, PGRSS, PGRCC, resíduos e controle acústico.",
   alternates: { canonical: "/" },
   openGraph: {
-    title: "Consultoria Ambiental em Joinville | Envora",
+    title: "Envora | Consultoria Ambiental em Joinville",
     description:
       "Regularização com clareza técnica, escopo transparente e acompanhamento ambiental em Joinville.",
     type: "website",
@@ -26,7 +26,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Consultoria Ambiental em Joinville | Envora",
+    title: "Envora | Consultoria Ambiental em Joinville",
     description: "Licenciamento e regularização ambiental em Joinville.",
     images: ["/og.png"],
   },
