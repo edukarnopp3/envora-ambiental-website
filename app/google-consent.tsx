@@ -9,27 +9,13 @@ declare global {
     dataLayer?: Array<Record<string, unknown> | unknown[]>;
     gtag?: (...args: unknown[]) => void;
     envoraGoogleAdsConversionTarget?: string;
-    envoraGoogleTagInitialized?: boolean;
   }
 }
 
-export default function GoogleConsent({ tagId, conversionLabel }: { tagId: string; conversionLabel: string }) {
+export default function GoogleConsent() {
   const [consent, setConsent] = useState<"accepted" | "rejected" | null>(null);
 
   useEffect(() => {
-    if (!tagId || window.envoraGoogleTagInitialized) return;
-
-    window.envoraGoogleTagInitialized = true;
-
-    window.dataLayer = window.dataLayer || [];
-    window.gtag = (...args: unknown[]) => window.dataLayer?.push(args);
-    window.gtag("consent", "default", {
-      ad_storage: "denied",
-      analytics_storage: "denied",
-      ad_user_data: "denied",
-      ad_personalization: "denied",
-    });
-
     const stored = window.localStorage.getItem(CONSENT_KEY);
     let consentTimer: number | undefined;
     if (stored === "accepted" || stored === "rejected") {
@@ -37,7 +23,7 @@ export default function GoogleConsent({ tagId, conversionLabel }: { tagId: strin
     }
 
     if (stored === "accepted") {
-      window.gtag("consent", "update", {
+      window.gtag?.("consent", "update", {
         ad_storage: "granted",
         analytics_storage: "granted",
         ad_user_data: "granted",
@@ -45,22 +31,10 @@ export default function GoogleConsent({ tagId, conversionLabel }: { tagId: strin
       });
     }
 
-    window.gtag("js", new Date());
-    window.gtag("config", tagId);
-    if (conversionLabel) {
-      window.envoraGoogleAdsConversionTarget = `${tagId}/${conversionLabel}`;
-    }
-
-    const script = document.createElement("script");
-    script.id = "envora-google-tag";
-    script.async = true;
-    script.src = `https://www.googletagmanager.com/gtag/js?id=${encodeURIComponent(tagId)}`;
-    document.head.appendChild(script);
-
     return () => {
       if (consentTimer !== undefined) window.clearTimeout(consentTimer);
     };
-  }, [conversionLabel, tagId]);
+  }, []);
 
   function choose(value: "accepted" | "rejected") {
     window.localStorage.setItem(CONSENT_KEY, value);

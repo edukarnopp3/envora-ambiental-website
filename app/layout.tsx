@@ -1,7 +1,12 @@
 import type { Metadata, Viewport } from "next";
+import Script from "next/script";
 import "./globals.css";
 import GoogleConsent from "./google-consent";
 import { SITE_URL } from "./site-url";
+
+const GOOGLE_TAG_ID = process.env.NEXT_PUBLIC_GOOGLE_TAG_ID ?? "AW-18413899550";
+const WHATSAPP_CONVERSION_LABEL =
+  process.env.NEXT_PUBLIC_GOOGLE_ADS_WHATSAPP_CONVERSION_LABEL ?? "HU26COPXjOkcEJ6et8xE";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
@@ -99,16 +104,36 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="pt-BR">
+      <head>
+        <Script id="envora-google-consent-default" strategy="beforeInteractive">
+          {`window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+window.gtag = window.gtag || gtag;
+gtag('consent', 'default', {
+  ad_storage: 'denied',
+  analytics_storage: 'denied',
+  ad_user_data: 'denied',
+  ad_personalization: 'denied'
+});`}
+        </Script>
+        <Script
+          id="envora-google-tag"
+          src={`https://www.googletagmanager.com/gtag/js?id=${encodeURIComponent(GOOGLE_TAG_ID)}`}
+          strategy="afterInteractive"
+        />
+        <Script id="envora-google-tag-config" strategy="afterInteractive">
+          {`gtag('js', new Date());
+gtag('config', '${GOOGLE_TAG_ID}');
+window.envoraGoogleAdsConversionTarget = '${GOOGLE_TAG_ID}/${WHATSAPP_CONVERSION_LABEL}';`}
+        </Script>
+      </head>
       <body>
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessSchema).replace(/</g, "\\u003c") }}
         />
         {children}
-        <GoogleConsent
-          tagId={process.env.NEXT_PUBLIC_GOOGLE_TAG_ID ?? "AW-18413899550"}
-          conversionLabel={process.env.NEXT_PUBLIC_GOOGLE_ADS_WHATSAPP_CONVERSION_LABEL ?? "HU26COPXjOkcEJ6et8xE"}
-        />
+        <GoogleConsent />
       </body>
     </html>
   );
