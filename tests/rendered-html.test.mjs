@@ -138,6 +138,24 @@ test("links every service card to a dedicated official-source page", async () =>
       assert.match(serviceHtml, /Você não precisa saber qual licença pedir/);
       assert.match(serviceHtml, /Quero que a Envora resolva/);
       assert.match(serviceHtml, /A emissão da licença e o prazo de análise são decisões do órgão ambiental competente/);
+    } else if (["licenciamento-ambiental", "planos-de-gerenciamento-de-residuos", "auto-de-infracao-ambiental"].includes(path)) {
+      assert.match(serviceHtml, /Qual é a sua situação\?/);
+      assert.match(serviceHtml, /id="como-funciona"/);
+      assert.match(serviceHtml, /Dúvidas frequentes/);
+      assert.match(serviceHtml, /preload="none"/);
+      assert.doesNotMatch(serviceHtml, /<video[^>]*\bsrc=/);
+      assert.equal((serviceHtml.match(/<h1\b/g) ?? []).length, 1);
+      assert.equal((serviceHtml.match(/<details\b/g) ?? []).length, 5);
+      const contactLinks = [...serviceHtml.matchAll(/href="(https:\/\/wa\.me\/[^\"]+)"/g)];
+      assert.ok(contactLinks.length >= 8);
+      assert.doesNotMatch(serviceHtml, /Consultoria independente/);
+      assert.match(serviceHtml, /<video[^>]*autoPlay/);
+      for (const [, href] of contactLinks) {
+        const contact = new URL(href.replaceAll("&amp;", "&"));
+        assert.equal(contact.pathname, "/5547984551622");
+        assert.ok(contact.searchParams.get("text").includes("Envora"));
+      }
+      assert.match(serviceHtml, /Minha%20situa/);
     } else {
       assert.match(serviceHtml, /service-visual-hero/);
       assert.match(serviceHtml, /Você conta o que está acontecendo/);

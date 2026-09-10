@@ -6,6 +6,8 @@ import { notFound, redirect } from "next/navigation";
 import ServiceWhatsAppLink from "../../service-whatsapp-link";
 import { SITE_URL } from "../../site-url";
 import { servicePageBySlug, servicePages } from "../service-data";
+import ConversionLanding from "../conversion-landing";
+import { conversionPages } from "../conversion-data";
 
 type ServicePageProps = { params: Promise<{ slug: string }> };
 
@@ -171,6 +173,10 @@ export default async function ServicePage({ params }: ServicePageProps) {
     "@graph": [serviceSchema, breadcrumbSchema],
   };
   const isLicenseJourney = service.slug === "lap-lai-lao";
+  if (conversionPages[slug]) return <>
+    <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData).replace(/</g, "\\u003c") }} />
+    <ConversionLanding content={conversionPages[slug]} service={service.shortTitle} />
+  </>;
   const visual = serviceVisualBySlug[service.slug] ?? {
     image: "/licenciamento-ambiental-visual.webp",
     headline: service.title,

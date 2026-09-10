@@ -4,18 +4,20 @@ import type { CSSProperties } from "react";
 
 const WA_NUMBER = "5547984551622";
 
-export default function ServiceWhatsAppLink({ service, className, children, style }: {
+export default function ServiceWhatsAppLink({ service, className, children, style, situation, placement }: {
   service: string;
   className: string;
   children: React.ReactNode;
   style?: CSSProperties;
+  situation?: string;
+  placement?: string;
 }) {
-  const message = `Olá, encontrei a Envora pesquisando por ${service} em Joinville e gostaria de explicar minha situação.`;
+  const message = `Olá, gostaria de conversar com a Envora sobre ${service} em Joinville.${situation ? ` Minha situação: ${situation}.` : " Gostaria de explicar minha situação."}`;
   const href = `https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(message)}`;
 
   function trackClick() {
     window.dataLayer = window.dataLayer || [];
-    window.dataLayer.push({ event: "whatsapp_click", source: `pagina_servico_${service}` });
+    window.dataLayer.push({ event: "whatsapp_click", source: `pagina_servico_${service}`, situation: situation ?? "nao_informada", placement: placement ?? "service", page_path: window.location.pathname });
     if (window.gtag && window.envoraGoogleAdsConversionTarget) {
       window.gtag("event", "conversion", {
         send_to: window.envoraGoogleAdsConversionTarget,
