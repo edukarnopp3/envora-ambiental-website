@@ -20,25 +20,23 @@ export default function ConversionLanding({ content: c, service }: { content: Co
           <h1>{c.title}</h1>
           <p className={styles.lead}>{c.lead}</p>
           <ServiceWhatsAppLink service={service} placement="hero" className={styles.cta}>{c.action}<span aria-hidden="true">↗</span></ServiceWhatsAppLink>
-          <p className={styles.micro}>Pelo WhatsApp. Sem formulário para começar.</p>
         </div>
         <figure className={styles.heroImage}>
           <Image src={c.image} alt={c.imageAlt} fill priority sizes="(max-width: 800px) 100vw, 48vw" />
           <figcaption>Da sua operação à documentação técnica.<small>Imagem ilustrativa</small></figcaption>
         </figure>
       </section>
-      <div className={styles.signals}><span>Engenharia ambiental e sanitária</span><span>Atendimento em Joinville</span><span>Escopo definido antes da contratação</span></div>
 
       <section className={styles.section} aria-labelledby="situacao-titulo">
         <p className={styles.eyebrow}>Comece pelo que você precisa</p>
         <div className={styles.heading}><h2 id="situacao-titulo">Qual é a sua situação?</h2></div>
-        <div className={styles.cards}>{c.situations.map(s => <ServiceWhatsAppLink key={s.title} service={service} situation={s.title} placement="situation" className={styles.card}><h3>{s.title}</h3><span>Falar no WhatsApp <b aria-hidden="true">↗</b></span></ServiceWhatsAppLink>)}</div>
+        <div className={styles.cards}>{c.situations.map(s => <ServiceWhatsAppLink key={s.title} service={service} situation={s.title} placement="situation" className={styles.situationLink}><span>{s.title}</span><b aria-hidden="true">↗</b></ServiceWhatsAppLink>)}</div>
         <ServiceWhatsAppLink service={service} situation="Ainda não sei qual serviço preciso" placement="unsure" className={styles.textLink}>Ainda não sei qual opção escolher →</ServiceWhatsAppLink>
       </section>
 
       <section id="como-funciona" className={styles.institutional} aria-labelledby="envora-titulo">
         <ServiceFilm />
-        <div><p className={styles.eyebrow}>Deixe com a Envora</p><h2 id="envora-titulo">Você conta.<br />A gente cuida<br />da parte técnica.</h2><p>Da orientação aos documentos: a Envora conduz o trabalho contratado por você.</p><ServiceWhatsAppLink service={service} placement="institutional" className={styles.cta}>Quero resolver isso <span aria-hidden="true">↗</span></ServiceWhatsAppLink><small>Paisagem ilustrativa.</small></div>
+        <div><h2 id="envora-titulo" className={styles.handoffTitle}>Deixe com a Envora.</h2><p className={styles.handoffCopy}>Você conta.<br />A gente cuida da parte técnica.</p><ServiceWhatsAppLink service={service} placement="institutional" className={styles.cta}>Quero resolver isso <span aria-hidden="true">↗</span></ServiceWhatsAppLink></div>
       </section>
 
       <section id="duvidas" className={`${styles.section} ${styles.faq}`} aria-labelledby="duvidas-titulo"><div><h2 id="duvidas-titulo">Dúvidas frequentes</h2></div><div><details><summary>O que está incluído?</summary><ul>{c.deliverables.map(d => <li key={d}>{d}</li>)}</ul><p>{c.boundary}</p></details>{c.questions.map(q => <details key={q.question}><summary>{q.question}</summary><p>{q.answer}</p></details>)}</div></section>
