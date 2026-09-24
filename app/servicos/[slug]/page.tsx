@@ -82,6 +82,24 @@ const serviceVisualBySlug: Record<string, ServiceVisual> = {
     description: "Quando a AuA se aplica, a rota precisa ser precisa desde o início.",
     execution: "A partir da atividade e da estrutura, a Envora confirma o enquadramento, organiza as peças técnicas e conduz o processo de Autorização Ambiental.",
   },
+  "autorizacao-corte-vegetacao-auc": {
+    image: "/auc-visual.webp",
+    headline: "Vegetação nativa. Autorização antes da supressão.",
+    description: "A documentação começa pela leitura do local e da intervenção pretendida.",
+    execution: "A Envora organiza o enquadramento, o levantamento e as peças técnicas previstas para o processo de AuC, incluindo a verificação das etapas relacionadas ao Sinaflor quando aplicáveis.",
+  },
+  "projeto-recuperacao-area-degradada-prad": {
+    image: "/prad-visual.webp",
+    headline: "Recuperar começa por entender a área.",
+    description: "Diagnóstico e projeto precisam responder às condições reais do local.",
+    execution: "A Envora caracteriza a área, define medidas técnicas de recuperação e estrutura o PRAD conforme a exigência identificada, com documentação de acompanhamento prevista no escopo.",
+  },
+  "autorizacao-corte-arvores-isoladas-cai": {
+    image: "/cai-visual.webp",
+    headline: "Árvore isolada. Autorização específica.",
+    description: "Caracterize o indivíduo e a justificativa antes de solicitar o corte.",
+    execution: "A Envora organiza a avaliação técnica, a justificativa e os documentos para o pedido de autorização de árvores isoladas, conforme o procedimento aplicável.",
+  },
   "renovacao-e-regularizacao": {
     image: "/renovacao-regularizacao-visual.webp",
     headline: "Sua licença ainda representa sua operação?",

@@ -58,11 +58,14 @@ const services = [
   { code: "05", title: "Licenciamento ambiental", text: "Enquadramento, documentação técnica, protocolo e acompanhamento do processo.", featured: false, href: "/servicos/licenciamento-ambiental" },
   { code: "06", title: "Obtenção de LAP, LAI e LAO", text: "Preparação e acompanhamento das licenças prévia, de instalação e de operação.", featured: false, href: "/servicos/lap-lai-lao" },
   { code: "07", title: "Obtenção de Autorização Ambiental (AuA)", text: "Processo ambiental em ato único para atividades enquadradas nessa modalidade.", featured: false, href: "/servicos/autorizacao-ambiental-aua" },
-  { code: "08", title: "Renovação e regularização", text: "Análise da licença existente e organização da documentação para continuidade da operação.", featured: false, href: "/servicos/renovacao-e-regularizacao" },
-  { code: "09", title: "Gestão de condicionantes", text: "Organização de obrigações, evidências, prazos e entregas previstas na licença.", featured: false, href: "/servicos/gestao-de-condicionantes" },
-  { code: "10", title: "Planos de gerenciamento de resíduos", text: "PGRS, PGRSS e PGRCC: identificação do plano aplicável, elaboração e revisão para a rotina real.", featured: false, href: "/servicos/planos-de-gerenciamento-de-residuos" },
-  { code: "11", title: "MTR e documentação de resíduos", text: "Organização de manifestos e comprovantes de transporte e destinação.", featured: false, href: "/servicos/mtr-e-documentacao-de-residuos" },
-  { code: "12", title: "Laudo e controle acústico", text: "Avaliação técnica, documentação e protocolo conforme as exigências aplicáveis.", featured: false, href: "/servicos/laudo-e-controle-acustico" },
+  { code: "08", title: "Autorização para Corte de Vegetação (AuC)", text: "Análise do local e documentação técnica para solicitar a autorização de supressão de vegetação nativa.", featured: false, href: "/servicos/autorizacao-corte-vegetacao-auc" },
+  { code: "09", title: "Projeto de Recuperação de Área Degradada (PRAD)", text: "Diagnóstico da área e projeto técnico de recuperação para análise do órgão competente.", featured: false, href: "/servicos/projeto-recuperacao-area-degradada-prad" },
+  { code: "10", title: "Autorização para Corte de Árvores Isoladas (CAI)", text: "Avaliação de árvores isoladas e organização do pedido de autorização aplicável.", featured: false, href: "/servicos/autorizacao-corte-arvores-isoladas-cai" },
+  { code: "11", title: "Renovação e regularização", text: "Análise da licença existente e organização da documentação para continuidade da operação.", featured: false, href: "/servicos/renovacao-e-regularizacao" },
+  { code: "12", title: "Gestão de condicionantes", text: "Organização de obrigações, evidências, prazos e entregas previstas na licença.", featured: false, href: "/servicos/gestao-de-condicionantes" },
+  { code: "13", title: "Planos de gerenciamento de resíduos", text: "PGRS, PGRSS e PGRCC: identificação do plano aplicável, elaboração e revisão para a rotina real.", featured: false, href: "/servicos/planos-de-gerenciamento-de-residuos" },
+  { code: "14", title: "MTR e documentação de resíduos", text: "Organização de manifestos e comprovantes de transporte e destinação.", featured: false, href: "/servicos/mtr-e-documentacao-de-residuos" },
+  { code: "15", title: "Laudo e controle acústico", text: "Avaliação técnica, documentação e protocolo conforme as exigências aplicáveis.", featured: false, href: "/servicos/laudo-e-controle-acustico" },
 ];
 
 const situations = [
