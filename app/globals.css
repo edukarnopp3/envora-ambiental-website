@@ -82,7 +82,7 @@ html.splash-complete .hero-logo-3d,html.splash-complete .hero-logo-stage::after,
 .hero-focus-foot span { color:var(--brand-soft); font-size:10px; font-weight:800; letter-spacing:.14em; text-transform:uppercase; }
 .hero-focus-foot b { max-width:210px; text-align:right; font:600 13px/1.35 "Manrope",sans-serif; }
 .intro-section,.process-section { padding:110px 7vw; }
-.institutional-section { display:grid; grid-template-columns:minmax(280px,.82fr) minmax(0,1.18fr); gap:9vw; align-items:center; padding:100px 7vw; background:white; }
+.institutional-section { display:grid; grid-template-columns:minmax(280px,.82fr) minmax(0,1.18fr); gap:9vw; align-items:center; padding:100px 7vw; background:var(--paper); }
 .institutional-section h2 { max-width:680px; margin:0; font:700 clamp(40px,4.8vw,72px)/1.02 "Manrope",sans-serif; letter-spacing:-.06em; text-wrap:balance; }
 .institutional-copy>p { max-width:720px; margin:0; color:rgba(29,36,34,.76); font-size:clamp(17px,1.45vw,21px); line-height:1.65; }
 .institutional-copy>p+p { margin-top:20px; color:rgba(29,36,34,.6); font-size:16px; }

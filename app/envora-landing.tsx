@@ -192,8 +192,20 @@ export default function EnvoraLanding() {
     let resetTimer = 0;
     let locked = false;
     let scrollAnimationFrame = 0;
+    let restoreScrollBehavior: (() => void) | null = null;
 
     function animateScrollTo(target: number) {
+      window.cancelAnimationFrame(scrollAnimationFrame);
+      restoreScrollBehavior?.();
+
+      const root = document.documentElement;
+      const previousScrollBehavior = root.style.scrollBehavior;
+      root.style.scrollBehavior = "auto";
+      restoreScrollBehavior = () => {
+        root.style.scrollBehavior = previousScrollBehavior;
+        restoreScrollBehavior = null;
+      };
+
       const start = window.scrollY;
       const distance = target - start;
       const duration = 460;
@@ -205,10 +217,14 @@ export default function EnvoraLanding() {
           ? 4 * progress * progress * progress
           : 1 - Math.pow(-2 * progress + 2, 3) / 2;
         window.scrollTo(0, start + distance * eased);
-        if (progress < 1) scrollAnimationFrame = window.requestAnimationFrame(step);
+        if (progress < 1) {
+          scrollAnimationFrame = window.requestAnimationFrame(step);
+        } else {
+          restoreScrollBehavior?.();
+          scrollAnimationFrame = 0;
+        }
       }
 
-      window.cancelAnimationFrame(scrollAnimationFrame);
       scrollAnimationFrame = window.requestAnimationFrame(step);
     }
 
@@ -221,8 +237,28 @@ export default function EnvoraLanding() {
       const panels = Array.from(document.querySelectorAll<HTMLElement>("[data-scroll-panel]"));
       if (!panels.length) return;
 
-      const headerOffset = 88;
+      const headerOffset = document.querySelector<HTMLElement>(".topbar")?.offsetHeight ?? 88;
       const direction = Math.sign(event.deltaY);
+      const current = window.scrollY;
+      if (!direction) return;
+
+      const naturalPanel = panels.find((panel) => {
+        if (!panel.hasAttribute("data-scroll-natural")) return false;
+        const start = Math.max(0, panel.offsetTop - headerOffset);
+        const end = Math.max(start, panel.offsetTop + panel.offsetHeight - window.innerHeight);
+        return current >= start && current <= end;
+      });
+
+      if (naturalPanel) {
+        const start = Math.max(0, naturalPanel.offsetTop - headerOffset);
+        const end = Math.max(start, naturalPanel.offsetTop + naturalPanel.offsetHeight - window.innerHeight);
+        const edgeThreshold = Math.max(40, Math.min(120, Math.abs(event.deltaY)));
+        const roomToScrollNaturally = direction > 0
+          ? end - current > edgeThreshold
+          : current - start > edgeThreshold;
+
+        if (roomToScrollNaturally) return;
+      }
 
       event.preventDefault();
       if (locked) return;
@@ -236,13 +272,13 @@ export default function EnvoraLanding() {
       const stops = panels.flatMap((panel) => {
         const start = Math.max(0, panel.offsetTop - headerOffset);
         const end = Math.max(start, panel.offsetTop + panel.offsetHeight - window.innerHeight);
+        if (panel.hasAttribute("data-scroll-natural")) return [start, end];
         if (end - start <= 40) return [start];
         const panelStops = [start];
         for (let stop = start + viewportStep; stop < end - 40; stop += viewportStep) panelStops.push(stop);
         panelStops.push(end);
         return panelStops;
       }).filter((stop, index, all) => index === 0 || Math.abs(stop - all[index - 1]) > 4);
-      const current = window.scrollY;
       const nextStop = direction > 0
         ? stops.find((stop) => stop > current + 8)
         : [...stops].reverse().find((stop) => stop < current - 8);
@@ -260,6 +296,7 @@ export default function EnvoraLanding() {
       window.removeEventListener("wheel", onWheel);
       window.clearTimeout(resetTimer);
       window.cancelAnimationFrame(scrollAnimationFrame);
+      restoreScrollBehavior?.();
     };
   }, []);
 
@@ -321,7 +358,7 @@ export default function EnvoraLanding() {
           </div>
         </section>
 
-        <section className="intro-section" id="solucoes" data-scroll-panel>
+        <section className="intro-section" id="solucoes" data-scroll-panel data-scroll-natural>
           <div className="section-index">02 — Serviços</div>
           <div className="section-heading section-heading-solo"><h2>Serviços ambientais<br />para sua atividade.</h2></div>
           <div className="service-categories">
