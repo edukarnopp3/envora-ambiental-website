@@ -51,22 +51,29 @@ const sectors = [
 ];
 
 const services = [
-  { code: "01", title: "Autos de infração e exigências ambientais", text: "Análise técnica do documento, levantamento do que foi solicitado e organização da resposta dentro do escopo profissional.", featured: true, href: "/servicos/auto-de-infracao-ambiental" },
-  { code: "02", title: "Diagnóstico e enquadramento ambiental", text: "Análise da atividade, porte, localização e situação documental para definir a rota aplicável.", featured: false, href: "/servicos/diagnostico-e-enquadramento-ambiental" },
-  { code: "03", title: "DANC", text: "Preparação e acompanhamento da Declaração de Atividade Não Constante.", featured: false, href: "/servicos/danc" },
-  { code: "04", title: "CCA", text: "Certidão de Conformidade Ambiental para atividades abaixo do porte de licenciamento.", featured: false, href: "/servicos/cca" },
-  { code: "05", title: "Licenciamento ambiental", text: "Enquadramento, documentação técnica, protocolo e acompanhamento do processo.", featured: false, href: "/servicos/licenciamento-ambiental" },
-  { code: "06", title: "Obtenção de LAP, LAI e LAO", text: "Preparação e acompanhamento das licenças prévia, de instalação e de operação.", featured: false, href: "/servicos/lap-lai-lao" },
-  { code: "07", title: "Obtenção de Autorização Ambiental (AuA)", text: "Processo ambiental em ato único para atividades enquadradas nessa modalidade.", featured: false, href: "/servicos/autorizacao-ambiental-aua" },
-  { code: "08", title: "Autorização para Corte de Vegetação (AuC)", text: "Análise do local e documentação técnica para solicitar a autorização de supressão de vegetação nativa.", featured: false, href: "/servicos/autorizacao-corte-vegetacao-auc" },
-  { code: "09", title: "Projeto de Recuperação de Área Degradada (PRAD)", text: "Diagnóstico da área e projeto técnico de recuperação para análise do órgão competente.", featured: false, href: "/servicos/projeto-recuperacao-area-degradada-prad" },
-  { code: "10", title: "Autorização para Corte de Árvores Isoladas (CAI)", text: "Avaliação de árvores isoladas e organização do pedido de autorização aplicável.", featured: false, href: "/servicos/autorizacao-corte-arvores-isoladas-cai" },
-  { code: "11", title: "Renovação e regularização", text: "Análise da licença existente e organização da documentação para continuidade da operação.", featured: false, href: "/servicos/renovacao-e-regularizacao" },
-  { code: "12", title: "Gestão de condicionantes", text: "Organização de obrigações, evidências, prazos e entregas previstas na licença.", featured: false, href: "/servicos/gestao-de-condicionantes" },
-  { code: "13", title: "Planos de gerenciamento de resíduos", text: "PGRS, PGRSS e PGRCC: identificação do plano aplicável, elaboração e revisão para a rotina real.", featured: false, href: "/servicos/planos-de-gerenciamento-de-residuos" },
-  { code: "14", title: "MTR e documentação de resíduos", text: "Organização de manifestos e comprovantes de transporte e destinação.", featured: false, href: "/servicos/mtr-e-documentacao-de-residuos" },
-  { code: "15", title: "Laudo e controle acústico", text: "Avaliação técnica, documentação e protocolo conforme as exigências aplicáveis.", featured: false, href: "/servicos/laudo-e-controle-acustico" },
+  { code: "01", group: "autos", title: "Autos de infração e exigências ambientais", text: "Análise técnica do documento, levantamento do que foi solicitado e organização da resposta dentro do escopo profissional.", featured: true, href: "/servicos/auto-de-infracao-ambiental" },
+  { code: "02", group: "licenciamento", title: "Diagnóstico e enquadramento ambiental", text: "Análise da atividade, porte, localização e situação documental para definir a rota aplicável.", featured: false, href: "/servicos/diagnostico-e-enquadramento-ambiental" },
+  { code: "03", group: "licenciamento", title: "DANC", text: "Preparação e acompanhamento da Declaração de Atividade Não Constante.", featured: false, href: "/servicos/danc" },
+  { code: "04", group: "licenciamento", title: "CCA", text: "Certidão de Conformidade Ambiental para atividades abaixo do porte de licenciamento.", featured: false, href: "/servicos/cca" },
+  { code: "05", group: "licenciamento", title: "Licenciamento ambiental", text: "Enquadramento, documentação técnica, protocolo e acompanhamento do processo.", featured: false, href: "/servicos/licenciamento-ambiental" },
+  { code: "06", group: "licenciamento", title: "Obtenção de LAP, LAI e LAO", text: "Preparação e acompanhamento das licenças prévia, de instalação e de operação.", featured: false, href: "/servicos/lap-lai-lao" },
+  { code: "07", group: "licenciamento", title: "Obtenção de Autorização Ambiental (AuA)", text: "Processo ambiental em ato único para atividades enquadradas nessa modalidade.", featured: false, href: "/servicos/autorizacao-ambiental-aua" },
+  { code: "08", group: "licenciamento", title: "Renovação e regularização", text: "Análise da licença existente e organização da documentação para continuidade da operação.", featured: false, href: "/servicos/renovacao-e-regularizacao" },
+  { code: "09", group: "licenciamento", title: "Gestão de condicionantes", text: "Organização de obrigações, evidências, prazos e entregas previstas na licença.", featured: false, href: "/servicos/gestao-de-condicionantes" },
+  { code: "10", group: "vegetacao", title: "Autorização para Corte de Vegetação (AuC)", text: "Análise do local e documentação técnica para solicitar a autorização de supressão de vegetação nativa.", featured: false, href: "/servicos/autorizacao-corte-vegetacao-auc" },
+  { code: "11", group: "vegetacao", title: "Projeto de Recuperação de Área Degradada (PRAD)", text: "Diagnóstico da área e projeto técnico de recuperação para análise do órgão competente.", featured: false, href: "/servicos/projeto-recuperacao-area-degradada-prad" },
+  { code: "12", group: "vegetacao", title: "Autorização para Corte de Árvores Isoladas (CAI)", text: "Avaliação de árvores isoladas e organização do pedido de autorização aplicável.", featured: false, href: "/servicos/autorizacao-corte-arvores-isoladas-cai" },
+  { code: "13", group: "residuos", title: "Planos de gerenciamento de resíduos", text: "PGRS, PGRSS e PGRCC: identificação do plano aplicável, elaboração e revisão para a rotina real.", featured: false, href: "/servicos/planos-de-gerenciamento-de-residuos" },
+  { code: "14", group: "residuos", title: "MTR e documentação de resíduos", text: "Organização de manifestos e comprovantes de transporte e destinação.", featured: false, href: "/servicos/mtr-e-documentacao-de-residuos" },
+  { code: "15", group: "residuos", title: "Laudo e controle acústico", text: "Avaliação técnica, documentação e protocolo conforme as exigências aplicáveis.", featured: false, href: "/servicos/laudo-e-controle-acustico" },
 ];
+
+const serviceGroups = [
+  { id: "autos", title: "Autos e exigências" },
+  { id: "licenciamento", title: "Licenciamento e regularização" },
+  { id: "vegetacao", title: "Vegetação e recuperação" },
+  { id: "residuos", title: "Resíduos e controle técnico" },
+].map((group) => ({ ...group, items: services.filter((service) => service.group === group.id) }));
 
 const situations = [
   "Não sei se preciso de licença",
@@ -317,14 +324,24 @@ export default function EnvoraLanding() {
         <section className="intro-section" id="solucoes" data-scroll-panel>
           <div className="section-index">02 — Serviços</div>
           <div className="section-heading section-heading-solo"><h2>Serviços ambientais<br />para sua atividade.</h2></div>
-          <div className="service-grid">
-            {services.map((service) => {
-              const cardContent = <><span>{service.code}</span><h3>{service.title}</h3><p>{service.text}</p><b>↗</b></>;
-              const className = `service-card${service.featured ? " featured" : ""}`;
-              return service.href
-                ? <Link key={service.code} className={className} href={service.href}>{cardContent}</Link>
-                : <WhatsAppLink key={service.code} className={className} source={`servico_${service.title}`} message={`Olá, encontrei a Envora pesquisando por consultoria ambiental em Joinville. Preciso de informações sobre ${service.title}.`}>{cardContent}</WhatsAppLink>;
-            })}
+          <div className="service-categories">
+            {serviceGroups.map((group) => (
+              <section key={group.id} className="service-category" aria-labelledby={`service-category-${group.id}`}>
+                <div className="service-category-heading">
+                  <h3 id={`service-category-${group.id}`}>{group.title}</h3>
+                  <span>{String(group.items.length).padStart(2, "0")} {group.items.length === 1 ? "serviço" : "serviços"}</span>
+                </div>
+                <div className="service-grid">
+                  {group.items.map((service) => {
+                    const cardContent = <><span>{service.code}</span><h3>{service.title}</h3><p>{service.text}</p><b>↗</b></>;
+                    const className = `service-card${service.featured ? " featured" : ""}`;
+                    return service.href
+                      ? <Link key={service.code} className={className} href={service.href}>{cardContent}</Link>
+                      : <WhatsAppLink key={service.code} className={className} source={`servico_${service.title}`} message={`Olá, encontrei a Envora pesquisando por consultoria ambiental em Joinville. Preciso de informações sobre ${service.title}.`}>{cardContent}</WhatsAppLink>;
+                  })}
+                </div>
+              </section>
+            ))}
           </div>
         </section>
 

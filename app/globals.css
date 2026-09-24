@@ -95,6 +95,12 @@ html.splash-complete .hero-logo-3d,html.splash-complete .hero-logo-stage::after,
 .section-heading h2,.sectors-head h2,.triage-copy h2,.faq-section h2 { font-size:clamp(38px,4.4vw,68px); }
 .section-heading p,.sectors-head p { margin:0; max-width:410px; color:rgba(29,36,34,.62); line-height:1.75; }
 .service-grid { display:grid; grid-template-columns:1fr 1fr; margin-top:70px; border-top:1px solid var(--line); border-left:1px solid var(--line); }
+.service-categories { margin-top:56px; }
+.service-category + .service-category { margin-top:72px; }
+.service-category-heading { display:flex; align-items:baseline; justify-content:space-between; gap:20px; padding-bottom:16px; border-bottom:1px solid var(--line); }
+.service-category-heading h3 { margin:0; font:700 clamp(24px,2.3vw,32px)/1.2 "Manrope",sans-serif; letter-spacing:-.04em; }
+.service-category-heading span { color:rgba(29,36,34,.58); font-size:12px; font-weight:700; }
+.service-category .service-grid { margin-top:20px; }
 .service-card { position:relative; display:grid; grid-template-columns:42px 1fr 24px; align-content:center; gap:10px 20px; min-height:154px; padding:28px 34px; border-right:1px solid var(--line); border-bottom:1px solid var(--line); transition:background .2s,color .2s; }
 .service-card>span { color:var(--brand); font-size:11px; letter-spacing:.1em; }
 .service-card h3 { margin:0; font-family:"Manrope"; font-size:20px; line-height:1.25; }
@@ -448,6 +454,12 @@ footer .brand img { width:min(100%,520px); }
   .section-heading,.sectors-head { gap:25px; }
   .section-heading h2,.sectors-head h2,.triage-copy h2,.faq-section h2 { font-size:39px; }
   .service-grid,.sector-list,.process-list { margin-top:45px; }
+  .service-categories { margin-top:40px; }
+  .service-category + .service-category { margin-top:52px; }
+  .service-category .service-grid { margin-top:16px; }
+  .service-category-heading { align-items:flex-start; gap:14px; padding-bottom:13px; }
+  .service-category-heading h3 { font-size:25px; }
+  .service-category-heading span { flex:0 0 auto; padding-top:5px; font-size:11px; }
   .service-card { min-height:0; padding:24px 20px; grid-template-columns:34px 1fr 20px; gap:9px 14px; }
   .service-card h3 { font-size:18px; }
   .service-card.featured { grid-template-columns:34px 1fr 20px; }
