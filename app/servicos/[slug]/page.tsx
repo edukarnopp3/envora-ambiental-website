@@ -89,9 +89,9 @@ const serviceVisualBySlug: Record<string, ServiceVisual> = {
     execution: "A Envora organiza o enquadramento, o levantamento e as peças técnicas previstas para o processo de AuC, incluindo a verificação das etapas relacionadas ao Sinaflor quando aplicáveis.",
   },
   "projeto-recuperacao-area-degradada-prad": {
-    image: "/prad-visual.webp",
+    image: "/prad-recuperacao-etapas.webp",
     headline: "Recuperar começa por entender a área.",
-    description: "Diagnóstico e projeto precisam responder às condições reais do local.",
+    description: "Da área alterada à implantação das medidas e à vegetação recomposta: o projeto organiza as etapas da recuperação.",
     execution: "A Envora caracteriza a área, define medidas técnicas de recuperação e estrutura o PRAD conforme a exigência identificada, com documentação de acompanhamento prevista no escopo.",
   },
   "autorizacao-corte-arvores-isoladas-cai": {

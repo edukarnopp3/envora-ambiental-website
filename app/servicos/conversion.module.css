@@ -28,16 +28,17 @@
 .process .cta { background:var(--brand-soft); color:var(--forest-dark); }
 .card>span { display:flex; justify-content:space-between; align-items:center; min-height:60px; padding:14px 18px; background:var(--brand); color:white; border-radius:4px; }
 @media(max-width:800px) { .page .cta { width:100%; min-width:0; min-height:68px; padding:18px 22px; }.sticky .cta { min-height:60px; padding:14px 20px; }.sticky { background:var(--paper); } }
-.page .cta { width:100%; min-width:0; min-height:96px; padding:24px 32px; font-size:1.35rem; }
+.page .cta { width:100%; min-width:0; min-height:108px; padding:26px 34px; font-size:1.45rem; }
 .closing .cta { max-width:850px; }
 .card { gap:24px; justify-content:space-between; }
 .card>span { min-height:84px; font-size:1.08rem; }
 .faq details ul { padding-left:20px; color:#52645c; }
-@media(max-width:800px) { .page .cta { min-height:84px; padding:22px; font-size:1.2rem; }.sticky .cta { min-height:68px; padding:16px 22px; }.card>span { min-height:76px; } }
+@media(max-width:800px) { .page .cta { min-height:92px; padding:22px; font-size:1.25rem; }.sticky .cta { min-height:76px; padding:18px 24px; }.card>span { min-height:76px; } }
 .situationLink { display:flex; align-items:center; justify-content:space-between; gap:24px; min-height:120px; padding:28px 30px; background:var(--brand); color:white; border-radius:4px; font:700 1.35rem/1.4 Manrope,Arial,sans-serif; }
 .situationLink:hover { background:var(--forest-dark); }
 .situationLink b { font-size:1.6rem; }
 .page .handoffTitle { color:var(--brand); font-size:clamp(2.7rem,4.3vw,4.5rem); margin-bottom:26px; }
 .institutional .handoffCopy { color:var(--forest); font-size:clamp(1.2rem,1.8vw,1.6rem); margin:0 0 30px; }
+.page .textLink { display:inline-flex; align-items:center; min-height:48px; font-size:1rem; }
 @media(max-width:800px) { .situationLink { min-height:100px; padding:24px; font-size:1.2rem; } }
 @media(prefers-reduced-motion:reduce) { .page * { scroll-behavior:auto; transition:none; } }
