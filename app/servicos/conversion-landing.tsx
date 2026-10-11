@@ -19,7 +19,7 @@ export default function ConversionLanding({ content: c, service }: { content: Co
           <p className={styles.eyebrow}>Envora Consultoria Ambiental · Joinville</p>
           <h1>{c.title}</h1>
           <p className={styles.lead}>{c.lead}</p>
-          <ServiceWhatsAppLink service={service} placement="hero" className={styles.cta}>{c.action}<span aria-hidden="true">↗</span></ServiceWhatsAppLink>
+          <ServiceWhatsAppLink service={service} contextPrompt={c.contactPrompt} placement="hero" className={styles.cta}>{c.action}<span aria-hidden="true">↗</span></ServiceWhatsAppLink>
         </div>
         <figure className={styles.heroImage}>
           <Image src={c.image} alt={c.imageAlt} fill priority sizes="(max-width: 800px) 100vw, 48vw" />
@@ -30,9 +30,12 @@ export default function ConversionLanding({ content: c, service }: { content: Co
       <section className={styles.section} aria-labelledby="situacao-titulo">
         <p className={styles.eyebrow}>Comece pelo que você precisa</p>
         <div className={styles.heading}><h2 id="situacao-titulo">Qual é a sua situação?</h2></div>
-        <div className={styles.cards}>{c.situations.map(s => <ServiceWhatsAppLink key={s.title} service={service} situation={s.title} placement="situation" className={styles.situationLink}><span>{s.title}</span><b aria-hidden="true">↗</b></ServiceWhatsAppLink>)}</div>
+        <div className={styles.cards}>{c.situations.map(s => <ServiceWhatsAppLink key={s.title} service={service} contextPrompt={c.contactPrompt} situation={s.title} placement="situation" className={styles.situationLink}><span>{s.title}<small className={styles.situationDescription}>{s.text}</small></span><b aria-hidden="true">↗</b></ServiceWhatsAppLink>)}</div>
         <ServiceWhatsAppLink service={service} situation="Ainda não sei qual serviço preciso" placement="unsure" className={styles.textLink}>Ainda não sei qual opção escolher →</ServiceWhatsAppLink>
       </section>
+
+      {c.continuity && <section className={styles.section} aria-labelledby="continuidade-titulo"><div className={styles.heading}><h2 id="continuidade-titulo">{c.continuity.title}</h2><p>{c.continuity.text}</p></div><ul>{c.continuity.items.map(item => <li key={item}>{item}</li>)}</ul><Link className={styles.textLink} href="/servicos/gestao-de-condicionantes">Conhecer o acompanhamento ambiental →</Link></section>}
+      {c.contactPrompt && <section className={`${styles.section} ${styles.documents}`} aria-labelledby="primeiro-contato-titulo"><h2 id="primeiro-contato-titulo">O que informar no primeiro contato</h2><ul>{c.documents.map(item => <li key={item}>{item}</li>)}</ul><p>Comece com as informações que já tem. A Envora indica os documentos necessários para definir a proposta.</p></section>}
 
       <section id="como-funciona" className={styles.institutional} aria-labelledby="envora-titulo">
         <ServiceFilm />
@@ -40,9 +43,9 @@ export default function ConversionLanding({ content: c, service }: { content: Co
       </section>
 
       <section id="duvidas" className={`${styles.section} ${styles.faq}`} aria-labelledby="duvidas-titulo"><div><h2 id="duvidas-titulo">Dúvidas frequentes</h2></div><div><details><summary>O que está incluído?</summary><ul>{c.deliverables.map(d => <li key={d}>{d}</li>)}</ul><p>{c.boundary}</p></details>{c.questions.map(q => <details key={q.question}><summary>{q.question}</summary><p>{q.answer}</p></details>)}</div></section>
-      <section className={styles.closing}><p className={styles.eyebrow}>O próximo passo começa com contexto</p><h2>Conte o que sua empresa precisa resolver.</h2><ServiceWhatsAppLink service={service} placement="closing" className={styles.cta}>{c.action}<span aria-hidden="true">↗</span></ServiceWhatsAppLink><p>O primeiro contato define a demanda. A análise técnica completa segue o escopo contratado.</p></section>
+      <section className={styles.closing}><p className={styles.eyebrow}>O próximo passo começa com contexto</p><h2>Conte o que sua empresa precisa resolver.</h2><ServiceWhatsAppLink service={service} contextPrompt={c.contactPrompt} placement="closing" className={styles.cta}>{c.action}<span aria-hidden="true">↗</span></ServiceWhatsAppLink><p>O primeiro contato define a demanda. A análise técnica completa segue o escopo contratado.</p><a className={styles.textLink} href="mailto:envoraambiental@gmail.com">Prefere e-mail? Escreva para a Envora</a></section>
     </main>
     <footer className={styles.footer}><Image src="/envora-logo-horizontal-dark.svg" alt="Envora Consultoria Ambiental" width={220} height={54} /><div><strong>Joinville · Santa Catarina</strong><a href="tel:+5547984551622">(47) 98455-1622</a><a href="mailto:envoraambiental@gmail.com">envoraambiental@gmail.com</a></div><div><Link href="/#solucoes">Todos os serviços</Link><Link href="/privacidade">Privacidade</Link></div></footer>
-    <div className={styles.sticky}><ServiceWhatsAppLink service={service} placement="mobile_sticky" className={styles.cta}>{c.action}<span aria-hidden="true">↗</span></ServiceWhatsAppLink></div>
+    <div className={styles.sticky}><ServiceWhatsAppLink service={service} contextPrompt={c.contactPrompt} placement="mobile_sticky" className={styles.cta}>{c.action}<span aria-hidden="true">↗</span></ServiceWhatsAppLink></div>
   </div>;
 }
