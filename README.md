@@ -28,11 +28,10 @@ O comando `npm test` também gera o build de produção e testa o HTML servido p
 
 ## Variáveis opcionais
 
-As integrações de medição são desativadas quando estas variáveis não existem:
-
-- `NEXT_PUBLIC_GOOGLE_TAG_ID`
-- `NEXT_PUBLIC_GOOGLE_ADS_WHATSAPP_CONVERSION_LABEL`
+- `NEXT_PUBLIC_GOOGLE_TAG_ID` (padrão: `AW-18413899550`)
 - `NEXT_PUBLIC_SITE_URL` (use o domínio definitivo quando ele for conectado)
+
+Os cliques para abrir o WhatsApp são registrados como interações no `dataLayer`, mas não como conversões ou leads. Marque uma conversão como principal somente depois de configurar um sinal confirmado, como o envio de um formulário ou a importação de leads qualificados.
 
 Use um arquivo `.env.local` apenas no computador ou configure as variáveis no provedor de hospedagem. Arquivos `.env*` são ignorados pelo Git e nunca devem conter credenciais versionadas.
 

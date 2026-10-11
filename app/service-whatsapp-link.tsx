@@ -18,13 +18,6 @@ export default function ServiceWhatsAppLink({ service, className, children, styl
   function trackClick() {
     window.dataLayer = window.dataLayer || [];
     window.dataLayer.push({ event: "whatsapp_click", source: `pagina_servico_${service}`, situation: situation ?? "nao_informada", placement: placement ?? "service", page_path: window.location.pathname });
-    if (window.gtag && window.envoraGoogleAdsConversionTarget) {
-      window.gtag("event", "conversion", {
-        send_to: window.envoraGoogleAdsConversionTarget,
-        event_callback: () => undefined,
-        event_timeout: 1500,
-      });
-    }
   }
 
   return <a className={className} style={style} href={href} target="_blank" rel="noreferrer" onClick={trackClick}>{children}</a>;

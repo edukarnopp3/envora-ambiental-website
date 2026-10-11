@@ -9,22 +9,12 @@ const WHATSAPP_URL =
 declare global {
   interface Window {
     dataLayer?: Array<Record<string, unknown> | unknown[]>;
-    gtag?: (...args: unknown[]) => void;
-    envoraGoogleAdsConversionTarget?: string;
   }
 }
 
 function recordClick(channel: "whatsapp" | "site" | "email") {
   window.dataLayer = window.dataLayer || [];
   window.dataLayer.push({ event: "links_hub_click", channel });
-
-  if (channel === "whatsapp" && window.gtag && window.envoraGoogleAdsConversionTarget) {
-    window.gtag("event", "conversion", {
-      send_to: window.envoraGoogleAdsConversionTarget,
-      event_callback: () => undefined,
-      event_timeout: 1500,
-    });
-  }
 }
 
 const links = [

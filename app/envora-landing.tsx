@@ -10,21 +10,12 @@ const WA_NUMBER = "5547984551622";
 declare global {
   interface Window {
     dataLayer?: Array<Record<string, unknown> | unknown[]>;
-    gtag?: (...args: unknown[]) => void;
-    envoraGoogleAdsConversionTarget?: string;
   }
 }
 
 function track(event: string, details: Record<string, unknown> = {}) {
   window.dataLayer = window.dataLayer || [];
   window.dataLayer.push({ event, ...details });
-  if ((event === "whatsapp_click" || event === "generate_lead") && window.gtag && window.envoraGoogleAdsConversionTarget) {
-    window.gtag("event", "conversion", {
-      send_to: window.envoraGoogleAdsConversionTarget,
-      event_callback: () => undefined,
-      event_timeout: 1500,
-    });
-  }
 }
 
 function wa(message: string) {

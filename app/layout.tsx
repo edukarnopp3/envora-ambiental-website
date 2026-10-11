@@ -5,8 +5,6 @@ import GoogleConsent from "./google-consent";
 import { SITE_URL } from "./site-url";
 
 const GOOGLE_TAG_ID = process.env.NEXT_PUBLIC_GOOGLE_TAG_ID ?? "AW-18413899550";
-const WHATSAPP_CONVERSION_LABEL =
-  process.env.NEXT_PUBLIC_GOOGLE_ADS_WHATSAPP_CONVERSION_LABEL ?? "HU26COPXjOkcEJ6et8xE";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
@@ -126,8 +124,7 @@ gtag('consent', 'default', {
         />
         <Script id="envora-google-tag-config" strategy="afterInteractive">
           {`gtag('js', new Date());
-gtag('config', '${GOOGLE_TAG_ID}');
-window.envoraGoogleAdsConversionTarget = '${GOOGLE_TAG_ID}/${WHATSAPP_CONVERSION_LABEL}';`}
+gtag('config', '${GOOGLE_TAG_ID}');`}
         </Script>
       </head>
       <body>

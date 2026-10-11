@@ -23,16 +23,16 @@ export default function PrivacyPage() {
         <p>A Envora Consultoria Ambiental, representada por Eduardo Karnopp, é responsável pelo tratamento dos dados descritos nesta política. Solicitações relacionadas à privacidade podem ser enviadas para <a href="mailto:envoraambiental@gmail.com">envoraambiental@gmail.com</a>.</p>
 
         <h2>2. Dados informados pelo usuário</h2>
-        <p>Podemos tratar nome, telefone, empresa ou atividade, cidade e as informações que você decidir compartilhar durante a triagem. O formulário do site prepara uma mensagem e abre o WhatsApp; o site não mantém uma base própria com o conteúdo preenchido nesse formulário.</p>
+        <p>Podemos tratar nome, telefone, e-mail, empresa ou atividade, cidade e as informações que você decidir compartilhar durante a triagem. No site, a triagem prepara uma mensagem e abre o WhatsApp; o site não mantém uma base própria com o conteúdo preenchido nesse fluxo. Se você enviar um formulário de lead exibido pelo Google Ads, os dados solicitados no formulário são coletados pelo Google e disponibilizados à Envora para responder ao contato. O aviso apresentado pelo Google no próprio formulário também informa como os dados são tratados nesse serviço.</p>
 
         <h2>3. Finalidades</h2>
         <p>Os dados são utilizados para responder ao contato, compreender a demanda, realizar a triagem inicial, elaborar proposta quando solicitada, executar serviços contratados e cumprir obrigações aplicáveis.</p>
 
         <h2>4. Cookies e medição</h2>
-        <p>O site utiliza o Google Tag com o armazenamento de publicidade, análise e personalização negado por padrão. Se você aceitar, essas permissões são atualizadas para permitir a medição de visitas, cliques e conversões. Se você recusar, o armazenamento permanece negado. A escolha fica salva no seu navegador e pode ser apagada ao remover os dados locais do site.</p>
+        <p>O site utiliza o Google Tag com o armazenamento de publicidade, análise e personalização negado por padrão. Se você aceitar, essas permissões são atualizadas para permitir a medição de visitas e interações no site. O envio de um formulário de lead no Google Ads é registrado pelo próprio Google como uma conversão de formulário. Se você recusar os cookies do site, o armazenamento permanece negado. A escolha fica salva no seu navegador e pode ser apagada ao remover os dados locais do site.</p>
 
         <h2>5. Serviços de terceiros</h2>
-        <p>Ao utilizar WhatsApp, e-mail, Google ou outros serviços externos, o tratamento também segue as políticas desses fornecedores. A hospedagem do site é realizada pela Vercel. Esses fornecedores podem operar infraestrutura fora do Brasil.</p>
+        <p>Ao utilizar WhatsApp, e-mail, Google Ads ou outros serviços externos, o tratamento também segue as políticas desses fornecedores. Os dados enviados em formulários de lead do Google Ads são gerenciados pelo Google e disponibilizados à Envora para atendimento; o Google informa que mantém os leads por até 60 dias. A hospedagem do site é realizada pela Vercel. Esses fornecedores podem operar infraestrutura fora do Brasil.</p>
 
         <h2>6. Compartilhamento e conservação</h2>
         <p>A Envora não comercializa dados pessoais. As informações podem ser compartilhadas com fornecedores necessários ao atendimento ou quando houver obrigação legal. Os dados são mantidos somente pelo período necessário às finalidades informadas, à prestação do serviço e ao cumprimento de obrigações aplicáveis.</p>
