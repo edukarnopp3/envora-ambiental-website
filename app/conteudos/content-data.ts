@@ -1,3 +1,5 @@
+import { practicalArticles } from "./practical-content";
+
 export type ContentArticle = {
   slug: string;
   category: string;
@@ -5,12 +7,14 @@ export type ContentArticle = {
   description: string;
   publishedAt: string;
   readingTime: string;
+  serviceSlug?: string;
   lead: string;
   sections: Array<{ title: string; paragraphs: string[] }>;
   sources: Array<{ label: string; url: string }>;
 };
 
 export const contentArticles: ContentArticle[] = [
+  ...practicalArticles,
   {
     slug: "lap-lai-lao-entenda-as-etapas",
     category: "Licenciamento ambiental",

@@ -66,7 +66,7 @@ export default async function ContentPage({ params }: ContentPageProps) {
             <p className="eyebrow">{article.category}</p>
             <h1>{article.title}</h1>
             <p className="content-article-lead">{article.lead}</p>
-            <div className="content-article-meta"><time dateTime={article.publishedAt}>4 de setembro de 2026</time><span>{article.readingTime} de leitura</span></div>
+            <div className="content-article-meta"><time dateTime={article.publishedAt}>{new Intl.DateTimeFormat("pt-BR", { dateStyle: "long", timeZone: "UTC" }).format(new Date(`${article.publishedAt}T12:00:00Z`))}</time><span>{article.readingTime} de leitura</span></div>
           </header>
 
           <div className="content-article-body">
@@ -87,6 +87,7 @@ export default async function ContentPage({ params }: ContentPageProps) {
         <section className="service-final-cta">
           <p className="eyebrow">Aplicação ao seu caso</p>
           <h2>Você conta o que está acontecendo. A Envora identifica o próximo passo.</h2>
+          {article.serviceSlug && <p><Link href={`/servicos/${article.serviceSlug}`}>Conheça o atendimento da Envora para esta demanda →</Link></p>}
           <ServiceWhatsAppLink service={article.category} className="button service-primary">Falar com a Envora <span aria-hidden="true">↗</span></ServiceWhatsAppLink>
         </section>
       </main>
