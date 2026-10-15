@@ -121,16 +121,20 @@ html.splash-complete .hero-logo-3d,html.splash-complete .hero-logo-stage::after,
 .service-card h3 { margin:0; font-family:"Manrope"; font-size:16px; line-height:1.3; }
 .service-card:hover { background:var(--forest); color:white; }
 .service-card:focus-visible { position:relative; z-index:1; outline:3px solid var(--brand); outline-offset:2px; }
-.sectors-section { padding:110px 7vw; background:var(--forest); color:white; }
-.sectors-head p { color:rgba(255,255,255,.56); }
-.sector-list { margin-top:70px; border-top:1px solid rgba(255,255,255,.2); }
-.sector-row { display:grid; grid-template-columns:70px .8fr 1.2fr 30px; align-items:center; gap:30px; min-height:132px; border-bottom:1px solid rgba(255,255,255,.2); transition:.25s; }
-.sector-row>span { color:var(--brand-soft); font-size:11px; }
-.sector-row h3 { margin:0; font-family:"Manrope"; font-size:24px; }
-.sector-row p { margin:0; color:rgba(255,255,255,.58); font-size:13px; line-height:1.45; }
-.sector-row>b { color:var(--brand-soft); font-size:22px; transition:.2s; }
-.sector-row:hover { padding-left:16px; background:rgba(255,255,255,.035); }
-.sector-row:hover>b { transform:translate(4px,-4px); }
+.sectors-section { padding:74px 7vw 78px; background:var(--paper); color:var(--ink); }
+.sectors-section .section-index { color:var(--brand); }
+.sectors-head h2 { font-size:clamp(32px,3.2vw,46px); text-wrap:balance; }
+.sector-list { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); margin-top:28px; border-top:1px solid var(--line); border-left:1px solid var(--line); }
+.sector-card { display:flex; flex-direction:column; justify-content:center; gap:10px; min-height:112px; padding:18px 20px; border-right:1px solid var(--line); border-bottom:1px solid var(--line); transition:background .2s,color .2s; }
+.sector-card-heading { display:flex; align-items:center; gap:12px; min-width:0; }
+.sector-mark { display:grid; place-items:center; flex:0 0 30px; width:30px; height:30px; color:#000; }
+.sector-mark svg { display:block; width:30px; height:30px; }
+.sector-card h3 { margin:0; font:700 clamp(16px,1.35vw,20px)/1.2 "Manrope",sans-serif; letter-spacing:-.03em; }
+.sector-card p { margin:0 0 0 42px; color:rgba(29,36,34,.68); font-size:12.5px; line-height:1.4; }
+.sector-card:hover { background:var(--forest); color:white; }
+.sector-card:hover .sector-mark { color:#fff; }
+.sector-card:hover p { color:rgba(255,255,255,.76); }
+.sector-card:focus-visible { position:relative; z-index:1; outline:3px solid var(--brand); outline-offset:2px; }
 .triage-section { display:grid; grid-template-columns:.9fr 1.1fr; gap:8vw; padding:96px 7vw; background:#e5e1d6; }
 .triage-copy>p { max-width:500px; margin-top:28px; color:rgba(29,36,34,.65); line-height:1.75; }
 .triage-output { display:grid; gap:14px; margin-top:42px; padding-top:22px; border-top:1px solid var(--line); }
@@ -424,9 +428,10 @@ select:focus,input:focus,textarea:focus { border-color:var(--forest); box-shadow
   .service-contact-button-desktop { display:none; }
   .service-card { min-height:72px; padding:12px 14px; }
   .service-card h3 { font-size:15.5px; }
-  .sector-row { grid-template-columns:38px 1fr 24px; gap:15px; padding:24px 0; }
-  .sector-row p { grid-column:2; }
-  .sector-row>b { grid-column:3; grid-row:1; }
+  .sector-list { grid-template-columns:repeat(2,minmax(0,1fr)); }
+  .sector-card { min-height:108px; padding:16px 14px; }
+  .sector-card h3 { font-size:17px; }
+  .sector-card p { font-size:12px; }
   .triage-form { padding:28px 22px; }
   .service-topbar { grid-template-columns:1fr auto; min-height:78px; padding:0 22px; }
   .service-topbar .brand img { width:174px; }
@@ -487,7 +492,8 @@ select:focus,input:focus,textarea:focus { border-color:var(--forest); box-shadow
   .hero-logo-stage { width:min(62%,230px); }
   .hero-focus-foot { align-items:start; flex-direction:column; gap:8px; }
   .hero-focus-foot b { max-width:none; text-align:left; }
-  .intro-section,.sectors-section,.institutional-section,.triage-section,.process-section,.faq-section { padding:68px 24px; }
+  .intro-section,.institutional-section,.triage-section,.process-section,.faq-section { padding:68px 24px; }
+  .sectors-section { padding:46px 20px; }
   .institutional-section { gap:30px; }
   .institutional-intro h2 { font-size:39px; }
   .institutional-visual { grid-template-columns:1fr; min-height:0; }
@@ -499,7 +505,8 @@ select:focus,input:focus,textarea:focus { border-color:var(--forest); box-shadow
   .institutional-facts>div>b { margin-top:8px; font-size:13px; }
   .section-heading,.sectors-head { gap:25px; }
   .section-heading h2,.sectors-head h2,.triage-copy h2,.faq-section h2 { font-size:39px; }
-  .service-grid,.sector-list,.process-list { margin-top:45px; }
+  .service-grid,.process-list { margin-top:45px; }
+  .sector-list { margin-top:22px; }
   .service-categories { margin-top:40px; }
   .service-category + .service-category { margin-top:28px; }
   .service-category .service-grid { margin-top:12px; }
@@ -512,7 +519,13 @@ select:focus,input:focus,textarea:focus { border-color:var(--forest); box-shadow
   .content-card { padding:18px; }
   .content-card h2 { margin-top:28px; font-size:20px; }
   .content-card>strong { padding-top:16px; }
-  .sector-row h3 { font-size:21px; }
+  .sectors-head h2 { font-size:32px; }
+  .sector-card { min-height:100px; gap:8px; padding:14px 11px; }
+  .sector-card-heading { align-items:flex-start; gap:8px; }
+  .sector-mark { flex-basis:24px; width:24px; height:24px; }
+  .sector-mark svg { width:24px; height:24px; }
+  .sector-card h3 { font-size:15px; }
+  .sector-card p { margin-left:32px; font-size:12px; line-height:1.35; }
   .choice-grid.two { grid-template-columns:1fr; }
   .process-list li { grid-template-columns:46px 1fr; }
   .faq-section { min-height:0; }

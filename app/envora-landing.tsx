@@ -67,14 +67,42 @@ function ServiceGroupMark({ group }: { group: string }) {
   );
 }
 
+function SectorMark({ sector }: { sector: string }) {
+  return (
+    <span className="sector-mark" aria-hidden="true">
+      <svg viewBox="0 0 32 32" focusable="false" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round">
+        {sector === "industry" && <>
+          <path d="M4.5 27V14l7 4v-5l7 5V9l9 5v13H4.5Z" />
+          <path d="M7 14V6h4v10M10 22h.01M16 22h.01M22 22h.01" />
+        </>}
+        {sector === "health" && <>
+          <rect x="5.5" y="5" width="21" height="22" rx="2" />
+          <path d="M16 10v12M10 16h12" />
+        </>}
+        {sector === "fuel" && <>
+          <path d="M6 27V6.5h13V27M9.5 10h6v6h-6zM19 12h3l3 3v8a2 2 0 0 1-4 0v-4" />
+          <path d="M4.5 27h22" />
+        </>}
+        {sector === "construction" && <>
+          <path d="M4 8h24M8 8v19M6 27h22M8 8l4-4h13l3 4M20 4v4M16 8l8 8M13 17h9v10" />
+        </>}
+        {sector === "commerce" && <>
+          <path d="m6 13 2-7h16l2 7M6 13v14h20V13M4.5 13a3 3 0 0 0 6 0 3 3 0 0 0 6 0 3 3 0 0 0 6 0 3 3 0 0 0 6 0" />
+          <path d="M12 27v-8h8v8" />
+        </>}
+      </svg>
+    </span>
+  );
+}
+
 const baseMessage = "Olá, encontrei a Envora pesquisando por consultoria ambiental em Joinville e gostaria de explicar minha situação.";
 
 const sectors = [
-  { code: "01", title: "Indústrias", text: "Licenciamento · condicionantes · resíduos · ruído" },
-  { code: "02", title: "Clínicas e saúde", text: "PGRSS · resíduos de saúde · destinação" },
-  { code: "03", title: "Postos de combustível", text: "Licenciamento · renovação · condicionantes" },
-  { code: "04", title: "Construção civil", text: "PGRCC · transporte · destinação" },
-  { code: "05", title: "Comércios e serviços", text: "Enquadramento · DANC · CCA · acústica" },
+  { icon: "industry", title: "Indústrias", text: "Licenciamento · resíduos · ruído" },
+  { icon: "health", title: "Clínicas e saúde", text: "PGRSS · resíduos · destinação" },
+  { icon: "fuel", title: "Postos de combustível", text: "Licenciamento · renovação" },
+  { icon: "construction", title: "Construção civil", text: "PGRCC · destinação" },
+  { icon: "commerce", title: "Comércios e serviços", text: "DANC · CCA · acústica" },
 ];
 
 const services = [
@@ -433,12 +461,13 @@ export default function EnvoraLanding() {
         </section>
 
         <section className="sectors-section" id="setores" data-scroll-panel>
-          <div className="section-index light">03 — Setores atendidos</div>
-          <div className="sectors-head sectors-head-solo"><h2>Cada operação exige<br />uma leitura própria.</h2></div>
+          <div className="section-index">03 — Setores</div>
+          <div className="sectors-head sectors-head-solo"><h2>Áreas de atuação</h2></div>
           <div className="sector-list">
             {sectors.map((item) => (
-              <WhatsAppLink key={item.code} className="sector-row" source={`setor_${item.title}`} message={`Olá, encontrei a Envora pesquisando por consultoria ambiental em Joinville. Meu setor é ${item.title} e gostaria de uma triagem inicial.`}>
-                <span>{item.code}</span><h3>{item.title}</h3><p>{item.text}</p><b>↗</b>
+              <WhatsAppLink key={item.icon} className="sector-card" source={`setor_${item.title}`} message={`Olá, encontrei a Envora pesquisando por consultoria ambiental em Joinville. Meu setor é ${item.title} e gostaria de uma triagem inicial.`}>
+                <span className="sector-card-heading"><SectorMark sector={item.icon} /><h3>{item.title}</h3></span>
+                <p>{item.text}</p>
               </WhatsAppLink>
             ))}
           </div>
