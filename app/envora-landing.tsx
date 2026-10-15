@@ -355,7 +355,6 @@ export default function EnvoraLanding() {
           <a className={activeSection === "setores" ? "active" : ""} aria-current={activeSection === "setores" ? "location" : undefined} href="#setores" onClick={() => selectSection("setores")}>Setores</a>
           <a className={activeSection === "triagem" ? "active" : ""} aria-current={activeSection === "triagem" ? "location" : undefined} href="#triagem" onClick={() => selectSection("triagem")}>Triagem</a>
           <a className={activeSection === "faq" ? "active" : ""} aria-current={activeSection === "faq" ? "location" : undefined} href="#faq" onClick={() => selectSection("faq")}>Dúvidas</a>
-          <Link className="nav-blog-link" href="/conteudos" onClick={() => setMenuOpen(false)}>Blog</Link>
         </nav>
         <WhatsAppLink className="button button-small header-cta" source="header" message={baseMessage}>Falar com especialista <WhatsAppMark /></WhatsAppLink>
         <button className="menu-button" onClick={() => setMenuOpen(!menuOpen)} aria-label="Abrir menu" aria-expanded={menuOpen}>{menuOpen ? "Fechar" : "Menu"}</button>
@@ -410,7 +409,7 @@ export default function EnvoraLanding() {
           <div className="section-heading section-heading-solo"><h2>Serviços ambientais<br />para sua atividade.</h2></div>
           <div className="service-categories">
             {serviceGroups.map((group) => (
-              <section key={group.id} className="service-category" aria-labelledby={`service-category-${group.id}`}>
+              <section key={group.id} id={`service-group-${group.id}`} className="service-category" aria-labelledby={`service-category-${group.id}`}>
                 <div className="service-category-heading">
                   <div className="service-group-title">
                     <ServiceGroupMark group={group.id} />
@@ -495,24 +494,49 @@ export default function EnvoraLanding() {
 
       </main>
 
-      <footer data-scroll-panel>
-        <div className="footer-brand-panel">
+      <footer className="site-footer" data-scroll-panel aria-label="Informações da Envora">
+        <div className="site-footer-brand">
           <a className="brand inverted" href="#inicio" aria-label="Envora Ambiental - início"><img src="/envora-logo-horizontal-dark.svg" alt="Envora Ambiental" /></a>
-        </div>
-        <div className="footer-content">
-          <p className="footer-lead">Consultoria ambiental em Joinville.</p>
-          <div className="footer-details">
-            <span>Joinville · Santa Catarina</span>
-            <span>Engenheiro Ambiental e Sanitarista</span>
-            <a href="tel:+5547984551622" onClick={() => track("phone_click", { source: "footer" })}>(47) 98455-1622</a>
-            <a href="mailto:envoraambiental@gmail.com" onClick={() => track("email_click", { source: "footer" })}>envoraambiental@gmail.com</a>
-            <a href="#institucional">Sobre a Envora</a>
-            <a className="privacy-text" href="/privacidade">Privacidade</a>
+          <p>Consultoria ambiental para orientar decisões e conduzir processos.</p>
+          <div className="site-footer-socials" aria-label="Canais da Envora">
+            <a className="site-footer-social" href="https://www.instagram.com/envoraambiental/" target="_blank" rel="noopener noreferrer" onClick={() => track("instagram_click", { source: "footer" })} aria-label="Instagram da Envora Ambiental">
+              <svg aria-hidden="true" viewBox="0 0 24 24" focusable="false"><rect x="3" y="3" width="18" height="18" rx="5" /><circle cx="12" cy="12" r="4" /><circle cx="17.5" cy="6.5" r="1" /></svg>
+            </a>
+            <a className="site-footer-social" href={wa(baseMessage)} target="_blank" rel="noreferrer" onClick={() => track("whatsapp_click", { source: "footer_social" })} aria-label="WhatsApp da Envora">
+              <WhatsAppMark />
+            </a>
           </div>
-          <a className="footer-instagram" href="https://www.instagram.com/envoraambiental/" target="_blank" rel="noopener noreferrer" onClick={() => track("instagram_click", { source: "footer" })} aria-label="Instagram da Envora Ambiental">
-            <svg aria-hidden="true" viewBox="0 0 24 24" focusable="false"><rect x="3" y="3" width="18" height="18" rx="5" /><circle cx="12" cy="12" r="4" /><circle cx="17.5" cy="6.5" r="1" /></svg>
-            <span>Instagram</span><b>@envoraambiental</b><i aria-hidden="true">↗</i>
-          </a>
+        </div>
+
+        <nav className="site-footer-column" aria-label="Navegação do rodapé">
+          <h2>Navegação</h2>
+          <a href="#institucional">Envora</a>
+          <a href="#solucoes">Serviços</a>
+          <a href="#setores">Setores</a>
+          <a href="#triagem">Triagem</a>
+          <a href="#faq">Dúvidas</a>
+          <Link href="/conteudos">Blog</Link>
+        </nav>
+
+        <nav className="site-footer-column" aria-label="Serviços ambientais">
+          <h2>Serviços</h2>
+          {serviceGroups.map((group) => <a key={group.id} href={`#service-group-${group.id}`}>{group.title}</a>)}
+          <a href="#solucoes">Todos os serviços</a>
+        </nav>
+
+        <div className="site-footer-column site-footer-contact">
+          <h2>Contato</h2>
+          <a href={wa(baseMessage)} target="_blank" rel="noreferrer" onClick={() => track("whatsapp_click", { source: "footer_contact" })}>WhatsApp</a>
+          <a href="tel:+5547984551622" onClick={() => track("phone_click", { source: "footer" })}>(47) 98455-1622</a>
+          <a href="mailto:envoraambiental@gmail.com" onClick={() => track("email_click", { source: "footer" })}>envoraambiental@gmail.com</a>
+          <span>Joinville · Santa Catarina</span>
+          <span>Engenheiro Ambiental e Sanitarista</span>
+        </div>
+
+        <div className="site-footer-bottom">
+          <p>© 2026 Envora Consultoria Ambiental. Todos os direitos reservados.</p>
+          <a href="/privacidade">Privacidade</a>
+          <span>Joinville · SC</span>
         </div>
       </footer>
       <WhatsAppLink className="mobile-sticky" source="mobile_sticky" message={baseMessage}>Falar com a Envora no WhatsApp <span>↗</span></WhatsAppLink>
