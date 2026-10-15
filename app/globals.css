@@ -350,6 +350,25 @@ footer .brand img { width:min(100%,520px); }
 .content-article-body h2 { margin:0 0 32px; font:700 clamp(32px,3.4vw,50px)/1.06 "Manrope",sans-serif; letter-spacing:-.045em; text-wrap:balance; }
 .content-article-body p { margin:0; color:rgba(29,36,34,.72); font-size:18px; line-height:1.85; }
 .content-article-body p+p { margin-top:24px; }
+.content-article-body ul { display:grid; gap:12px; margin:28px 0 0; padding-left:24px; color:rgba(29,36,34,.72); font-size:18px; line-height:1.7; }
+.content-article-table-wrap { overflow-x:auto; margin-top:28px; border:1px solid var(--line); }
+.content-article-table-wrap table { width:100%; min-width:680px; border-collapse:collapse; text-align:left; }
+.content-article-table-wrap th,.content-article-table-wrap td { padding:16px; border-bottom:1px solid var(--line); border-right:1px solid var(--line); vertical-align:top; font-size:14px; line-height:1.55; }
+.content-article-table-wrap th { background:#e5e1d6; font-weight:700; }
+.content-article-table-wrap tr:last-child td { border-bottom:0; }
+.content-article-conclusion { padding-top:56px; }
+.content-article-faq { width:min(860px,calc(100% - 48px)); margin:0 auto; padding:0 0 96px; }
+.content-article-faq > .section-index { margin:0 0 18px; }
+.content-article-faq > h2 { margin:0 0 36px; font:700 clamp(32px,3.4vw,50px)/1.06 "Manrope",sans-serif; letter-spacing:-.045em; }
+.content-article-faq article { padding:24px 0; border-top:1px solid var(--line); }
+.content-article-faq h3 { margin:0 0 12px; font:700 20px/1.35 "Manrope",sans-serif; }
+.content-article-faq p { margin:0; color:rgba(29,36,34,.72); font-size:17px; line-height:1.75; }
+.content-article-related { display:grid; grid-template-columns:minmax(220px,.45fr) minmax(0,1fr); gap:8vw; padding:54px 15vw; border-top:1px solid var(--line); }
+.content-article-related .section-index { margin:0; }
+.content-article-related ul { margin:0; padding:0; list-style:none; border-top:1px solid var(--line); }
+.content-article-related li { border-bottom:1px solid var(--line); }
+.content-article-related a { display:flex; justify-content:space-between; gap:24px; padding:18px 0; font-size:15px; font-weight:700; line-height:1.5; }
+.content-article-related a span { flex:0 0 auto; color:var(--brand); }
 .content-article-sources { display:grid; grid-template-columns:minmax(220px,.45fr) minmax(0,1fr); gap:8vw; padding:70px 15vw; background:#e5e1d6; }
 .content-article-sources ul { list-style:none; margin:0; padding:0; border-top:1px solid var(--line); }
 .content-article-sources li { border-bottom:1px solid var(--line); }
@@ -393,6 +412,9 @@ footer .brand img { width:min(100%,520px); }
   .content-article-hero { padding:52px 24px 76px; }
   .content-article-hero .service-breadcrumb { margin-bottom:60px; }
   .content-article-body { padding:78px 0; }
+  .content-article-faq { padding-bottom:70px; }
+  .content-article-related { grid-template-columns:1fr; gap:28px; padding:50px 24px; }
+  .content-article-table-wrap th,.content-article-table-wrap td { padding:12px; }
   .content-article-sources { grid-template-columns:1fr; gap:38px; padding:62px 24px; }
   .service-grid { grid-template-columns:1fr; }
   .service-category-heading { grid-template-columns:1fr; }

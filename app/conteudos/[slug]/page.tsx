@@ -44,7 +44,7 @@ export default async function ContentPage({ params }: ContentPageProps) {
     headline: article.title,
     description: article.description,
     datePublished: article.publishedAt,
-    dateModified: article.publishedAt,
+    dateModified: article.updatedAt ?? article.publishedAt,
     mainEntityOfPage: `${SITE_URL}/conteudos/${article.slug}`,
     author: { "@type": "Organization", name: "Envora Consultoria Ambiental", url: SITE_URL },
     publisher: { "@type": "Organization", name: "Envora Consultoria Ambiental", url: SITE_URL },
@@ -66,7 +66,11 @@ export default async function ContentPage({ params }: ContentPageProps) {
             <p className="eyebrow">{article.category}</p>
             <h1>{article.title}</h1>
             <p className="content-article-lead">{article.lead}</p>
-            <div className="content-article-meta"><time dateTime={article.publishedAt}>{new Intl.DateTimeFormat("pt-BR", { dateStyle: "long", timeZone: "UTC" }).format(new Date(`${article.publishedAt}T12:00:00Z`))}</time><span>{article.readingTime} de leitura</span></div>
+            <div className="content-article-meta">
+              <span>Publicado em <time dateTime={article.publishedAt}>{new Intl.DateTimeFormat("pt-BR", { dateStyle: "long", timeZone: "UTC" }).format(new Date(`${article.publishedAt}T12:00:00Z`))}</time></span>
+              {article.updatedAt && <span>Atualizado em <time dateTime={article.updatedAt}>{new Intl.DateTimeFormat("pt-BR", { dateStyle: "long", timeZone: "UTC" }).format(new Date(`${article.updatedAt}T12:00:00Z`))}</time></span>}
+              <span>{article.readingTime} de leitura</span>
+            </div>
           </header>
 
           <div className="content-article-body">
@@ -74,9 +78,30 @@ export default async function ContentPage({ params }: ContentPageProps) {
               <section key={section.title}>
                 <h2>{section.title}</h2>
                 {section.paragraphs.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}
+                {section.bullets && <ul>{section.bullets.map((bullet) => <li key={bullet}>{bullet}</li>)}</ul>}
+                {section.table && (
+                  <div className="content-article-table-wrap" role="region" aria-label={`Tabela: ${section.title}`} tabIndex={0}>
+                    <table>
+                      <thead><tr>{section.table.headers.map((header) => <th key={header} scope="col">{header}</th>)}</tr></thead>
+                      <tbody>{section.table.rows.map((row) => <tr key={row.join("|")}>{row.map((cell, index) => <td key={`${index}-${cell}`}>{cell}</td>)}</tr>)}</tbody>
+                    </table>
+                  </div>
+                )}
               </section>
             ))}
+            {article.conclusion && <section className="content-article-conclusion"><h2>Próximo passo</h2><p>{article.conclusion}</p></section>}
           </div>
+
+          {article.faq && <section className="content-article-faq" aria-labelledby="content-faq-title">
+            <p className="section-index">Dúvidas comuns</p>
+            <h2 id="content-faq-title">Perguntas frequentes</h2>
+            <div>{article.faq.map((item) => <article key={item.question}><h3>{item.question}</h3><p>{item.answer}</p></article>)}</div>
+          </section>}
+
+          {article.relatedLinks && <aside className="content-article-related" aria-labelledby="content-related-title">
+            <p className="section-index" id="content-related-title">Continue a leitura</p>
+            <ul>{article.relatedLinks.map((item) => <li key={item.href}><Link href={item.href}>{item.label}<span aria-hidden="true">↗</span></Link></li>)}</ul>
+          </aside>}
 
           <aside className="content-article-sources" aria-labelledby="content-sources-title">
             <p className="section-index" id="content-sources-title">Fontes oficiais</p>

@@ -1,4 +1,5 @@
 import { practicalArticles } from "./practical-content";
+import { editorialArticles } from "./editorial-articles";
 
 export type ContentArticle = {
   slug: string;
@@ -6,14 +7,23 @@ export type ContentArticle = {
   title: string;
   description: string;
   publishedAt: string;
+  updatedAt?: string;
   readingTime: string;
   serviceSlug?: string;
   lead: string;
-  sections: Array<{ title: string; paragraphs: string[] }>;
+  sections: Array<{
+    title: string;
+    paragraphs: string[];
+    bullets?: string[];
+    table?: { headers: string[]; rows: string[][] };
+  }>;
+  conclusion?: string;
+  faq?: Array<{ question: string; answer: string }>;
+  relatedLinks?: Array<{ label: string; href: string }>;
   sources: Array<{ label: string; url: string }>;
 };
 
-export const contentArticles: ContentArticle[] = [
+const baseContentArticles: ContentArticle[] = [
   ...practicalArticles,
   {
     slug: "lap-lai-lao-entenda-as-etapas",
@@ -103,5 +113,10 @@ export const contentArticles: ContentArticle[] = [
     ],
   },
 ];
+
+const articlesBySlug = new Map<string, ContentArticle>();
+for (const article of [...baseContentArticles, ...editorialArticles]) articlesBySlug.set(article.slug, article);
+
+export const contentArticles: ContentArticle[] = [...articlesBySlug.values()];
 
 export const contentArticleBySlug = new Map(contentArticles.map((article) => [article.slug, article]));
