@@ -54,18 +54,18 @@ export default function ContentIndexPage() {
               <p className="section-index">Blog · Envora</p>
               <h1 id="content-title">O ambiental explicado sem rodeios.</h1>
             </div>
-            <p>Análise de regras e orientações oficiais, traduzida para decisões práticas.</p>
           </div>
-          <div className="content-card-grid">
+          <ul className="content-card-grid" aria-label="Artigos do blog">
             {contentArticles.map((article, index) => (
-              <Link href={`/conteudos/${article.slug}`} className="content-card" key={article.slug}>
-                <div><span>{String(index + 1).padStart(2, "0")}</span><b>{article.category}</b></div>
-                <h2>{article.title}</h2>
-                <p>{article.description}</p>
-                <strong>{article.readingTime} de leitura <i aria-hidden="true">↗</i></strong>
-              </Link>
+              <li className="content-card-item" key={article.slug}>
+                <Link href={`/conteudos/${article.slug}`} className="content-card">
+                  <div><span>{String(index + 1).padStart(2, "0")}</span><b>{article.category}</b></div>
+                  <h2>{article.title}</h2>
+                  <strong>{article.readingTime} de leitura <i aria-hidden="true">↗</i></strong>
+                </Link>
+              </li>
             ))}
-          </div>
+          </ul>
         </section>
 
         <section className="service-final-cta content-index-cta">
