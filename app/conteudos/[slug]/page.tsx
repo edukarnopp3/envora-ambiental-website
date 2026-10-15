@@ -55,14 +55,14 @@ export default async function ContentPage({ params }: ContentPageProps) {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData).replace(/</g, "\\u003c") }} />
       <header className="service-topbar">
         <Link className="brand" href="/" aria-label="Envora Ambiental - início"><Image src="/envora-logo-horizontal.svg" alt="Envora Ambiental" width={360} height={88} priority /></Link>
-        <nav aria-label="Navegação da página de conteúdo"><Link href="/#conteudos">Todos os conteúdos</Link><Link href="/#solucoes">Serviços</Link></nav>
+        <nav aria-label="Navegação da página de conteúdo"><Link href="/conteudos">Blog</Link><Link href="/#solucoes">Serviços</Link></nav>
         <ServiceWhatsAppLink service={article.category} className="button button-small">Falar com especialista</ServiceWhatsAppLink>
       </header>
 
       <main>
         <article>
           <header className="content-article-hero">
-            <div className="service-breadcrumb"><Link href="/">Início</Link><span>/</span><Link href="/#conteudos">Conteúdos</Link><span>/</span><b>{article.category}</b></div>
+            <div className="service-breadcrumb"><Link href="/">Início</Link><span>/</span><Link href="/conteudos">Blog</Link><span>/</span><b>{article.category}</b></div>
             <p className="eyebrow">{article.category}</p>
             <h1>{article.title}</h1>
             <p className="content-article-lead">{article.lead}</p>

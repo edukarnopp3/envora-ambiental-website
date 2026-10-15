@@ -3,7 +3,6 @@
 import { useEffect, useMemo, useState } from "react";
 import Link from "next/link";
 import HeroBackgroundVideo from "./hero-background-video";
-import { contentArticles } from "./conteudos/content-data";
 
 const WA_NUMBER = "5547984551622";
 
@@ -22,6 +21,17 @@ function wa(message: string) {
   return `https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(message)}`;
 }
 
+function WhatsAppMark() {
+  return (
+    <span className="whatsapp-mark" aria-hidden="true">
+      <svg viewBox="0 0 28 28" focusable="false">
+        <path d="M14 4.1a9.7 9.7 0 0 0-8.3 14.7l-1.3 4.7 4.8-1.3A9.7 9.7 0 1 0 14 4.1Z" fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.8" />
+        <path d="M9.3 9.3c.3-.3.6-.4.9-.4h.7c.2 0 .5.1.6.5l1 2.1c.1.3.1.5-.1.7l-.6.7c-.2.2-.2.4-.1.7.5.9 1.2 1.6 2 2.1.3.2.5.2.7 0l.7-.7c.2-.2.4-.2.7-.1l2.1 1c.3.1.4.4.4.6 0 .3-.2 1-.6 1.4-.4.4-1.1.7-1.8.6-1.6-.2-3.4-1.2-5-2.6-1.4-1.3-2.5-3-2.7-4.4-.1-.9.2-1.7.7-2.2Z" fill="currentColor" />
+      </svg>
+    </span>
+  );
+}
+
 function WhatsAppLink({ children, message, source, className = "" }: {
   children: React.ReactNode;
   message: string;
@@ -29,6 +39,32 @@ function WhatsAppLink({ children, message, source, className = "" }: {
   className?: string;
 }) {
   return <a className={className} href={wa(message)} target="_blank" rel="noreferrer" onClick={() => track("whatsapp_click", { source })}>{children}</a>;
+}
+
+function ServiceGroupMark({ group }: { group: string }) {
+  return (
+    <span className="service-group-mark" aria-hidden="true">
+      <svg viewBox="0 0 40 40" focusable="false">
+        {group === "licenciamento" && <>
+          <path d="M11 4h12l9 9v23H11a3 3 0 0 1-3-3V7a3 3 0 0 1 3-3Zm11 3v8h8" fill="currentColor" />
+          <path d="M14 21h13M14 26h13M14 31h9" fill="none" stroke="var(--paper)" strokeWidth="2" strokeLinecap="round" />
+        </>}
+        {group === "vegetacao" && <>
+          <path d="M33.5 5.5C20.2 5.3 8 11.2 6.6 23.1c-.8 6.7 3.1 11.4 9.2 11.4 12.6 0 19-14.2 17.7-29Z" fill="currentColor" />
+          <path d="M10 33 28.5 12.1" fill="none" stroke="var(--paper)" strokeWidth="2.2" strokeLinecap="round" />
+        </>}
+        {group === "residuos" && <>
+          <path d="M13 12h14l-1.2 23H14.2L13 12Zm-2-3h18l1 3H10l1-3Zm5-4h8l1 3h-10l1-3Z" fill="currentColor" />
+          <path d="M18 17v13M22 17v13" fill="none" stroke="var(--paper)" strokeWidth="2" strokeLinecap="round" />
+        </>}
+        {group === "autos" && <>
+          <path d="M20 4.5c1.1 0 2 .6 2.6 1.6l14.1 24.4c1.2 2.1-.3 4.8-2.7 4.8H6c-2.4 0-3.9-2.7-2.7-4.8L17.4 6.1c.6-1 1.5-1.6 2.6-1.6Z" fill="currentColor" />
+          <path d="M20 14v9" fill="none" stroke="var(--paper)" strokeWidth="2.8" strokeLinecap="round" />
+          <circle cx="20" cy="28" r="1.6" fill="var(--paper)" />
+        </>}
+      </svg>
+    </span>
+  );
 }
 
 const baseMessage = "Olá, encontrei a Envora pesquisando por consultoria ambiental em Joinville e gostaria de explicar minha situação.";
@@ -42,7 +78,7 @@ const sectors = [
 ];
 
 const services = [
-  { code: "01", group: "autos", title: "Autos de infração e exigências ambientais", text: "Análise técnica do documento, levantamento do que foi solicitado e organização da resposta dentro do escopo profissional.", featured: true, href: "/servicos/auto-de-infracao-ambiental" },
+  { code: "01", group: "autos", title: "Autos de infração e exigências ambientais", text: "Análise técnica do documento, levantamento do que foi solicitado e organização da resposta dentro do escopo profissional.", href: "/servicos/auto-de-infracao-ambiental" },
   { code: "02", group: "licenciamento", title: "Diagnóstico e enquadramento ambiental", text: "Análise da atividade, porte, localização e situação documental para definir a rota aplicável.", featured: false, href: "/servicos/diagnostico-e-enquadramento-ambiental" },
   { code: "03", group: "licenciamento", title: "DANC", text: "Preparação e acompanhamento da Declaração de Atividade Não Constante.", featured: false, href: "/servicos/danc" },
   { code: "04", group: "licenciamento", title: "CCA", text: "Certidão de Conformidade Ambiental para atividades abaixo do porte de licenciamento.", featured: false, href: "/servicos/cca" },
@@ -60,10 +96,10 @@ const services = [
 ];
 
 const serviceGroups = [
-  { id: "autos", title: "Autos e exigências" },
   { id: "licenciamento", title: "Licenciamento e regularização" },
-  { id: "vegetacao", title: "Vegetação e recuperação" },
+  { id: "vegetacao", title: "Vegetação" },
   { id: "residuos", title: "Resíduos e controle técnico" },
+  { id: "autos", title: "Autos e exigências" },
 ].map((group) => ({ ...group, items: services.filter((service) => service.group === group.id) }));
 
 const situations = [
@@ -102,19 +138,22 @@ export default function EnvoraLanding() {
   [sector, situationDetail]);
 
   useEffect(() => {
-    const navigationSections = ["inicio", "institucional", "solucoes", "setores", "triagem", "faq", "conteudos", "sobre"];
+    const navigationSections = ["inicio", "institucional", "solucoes", "setores", "triagem", "faq"];
     let frame = 0;
+    let isMounted = true;
+    const sections = navigationSections
+      .map((id) => document.getElementById(id))
+      .filter((section): section is HTMLElement => Boolean(section));
 
     function updateActiveSection() {
       const headerHeight = document.querySelector<HTMLElement>(".topbar")?.offsetHeight ?? 88;
-      const readingLine = window.scrollY + headerHeight + Math.min(160, window.innerHeight * 0.22);
-      let current = "inicio";
-      navigationSections.forEach((id) => {
-        const section = document.getElementById(id);
-        if (!section) return;
-        if (section.offsetTop <= readingLine) current = id;
-      });
-      setActiveSection(current);
+      const readingLine = headerHeight + 24;
+      const passedSections = sections.filter((section) => section.getBoundingClientRect().top <= readingLine);
+      let current = passedSections[passedSections.length - 1]?.id ?? "inicio";
+      if (window.scrollY + window.innerHeight >= document.documentElement.scrollHeight - 2) {
+        current = navigationSections[navigationSections.length - 1];
+      }
+      if (isMounted) setActiveSection(current);
     }
 
     function onScroll() {
@@ -122,14 +161,29 @@ export default function EnvoraLanding() {
       frame = window.requestAnimationFrame(updateActiveSection);
     }
 
-    updateActiveSection();
+    const resizeObserver = new ResizeObserver(onScroll);
+    sections.forEach((section) => resizeObserver.observe(section));
+    onScroll();
+    frame = window.requestAnimationFrame(() => {
+      frame = window.requestAnimationFrame(updateActiveSection);
+    });
     window.addEventListener("scroll", onScroll, { passive: true });
+    document.addEventListener("scroll", onScroll, true);
     window.addEventListener("resize", onScroll);
     window.addEventListener("hashchange", onScroll);
+    window.addEventListener("popstate", onScroll);
+    window.addEventListener("pageshow", onScroll);
+    window.addEventListener("load", onScroll);
     return () => {
+      isMounted = false;
+      resizeObserver.disconnect();
       window.removeEventListener("scroll", onScroll);
+      document.removeEventListener("scroll", onScroll, true);
       window.removeEventListener("resize", onScroll);
       window.removeEventListener("hashchange", onScroll);
+      window.removeEventListener("popstate", onScroll);
+      window.removeEventListener("pageshow", onScroll);
+      window.removeEventListener("load", onScroll);
       window.cancelAnimationFrame(frame);
     };
   }, []);
@@ -296,16 +350,14 @@ export default function EnvoraLanding() {
       <header className={`topbar${activeSection === "inicio" && !menuOpen ? " on-hero" : ""}`}>
         <a className="brand" href="#inicio" aria-label="Envora Ambiental - início"><img src={activeSection === "inicio" && !menuOpen ? "/envora-logo-horizontal-dark.svg" : "/envora-logo-horizontal.svg"} alt="Envora Ambiental" /></a>
         <nav className={menuOpen ? "nav-links open" : "nav-links"} aria-label="Navegação principal">
-          <a className={activeSection === "inicio" ? "active" : ""} aria-current={activeSection === "inicio" ? "location" : undefined} href="#inicio" onClick={() => selectSection("inicio")}>Início</a>
-          <a className={activeSection === "institucional" ? "active" : ""} aria-current={activeSection === "institucional" ? "location" : undefined} href="#institucional" onClick={() => selectSection("institucional")}>Institucional</a>
+          <a className={activeSection === "inicio" || activeSection === "institucional" ? "active" : ""} aria-current={activeSection === "inicio" || activeSection === "institucional" ? "location" : undefined} href="#institucional" onClick={() => selectSection("institucional")}>Envora</a>
           <a className={activeSection === "solucoes" ? "active" : ""} aria-current={activeSection === "solucoes" ? "location" : undefined} href="#solucoes" onClick={() => selectSection("solucoes")}>Serviços</a>
           <a className={activeSection === "setores" ? "active" : ""} aria-current={activeSection === "setores" ? "location" : undefined} href="#setores" onClick={() => selectSection("setores")}>Setores</a>
           <a className={activeSection === "triagem" ? "active" : ""} aria-current={activeSection === "triagem" ? "location" : undefined} href="#triagem" onClick={() => selectSection("triagem")}>Triagem</a>
           <a className={activeSection === "faq" ? "active" : ""} aria-current={activeSection === "faq" ? "location" : undefined} href="#faq" onClick={() => selectSection("faq")}>Dúvidas</a>
-          <a className={activeSection === "conteudos" ? "active" : ""} aria-current={activeSection === "conteudos" ? "location" : undefined} href="#conteudos" onClick={() => selectSection("conteudos")}>Conteúdos</a>
-          <a className={activeSection === "sobre" ? "active" : ""} aria-current={activeSection === "sobre" ? "location" : undefined} href="#sobre" onClick={() => selectSection("sobre")}>Envora</a>
+          <Link className="nav-blog-link" href="/conteudos" onClick={() => setMenuOpen(false)}>Blog</Link>
         </nav>
-        <WhatsAppLink className="button button-small header-cta" source="header" message={baseMessage}>Falar com especialista</WhatsAppLink>
+        <WhatsAppLink className="button button-small header-cta" source="header" message={baseMessage}>Falar com especialista <WhatsAppMark /></WhatsAppLink>
         <button className="menu-button" onClick={() => setMenuOpen(!menuOpen)} aria-label="Abrir menu" aria-expanded={menuOpen}>{menuOpen ? "Fechar" : "Menu"}</button>
       </header>
 
@@ -318,7 +370,7 @@ export default function EnvoraLanding() {
             <h1>Licenciamento, regularização e resíduos em Joinville.</h1>
             <p className="hero-text hero-summary">Você explica o que precisa. A Envora conduz a parte técnica.</p>
             <div className="hero-actions">
-              <WhatsAppLink className="button hero-primary" source="hero_whatsapp" message={baseMessage}>Falar no WhatsApp <span>↗</span></WhatsAppLink>
+              <WhatsAppLink className="button hero-primary" source="hero_whatsapp" message={baseMessage}>Falar no WhatsApp <WhatsAppMark /></WhatsAppLink>
               <a
                 className="text-link hero-secondary"
                 href="#triagem"
@@ -333,18 +385,23 @@ export default function EnvoraLanding() {
           </div>
         </section>
 
-        <section className="institutional-section" id="institucional" data-scroll-panel>
-          <div>
-            <div className="section-index">01 — Institucional</div>
-            <h2>Experiência técnica para tirar a demanda da frente.</h2>
+        <section className="institutional-section" id="institucional" data-scroll-panel aria-labelledby="institutional-title">
+          <div className="institutional-intro">
+            <div className="section-index">01 — Envora</div>
+            <h2 id="institutional-title">Você explica. A Envora conduz a parte técnica.</h2>
+            <p>Atendimento em Joinville, com experiência em licenciamento municipal e demandas de operações industriais e de infraestrutura.</p>
           </div>
-          <div className="institutional-copy">
-            <p>Experiência profissional de cinco anos em licenciamento ambiental, incluindo atuação no licenciamento municipal e em processos de operações industriais e de infraestrutura.</p>
-            <p>Na Envora, a análise parte da operação real: o que aconteceu, o que o órgão exige e qual caminho técnico resolve a situação.</p>
-            <div className="institutional-signals" aria-label="Experiência profissional">
-              <span>Licenciamento ambiental</span>
-              <span>Engenharia Ambiental e Sanitária</span>
-              <span>Atendimento local em Joinville</span>
+          <div className="institutional-visual" aria-label="Experiência e atuação da Envora">
+            <div className="institutional-years">
+              <span>EXPERIÊNCIA PROFISSIONAL</span>
+              <strong>05</strong>
+              <b>anos em licenciamento ambiental</b>
+            </div>
+            <div className="institutional-facts">
+              <div><span>01 / ATUAÇÃO</span><b>Licenciamento municipal</b></div>
+              <div><span>02 / EXPERIÊNCIA</span><b>Operações industriais e infraestrutura</b></div>
+              <div><span>03 / FORMAÇÃO</span><b>Engenharia Ambiental e Sanitária</b></div>
+              <div><span>BASE</span><b>Joinville · SC</b></div>
             </div>
           </div>
         </section>
@@ -356,13 +413,16 @@ export default function EnvoraLanding() {
             {serviceGroups.map((group) => (
               <section key={group.id} className="service-category" aria-labelledby={`service-category-${group.id}`}>
                 <div className="service-category-heading">
-                  <h3 id={`service-category-${group.id}`}>{group.title}</h3>
-                  <span>{String(group.items.length).padStart(2, "0")} {group.items.length === 1 ? "serviço" : "serviços"}</span>
+                  <div className="service-group-title">
+                    <ServiceGroupMark group={group.id} />
+                    <h3 id={`service-category-${group.id}`}>{group.title}</h3>
+                  </div>
+                  <WhatsAppLink className="button service-contact-button service-contact-button-mobile" source={`servicos_${group.id}`} message={`Olá, encontrei a Envora pesquisando por consultoria ambiental em Joinville. Tenho uma demanda de ${group.title.toLowerCase()} e gostaria de explicar minha situação.`}>Falar no WhatsApp <WhatsAppMark /></WhatsAppLink>
                 </div>
                 <div className="service-grid">
                   {group.items.map((service) => {
-                    const cardContent = <><span>{service.code}</span><h3>{service.title}</h3><p>{service.text}</p><b>↗</b></>;
-                    const className = `service-card${service.featured ? " featured" : ""}`;
+                    const cardContent = <><h3>{service.title}</h3><p>{service.text}</p></>;
+                    const className = "service-card";
                     return service.href
                       ? <Link key={service.code} className={className} href={service.href}>{cardContent}</Link>
                       : <WhatsAppLink key={service.code} className={className} source={`servico_${service.title}`} message={`Olá, encontrei a Envora pesquisando por consultoria ambiental em Joinville. Preciso de informações sobre ${service.title}.`}>{cardContent}</WhatsAppLink>;
@@ -371,6 +431,7 @@ export default function EnvoraLanding() {
               </section>
             ))}
           </div>
+          <WhatsAppLink className="button service-contact-button service-contact-button-desktop" source="servicos_geral" message="Olá, encontrei a Envora pesquisando por consultoria ambiental em Joinville. Gostaria de explicar minha demanda e entender como vocês podem me ajudar.">Falar com a Envora <WhatsAppMark /></WhatsAppLink>
         </section>
 
         <section className="sectors-section" id="setores" data-scroll-panel>
@@ -433,41 +494,9 @@ export default function EnvoraLanding() {
           <div className="faq-list">{faqs.map((item, index) => <div className="faq-item" key={item.q}><button onClick={() => setFaqOpen(faqOpen === index ? null : index)} aria-expanded={faqOpen === index}><span>{String(index + 1).padStart(2, "0")}</span>{item.q}<b>{faqOpen === index ? "−" : "+"}</b></button>{faqOpen === index && <p>{item.a}</p>}</div>)}</div>
         </section>
 
-        <section className="content-section" id="conteudos" aria-labelledby="content-title" data-scroll-panel>
-          <div className="content-section-heading">
-            <div>
-              <p className="section-index">Conteúdos e atualizações</p>
-              <h2 id="content-title">O ambiental explicado sem rodeios.</h2>
-            </div>
-            <p>Análise de regras e orientações oficiais, traduzida para decisões práticas em Joinville.</p>
-          </div>
-          <div className="content-card-grid">
-            {contentArticles.map((article, index) => (
-              <Link href={`/conteudos/${article.slug}`} className="content-card" key={article.slug}>
-                <div><span>{String(index + 1).padStart(2, "0")}</span><b>{article.category}</b></div>
-                <h3>{article.title}</h3>
-                <p>{article.description}</p>
-                <strong>Ler conteúdo <i aria-hidden="true">↗</i></strong>
-              </Link>
-            ))}
-          </div>
-        </section>
-
-        <section className="about-footer" id="sobre" aria-labelledby="about-title" data-scroll-panel>
-          <div className="about-footer-heading">
-            <div className="section-index light">Sobre a Envora</div>
-            <h2 id="about-title">Consultoria ambiental em Joinville.</h2>
-          </div>
-          <div className="about-signals" aria-label="Credenciais da Envora">
-            <div><small>01</small><b>Atendimento local</b><span>Joinville e região</span></div>
-            <div><small>02</small><b>Experiência prática</b><span>Licenciamento municipal</span></div>
-            <div><small>03</small><b>Formação técnica</b><span>Engenharia Ambiental e Sanitária</span></div>
-            <div><small>04</small><b>Escopo transparente</b><span>Etapas e responsabilidades definidas</span></div>
-          </div>
-        </section>
       </main>
 
-      <footer>
+      <footer data-scroll-panel>
         <div className="footer-brand-panel">
           <a className="brand inverted" href="#inicio" aria-label="Envora Ambiental - início"><img src="/envora-logo-horizontal-dark.svg" alt="Envora Ambiental" /></a>
         </div>
@@ -478,7 +507,7 @@ export default function EnvoraLanding() {
             <span>Engenheiro Ambiental e Sanitarista</span>
             <a href="tel:+5547984551622" onClick={() => track("phone_click", { source: "footer" })}>(47) 98455-1622</a>
             <a href="mailto:envoraambiental@gmail.com" onClick={() => track("email_click", { source: "footer" })}>envoraambiental@gmail.com</a>
-            <a href="#sobre">Sobre a Envora</a>
+            <a href="#institucional">Sobre a Envora</a>
             <a className="privacy-text" href="/privacidade">Privacidade</a>
           </div>
           <a className="footer-instagram" href="https://www.instagram.com/envoraambiental/" target="_blank" rel="noopener noreferrer" onClick={() => track("instagram_click", { source: "footer" })} aria-label="Instagram da Envora Ambiental">
