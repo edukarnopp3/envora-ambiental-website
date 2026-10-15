@@ -92,7 +92,6 @@ html.splash-complete .hero-logo-3d,html.splash-complete .hero-logo-stage::after,
 .intro-section,.process-section { padding:110px 7vw; }
 .institutional-section { display:grid; grid-template-columns:minmax(0,.78fr) minmax(0,1.22fr); gap:8vw; align-items:center; padding:100px 7vw; background:var(--paper); }
 .institutional-intro h2 { max-width:640px; margin:0; font:700 clamp(40px,4.4vw,66px)/1.02 "Manrope",sans-serif; letter-spacing:-.06em; text-wrap:balance; }
-.institutional-intro>p { max-width:540px; margin:24px 0 0; color:rgba(29,36,34,.68); font-size:clamp(16px,1.25vw,19px); line-height:1.65; }
 .institutional-visual { display:grid; grid-template-columns:minmax(175px,.72fr) minmax(0,1.28fr); min-height:354px; border-left:3px solid var(--brand-soft); background:#e7e4da; }
 .institutional-years { display:flex; flex-direction:column; justify-content:center; align-items:flex-start; padding:32px; color:white; background:var(--forest); }
 .institutional-years>span,.institutional-facts>div>span { color:var(--brand-soft); font-size:9px; font-weight:800; letter-spacing:.12em; }
@@ -122,11 +121,9 @@ html.splash-complete .hero-logo-3d,html.splash-complete .hero-logo-stage::after,
 .service-contact-button-mobile { display:none; }
 .service-contact-button-desktop { display:flex; width:max-content; margin:28px 0 0 auto; }
 .service-category .service-grid { margin-top:16px; }
-.service-card { position:relative; display:flex; flex-direction:column; align-items:flex-start; justify-content:center; gap:5px; min-height:82px; padding:13px 16px; border-right:1px solid var(--line); border-bottom:1px solid var(--line); cursor:pointer; transition:background .2s,color .2s; }
+.service-card { position:relative; display:flex; flex-direction:column; align-items:flex-start; justify-content:center; min-height:76px; padding:13px 16px; border-right:1px solid var(--line); border-bottom:1px solid var(--line); cursor:pointer; transition:background .2s,color .2s; }
 .service-card h3 { margin:0; font-family:"Manrope"; font-size:16px; line-height:1.3; }
-.service-card p { margin:0; max-width:62ch; color:rgba(29,36,34,.66); font-size:13px; line-height:1.45; transition:color .2s; }
 .service-card:hover { background:var(--forest); color:white; }
-.service-card:hover p { color:rgba(255,255,255,.72); }
 .service-card:focus-visible { position:relative; z-index:1; outline:3px solid var(--brand); outline-offset:2px; }
 .sectors-section { padding:110px 7vw; background:var(--forest); color:white; }
 .sectors-head p { color:rgba(255,255,255,.56); }
@@ -134,7 +131,7 @@ html.splash-complete .hero-logo-3d,html.splash-complete .hero-logo-stage::after,
 .sector-row { display:grid; grid-template-columns:70px .8fr 1.2fr 30px; align-items:center; gap:30px; min-height:132px; border-bottom:1px solid rgba(255,255,255,.2); transition:.25s; }
 .sector-row>span { color:var(--brand-soft); font-size:11px; }
 .sector-row h3 { margin:0; font-family:"Manrope"; font-size:24px; }
-.sector-row p { margin:0; color:rgba(255,255,255,.58); font-size:14px; line-height:1.65; }
+.sector-row p { margin:0; color:rgba(255,255,255,.58); font-size:13px; line-height:1.45; }
 .sector-row>b { color:var(--brand-soft); font-size:22px; transition:.2s; }
 .sector-row:hover { padding-left:16px; background:rgba(255,255,255,.035); }
 .sector-row:hover>b { transform:translate(4px,-4px); }
@@ -402,9 +399,8 @@ footer .brand img { width:min(100%,520px); }
   .service-group-mark svg { width:34px; height:34px; }
   .service-contact-button-mobile { display:flex; grid-column:1; grid-row:2; width:100%; justify-content:space-between; padding:0 16px 0 20px; font-size:15px; }
   .service-contact-button-desktop { display:none; }
-  .service-card { min-height:76px; padding:12px 14px; }
+  .service-card { min-height:72px; padding:12px 14px; }
   .service-card h3 { font-size:15.5px; }
-  .service-card p { font-size:13px; }
   .sector-row { grid-template-columns:38px 1fr 24px; gap:15px; padding:24px 0; }
   .sector-row p { grid-column:2; }
   .sector-row>b { grid-column:3; grid-row:1; }
@@ -471,7 +467,6 @@ footer .brand img { width:min(100%,520px); }
   .intro-section,.sectors-section,.institutional-section,.triage-section,.process-section,.faq-section { padding:68px 24px; }
   .institutional-section { gap:30px; }
   .institutional-intro h2 { font-size:39px; }
-  .institutional-intro>p { margin-top:18px; font-size:16px; }
   .institutional-visual { grid-template-columns:1fr; min-height:0; }
   .institutional-years { display:grid; grid-template-columns:auto 1fr; align-items:center; column-gap:18px; padding:20px 22px; }
   .institutional-years>span { grid-column:1/-1; }
@@ -489,7 +484,6 @@ footer .brand img { width:min(100%,520px); }
   .service-category-heading h3 { font-size:25px; }
   .service-card { min-height:72px; padding:11px 12px; }
   .service-card h3 { font-size:15px; }
-  .service-card p { font-size:12.5px; }
   .sector-row h3 { font-size:21px; }
   .choice-grid.two { grid-template-columns:1fr; }
   .footer-instagram { width:100%; }

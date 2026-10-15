@@ -70,29 +70,29 @@ function ServiceGroupMark({ group }: { group: string }) {
 const baseMessage = "Olá, encontrei a Envora pesquisando por consultoria ambiental em Joinville e gostaria de explicar minha situação.";
 
 const sectors = [
-  { code: "01", title: "Indústrias", text: "Licenciamento, renovação, condicionantes, PGRS, MTR e controle acústico." },
-  { code: "02", title: "Clínicas e saúde", text: "PGRSS, segregação de resíduos de serviços de saúde e organização dos comprovantes de destinação." },
-  { code: "03", title: "Postos de combustível", text: "Licenciamento, renovação, condicionantes e organização da documentação ambiental da operação." },
-  { code: "04", title: "Construção civil", text: "PGRCC e documentação de transporte e destinação dos resíduos da construção civil." },
-  { code: "05", title: "Comércios e serviços", text: "Enquadramento, DANC, CCA, licenciamento e controle acústico conforme a atividade." },
+  { code: "01", title: "Indústrias", text: "Licenciamento · condicionantes · resíduos · ruído" },
+  { code: "02", title: "Clínicas e saúde", text: "PGRSS · resíduos de saúde · destinação" },
+  { code: "03", title: "Postos de combustível", text: "Licenciamento · renovação · condicionantes" },
+  { code: "04", title: "Construção civil", text: "PGRCC · transporte · destinação" },
+  { code: "05", title: "Comércios e serviços", text: "Enquadramento · DANC · CCA · acústica" },
 ];
 
 const services = [
-  { code: "01", group: "autos", title: "Autos de infração e exigências ambientais", text: "Análise técnica do documento, levantamento do que foi solicitado e organização da resposta dentro do escopo profissional.", href: "/servicos/auto-de-infracao-ambiental" },
-  { code: "02", group: "licenciamento", title: "Diagnóstico e enquadramento ambiental", text: "Análise da atividade, porte, localização e situação documental para definir a rota aplicável.", featured: false, href: "/servicos/diagnostico-e-enquadramento-ambiental" },
-  { code: "03", group: "licenciamento", title: "DANC", text: "Preparação e acompanhamento da Declaração de Atividade Não Constante.", featured: false, href: "/servicos/danc" },
-  { code: "04", group: "licenciamento", title: "CCA", text: "Certidão de Conformidade Ambiental para atividades abaixo do porte de licenciamento.", featured: false, href: "/servicos/cca" },
-  { code: "05", group: "licenciamento", title: "Licenciamento ambiental", text: "Enquadramento, documentação técnica, protocolo e acompanhamento do processo.", featured: false, href: "/servicos/licenciamento-ambiental" },
-  { code: "06", group: "licenciamento", title: "Obtenção de LAP, LAI e LAO", text: "Preparação e acompanhamento das licenças prévia, de instalação e de operação.", featured: false, href: "/servicos/lap-lai-lao" },
-  { code: "07", group: "licenciamento", title: "Obtenção de Autorização Ambiental (AuA)", text: "Processo ambiental em ato único para atividades enquadradas nessa modalidade.", featured: false, href: "/servicos/autorizacao-ambiental-aua" },
-  { code: "08", group: "licenciamento", title: "Renovação e regularização", text: "Análise da licença existente e organização da documentação para continuidade da operação.", featured: false, href: "/servicos/renovacao-e-regularizacao" },
-  { code: "09", group: "licenciamento", title: "Gestão de condicionantes", text: "Organização de obrigações, evidências, prazos e entregas previstas na licença.", featured: false, href: "/servicos/gestao-de-condicionantes" },
-  { code: "10", group: "vegetacao", title: "Autorização para Corte de Vegetação (AuC)", text: "Análise do local e documentação técnica para solicitar a autorização de supressão de vegetação nativa.", featured: false, href: "/servicos/autorizacao-corte-vegetacao-auc" },
-  { code: "11", group: "vegetacao", title: "Projeto de Recuperação de Área Degradada (PRAD)", text: "Diagnóstico da área e projeto técnico de recuperação para análise do órgão competente.", featured: false, href: "/servicos/projeto-recuperacao-area-degradada-prad" },
-  { code: "12", group: "vegetacao", title: "Autorização para Corte de Árvores Isoladas (CAI)", text: "Avaliação de árvores isoladas e organização do pedido de autorização aplicável.", featured: false, href: "/servicos/autorizacao-corte-arvores-isoladas-cai" },
-  { code: "13", group: "residuos", title: "Planos de gerenciamento de resíduos", text: "PGRS, PGRSS e PGRCC: identificação do plano aplicável, elaboração e revisão para a rotina real.", featured: false, href: "/servicos/planos-de-gerenciamento-de-residuos" },
-  { code: "14", group: "residuos", title: "MTR e documentação de resíduos", text: "Organização de manifestos e comprovantes de transporte e destinação.", featured: false, href: "/servicos/mtr-e-documentacao-de-residuos" },
-  { code: "15", group: "residuos", title: "Laudo e controle acústico", text: "Avaliação técnica, documentação e protocolo conforme as exigências aplicáveis.", featured: false, href: "/servicos/laudo-e-controle-acustico" },
+  { code: "01", group: "autos", title: "Autos de infração e exigências ambientais", href: "/servicos/auto-de-infracao-ambiental" },
+  { code: "02", group: "licenciamento", title: "Diagnóstico e enquadramento ambiental", href: "/servicos/diagnostico-e-enquadramento-ambiental" },
+  { code: "03", group: "licenciamento", title: "DANC · Declaração de Atividade Não Constante", href: "/servicos/danc" },
+  { code: "04", group: "licenciamento", title: "CCA · Certidão de Conformidade Ambiental", href: "/servicos/cca" },
+  { code: "05", group: "licenciamento", title: "Licenciamento ambiental", href: "/servicos/licenciamento-ambiental" },
+  { code: "06", group: "licenciamento", title: "Licença prévia, de instalação e de operação (LAP, LAI e LAO)", href: "/servicos/lap-lai-lao" },
+  { code: "07", group: "licenciamento", title: "Autorização Ambiental (AuA)", href: "/servicos/autorizacao-ambiental-aua" },
+  { code: "08", group: "licenciamento", title: "Renovação e regularização", href: "/servicos/renovacao-e-regularizacao" },
+  { code: "09", group: "licenciamento", title: "Gestão de condicionantes", href: "/servicos/gestao-de-condicionantes" },
+  { code: "10", group: "vegetacao", title: "Autorização para Corte de Vegetação (AuC)", href: "/servicos/autorizacao-corte-vegetacao-auc" },
+  { code: "11", group: "vegetacao", title: "Projeto de Recuperação de Área Degradada (PRAD)", href: "/servicos/projeto-recuperacao-area-degradada-prad" },
+  { code: "12", group: "vegetacao", title: "Autorização para Corte de Árvores Isoladas (CAI)", href: "/servicos/autorizacao-corte-arvores-isoladas-cai" },
+  { code: "13", group: "residuos", title: "Planos de gerenciamento de resíduos · PGRS, PGRSS e PGRCC", href: "/servicos/planos-de-gerenciamento-de-residuos" },
+  { code: "14", group: "residuos", title: "MTR e documentação de resíduos", href: "/servicos/mtr-e-documentacao-de-residuos" },
+  { code: "15", group: "residuos", title: "Laudo e controle acústico", href: "/servicos/laudo-e-controle-acustico" },
 ];
 
 const serviceGroups = [
@@ -113,12 +113,12 @@ const situations = [
 ];
 
 const faqs = [
-  { q: "Recebi um auto de infração ambiental. O que faço?", a: "Confira o órgão emissor, o prazo indicado e os documentos solicitados. A Envora pode analisar o conteúdo técnico, organizar as informações e preparar os itens ambientais previstos no escopo. Quando houver matéria jurídica, a atuação deve ser complementada por advogado." },
-  { q: "Minha empresa precisa de licença ambiental em Joinville?", a: "Depende da atividade, do porte, da localização e das características da operação. A triagem inicial organiza essas informações para indicar a rota provável e o que precisa ser confirmado." },
-  { q: "Qual é a diferença entre DANC, CCA e licença ambiental?", a: "Em linhas gerais, a DANC formaliza que a atividade não consta da listagem sujeita ao licenciamento; a CCA pode se aplicar quando a atividade consta, mas está abaixo do porte; e a licença é exigida quando atividade e porte se enquadram. A conclusão depende da análise de cada caso." },
-  { q: "A Envora garante a aprovação do processo?", a: "Não. A decisão cabe ao órgão competente. A Envora prepara a documentação com rigor técnico, reduz falhas evitáveis e acompanha as etapas previstas no escopo contratado." },
-  { q: "Quanto tempo leva um processo ambiental?", a: "O prazo varia conforme modalidade, complexidade, documentos, estudos necessários e tempo de análise do órgão. A proposta separa o que depende da consultoria dos fatores externos." },
-  { q: "Como começa o atendimento?", a: "Você descreve a atividade e a situação atual. A Envora faz a triagem, solicita os documentos essenciais e apresenta o próximo passo antes de definir o escopo." },
+  { q: "Recebi um auto de infração ambiental. O que faço?", a: "Confira quem emitiu, o prazo e o que foi solicitado. A Envora pode organizar a resposta técnica e as providências ambientais contratadas. Questões jurídicas devem ser tratadas com advogado." },
+  { q: "Minha empresa precisa de licença ambiental em Joinville?", a: "Depende da atividade, do porte, da localização e da operação. A triagem indica o enquadramento provável e o que precisa ser confirmado." },
+  { q: "Qual é a diferença entre DANC, CCA e licença ambiental?", a: "Em geral, a DANC se aplica a atividade fora da listagem sujeita a licenciamento; a CCA, a atividade listada abaixo do porte licenciável; e a licença, quando atividade e porte se enquadram. A conclusão depende do caso." },
+  { q: "A Envora garante a aprovação do processo?", a: "Não. A decisão é do órgão competente. A Envora prepara a documentação e acompanha as etapas previstas na contratação." },
+  { q: "Quanto tempo leva um processo ambiental?", a: "Varia conforme a modalidade, a complexidade, os documentos e o tempo de análise do órgão. A proposta separa o que cabe à consultoria dos fatores externos." },
+  { q: "Como começa o atendimento?", a: "Você informa a atividade e a situação. A Envora faz a triagem, pede os documentos essenciais e apresenta o próximo passo antes de definir o escopo." },
 ];
 
 export default function EnvoraLanding() {
@@ -388,14 +388,13 @@ export default function EnvoraLanding() {
         <section className="institutional-section" id="institucional" data-scroll-panel aria-labelledby="institutional-title">
           <div className="institutional-intro">
             <div className="section-index">01 — Envora</div>
-            <h2 id="institutional-title">Você explica. A Envora conduz a parte técnica.</h2>
-            <p>Atendimento em Joinville, com experiência em licenciamento municipal e demandas de operações industriais e de infraestrutura.</p>
+            <h2 id="institutional-title">Experiência em licenciamento ambiental.</h2>
           </div>
           <div className="institutional-visual" aria-label="Experiência e atuação da Envora">
             <div className="institutional-years">
               <span>EXPERIÊNCIA PROFISSIONAL</span>
               <strong>05</strong>
-              <b>anos em licenciamento ambiental</b>
+              <b>anos de experiência</b>
             </div>
             <div className="institutional-facts">
               <div><span>01 / ATUAÇÃO</span><b>Licenciamento municipal</b></div>
@@ -421,7 +420,7 @@ export default function EnvoraLanding() {
                 </div>
                 <div className="service-grid">
                   {group.items.map((service) => {
-                    const cardContent = <><h3>{service.title}</h3><p>{service.text}</p></>;
+                    const cardContent = <h3>{service.title}</h3>;
                     const className = "service-card";
                     return service.href
                       ? <Link key={service.code} className={className} href={service.href}>{cardContent}</Link>
@@ -450,7 +449,7 @@ export default function EnvoraLanding() {
           <div className="triage-copy">
             <div className="section-index">04 — Triagem inicial</div>
             <h2>Explique o cenário<br />em poucos toques.</h2>
-            <div className="triage-output"><span>Você recebe</span><b>Entendimento inicial do caso</b><b>Próximo passo técnico</b></div>
+            <div className="triage-output"><span>Após a triagem</span><b>Enquadramento inicial · próximo passo</b></div>
           </div>
           <div className="triage-form">
             <fieldset><legend><span>01</span> Qual é o setor ou atividade?</legend><label className="field-label" htmlFor="triage-sector">Selecione o setor ou a atividade</label><select id="triage-sector" name="sector" value={sector} onChange={(e) => setSector(e.target.value)}><option value="">Selecione uma opção</option>{["Indústria", "Clínica ou serviço de saúde", "Posto de combustível", "Construção civil", "Comércio ou serviço", "Outra atividade"].map((item) => <option key={item}>{item}</option>)}</select></fieldset>
