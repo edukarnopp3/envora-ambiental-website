@@ -7,11 +7,11 @@ import { contentArticles } from "./content-data";
 
 export const metadata: Metadata = {
   title: "Blog ambiental | Envora Consultoria Ambiental",
-  description: "Orientações objetivas sobre licenciamento, autorizações e regularização ambiental, com fontes oficiais e aplicação prática.",
+  description: "Conteúdos técnicos sobre licenciamento ambiental, inventários de GEE, créditos de carbono e regularização, com fontes oficiais e aplicação prática.",
   alternates: { canonical: "/conteudos" },
   openGraph: {
     title: "Blog ambiental | Envora Consultoria Ambiental",
-    description: "Orientações objetivas sobre licenciamento, autorizações e regularização ambiental.",
+    description: "Conteúdos técnicos sobre licenciamento ambiental, inventários de GEE e créditos de carbono.",
     url: "/conteudos",
     type: "website",
     locale: "pt_BR",
@@ -24,7 +24,7 @@ const structuredData = {
   "@context": "https://schema.org",
   "@type": "CollectionPage",
   name: "Blog ambiental da Envora",
-  description: "Orientações sobre licenciamento, autorizações e regularização ambiental.",
+  description: "Conteúdos técnicos sobre licenciamento ambiental, emissões de GEE e mercado de carbono.",
   url: `${SITE_URL}/conteudos`,
   mainEntity: {
     "@type": "ItemList",

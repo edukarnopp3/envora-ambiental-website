@@ -1,5 +1,6 @@
 import { practicalArticles } from "./practical-content";
 import { editorialArticles } from "./editorial-articles";
+import { carbonArticles } from "./carbon-content";
 
 export type ContentArticle = {
   slug: string;
@@ -24,6 +25,7 @@ export type ContentArticle = {
 };
 
 const baseContentArticles: ContentArticle[] = [
+  ...carbonArticles,
   ...practicalArticles,
   {
     slug: "lap-lai-lao-entenda-as-etapas",
