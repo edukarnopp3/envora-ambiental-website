@@ -28,7 +28,7 @@ export async function generateMetadata({ params }: ContentPageProps): Promise<Me
       locale: "pt_BR",
       siteName: "Envora Consultoria Ambiental",
       publishedTime: article.publishedAt,
-      images: [{ url: "/og.png", width: 1731, height: 909, alt: `${article.title} — Envora` }],
+      images: [{ url: "/og.png", width: 8192, height: 4302, alt: `${article.title} — Envora` }],
     },
   };
 }

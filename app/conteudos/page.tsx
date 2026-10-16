@@ -16,7 +16,7 @@ export const metadata: Metadata = {
     type: "website",
     locale: "pt_BR",
     siteName: "Envora Consultoria Ambiental",
-    images: [{ url: "/og.png", width: 1731, height: 909, alt: "Conteúdos ambientais — Envora" }],
+    images: [{ url: "/og.png", width: 8192, height: 4302, alt: "Conteúdos ambientais — Envora" }],
   },
 };
 

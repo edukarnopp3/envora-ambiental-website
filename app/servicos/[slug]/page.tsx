@@ -157,7 +157,7 @@ export async function generateMetadata({ params }: ServicePageProps): Promise<Me
       type: "website",
       locale: "pt_BR",
       siteName: "Envora Consultoria Ambiental",
-      images: [{ url: "/og.png", width: 1731, height: 909, alt: `${service.shortTitle} — Envora` }],
+      images: [{ url: "/og.png", width: 8192, height: 4302, alt: `${service.shortTitle} — Envora` }],
     },
   };
 }
