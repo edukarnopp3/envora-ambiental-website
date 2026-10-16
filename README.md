@@ -31,7 +31,7 @@ O comando `npm test` também gera o build de produção e testa o HTML servido p
 - `NEXT_PUBLIC_GOOGLE_TAG_ID` (padrão: `AW-18413899550`)
 - `NEXT_PUBLIC_SITE_URL` (use o domínio definitivo quando ele for conectado)
 
-Os cliques para abrir o WhatsApp são registrados como interações no `dataLayer`, mas não como conversões ou leads. Marque uma conversão como principal somente depois de configurar um sinal confirmado, como o envio de um formulário ou a importação de leads qualificados.
+Os cliques para abrir o WhatsApp são registrados no `dataLayer` e enviados à ação secundária `Clique no WhatsApp` do Google Ads. Essa conversão mede apenas a abertura do link; não confirma mensagem enviada, conversa iniciada ou lead. Mantenha-a secundária e só promova uma ação a principal com um sinal comercial confirmado, como formulário enviado ou lead qualificado.
 
 Use um arquivo `.env.local` apenas no computador ou configure as variáveis no provedor de hospedagem. Arquivos `.env*` são ignorados pelo Git e nunca devem conter credenciais versionadas.
 
@@ -42,7 +42,7 @@ Conecte este repositório à Vercel e mantenha o preset **Next.js**, o comando `
 ## Segurança
 
 - Não há chaves, tokens ou senhas no código-fonte.
-- Métricas e Google Ads só carregam após consentimento do visitante.
+- A Google tag usa Consent Mode: o armazenamento de publicidade e análise começa negado e é atualizado conforme a escolha do visitante.
 - Cabeçalhos bloqueiam framing, MIME sniffing, recursos não autorizados e APIs de navegador desnecessárias.
 - Qualquer funcionalidade futura que grave dados deve validar e autorizar requisições no servidor; validação no navegador não é controle de segurança.
 

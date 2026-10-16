@@ -1,6 +1,7 @@
 "use client";
 
 import type { CSSProperties } from "react";
+import { trackWhatsAppClickConversion } from "./google-ads-events";
 
 const WA_NUMBER = "5547984551622";
 
@@ -19,6 +20,7 @@ export default function ServiceWhatsAppLink({ service, className, children, styl
   function trackClick() {
     window.dataLayer = window.dataLayer || [];
     window.dataLayer.push({ event: "whatsapp_click", source: `pagina_servico_${service}`, situation: situation ?? "nao_informada", placement: placement ?? "service", page_path: window.location.pathname });
+    trackWhatsAppClickConversion();
   }
 
   return <a className={className} style={style} href={href} target="_blank" rel="noreferrer" onClick={trackClick}>{children}</a>;

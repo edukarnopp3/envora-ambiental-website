@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import styles from "./links.module.css";
+import { trackWhatsAppClickConversion } from "../google-ads-events";
 
 const WHATSAPP_URL =
   "https://wa.me/5547984551622?text=Ol%C3%A1%2C%20encontrei%20a%20Envora%20pelo%20Instagram%20e%20gostaria%20de%20conversar%20sobre%20uma%20demanda%20ambiental.";
@@ -15,6 +16,7 @@ declare global {
 function recordClick(channel: "whatsapp" | "site" | "email") {
   window.dataLayer = window.dataLayer || [];
   window.dataLayer.push({ event: "links_hub_click", channel });
+  if (channel === "whatsapp") trackWhatsAppClickConversion();
 }
 
 const links = [
