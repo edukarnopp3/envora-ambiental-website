@@ -21,7 +21,8 @@
 .needs li { padding-left:12px; border-left:2px solid var(--brand-soft); }
 .image { position:relative; min-height:560px; margin:0; overflow:hidden; background:var(--forest); }
 .image img { object-fit:cover; object-position:72% center; }
-.image figcaption { position:absolute; bottom:16px; right:20px; padding:4px 8px; font-size:.7rem; color:white; background:#0d2925b8; }
+.image figcaption { position:absolute; bottom:16px; right:20px; max-width:calc(100% - 40px); padding:4px 8px; font-size:.7rem; color:white; background:#0d2925ed; }
+.image figcaption a { text-decoration:underline; text-underline-offset:2px; }
 .attendance { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:36px 7vw; padding:64px 5vw; }
 .steps { list-style:none; counter-reset:steps; padding:0; margin:28px 0 0; }
 .steps li { position:relative; padding:15px 0 15px 40px; border-top:1px solid var(--line); counter-increment:steps; }

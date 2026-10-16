@@ -6,6 +6,8 @@ export type ContactServicePage = ServicePageData & {
     action: string;
     image: string;
     imageAlt: string;
+    imagePosition?: string;
+    imageCredit?: { author: string; source: string; license: string; licenseUrl: string };
     situations: string[];
     initialInformation: string[];
   };
@@ -58,8 +60,15 @@ export const contactServicePages: ContactServicePage[] = [
     contact: {
       message: "Olá! Preciso de ajuda com outorga ou regularização de uso da água. O imóvel fica em [cidade] e a situação é [poço/captação/outro].",
       action: "Conversar sobre outorga no WhatsApp",
-      image: "/hero-rio-poster.jpg",
-      imageAlt: "Rio entre áreas de vegetação, representando os recursos hídricos",
+      image: "/outorga-captacao-real.webp",
+      imageAlt: "Estrutura de captação da estação de tratamento de água Ullrich junto ao Lago Austin, nos Estados Unidos",
+      imagePosition: "53% center",
+      imageCredit: {
+        author: "Larry D. Moore",
+        source: "https://commons.wikimedia.org/wiki/File:Ullrich_Water_Treatment_Plant_Intake_Lake_Austin_2020.jpg",
+        license: "CC BY 4.0",
+        licenseUrl: "https://creativecommons.org/licenses/by/4.0/",
+      },
       situations: ["Poço existente ou planejado", "Captação ou outro uso da água", "Documentação a conferir ou regularizar"],
       initialInformation: ["Cidade e localização do imóvel", "Tipo de uso, finalidade e situação atual", "Cadastros ou documentos existentes, se houver"],
     },

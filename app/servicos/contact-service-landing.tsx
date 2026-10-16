@@ -30,8 +30,12 @@ export default function ContactServiceLanding({ content: c }: { content: Contact
           <ServiceWhatsAppLink {...contact} placement="hero" className={styles.cta}>{c.contact.action}<WhatsAppIcon /></ServiceWhatsAppLink>
         </div>
         <figure className={styles.image}>
-          <Image src={c.contact.image} alt={c.contact.imageAlt} fill priority sizes="(max-width: 800px) 100vw, 44vw" />
-          <figcaption>Imagem ilustrativa</figcaption>
+          <Image src={c.contact.image} alt={c.contact.imageAlt} fill priority sizes="(max-width: 800px) 100vw, 44vw" style={c.contact.imagePosition ? { objectPosition: c.contact.imagePosition } : undefined} />
+          <figcaption>{c.contact.imageCredit ? <>
+            Foto: <a href={c.contact.imageCredit.source} target="_blank" rel="noreferrer">{c.contact.imageCredit.author}</a>
+            {" · "}<a href={c.contact.imageCredit.licenseUrl} target="_blank" rel="noreferrer">{c.contact.imageCredit.license}</a>
+            {" · Redimensionada e recortada"}
+          </> : "Imagem ilustrativa"}</figcaption>
         </figure>
       </section>
       <section className={styles.attendance} aria-labelledby="atendimento-titulo">
