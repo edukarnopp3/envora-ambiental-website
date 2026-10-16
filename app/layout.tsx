@@ -20,13 +20,13 @@ export const metadata: Metadata = {
     locale: "pt_BR",
     siteName: "Envora Consultoria Ambiental",
     url: "/",
-    images: [{ url: "/og.png", width: 1731, height: 909, alt: "Consultoria Ambiental em Joinville — Envora" }],
+    images: [{ url: "/og.png?v=2", width: 1731, height: 909, alt: "Envora Ambiental — marca" }],
   },
   twitter: {
     card: "summary_large_image",
     title: "Envora | Consultoria Ambiental em Joinville",
     description: "Licenciamento e regularização ambiental em Joinville.",
-    images: ["/og.png"],
+    images: ["/og.png?v=2"],
   },
   icons: {
     icon: [
