@@ -8,6 +8,8 @@ import { SITE_URL } from "../../site-url";
 import { servicePageBySlug, servicePages } from "../service-data";
 import ConversionLanding from "../conversion-landing";
 import { conversionPages } from "../conversion-data";
+import ContactServiceLanding from "../contact-service-landing";
+import { contactServicePageBySlug } from "../contact-service-data";
 
 type ServicePageProps = { params: Promise<{ slug: string }> };
 
@@ -191,6 +193,11 @@ export default async function ServicePage({ params }: ServicePageProps) {
     "@graph": [serviceSchema, breadcrumbSchema],
   };
   const isLicenseJourney = service.slug === "lap-lai-lao";
+  const contactService = contactServicePageBySlug.get(slug);
+  if (contactService) return <>
+    <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData).replace(/</g, "\\u003c") }} />
+    <ContactServiceLanding content={contactService} />
+  </>;
   if (conversionPages[slug]) return <>
     <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData).replace(/</g, "\\u003c") }} />
     <ConversionLanding content={conversionPages[slug]} service={service.shortTitle} />

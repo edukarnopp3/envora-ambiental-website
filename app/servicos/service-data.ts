@@ -1,3 +1,5 @@
+import { contactServicePages } from "./contact-service-data";
+
 export type ServiceSource = { label: string; url: string };
 
 export type ServicePageData = {
@@ -321,6 +323,7 @@ export const servicePages: ServicePageData[] = [
       pmj("Denunciar poluição sonora", "servicos/denunciar-poluicao-sonora/"),
     ],
   },
+  ...contactServicePages,
 ];
 
 export const servicePageBySlug = new Map(servicePages.map((service) => [service.slug, service]));

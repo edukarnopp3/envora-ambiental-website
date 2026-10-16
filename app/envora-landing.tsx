@@ -127,6 +127,8 @@ const services = [
   { code: "13", group: "residuos", title: "Planos de gerenciamento de resíduos · PGRS, PGRSS e PGRCC", href: "/servicos/planos-de-gerenciamento-de-residuos" },
   { code: "14", group: "residuos", title: "MTR e documentação de resíduos", href: "/servicos/mtr-e-documentacao-de-residuos" },
   { code: "15", group: "residuos", title: "Laudo e controle acústico", href: "/servicos/laudo-e-controle-acustico" },
+  { code: "16", group: "licenciamento", title: "Responsabilidade Técnica Ambiental (RT)", href: "/servicos/responsabilidade-tecnica-ambiental" },
+  { code: "17", group: "licenciamento", title: "Outorga e regularização de poços/uso da água", href: "/servicos/outorga-e-regularizacao-de-uso-da-agua" },
 ];
 
 const serviceGroups = [
@@ -559,6 +561,8 @@ export default function EnvoraLanding() {
         <nav className="site-footer-column" aria-label="Serviços ambientais">
           <h2>Serviços</h2>
           {serviceGroups.map((group) => <a key={group.id} href={`#service-group-${group.id}`}>{group.title}</a>)}
+          <Link href="/servicos/responsabilidade-tecnica-ambiental">Responsabilidade Técnica Ambiental</Link>
+          <Link href="/servicos/outorga-e-regularizacao-de-uso-da-agua">Outorga e uso da água</Link>
           <a href="#solucoes">Todos os serviços</a>
         </nav>
 
