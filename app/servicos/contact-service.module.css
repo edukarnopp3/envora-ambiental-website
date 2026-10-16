@@ -12,7 +12,7 @@
 .whatsappIcon { width:32px; height:32px; flex:0 0 32px; }
 .headerCta { width:auto; min-height:56px; padding:12px 20px; font-size:1rem; }
 .headerCta .whatsappIcon { width:26px; height:26px; flex-basis:26px; }
-.hero { display:grid; grid-template-columns:1.15fr 1fr; }
+.hero { display:grid; grid-template-columns:minmax(0,1.15fr) minmax(0,1fr); }
 .heroCopy { padding:58px 5vw; align-self:center; }
 .eyebrow { margin:0 0 22px; font-size:.74rem; font-weight:700; text-transform:uppercase; letter-spacing:.12em; color:var(--brand); }
 .hero h1 { margin:0; font-size:clamp(2.3rem,4.15vw,4.5rem); line-height:1.07; }
@@ -22,7 +22,7 @@
 .image { position:relative; min-height:560px; margin:0; overflow:hidden; background:var(--forest); }
 .image img { object-fit:cover; object-position:72% center; }
 .image figcaption { position:absolute; bottom:16px; right:20px; padding:4px 8px; font-size:.7rem; color:white; background:#0d2925b8; }
-.attendance { display:grid; grid-template-columns:1fr 1fr; gap:36px 7vw; padding:64px 5vw; }
+.attendance { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:36px 7vw; padding:64px 5vw; }
 .steps { list-style:none; counter-reset:steps; padding:0; margin:28px 0 0; }
 .steps li { position:relative; padding:15px 0 15px 40px; border-top:1px solid var(--line); counter-increment:steps; }
 .steps li:before { content:counter(steps,decimal-leading-zero); position:absolute; left:0; color:var(--brand); font-weight:700; }
@@ -47,14 +47,14 @@
   .header { padding:14px 22px; gap:18px; }
   .header img { width:145px; }
   .headerCta { display:none; }
-  .hero { grid-template-columns:1fr; }
+  .hero { grid-template-columns:minmax(0,1fr); }
   .heroCopy { padding:36px 22px; }
-  .hero h1 { font-size:clamp(2.2rem,7.8vw,3.8rem); }
+  .hero h1 { font-size:clamp(1.9rem,8.8vw,3.8rem); }
   .lead { font-size:1rem; margin:22px 0; }
   .needs { display:grid; gap:8px; margin-bottom:24px; }
   .image { min-height:240px; height:clamp(240px,55vw,380px); }
   .cta { min-height:78px; padding:20px 22px; font-size:1.12rem; }
-  .attendance { grid-template-columns:1fr; gap:32px; padding:42px 22px; }
+  .attendance { grid-template-columns:minmax(0,1fr); gap:32px; padding:42px 22px; }
   .initialInformation { border-top:1px solid var(--line); padding-top:30px; }
   .boundary { grid-column:auto; }
   .closing { padding:42px 22px; }
