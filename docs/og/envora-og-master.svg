@@ -3,6 +3,7 @@
   <desc id="description">Símbolo vertical da Envora acima do nome Envora Ambiental, em fundo neutro.</desc>
   <rect width="8192" height="4302" fill="#F7F7F5"/>
 
+  <g transform="translate(-327.68 -172.08) scale(1.08)">
   <!-- Mark paths match public/envora-mark.svg; only the scale and placement change. -->
   <g transform="translate(3459.2 354.9) scale(19.8765)">
     <path fill="#0F6E56" d="M32 2C13 12 3 30 3 51c0 20 11 37 29 49 18-12 29-29 29-49C61 30 51 12 32 2Z"/>
@@ -12,4 +13,5 @@
 
   <text x="4096" y="3644" fill="#0F6E56" text-anchor="middle" font-family="Manrope, Arial, sans-serif" font-size="757" font-weight="800" letter-spacing="-49">Envora</text>
   <text x="4096" y="3937" fill="#444441" text-anchor="middle" font-family="DM Sans, Arial, sans-serif" font-size="170" font-weight="400" letter-spacing="65">Ambiental</text>
+  </g>
 </svg>
