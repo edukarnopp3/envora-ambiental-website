@@ -17,7 +17,7 @@ export default function PrivacyPage() {
       <article>
         <p className="eyebrow">Privacidade e dados</p>
         <h1>Política de Privacidade</h1>
-        <p className="privacy-updated">Última atualização: 3 de setembro de 2026.</p>
+        <p className="privacy-updated">Última atualização: 17 de outubro de 2026.</p>
 
         <h2>1. Quem trata os dados</h2>
         <p>A Envora Consultoria Ambiental, representada por Eduardo Karnopp, é responsável pelo tratamento dos dados descritos nesta política. Solicitações relacionadas à privacidade podem ser enviadas para <a href="mailto:envoraambiental@gmail.com">envoraambiental@gmail.com</a>.</p>
@@ -29,7 +29,7 @@ export default function PrivacyPage() {
         <p>Os dados são utilizados para responder ao contato, compreender a demanda, realizar a triagem inicial, elaborar proposta quando solicitada, executar serviços contratados e cumprir obrigações aplicáveis.</p>
 
         <h2>4. Cookies e medição</h2>
-        <p>O site utiliza o Google Tag com o armazenamento de publicidade, análise e personalização negado por padrão. Se você aceitar, essas permissões são atualizadas para permitir a medição de visitas e interações no site. O envio de um formulário de lead no Google Ads é registrado pelo próprio Google como uma conversão de formulário. Se você recusar os cookies do site, o armazenamento permanece negado. A escolha fica salva no seu navegador e pode ser apagada ao remover os dados locais do site.</p>
+        <p>O site utiliza o Google Tag com o armazenamento de publicidade, análise e personalização negado por padrão. Se você aceitar, essas permissões são atualizadas para permitir a medição de visitas e interações no site. Com essa aceitação, quando houver o identificador de clique GCLID em uma visita originada de anúncio, o site poderá guardá-lo no armazenamento local do navegador por até 90 dias. Se você iniciar uma conversa pelo WhatsApp, esse identificador será incluído no texto pré-preenchido como código de referência; a mensagem só será enviada se você confirmar o envio no WhatsApp. A Envora poderá usar o código recebido para registrar no Google Ads apenas o identificador, a etapa da conversa (recebida ou qualificada) e a data/hora, sem nome, telefone ou e-mail nessa importação. O envio de um formulário de lead no Google Ads é registrado pelo próprio Google como uma conversão de formulário. Se você recusar os cookies do site, o armazenamento permanece negado e o identificador não é incluído. A escolha fica salva no seu navegador e pode ser apagada ao remover os dados locais do site.</p>
 
         <h2>5. Serviços de terceiros</h2>
         <p>Ao utilizar WhatsApp, e-mail, Google Ads ou outros serviços externos, o tratamento também segue as políticas desses fornecedores. Os dados enviados em formulários de lead do Google Ads são gerenciados pelo Google e disponibilizados à Envora para atendimento; o Google informa que mantém os leads por até 60 dias. A hospedagem do site é realizada pela Vercel. Esses fornecedores podem operar infraestrutura fora do Brasil.</p>

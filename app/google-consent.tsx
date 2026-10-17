@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { captureGoogleAdsClickId, clearGoogleAdsClickId } from "./whatsapp-attribution";
 
 const CONSENT_KEY = "envora_google_consent";
 
@@ -22,6 +23,7 @@ export default function GoogleConsent() {
     }
 
     if (stored === "accepted") {
+      captureGoogleAdsClickId();
       window.gtag?.("consent", "update", {
         ad_storage: "granted",
         analytics_storage: "granted",
@@ -37,6 +39,8 @@ export default function GoogleConsent() {
 
   function choose(value: "accepted" | "rejected") {
     window.localStorage.setItem(CONSENT_KEY, value);
+    if (value === "accepted") captureGoogleAdsClickId();
+    else clearGoogleAdsClickId();
     setConsent(value);
     window.gtag?.("consent", "update", {
       ad_storage: value === "accepted" ? "granted" : "denied",

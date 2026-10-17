@@ -1,11 +1,11 @@
 "use client";
 
 import { useEffect, useMemo, useState } from "react";
+import type { MouseEvent } from "react";
 import Link from "next/link";
 import HeroBackgroundVideo from "./hero-background-video";
 import { trackWhatsAppClickConversion } from "./google-ads-events";
-
-const WA_NUMBER = "5547984551622";
+import { buildWhatsAppHref } from "./whatsapp-attribution";
 
 declare global {
   interface Window {
@@ -18,13 +18,14 @@ function track(event: string, details: Record<string, unknown> = {}) {
   window.dataLayer.push({ event, ...details });
 }
 
-function trackWhatsAppClick(source: string) {
+function trackWhatsAppClick(event: MouseEvent<HTMLAnchorElement>, source: string, message: string) {
+  event.currentTarget.href = buildWhatsAppHref(message, true);
   track("whatsapp_click", { source });
   trackWhatsAppClickConversion();
 }
 
 function wa(message: string) {
-  return `https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(message)}`;
+  return buildWhatsAppHref(message);
 }
 
 function WhatsAppMark() {
@@ -44,7 +45,7 @@ function WhatsAppLink({ children, message, source, className = "" }: {
   source: string;
   className?: string;
 }) {
-  return <a className={className} href={wa(message)} target="_blank" rel="noreferrer" onClick={() => trackWhatsAppClick(source)}>{children}</a>;
+  return <a className={className} href={wa(message)} target="_blank" rel="noreferrer" onClick={(event) => trackWhatsAppClick(event, source, message)}>{children}</a>;
 }
 
 function ServiceGroupMark({ group }: { group: string }) {
@@ -572,7 +573,7 @@ export default function EnvoraLanding() {
             <a className="site-footer-social" href="https://www.instagram.com/envoraambiental/" target="_blank" rel="noopener noreferrer" onClick={() => track("instagram_click", { source: "footer" })} aria-label="Instagram da Envora Ambiental">
               <svg aria-hidden="true" viewBox="0 0 24 24" focusable="false"><rect x="3" y="3" width="18" height="18" rx="5" /><circle cx="12" cy="12" r="4" /><circle cx="17.5" cy="6.5" r="1" /></svg>
             </a>
-            <a className="site-footer-social" href={wa(baseMessage)} target="_blank" rel="noreferrer" onClick={() => trackWhatsAppClick("footer_social")} aria-label="WhatsApp da Envora">
+            <a className="site-footer-social" href={wa(baseMessage)} target="_blank" rel="noreferrer" onClick={(event) => trackWhatsAppClick(event, "footer_social", baseMessage)} aria-label="WhatsApp da Envora">
               <WhatsAppMark />
             </a>
           </div>
@@ -598,7 +599,7 @@ export default function EnvoraLanding() {
 
         <div className="site-footer-column site-footer-contact">
           <h2>Contato</h2>
-          <a href={wa(baseMessage)} target="_blank" rel="noreferrer" onClick={() => trackWhatsAppClick("footer_contact")}>WhatsApp</a>
+          <a href={wa(baseMessage)} target="_blank" rel="noreferrer" onClick={(event) => trackWhatsAppClick(event, "footer_contact", baseMessage)}>WhatsApp</a>
           <a href="tel:+5547984551622" onClick={() => track("phone_click", { source: "footer" })}>(47) 98455-1622</a>
           <a href="mailto:envoraambiental@gmail.com" onClick={() => track("email_click", { source: "footer" })}>envoraambiental@gmail.com</a>
           <span>Joinville · Santa Catarina</span>

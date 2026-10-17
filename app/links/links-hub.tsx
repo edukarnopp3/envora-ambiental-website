@@ -3,9 +3,9 @@
 import Image from "next/image";
 import styles from "./links.module.css";
 import { trackWhatsAppClickConversion } from "../google-ads-events";
+import { buildWhatsAppHref } from "../whatsapp-attribution";
 
-const WHATSAPP_URL =
-  "https://wa.me/5547984551622?text=Ol%C3%A1%2C%20encontrei%20a%20Envora%20pelo%20Instagram%20e%20gostaria%20de%20conversar%20sobre%20uma%20demanda%20ambiental.";
+const WHATSAPP_MESSAGE = "Olá, encontrei a Envora pelo Instagram e gostaria de conversar sobre uma demanda ambiental.";
 
 declare global {
   interface Window {
@@ -23,7 +23,7 @@ const links = [
   {
     label: "WhatsApp",
     detail: "Falar com a Envora",
-    href: WHATSAPP_URL,
+    href: buildWhatsAppHref(WHATSAPP_MESSAGE),
     channel: "whatsapp" as const,
     external: true,
   },
@@ -65,7 +65,10 @@ export default function LinksHub() {
               className={`${styles.link} ${index === 0 ? styles.primary : ""}`}
               href={link.href}
               key={link.channel}
-              onClick={() => recordClick(link.channel)}
+              onClick={(event) => {
+                if (link.channel === "whatsapp") event.currentTarget.href = buildWhatsAppHref(WHATSAPP_MESSAGE, true);
+                recordClick(link.channel);
+              }}
               rel={link.external ? "noopener noreferrer" : undefined}
               target={link.external ? "_blank" : undefined}
             >
