@@ -27,6 +27,7 @@ button { color:inherit; }
 .button { display:inline-flex; align-items:center; justify-content:center; gap:24px; min-height:76px; padding:0 40px; border:0; font-size:17px; font-weight:700; letter-spacing:.01em; cursor:pointer; transition:.2s; }
 .button span { font-size:20px; }
 .button .whatsapp-mark { display:grid; place-items:center; flex:0 0 28px; width:28px; height:28px; color:currentColor; background:transparent; }
+.whatsapp-mark { display:inline-grid; place-items:center; flex:0 0 28px; width:28px; height:28px; color:currentColor; background:transparent; }
 .whatsapp-mark svg { display:block; width:26px; height:26px; }
 .button-small { min-width:220px; min-height:62px; gap:14px; padding:0 24px; color:white; background:var(--brand); font-size:15px; }
 .button-small .whatsapp-mark { flex-basis:22px; width:22px; height:22px; }
@@ -244,21 +245,40 @@ select:focus,input:focus,textarea:focus { border-color:var(--forest); box-shadow
 .service-hero .eyebrow { margin-bottom:22px; color:var(--brand-soft); }
 .service-hero h1 { max-width:980px; margin:0; font:700 clamp(48px,6vw,92px)/.98 "Manrope",sans-serif; letter-spacing:-.06em; text-wrap:balance; }
 .service-hero-intro { max-width:760px; margin:32px 0 0; color:rgba(255,255,255,.68); font-size:clamp(17px,1.4vw,21px); line-height:1.65; }
-.service-visual-hero { position:relative; isolation:isolate; display:flex; align-items:end; min-height:calc(100svh - 88px); padding:90px 7vw; overflow:hidden; color:white; text-decoration:none; background:linear-gradient(90deg,rgba(9,24,22,.92) 0%,rgba(9,24,22,.72) 36%,rgba(9,24,22,.18) 68%,rgba(9,24,22,.12) 100%),var(--service-visual) center/cover no-repeat; }
+.service-visual-hero { position:relative; isolation:isolate; display:flex; align-items:end; min-height:calc(100svh - 88px); padding:90px 7vw; overflow:hidden; color:white; text-decoration:none; background:linear-gradient(90deg,rgba(9,24,22,.92) 0%,rgba(9,24,22,.72) 36%,rgba(9,24,22,.18) 68%,rgba(9,24,22,.12) 100%),var(--service-visual) var(--service-position,center)/cover no-repeat; }
 .service-visual-hero::after { content:""; position:absolute; inset:0; z-index:-1; background:linear-gradient(to top,rgba(8,19,18,.42),transparent 48%); pointer-events:none; }
 .service-visual-copy { width:min(100%,760px); }
 .service-visual-copy .eyebrow { margin:0 0 24px; color:var(--brand-soft); }
 .service-visual-copy h1 { max-width:760px; margin:0; font:700 clamp(50px,6.1vw,94px)/.97 "Manrope",sans-serif; letter-spacing:-.065em; text-wrap:balance; }
 .service-visual-copy>p:not(.eyebrow) { max-width:590px; margin:30px 0 0; color:rgba(255,255,255,.76); font-size:clamp(17px,1.4vw,21px); line-height:1.65; }
 .service-visual-link { display:flex; align-items:center; justify-content:space-between; gap:40px; width:min(100%,520px); min-height:88px; margin-top:40px; padding:0 32px; border:1px solid var(--brand-soft); background:rgba(13,41,37,.82); color:white; font-size:18px; font-weight:700; transition:background .2s ease,color .2s ease,transform .2s ease; }
-.service-visual-link b { color:var(--brand-soft); font-size:22px; }
+.service-visual-link .whatsapp-mark { flex-basis:34px; width:34px; height:34px; }
+.service-visual-link .whatsapp-mark svg { width:32px; height:32px; }
 .service-visual-hero:hover .service-visual-link,.service-visual-hero:focus-visible .service-visual-link { color:var(--forest-dark); background:var(--brand-soft); border-color:var(--brand-soft); transform:translateY(-2px); }
-.service-visual-hero:hover .service-visual-link b,.service-visual-hero:focus-visible .service-visual-link b { color:var(--forest-dark); }
+.service-image-credit { margin:0; padding:8px 7vw 10px; color:rgba(29,36,34,.56); font-size:10px; line-height:1.4; text-align:right; }
+.service-image-credit a { text-decoration:underline; text-underline-offset:2px; }
 .service-execution { display:grid; grid-template-columns:minmax(0,1.15fr) minmax(360px,.85fr); align-items:center; gap:9vw; min-height:88svh; padding:96px 7vw; background:var(--forest-dark); color:white; }
 .service-execution h2 { max-width:900px; margin:0; font:700 clamp(48px,5.8vw,86px)/.98 "Manrope",sans-serif; letter-spacing:-.06em; text-wrap:balance; }
 .service-execution>div:last-child>p { max-width:620px; margin:0; color:rgba(255,255,255,.72); font-size:clamp(18px,1.6vw,23px); line-height:1.65; }
 .service-execution .service-primary { width:min(100%,620px); min-height:104px; margin-top:38px; font-size:20px; }
+.service-execution .service-secondary-contact { min-height:76px; margin-top:12px; border:1px solid rgba(93,202,165,.58); color:white; background:transparent; font-size:16px; }
+.service-execution .service-secondary-contact:hover,.service-execution .service-secondary-contact:focus-visible { color:var(--forest-dark); background:var(--brand-soft); }
 .service-execution small { display:block; max-width:560px; margin-top:22px; color:rgba(255,255,255,.43); font-size:11px; line-height:1.6; }
+.service-mobile-sticky { display:none; }
+.service-details-group { margin-top:28px; border-top:1px solid rgba(255,255,255,.18); }
+.service-details { border-bottom:1px solid rgba(255,255,255,.18); }
+.service-details>summary,.service-details-nested>summary { position:relative; display:flex; align-items:center; justify-content:space-between; gap:20px; padding:20px 0; color:rgba(255,255,255,.88); font-size:15px; font-weight:700; cursor:pointer; list-style:none; }
+.service-details>summary::-webkit-details-marker,.service-details-nested>summary::-webkit-details-marker { display:none; }
+.service-details>summary::after,.service-details-nested>summary::after { content:"+"; color:var(--brand-soft); font-size:22px; font-weight:400; }
+.service-details[open]>summary::after,.service-details-nested[open]>summary::after { content:"−"; }
+.service-details ol,.service-details ul { display:grid; gap:12px; margin:0; padding:0 0 22px 20px; color:rgba(255,255,255,.65); font-size:13px; line-height:1.65; }
+.service-details-copy { padding:0 0 24px; color:rgba(255,255,255,.66); font-size:13px; line-height:1.65; }
+.service-details-copy h3 { margin:18px 0 8px; color:rgba(255,255,255,.88); font-size:14px; }
+.service-details-copy p { margin:8px 0; }
+.service-details-copy ul { padding-left:18px; }
+.service-details-nested { margin-top:12px; border-top:1px solid rgba(255,255,255,.13); }
+.service-details-nested>summary { font-size:13px; }
+.service-details-nested>p { margin:0; padding:0 0 18px; color:rgba(255,255,255,.65); font-size:13px; line-height:1.65; }
 .service-primary { min-width:min(100%,430px); min-height:88px; margin-top:40px; padding:0 44px; color:var(--forest-dark); background:var(--brand-soft); font-size:18px; }
 .service-highlights { border-top:1px solid rgba(255,255,255,.18); }
 .service-highlights div { display:grid; grid-template-columns:44px 1fr; align-items:center; min-height:92px; border-bottom:1px solid rgba(255,255,255,.18); }
@@ -344,6 +364,10 @@ select:focus,input:focus,textarea:focus { border-color:var(--forest); box-shadow
 .license-stage-copy>p { margin:0 0 18px; color:var(--brand); font-size:10px; font-weight:700; letter-spacing:.14em; text-transform:uppercase; }
 .license-stage h3 { max-width:360px; margin:0; font:700 clamp(28px,2.7vw,44px)/1.04 "Manrope",sans-serif; letter-spacing:-.045em; text-wrap:balance; }
 .license-stage-description { display:block; max-width:420px; margin-top:20px; color:rgba(29,36,34,.66); font-size:15px; line-height:1.65; }
+.license-stage-cta { display:flex; align-items:center; justify-content:space-between; gap:18px; width:100%; min-height:64px; margin-top:32px; padding:0 20px; border:1px solid rgba(15,110,86,.34); color:var(--forest-dark); font-size:15px; font-weight:700; transition:background .2s,color .2s,border-color .2s; }
+.license-stage-cta .whatsapp-mark { flex-basis:30px; width:30px; height:30px; }
+.license-stage-cta .whatsapp-mark svg { width:29px; height:29px; }
+.license-stage:hover .license-stage-cta,.license-stage:focus-visible .license-stage-cta { border-color:var(--brand); background:var(--brand); color:white; }
 @keyframes license-blueprint-drift { from { transform:scale(1.025) translate3d(0,0,0); } to { transform:scale(1.055) translate3d(0,-7px,0); } }
 .license-handoff { display:grid; grid-template-columns:minmax(0,1.15fr) minmax(360px,.85fr); align-items:center; gap:9vw; min-height:88svh; padding:96px 7vw; background:var(--forest-dark); color:white; }
 .license-handoff>div:last-child>p { max-width:620px; margin:0; color:rgba(255,255,255,.72); font-size:clamp(18px,1.6vw,23px); line-height:1.65; }
@@ -443,8 +467,10 @@ select:focus,input:focus,textarea:focus { border-color:var(--forest); box-shadow
   .service-topbar .brand img { width:174px; }
   .service-topbar nav { display:none; }
   .service-topbar .button { min-width:0; min-height:60px; padding:0 20px; font-size:15px; }
+  .service-mobile-sticky { position:fixed; right:0; bottom:0; left:0; z-index:60; display:block; padding:12px 18px max(12px,env(safe-area-inset-bottom)); border-top:1px solid rgba(29,36,34,.12); background:rgba(242,240,232,.96); backdrop-filter:blur(12px); }
+  .service-mobile-cta { display:flex; width:100%; min-height:62px; margin:0; padding:0 22px; color:white; background:var(--brand); font-size:16px; }
   .service-hero { padding:48px 24px 72px; }
-  .service-visual-hero { min-height:calc(100svh - 78px); padding:72px 24px; background-position:62% center; }
+  .service-visual-hero { min-height:calc(100svh - 78px); padding:72px 24px; background-position:var(--service-position,62% center); }
   .service-visual-copy h1 { font-size:clamp(43px,12vw,66px); }
   .service-visual-copy>p:not(.eyebrow) { font-size:16px; }
   .service-execution { grid-template-columns:1fr; gap:52px; min-height:0; padding:86px 24px; }
@@ -455,7 +481,7 @@ select:focus,input:focus,textarea:focus { border-color:var(--forest); box-shadow
   .service-highlights { margin-top:10px; }
   .service-content-block,.service-comparison,.service-inputs,.service-delivery,.service-final-cta,.related-services { padding:78px 24px; }
   .related-services>div { grid-template-columns:1fr; }
-  .service-footer { padding:50px 24px 82px; }
+  .service-footer { padding:50px 24px 110px; }
   .service-explainer,.service-sources,.service-result { grid-template-columns:1fr; gap:52px; min-height:0; padding:82px 24px; }
   .license-journey { min-height:calc(100svh - 78px); padding:0 24px; }
   .license-journey-heading { grid-template-columns:1fr; align-items:start; margin-bottom:40px; }
@@ -464,7 +490,8 @@ select:focus,input:focus,textarea:focus { border-color:var(--forest); box-shadow
   .license-journey-heading>p:last-child { margin:0; }
   .license-stage-track { grid-template-columns:repeat(3,minmax(78vw,1fr)); min-height:calc(100svh - 78px); margin-right:-24px; overflow-x:auto; overscroll-behavior-inline:contain; scroll-snap-type:x mandatory; scrollbar-width:none; }
   .license-stage-track::-webkit-scrollbar { display:none; }
-  .license-stage { min-height:calc(100svh - 78px); padding:26px 28px 42px; scroll-snap-align:start; }
+  .license-stage { min-height:calc(100svh - 78px); padding:26px 28px 128px; scroll-snap-align:start; }
+  .license-stage-cta { min-height:62px; }
   .license-handoff { grid-template-columns:1fr; gap:52px; min-height:0; padding:86px 24px; }
   .license-handoff h2 { font-size:52px; }
   .service-result .service-primary { grid-column:1; }

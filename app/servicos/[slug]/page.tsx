@@ -4,11 +4,10 @@ import Image from "next/image";
 import Link from "next/link";
 import { notFound, redirect } from "next/navigation";
 import ServiceWhatsAppLink from "../../service-whatsapp-link";
+import WhatsAppMark from "../../whatsapp-mark";
 import { SITE_URL } from "../../site-url";
-import { servicePageBySlug, servicePages } from "../service-data";
-import ConversionLanding from "../conversion-landing";
+import { serviceInputsBySlug, servicePageBySlug, servicePages } from "../service-data";
 import { conversionPages } from "../conversion-data";
-import ContactServiceLanding from "../contact-service-landing";
 import { contactServicePageBySlug } from "../contact-service-data";
 
 type ServicePageProps = { params: Promise<{ slug: string }> };
@@ -45,6 +44,7 @@ type ServiceVisual = {
   headline: string;
   description: string;
   execution: string;
+  imagePosition?: string;
 };
 
 const serviceVisualBySlug: Record<string, ServiceVisual> = {
@@ -132,6 +132,19 @@ const serviceVisualBySlug: Record<string, ServiceVisual> = {
     description: "A solução técnica começa pela fonte, pelo entorno e pelo limite aplicável.",
     execution: "A partir da atividade, dos equipamentos e do entorno, a Envora define a avaliação técnica necessária e orienta a documentação e as medidas aplicáveis.",
   },
+  "responsabilidade-tecnica-ambiental": {
+    image: "/condicionantes-visual.webp",
+    headline: "Responsabilidade técnica com escopo definido.",
+    description: "A Envora avalia a atividade, a necessidade de acompanhamento e a compatibilidade da atuação antes da contratação.",
+    execution: "Você informa a atividade e a necessidade. A Envora confirma a possibilidade de atendimento e define entregas e responsabilidades na proposta. Após a contratação, a Envora conduz o trabalho contratado conforme o escopo acordado.",
+  },
+  "outorga-e-regularizacao-de-uso-da-agua": {
+    image: "/outorga-captacao-real.webp",
+    headline: "O uso da água define o caminho técnico.",
+    description: "Poços, captações e documentos de uso são avaliados conforme a localização e a situação de cada imóvel.",
+    execution: "Você informa onde fica o imóvel e como a água é utilizada. A Envora avalia o procedimento e define as etapas técnicas antes da proposta. Após a contratação, a Envora conduz o trabalho contratado conforme o escopo. A modalidade é definida caso a caso.",
+    imagePosition: "53% center",
+  },
 };
 
 export function generateStaticParams() {
@@ -194,20 +207,22 @@ export default async function ServicePage({ params }: ServicePageProps) {
   };
   const isLicenseJourney = service.slug === "lap-lai-lao";
   const contactService = contactServicePageBySlug.get(slug);
-  if (contactService) return <>
-    <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData).replace(/</g, "\\u003c") }} />
-    <ContactServiceLanding content={contactService} />
-  </>;
-  if (conversionPages[slug]) return <>
-    <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData).replace(/</g, "\\u003c") }} />
-    <ConversionLanding content={conversionPages[slug]} service={service.shortTitle} />
-  </>;
+  const conversion = conversionPages[slug];
   const visual = serviceVisualBySlug[service.slug] ?? {
     image: "/licenciamento-ambiental-visual.webp",
-    headline: service.title,
+    headline: contactService?.title ?? conversion?.title ?? service.title,
     description: service.intro,
     execution: "Você explica o que precisa. A Envora organiza a condução técnica prevista no escopo contratado.",
   };
+  const contactLinkProps = {
+    service: service.shortTitle,
+    message: contactService?.contact.message,
+    contextPrompt: conversion?.contactPrompt,
+  };
+  const actionLabel = contactService?.contact.action ?? conversion?.action ?? "Contar minha situação";
+  const firstContactInfo = contactService?.contact.initialInformation ?? conversion?.documents ?? serviceInputsBySlug[slug] ?? [];
+  const processSteps = contactService?.process ?? service.process;
+  const boundary = contactService?.boundary ?? conversion?.boundary ?? service.boundary;
   return (
     <div className="service-page-shell">
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData).replace(/</g, "\\u003c") }} />
@@ -217,7 +232,7 @@ export default async function ServicePage({ params }: ServicePageProps) {
           <Link href="/#solucoes">Todos os serviços</Link>
           <Link href="/#triagem">Triagem</Link>
         </nav>
-        <ServiceWhatsAppLink service={service.shortTitle} className="button button-small">Falar com especialista</ServiceWhatsAppLink>
+        <ServiceWhatsAppLink {...contactLinkProps} placement="header" className="button button-small">Falar com especialista <WhatsAppMark /></ServiceWhatsAppLink>
       </header>
 
       <main>
@@ -227,13 +242,14 @@ export default async function ServicePage({ params }: ServicePageProps) {
               <h1 className="visually-hidden">{service.title}</h1>
               <div className="license-stage-track" aria-label="Etapas do licenciamento ambiental">
                 {licenseStages.map((stage) => (
-                  <ServiceWhatsAppLink service={stage.contact} className="license-stage" key={stage.code}>
+                  <ServiceWhatsAppLink service={stage.contact} placement={`licenca_${stage.code.toLowerCase()}`} className="license-stage" key={stage.code}>
                     <div className="license-stage-top"><span>{stage.step}</span><strong>{stage.code}</strong></div>
                     <div className="license-stage-copy">
                       <p>{stage.eyebrow}</p>
                       <h3>{stage.title}</h3>
                       <span className="license-stage-description">{stage.text}</span>
                     </div>
+                    <span className="license-stage-cta"><span>Falar sobre {stage.code}</span><WhatsAppMark /></span>
                   </ServiceWhatsAppLink>
                 ))}
               </div>
@@ -246,7 +262,7 @@ export default async function ServicePage({ params }: ServicePageProps) {
               </div>
               <div>
                 <p>Você conta o que está acontecendo. A Envora identifica a etapa, organiza a documentação, protocola e executa a condução técnica do processo por você.</p>
-                <ServiceWhatsAppLink service={service.shortTitle} className="button service-primary">Quero que a Envora resolva <span aria-hidden="true">↗</span></ServiceWhatsAppLink>
+                <ServiceWhatsAppLink {...contactLinkProps} placement="closing" className="button service-primary">Quero que a Envora resolva <WhatsAppMark /></ServiceWhatsAppLink>
                 <small>A emissão da licença e o prazo de análise são decisões do órgão ambiental competente.</small>
               </div>
             </section>
@@ -254,25 +270,53 @@ export default async function ServicePage({ params }: ServicePageProps) {
         ) : (
           <>
             <section aria-labelledby="service-visual-title">
-              <ServiceWhatsAppLink service={service.shortTitle} className="service-visual-hero" style={{ "--service-visual": `url('${visual.image}')` } as CSSProperties}>
+              <ServiceWhatsAppLink {...contactLinkProps} placement="hero" className="service-visual-hero" style={{ "--service-visual": `url('${visual.image}')`, ...(visual.imagePosition ? { "--service-position": visual.imagePosition } : {}) } as CSSProperties}>
                 <div className="service-visual-copy">
                   <p className="eyebrow">{service.shortTitle}</p>
                   <h1 id="service-visual-title">{visual.headline}</h1>
                   <p>{visual.description}</p>
-                  <span className="service-visual-link">Contar minha situação <b aria-hidden="true">↗</b></span>
+                  {contactService && <span className="visually-hidden">{contactService.contact.imageAlt}</span>}
+                  <span className="service-visual-link">{actionLabel}<WhatsAppMark /></span>
                 </div>
               </ServiceWhatsAppLink>
+              {contactService?.contact.imageCredit && <p className="service-image-credit">Foto: <a href={contactService.contact.imageCredit.source} target="_blank" rel="noreferrer">{contactService.contact.imageCredit.author}</a> · <a href={contactService.contact.imageCredit.licenseUrl} target="_blank" rel="noreferrer">{contactService.contact.imageCredit.license}</a></p>}
             </section>
 
             <section className="service-execution" aria-labelledby="service-execution-title">
               <div>
                 <p className="section-index light">A Envora conduz</p>
-                <h2 id="service-execution-title">Você conta o que está acontecendo. A Envora identifica o que precisa e resolve a parte técnica.</h2>
+                <h2 id="service-execution-title">Você explica o que precisa. A Envora conduz o trabalho contratado.</h2>
               </div>
               <div>
                 <p>{visual.execution}</p>
-                <ServiceWhatsAppLink service={service.shortTitle} className="button service-primary">Quero que a Envora resolva <span aria-hidden="true">↗</span></ServiceWhatsAppLink>
-                <small>A decisão do órgão competente, quando aplicável, permanece sujeita à análise oficial.</small>
+                <ServiceWhatsAppLink {...contactLinkProps} placement="execution" className="button service-primary">Quero que a Envora resolva <WhatsAppMark /></ServiceWhatsAppLink>
+                {contactService && <ServiceWhatsAppLink {...contactLinkProps} placement="initial_information" className="button service-primary service-secondary-contact">Iniciar conversa no WhatsApp <WhatsAppMark /></ServiceWhatsAppLink>}
+                <small>{boundary}</small>
+                <div className="service-details-group">
+                  <details className="service-details">
+                    <summary>Como começa o atendimento</summary>
+                    <ol>{processSteps.map((step) => <li key={step}>{step}</li>)}</ol>
+                  </details>
+                  <details className="service-details">
+                    <summary>O que ajuda na conversa</summary>
+                    <ul>{firstContactInfo.map((item) => <li key={item}>{item}</li>)}</ul>
+                  </details>
+                  {conversion ? <details className="service-details">
+                    <summary>Dúvidas frequentes</summary>
+                    <div className="service-details-copy">
+                      <h3>Situações que podem ser avaliadas</h3>
+                      <ul>{conversion.situations.map((item) => <li key={item.title}><strong>{item.title}.</strong> {item.text}</li>)}</ul>
+                      <h3>Escopo e limites</h3>
+                      <ul>{conversion.deliverables.map((item) => <li key={item}>{item}</li>)}</ul>
+                      <p>{conversion.boundary}</p>
+                      {conversion.continuity && <><h3>{conversion.continuity.title}</h3><p>{conversion.continuity.text}</p><ul>{conversion.continuity.items.map((item) => <li key={item}>{item}</li>)}</ul></>}
+                      {conversion.questions.map((item) => <details className="service-details-nested" key={item.question}><summary>{item.question}</summary><p>{item.answer}</p></details>)}
+                    </div>
+                  </details> : <details className="service-details">
+                    <summary>Ver detalhes deste serviço</summary>
+                    <div className="service-details-copy"><p>{service.applies}</p><p>{service.deliverable}</p><ul>{service.highlights.map((item) => <li key={item}>{item}</li>)}</ul></div>
+                  </details>}
+                </div>
               </div>
             </section>
 
@@ -285,6 +329,7 @@ export default async function ServicePage({ params }: ServicePageProps) {
         <Link className="brand inverted" href="/" aria-label="Envora Ambiental - início"><Image src="/envora-logo-horizontal-dark.svg" alt="Envora Ambiental" width={360} height={88} /></Link>
         <div><strong>Envora Consultoria Ambiental</strong><span>Joinville · Santa Catarina</span><a href="tel:+5547984551622">(47) 98455-1622</a><a href="mailto:envoraambiental@gmail.com">envoraambiental@gmail.com</a></div>
       </footer>
+      <div className="service-mobile-sticky"><ServiceWhatsAppLink {...contactLinkProps} placement="mobile_sticky" className="button service-mobile-cta">Falar com a Envora <WhatsAppMark /></ServiceWhatsAppLink></div>
     </div>
   );
 }

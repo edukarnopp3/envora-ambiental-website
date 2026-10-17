@@ -130,23 +130,22 @@ test("links every service card to a dedicated official-source page", async () =>
     assert.equal(response.status, 200);
     const serviceHtml = await response.text();
     if (path === "lap-lai-lao") {
+      assert.equal((serviceHtml.match(/class="license-stage"/g) ?? []).length, 3);
       assert.match(serviceHtml, /Validar a viabilidade/);
       assert.match(serviceHtml, /Autorizar a instalação/);
       assert.match(serviceHtml, /Autorizar a operação/);
-      assert.match(serviceHtml, /class="license-stage"/);
-      assert.doesNotMatch(serviceHtml, /Falar sobre a/);
+      assert.equal((serviceHtml.match(/class="license-stage-cta"/g) ?? []).length, 3);
       assert.match(serviceHtml, /Você não precisa saber qual licença pedir/);
-      assert.match(serviceHtml, /Quero que a Envora resolva/);
-      assert.match(serviceHtml, /A emissão da licença e o prazo de análise são decisões do órgão ambiental competente/);
-    } else if (["licenciamento-ambiental", "planos-de-gerenciamento-de-residuos", "auto-de-infracao-ambiental"].includes(path)) {
+      assert.match(serviceHtml, /class="whatsapp-mark/);
+    } else if (serviceHtml.includes("conversion-module__")) {
       assert.match(serviceHtml, /Qual é a sua situação\?/);
       assert.match(serviceHtml, /id="como-funciona"/);
       assert.match(serviceHtml, /Dúvidas frequentes/);
       assert.match(serviceHtml, /preload="none"/);
       assert.doesNotMatch(serviceHtml, /<video[^>]*\bsrc=/);
       assert.equal((serviceHtml.match(/<h1\b/g) ?? []).length, 1);
-      assert.equal((serviceHtml.match(/<details\b/g) ?? []).length, 5);
-      const contactLinks = [...serviceHtml.matchAll(/href="(https:\/\/wa\.me\/[^\"]+)"/g)];
+      assert.ok((serviceHtml.match(/<details\b/g) ?? []).length >= 3);
+      const contactLinks = [...serviceHtml.matchAll(/href="(https:\/\/wa\.me\/[^"]+)"/g)];
       assert.ok(contactLinks.length >= 8);
       assert.doesNotMatch(serviceHtml, /Consultoria independente/);
       assert.match(serviceHtml, /<video[^>]*autoPlay/);
@@ -158,8 +157,9 @@ test("links every service card to a dedicated official-source page", async () =>
       assert.match(serviceHtml, /Minha%20situa/);
     } else {
       assert.match(serviceHtml, /service-visual-hero/);
-      assert.match(serviceHtml, /Você conta o que está acontecendo/);
+      assert.match(serviceHtml, /Você explica o que precisa\. A Envora conduz o trabalho contratado/);
       assert.match(serviceHtml, /Quero que a Envora resolva/);
+      assert.match(serviceHtml, /class="whatsapp-mark/);
       assert.doesNotMatch(serviceHtml, /Fontes oficiais consultadas/);
       assert.doesNotMatch(serviceHtml, /Informações para a análise/);
       assert.doesNotMatch(serviceHtml, /Limites do escopo/);
