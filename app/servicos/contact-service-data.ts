@@ -34,8 +34,8 @@ export const contactServicePages: ContactServicePage[] = [
     contact: {
       message: "Olá! Preciso conversar sobre responsabilidade técnica ambiental. Minha empresa fica em [cidade] e atua com [atividade].",
       action: "Conversar sobre RT no WhatsApp",
-      image: "/condicionantes-visual.webp",
-      imageAlt: "Imagem ilustrativa de documentos e planejamento técnico ambiental junto a uma operação industrial",
+      image: "/responsabilidade-tecnica-ilustrativa.webp",
+      imageAlt: "Imagem ilustrativa de uma profissional avaliando uma instalação de tratamento em uma operação industrial",
       situations: ["Necessidade de responsável técnico", "Acompanhamento da rotina ambiental", "Exigência ou documento a avaliar"],
       initialInformation: ["Cidade e atividade da empresa", "O que motivou a necessidade de RT", "Documento ou exigência recebida, se houver"],
     },

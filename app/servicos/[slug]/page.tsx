@@ -61,13 +61,13 @@ const serviceVisualBySlug: Record<string, ServiceVisual> = {
     execution: "A partir da sua operação, a Envora identifica o enquadramento, organiza as informações e aponta a rota ambiental aplicável ao seu caso.",
   },
   danc: {
-    image: "/danc-visual.webp",
+    image: "/danc-oficina-ilustrativa.webp",
     headline: "Comprovar a dispensa começa pelo enquadramento.",
     description: "A atividade precisa ser lida como ela realmente funciona.",
     execution: "A partir da atividade e do local, a Envora organiza o enquadramento e a documentação necessária para o procedimento aplicável.",
   },
   cca: {
-    image: "/cca-visual.webp",
+    image: "/cca-oficina-ilustrativa.webp",
     headline: "Abaixo do porte também precisa estar documentado.",
     description: "Porte, capacidade e atividade precisam conversar entre si.",
     execution: "A partir dos dados reais da operação, a Envora confere o porte, organiza o enquadramento e conduz a documentação técnica necessária.",
@@ -133,7 +133,7 @@ const serviceVisualBySlug: Record<string, ServiceVisual> = {
     execution: "A partir da atividade, dos equipamentos e do entorno, a Envora define a avaliação técnica necessária e orienta a documentação e as medidas aplicáveis.",
   },
   "responsabilidade-tecnica-ambiental": {
-    image: "/condicionantes-visual.webp",
+    image: "/responsabilidade-tecnica-ilustrativa.webp",
     headline: "Responsabilidade técnica com escopo definido.",
     description: "A Envora avalia a atividade, a necessidade de acompanhamento e a compatibilidade da atuação antes da contratação.",
     execution: "Você informa a atividade e a necessidade. A Envora confirma a possibilidade de atendimento e define entregas e responsabilidades na proposta. Após a contratação, a Envora conduz o trabalho contratado conforme o escopo acordado.",
@@ -278,6 +278,7 @@ export default async function ServicePage({ params }: ServicePageProps) {
                   {contactService && <span className="visually-hidden">{contactService.contact.imageAlt}</span>}
                   <span className="service-visual-link">{actionLabel}<WhatsAppMark /></span>
                 </div>
+                {!contactService?.contact.imageCredit && <span className="service-image-note" aria-hidden="true">Imagem ilustrativa</span>}
               </ServiceWhatsAppLink>
               {contactService?.contact.imageCredit && <p className="service-image-credit">Foto: <a href={contactService.contact.imageCredit.source} target="_blank" rel="noreferrer">{contactService.contact.imageCredit.author}</a> · <a href={contactService.contact.imageCredit.licenseUrl} target="_blank" rel="noreferrer">{contactService.contact.imageCredit.license}</a></p>}
             </section>

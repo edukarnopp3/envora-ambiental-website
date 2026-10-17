@@ -255,6 +255,7 @@ select:focus,input:focus,textarea:focus { border-color:var(--forest); box-shadow
 .service-visual-link .whatsapp-mark { flex-basis:34px; width:34px; height:34px; }
 .service-visual-link .whatsapp-mark svg { width:32px; height:32px; }
 .service-visual-hero:hover .service-visual-link,.service-visual-hero:focus-visible .service-visual-link { color:var(--forest-dark); background:var(--brand-soft); border-color:var(--brand-soft); transform:translateY(-2px); }
+.service-image-note { position:absolute; right:7vw; bottom:18px; color:rgba(255,255,255,.58); font-size:10px; line-height:1.2; letter-spacing:.04em; text-shadow:0 1px 4px rgba(0,0,0,.45); }
 .service-image-credit { margin:0; padding:8px 7vw 10px; color:rgba(29,36,34,.56); font-size:10px; line-height:1.4; text-align:right; }
 .service-image-credit a { text-decoration:underline; text-underline-offset:2px; }
 .service-execution { display:grid; grid-template-columns:minmax(0,1.15fr) minmax(360px,.85fr); align-items:center; gap:9vw; min-height:88svh; padding:96px 7vw; background:var(--forest-dark); color:white; }
@@ -473,6 +474,7 @@ select:focus,input:focus,textarea:focus { border-color:var(--forest); box-shadow
   .service-visual-hero { min-height:calc(100svh - 78px); padding:72px 24px; background-position:var(--service-position,62% center); }
   .service-visual-copy h1 { font-size:clamp(43px,12vw,66px); }
   .service-visual-copy>p:not(.eyebrow) { font-size:16px; }
+  .service-image-note { right:24px; bottom:12px; }
   .service-execution { grid-template-columns:1fr; gap:52px; min-height:0; padding:86px 24px; }
   .service-execution h2 { font-size:52px; }
   .service-execution .service-primary { width:100%; }
