@@ -123,9 +123,22 @@ html.splash-complete .hero-logo-3d,html.splash-complete .hero-logo-stage::after,
 .service-contact-button-mobile { display:none; }
 .service-contact-button-desktop { display:flex; width:max-content; margin:28px 0 0 auto; }
 .service-category .service-grid { margin-top:16px; }
-.service-card { position:relative; display:flex; flex-direction:column; align-items:flex-start; justify-content:center; min-height:76px; padding:13px 16px; border-right:1px solid var(--line); border-bottom:1px solid var(--line); cursor:pointer; transition:background .2s,color .2s; }
+.service-card { position:relative; display:grid; grid-template-columns:18px minmax(0,1fr); align-items:center; column-gap:11px; min-height:76px; padding:13px 16px; border-right:1px solid var(--line); border-bottom:1px solid var(--line); cursor:pointer; transition:background-color .18s ease,color .18s ease; }
+.service-card::before { content:""; position:absolute; top:50%; left:0; width:3px; height:20px; background:var(--brand); opacity:0; transform:translateY(-50%) scaleY(.55); transition:opacity .18s ease,transform .18s ease; }
+.service-mark { display:grid; place-items:center; width:18px; height:18px; color:#000; transition:color .18s ease,transform .18s ease; }
+.service-mark svg { display:block; width:18px; height:18px; }
 .service-card h3 { margin:0; font-family:"Manrope"; font-size:16px; line-height:1.3; }
-.service-card:hover { background:var(--forest); color:white; }
+.service-card:active { background:rgba(93,202,165,.12); color:var(--forest); }
+.service-card:active::before { opacity:1; transform:translateY(-50%) scaleY(1); }
+.service-card:active .service-mark { color:var(--brand); transform:translateX(1px); }
+.service-card:focus-visible { background:rgba(93,202,165,.12); color:var(--forest); }
+.service-card:focus-visible::before { opacity:1; transform:translateY(-50%) scaleY(1); }
+.service-card:focus-visible .service-mark { color:var(--brand); }
+@media (hover:hover) {
+  .service-card:hover { background:rgba(93,202,165,.12); color:var(--forest); }
+  .service-card:hover::before { opacity:1; transform:translateY(-50%) scaleY(1); }
+  .service-card:hover .service-mark { color:var(--brand); transform:translateX(1px); }
+}
 .service-card:focus-visible { position:relative; z-index:1; outline:3px solid var(--brand); outline-offset:2px; }
 .sectors-section { padding:74px 7vw 78px; background:var(--paper); color:var(--ink); }
 .sectors-section .section-index { color:var(--brand); }
@@ -457,7 +470,8 @@ select:focus,input:focus,textarea:focus { border-color:var(--forest); box-shadow
   .service-group-mark svg { width:34px; height:34px; }
   .service-contact-button-mobile { display:flex; grid-column:1; grid-row:2; width:100%; justify-content:space-between; padding:0 16px 0 20px; font-size:15px; }
   .service-contact-button-desktop { display:none; }
-  .service-card { min-height:72px; padding:12px 14px; }
+  .service-card { grid-template-columns:17px minmax(0,1fr); column-gap:10px; min-height:72px; padding:12px 14px; }
+  .service-mark,.service-mark svg { width:17px; height:17px; }
   .service-card h3 { font-size:15.5px; }
   .sector-list { grid-template-columns:repeat(2,minmax(0,1fr)); }
   .sector-card { min-height:108px; padding:16px 14px; }
@@ -549,7 +563,8 @@ select:focus,input:focus,textarea:focus { border-color:var(--forest); box-shadow
   .service-category .service-grid { margin-top:12px; }
   .service-category-heading { gap:12px; padding-bottom:13px; }
   .service-category-heading h3 { font-size:25px; }
-  .service-card { min-height:72px; padding:11px 12px; }
+  .service-card { grid-template-columns:16px minmax(0,1fr); column-gap:9px; min-height:72px; padding:11px 12px; }
+  .service-mark,.service-mark svg { width:16px; height:16px; }
   .service-card h3 { font-size:15px; }
   .content-card-grid { margin-top:32px; }
   .content-card-item { flex-basis:82%; min-width:240px; max-width:340px; min-height:230px; }

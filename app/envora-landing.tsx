@@ -73,6 +73,36 @@ function ServiceGroupMark({ group }: { group: string }) {
   );
 }
 
+function ServiceMark({ code }: { code: string }) {
+  const icons: Record<string, React.ReactNode> = {
+    "01": <><path d="M12 3 22 20H2L12 3Z" /><path d="M12 9v5m0 3h.01" /></>,
+    "02": <><circle cx="10.8" cy="10.8" r="6.8" /><path d="m16 16 5 5M8 12l2-2 2 2 2-3" /></>,
+    "03": <><path d="M6 3.5h8l4 4V20.5H6z" /><path d="M14 3.5v4h4M9 12h6m-6 3h3" /></>,
+    "04": <><path d="M12 3.5 14.4 5l2.9-.2 1.3 2.6 2.5 1.5-.6 2.8.6 2.8-2.5 1.5-1.3 2.6-2.9-.2-2.4 1.5-2.4-1.5-2.9.2-1.3-2.6-2.5-1.5.6-2.8-.6-2.8 2.5-1.5 1.3-2.6 2.9.2L12 3.5Z" /><path d="m9 12 2 2 4-4" /></>,
+    "05": <><path d="M6 3.5h8l4 4V20.5H6z" /><path d="M14 3.5v4h4m-9 5 2 2 4-4" /></>,
+    "06": <><path d="M5 5h11v14H5zM8 2.5h11v14" /><path d="M8 9h5m-5 3h5m-5 3h3" /></>,
+    "07": <><path d="M8 4.5H5v16h14v-7" /><path d="M9 4.5h6v3H9zM9 12h6m-6 4h4m1-9 2 2 4-4" /></>,
+    "08": <><path d="M20 7V3m0 4h-4" /><path d="M20 7a8.5 8.5 0 1 0 1 8" /><path d="M12 7v5l3 2" /></>,
+    "09": <><path d="m4 7 1.5 1.5L8 6m3 1h9M4 14l1.5 1.5L8 13m3 1h9M4 21l1.5 1.5L8 20m3 1h9" /></>,
+    "10": <><path d="M20.5 3.5C11 3.8 5.1 7.4 4 14.1c-.7 4.1 1.5 6.4 5 6.4 7.3 0 11.7-7.4 11.5-17Z" /><path d="M4 21 16 8" /></>,
+    "11": <><path d="M12 21v-8m0 2c-4.5 0-7-2.7-7-6.5 4.7 0 7 2.1 7 6.5Zm0-3c0-4.4 2.5-7 7-7 0 3.9-2.6 7-7 7Z" /></>,
+    "12": <><path d="M12 21V9m0 4c-3.2 0-5-1.8-5-4.5 3.3 0 5 1.4 5 4.5Zm0-2c0-3.4 2-5.5 5-5.5 0 3.1-1.8 5.5-5 5.5Z" /><path d="M8 21h8" /></>,
+    "13": <><path d="M6 4h12v17H6zM9 8h6m-6 4h6m-6 4h4" /><path d="M9 2h6" /></>,
+    "14": <><path d="M3 7h11v10H3zM14 11h4l3 3v3h-7z" /><circle cx="7" cy="19" r="1.5" /><circle cx="18" cy="19" r="1.5" /></>,
+    "15": <><path d="M3 12h2l2-5 3 10 3-13 3 16 2-8 2 3h2" /></>,
+    "16": <><circle cx="9" cy="8" r="3" /><path d="M3.5 20v-1.5a5.5 5.5 0 0 1 11 0V20zM16 11l2 2 4-5" /></>,
+    "17": <><path d="M12 3.5S5.5 11 5.5 15.5a6.5 6.5 0 0 0 13 0C18.5 11 12 3.5 12 3.5Z" /><path d="M9 16a3 3 0 0 0 3 3" /></>,
+  };
+
+  return (
+    <span className="service-mark" aria-hidden="true">
+      <svg viewBox="0 0 24 24" focusable="false" fill="none" stroke="currentColor" strokeWidth="1.65" strokeLinecap="round" strokeLinejoin="round">
+        {icons[code] ?? icons["03"]}
+      </svg>
+    </span>
+  );
+}
+
 function SectorMark({ sector }: { sector: string }) {
   return (
     <span className="sector-mark" aria-hidden="true">
@@ -458,7 +488,7 @@ export default function EnvoraLanding() {
                 </div>
                 <div className="service-grid">
                   {group.items.map((service) => {
-                    const cardContent = <h3>{service.title}</h3>;
+                    const cardContent = <><ServiceMark code={service.code} /><h3>{service.title}</h3></>;
                     const className = "service-card";
                     return service.href
                       ? <Link key={service.code} className={className} href={service.href}>{cardContent}</Link>
