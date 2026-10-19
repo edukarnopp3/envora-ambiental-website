@@ -65,3 +65,35 @@
   .sticky .cta { min-height:64px; padding:14px 22px; }
 }
 @media(prefers-reduced-motion:reduce) { .cta { transition:none; } }
+.draftNotice { display:flex; align-items:center; gap:14px 24px; padding:13px 5vw; background:#fff1d5; color:#4a391b; border-bottom:1px solid #e4d1aa; font-size:.86rem; }
+.draftNotice strong { flex:0 0 auto; text-transform:uppercase; letter-spacing:.08em; font-size:.72rem; }
+.draftNotice span { line-height:1.5; }
+.draftIntro,.draftDetails { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:36px 7vw; padding:70px 5vw; border-bottom:1px solid var(--line); }
+.draftIntro article,.draftDetails article { max-width:760px; }
+.draftDeliverables { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:36px 7vw; padding:58px 5vw; border-bottom:1px solid var(--line); }
+.draftDeliverables article { max-width:760px; }
+.draftDeliverables h2 { margin:0 0 20px; }
+.draftDeliverables article>p:not(.eyebrow) { color:#485851; max-width:720px; }
+.draftDeliverables .cta { margin-top:24px; }
+.draftIntro h2,.draftDetails h2,.draftFaq h2,.confirmationBox h2 { margin:0 0 20px; }
+.draftIntro article>p:not(.eyebrow),.draftDetails article>p:not(.eyebrow) { color:#485851; max-width:720px; }
+.draftDetails { background:#edf5f1; }
+.draftLimit { padding:28px 32px; border-left:3px solid var(--brand); background:rgba(255,255,255,.48); }
+.draftList { list-style:none; padding:0; margin:20px 0 0; }
+.draftList li { position:relative; padding:14px 0 14px 22px; border-top:1px solid var(--line); }
+.draftList li::before { content:""; position:absolute; top:22px; left:0; width:7px; height:7px; background:var(--brand); border-radius:50%; }
+.draftFaq { display:grid; grid-template-columns:.7fr 1.3fr; gap:7vw; padding:70px 5vw; }
+.draftQuestions details { border-bottom:1px solid var(--line); }
+.draftQuestions summary { cursor:pointer; padding:20px 36px 20px 0; font-weight:700; }
+.draftQuestions details p { max-width:880px; margin:0 0 22px; color:#485851; }
+.confirmationBox { margin:0 5vw 72px; padding:32px 36px; border-left:4px solid #b97810; background:#fff1d5; color:#3f3523; }
+.confirmationBox .eyebrow { color:#72500d; }
+.confirmationBox .draftList li { border-color:#e7d7b6; }
+.confirmationBox .draftList li::before { background:#a86d0e; }
+.confirmationBox h2 { font-size:clamp(1.7rem,2.4vw,2.5rem); }
+@media(max-width:800px) {
+  .draftNotice { align-items:flex-start; flex-direction:column; gap:4px; padding:12px 22px; }
+  .draftIntro,.draftDeliverables,.draftDetails,.draftFaq { grid-template-columns:minmax(0,1fr); gap:30px; padding:42px 22px; }
+  .draftLimit { padding:24px 20px; }
+  .confirmationBox { margin:0 22px 42px; padding:24px 20px; }
+}

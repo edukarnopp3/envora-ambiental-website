@@ -9,6 +9,8 @@ import { SITE_URL } from "../../site-url";
 import { serviceInputsBySlug, servicePageBySlug, servicePages } from "../service-data";
 import { conversionPages } from "../conversion-data";
 import { contactServicePageBySlug } from "../contact-service-data";
+import CommercialServiceDraftLanding from "../commercial-service-draft-landing";
+import { commercialServiceDraftBySlug, commercialServiceDrafts } from "../commercial-service-drafts";
 
 type ServicePageProps = { params: Promise<{ slug: string }> };
 
@@ -150,12 +152,23 @@ const serviceVisualBySlug: Record<string, ServiceVisual> = {
 export function generateStaticParams() {
   return [
     ...servicePages.map(({ slug }) => ({ slug })),
+    ...(process.env.NODE_ENV !== "production" ? commercialServiceDrafts.map(({ slug }) => ({ slug })) : []),
     ...["pgrs", "pgrss", "pgrcc"].map((slug) => ({ slug })),
   ];
 }
 
 export async function generateMetadata({ params }: ServicePageProps): Promise<Metadata> {
   const { slug } = await params;
+  const draft = commercialServiceDraftBySlug.get(slug);
+  if (draft) {
+    if (process.env.NODE_ENV === "production") notFound();
+    return {
+      title: draft.metaTitle,
+      description: draft.metaDescription,
+      alternates: { canonical: `/servicos/${draft.slug}` },
+      robots: { index: false, follow: false },
+    };
+  }
   const service = servicePageBySlug.get(slug);
   if (!service) return {};
 
@@ -179,6 +192,11 @@ export default async function ServicePage({ params }: ServicePageProps) {
   const { slug } = await params;
   if (slug === "danc-e-cca") redirect("/servicos/danc");
   if (["pgrs", "pgrss", "pgrcc"].includes(slug)) redirect("/servicos/planos-de-gerenciamento-de-residuos");
+  const draft = commercialServiceDraftBySlug.get(slug);
+  if (draft) {
+    if (process.env.NODE_ENV === "production") notFound();
+    return <CommercialServiceDraftLanding content={draft} />;
+  }
   const service = servicePageBySlug.get(slug);
   if (!service) notFound();
 
@@ -322,6 +340,19 @@ export default async function ServicePage({ params }: ServicePageProps) {
             </section>
 
           </>
+        )}
+
+        {process.env.NODE_ENV !== "production" && service.slug === "licenciamento-ambiental" && (
+          <section className="service-draft-related" aria-labelledby="service-draft-related-title">
+            <p className="section-index">Rascunho local · não publicado</p>
+            <h2 id="service-draft-related-title">Outros enquadramentos para avaliar.</h2>
+            <div className="service-draft-related-grid">
+              <Link href="/servicos/assessoria-ctf-app-ibama"><strong>CTF/APP do Ibama</strong><span>A obrigação depende da atividade e do enquadramento federal.</span></Link>
+              <Link href="/servicos/inscricao-inicial-car"><strong>Inscrição inicial no CAR</strong><span>Cadastro declaratório, distinto do licenciamento ambiental.</span></Link>
+              <Link href="/servicos/avaliacao-de-passivo-ambiental"><strong>Avaliação de passivo ambiental</strong><span>Rascunho condicionado à confirmação da oferta regular.</span></Link>
+              <Link href="/servicos/lac-transporte-produtos-perigosos"><strong>LAC para transporte em SC</strong><span>Avaliação da rota estadual prevista na IN IMA nº 77.</span></Link>
+            </div>
+          </section>
         )}
 
       </main>

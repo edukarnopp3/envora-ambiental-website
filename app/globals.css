@@ -680,3 +680,17 @@ select:focus,input:focus,textarea:focus { border-color:var(--forest); box-shadow
   .hero-logo-3d,.hero-logo-stage::after,.hero-logo-3d .leaf-outline,.hero-logo-3d .leaf-fill,.hero-logo-3d .leaf-vein,.hero-logo-3d .drop { animation-duration:.01ms!important; animation-delay:0ms!important; }
   #splash .splash-gust { display:none; }
 }
+
+.service-draft-related { padding:56px 5vw 72px; border-top:1px solid var(--line); }
+.service-draft-related h2 { margin:0 0 26px; max-width:760px; font:700 clamp(1.8rem,3vw,2.8rem)/1.12 "Manrope",sans-serif; letter-spacing:-.045em; }
+.service-draft-related-grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); border-top:1px solid var(--line); border-left:1px solid var(--line); }
+.service-draft-related-grid a { display:flex; flex-direction:column; gap:8px; min-height:112px; padding:20px 22px; border-right:1px solid var(--line); border-bottom:1px solid var(--line); transition:background-color .18s ease; }
+.service-draft-related-grid a:hover,.service-draft-related-grid a:focus-visible { background:rgba(93,202,165,.12); }
+.service-draft-related-grid a:focus-visible { outline:3px solid var(--brand); outline-offset:2px; }
+.service-draft-related-grid strong { font-family:"Manrope",sans-serif; font-size:1.05rem; }
+.service-draft-related-grid span { color:#52645c; font-size:.9rem; }
+@media(max-width:700px) {
+  .service-draft-related { padding:42px 22px; }
+  .service-draft-related-grid { grid-template-columns:minmax(0,1fr); }
+  .service-draft-related-grid a { min-height:88px; padding:17px 16px; }
+}

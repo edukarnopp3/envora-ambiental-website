@@ -69,6 +69,11 @@ function ServiceGroupMark({ group }: { group: string }) {
           <path d="M20 14v9" fill="none" stroke="var(--paper)" strokeWidth="2.8" strokeLinecap="round" />
           <circle cx="20" cy="28" r="1.6" fill="var(--paper)" />
         </>}
+        {group === "novos-servicos-rascunho" && <>
+          <path d="M9 5h17a3 3 0 0 1 3 3v22H12a3 3 0 0 1-3-3V5Z" fill="currentColor" />
+          <path d="M9 9H7a3 3 0 0 0-3 3v16a3 3 0 0 0 3 3h19" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" />
+          <path d="M15 13h9M15 18h9M15 23h6" fill="none" stroke="var(--paper)" strokeWidth="2" strokeLinecap="round" />
+        </>}
       </svg>
     </span>
   );
@@ -93,6 +98,10 @@ function ServiceMark({ code }: { code: string }) {
     "15": <><path d="M3 12h2l2-5 3 10 3-13 3 16 2-8 2 3h2" /></>,
     "16": <><circle cx="9" cy="8" r="3" /><path d="M3.5 20v-1.5a5.5 5.5 0 0 1 11 0V20zM16 11l2 2 4-5" /></>,
     "17": <><path d="M12 3.5S5.5 11 5.5 15.5a6.5 6.5 0 0 0 13 0C18.5 11 12 3.5 12 3.5Z" /><path d="M9 16a3 3 0 0 0 3 3" /></>,
+    "18": <><path d="M6 3.5h8l4 4V20.5H6z" /><path d="M14 3.5v4h4M9 12h6m-6 3h6m-6 3h3" /></>,
+    "19": <><path d="M20.5 3.5C11 3.8 5.1 7.4 4 14.1c-.7 4.1 1.5 6.4 5 6.4 7.3 0 11.7-7.4 11.5-17Z" /><path d="M4 21 16 8" /></>,
+    "20": <><circle cx="10.5" cy="10.5" r="6.5" /><path d="m15.5 15.5 5 5M7.5 10.5h6M10.5 7.5v6" /></>,
+    "21": <><path d="M3 6h11v11H3zM14 10h4l3 3v4h-7z" /><circle cx="7" cy="19" r="1.5" /><circle cx="18" cy="19" r="1.5" /></>,
   };
 
   return (
@@ -160,10 +169,15 @@ const services = [
   { code: "15", group: "residuos", title: "Laudo e controle acústico", href: "/servicos/laudo-e-controle-acustico" },
   { code: "16", group: "licenciamento", title: "Responsabilidade Técnica Ambiental (RT)", href: "/servicos/responsabilidade-tecnica-ambiental" },
   { code: "17", group: "licenciamento", title: "Outorga e regularização de poços/uso da água", href: "/servicos/outorga-e-regularizacao-de-uso-da-agua" },
+  { code: "18", group: "novos-servicos-rascunho", title: "Assessoria CTF/APP do Ibama", href: "/servicos/assessoria-ctf-app-ibama" },
+  { code: "19", group: "novos-servicos-rascunho", title: "Inscrição inicial no CAR", href: "/servicos/inscricao-inicial-car" },
+  { code: "20", group: "novos-servicos-rascunho", title: "Avaliação de passivo ambiental · oferta a confirmar", href: "/servicos/avaliacao-de-passivo-ambiental" },
+  { code: "21", group: "novos-servicos-rascunho", title: "LAC para transporte rodoviário de produtos perigosos", href: "/servicos/lac-transporte-produtos-perigosos" },
 ];
 
 const serviceGroups = [
   { id: "licenciamento", title: "Licenciamento e regularização" },
+  ...(process.env.NODE_ENV !== "production" ? [{ id: "novos-servicos-rascunho", title: "Novos serviços · rascunho local" }] : []),
   { id: "vegetacao", title: "Vegetação" },
   { id: "residuos", title: "Resíduos e controle técnico" },
   { id: "autos", title: "Autos e exigências" },
