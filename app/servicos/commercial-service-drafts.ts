@@ -72,11 +72,11 @@ export const commercialServiceDrafts: CommercialServiceDraft[] = [
     dependencyItems: [
       "A Envora não decide se o Ibama reconhece o cadastro como regular.",
       "A análise depende da consistência dos dados fornecidos pela empresa e do processamento pelo órgão.",
-      "RAPP é obrigação distinta e não deve ser presumida como parte da assessoria cadastral.",
+      "[CONFIRMAR: mencionar RAPP como obrigação distinta nesta página? Até validação, não publicar referência ao RAPP.]",
     ],
     notIncludedIntro: "O escopo é definido na proposta, sem presumir serviços adicionais.",
     notIncludedItems: [
-      "RAPP, salvo contratação separada após confirmação da oferta pela Envora.",
+      "[CONFIRMAR: mencionar RAPP como serviço separado nesta página? Até validação, não publicar referência ao RAPP.]",
       "Licenciamento ambiental, defesa administrativa ou outras obrigações federais não descritas na proposta.",
       "Taxas ou pagamentos ao poder público, salvo previsão expressa.",
     ],
@@ -181,13 +181,13 @@ export const commercialServiceDrafts: CommercialServiceDraft[] = [
     situations: ["Organizar o histórico ambiental disponível", "Avaliar documentos e informações da área", "Entender se são necessários estudos adicionais"],
     whatIs: [
       "É uma avaliação técnica das informações e condições ambientais associadas a um imóvel ou atividade. O tipo de avaliação, a área de estudo e os procedimentos precisam ser definidos antes da contratação.",
-      "A página fica como rascunho até confirmar quais modalidades a Envora oferece regularmente: [CONFIRMAR: análise documental, vistoria, avaliação preliminar de área contaminada, investigação confirmatória ou outras].",
+      "O método de avaliação depende da questão apresentada, das informações disponíveis e das lacunas identificadas. O escopo é definido antes da contratação.",
     ],
     audience: [
       "Pode ser considerada quando há necessidade de entender o histórico ambiental, documentos disponíveis ou uma situação que demande avaliação técnica.",
-      "[CONFIRMAR: em quais contextos e para quais perfis de cliente a Envora atende regularmente.]",
+      "Pode ser considerada quando há necessidade de compreender o histórico ambiental, os documentos disponíveis ou uma situação que demande avaliação técnica da área.",
     ],
-    deliverablesIntro: "O produto técnico e os métodos só podem ser definidos depois de confirmar quais modalidades a Envora oferece.",
+    deliverablesIntro: "A avaliação considera as informações disponíveis; o método e o produto técnico são definidos caso a caso, antes da contratação.",
     deliverables: [
       "Avaliação limitada às informações e condições previstas no escopo contratado.",
       "[CONFIRMAR: modalidades de avaliação e produto técnico entregue em cada uma.]",
@@ -220,11 +220,11 @@ export const commercialServiceDrafts: CommercialServiceDraft[] = [
       { question: "A avaliação confirma automaticamente que há contaminação?", answer: "Não. A conclusão depende do escopo, dos dados disponíveis e, quando aplicável, dos resultados de campo e laboratório." },
       { question: "A Envora executa remediação?", answer: "Não é o escopo desta oferta. A página trata de avaliação, sem sugerir execução de remediação." },
       { question: "A avaliação inclui coleta e análise de amostras?", answer: "Não automaticamente. A necessidade e a contratação de laboratório dependem do plano técnico e da proposta." },
-      { question: "Qual produto técnico é entregue?", answer: "[CONFIRMAR: tipo de relatório ou produto técnico por modalidade.]" },
-      { question: "Quem assina o trabalho?", answer: "[CONFIRMAR: responsável técnico e habilitação aplicável a cada escopo.]" },
+      { question: "É possível avaliar a área apenas com documentos?", answer: "Depende da pergunta, dos documentos disponíveis e das lacunas identificadas. A necessidade de vistoria ou outras etapas é definida caso a caso antes da contratação." },
+      { question: "Como o escopo é definido?", answer: "A Envora avalia a situação apresentada e delimita na proposta os métodos e entregas correspondentes ao trabalho contratado." },
     ],
     confirmations: [
-      "A avaliação de passivo ambiental é uma oferta regular da Envora? Se não, a página não deve ser publicada.",
+      "Oferta regular confirmada pelo responsável da Envora em 19/10/2026.",
       "Quais modalidades e contextos são realmente atendidos?",
       "Qual produto técnico é entregue em cada modalidade?",
       "Quem é o responsável técnico e qual habilitação se aplica a cada escopo?",
@@ -232,7 +232,7 @@ export const commercialServiceDrafts: CommercialServiceDraft[] = [
       "Qual é a cobertura geográfica?",
     ],
     sources: [],
-    statusNote: "Oferta comercial pendente de confirmação: não publicar esta página nem ativar anúncios antes de validar os pontos abaixo.",
+    statusNote: "Oferta regular confirmada. Os pontos técnicos pendentes abaixo permanecem apenas nesta revisão local e não são exibidos na página pública.",
   },
   {
     slug: "lac-transporte-produtos-perigosos",
@@ -255,7 +255,7 @@ export const commercialServiceDrafts: CommercialServiceDraft[] = [
       "Transportadoras que realizam operação rodoviária de produtos perigosos exclusivamente dentro de Santa Catarina e querem avaliar a aplicação da IN IMA nº 77.",
       "Esta rota não cobre, por si só, trechos de transporte fora do estado. Operações com resíduos ou rejeitos perigosos precisam de confirmação específica de escopo.",
     ],
-    deliverablesIntro: "A Envora primeiro avalia o enquadramento da transportadora. As entregas seguintes dependem da habilitação e do escopo operacional confirmados.",
+    deliverablesIntro: "O primeiro passo é avaliar o enquadramento da operação. As etapas e responsabilidades são descritas na proposta após essa análise.",
     deliverables: [
       "Análise inicial das rotas, produtos e informações fornecidas pela transportadora.",
       "Delimitação, em proposta, das etapas técnicas que a Envora efetivamente assumir.",

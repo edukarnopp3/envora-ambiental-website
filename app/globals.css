@@ -118,6 +118,9 @@ html.splash-complete .hero-logo-3d,html.splash-complete .hero-logo-stage::after,
 .service-group-mark svg { display:block; width:34px; height:34px; overflow:visible; }
 .service-category-heading h3 { margin:0; font:700 clamp(24px,2.3vw,32px)/1.2 "Manrope",sans-serif; letter-spacing:-.04em; text-wrap:balance; }
 .service-contact-button { grid-column:2; grid-row:1; min-height:58px; gap:12px; padding:0 16px 0 22px; color:white; background:var(--forest); font-size:14px; white-space:nowrap; }
+.service-other-contact { display:none; grid-column:2; grid-row:1; min-height:58px; gap:12px; padding:0 16px 0 22px; color:white; background:var(--forest); font-size:14px; white-space:nowrap; }
+.service-other-contact .whatsapp-mark { flex-basis:24px; width:24px; height:24px; }
+.service-other-contact .whatsapp-mark svg { width:23px; height:23px; }
 .service-contact-button .whatsapp-mark { flex-basis:24px; width:24px; height:24px; }
 .service-contact-button .whatsapp-mark svg { width:23px; height:23px; }
 .service-contact-button-mobile { display:none; }
@@ -331,7 +334,7 @@ select:focus,input:focus,textarea:focus { border-color:var(--forest); box-shadow
 .related-services>div a b { color:var(--brand); }
 .related-services>div a:hover,.related-services>div a:focus-visible { background:var(--forest); color:white; }
 .related-services>div a:hover b,.related-services>div a:focus-visible b { color:var(--brand-soft); }
-.service-footer { display:flex; align-items:center; justify-content:space-between; gap:60px; min-height:260px; padding:55px 7vw; }
+.service-footer { display:flex; align-items:center; justify-content:space-between; gap:60px; min-height:260px; padding:55px 7vw; background:var(--forest-dark); color:rgba(255,255,255,.72); }
 .service-footer .brand img { width:min(360px,38vw); }
 .service-footer>div { display:grid; gap:8px; min-width:280px; }
 .service-footer strong { color:white; font-size:16px; }
@@ -469,6 +472,7 @@ select:focus,input:focus,textarea:focus { border-color:var(--forest); box-shadow
   .service-group-mark { flex-basis:40px; width:40px; height:40px; border:0; border-radius:0; background:transparent; }
   .service-group-mark svg { width:34px; height:34px; }
   .service-contact-button-mobile { display:flex; grid-column:1; grid-row:2; width:100%; justify-content:space-between; padding:0 16px 0 20px; font-size:15px; }
+  .service-other-contact { display:flex; grid-column:1; grid-row:2; width:100%; justify-content:space-between; padding:0 16px 0 20px; font-size:15px; }
   .service-contact-button-desktop { display:none; }
   .service-card { grid-template-columns:17px minmax(0,1fr); column-gap:10px; min-height:72px; padding:12px 14px; }
   .service-mark,.service-mark svg { width:17px; height:17px; }
@@ -681,16 +685,16 @@ select:focus,input:focus,textarea:focus { border-color:var(--forest); box-shadow
   #splash .splash-gust { display:none; }
 }
 
-.service-draft-related { padding:56px 5vw 72px; border-top:1px solid var(--line); }
-.service-draft-related h2 { margin:0 0 26px; max-width:760px; font:700 clamp(1.8rem,3vw,2.8rem)/1.12 "Manrope",sans-serif; letter-spacing:-.045em; }
-.service-draft-related-grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); border-top:1px solid var(--line); border-left:1px solid var(--line); }
-.service-draft-related-grid a { display:flex; flex-direction:column; gap:8px; min-height:112px; padding:20px 22px; border-right:1px solid var(--line); border-bottom:1px solid var(--line); transition:background-color .18s ease; }
-.service-draft-related-grid a:hover,.service-draft-related-grid a:focus-visible { background:rgba(93,202,165,.12); }
-.service-draft-related-grid a:focus-visible { outline:3px solid var(--brand); outline-offset:2px; }
-.service-draft-related-grid strong { font-family:"Manrope",sans-serif; font-size:1.05rem; }
-.service-draft-related-grid span { color:#52645c; font-size:.9rem; }
+.service-related-links { padding:56px 5vw 72px; border-top:1px solid var(--line); }
+.service-related-links h2 { margin:0 0 26px; max-width:760px; font:700 clamp(1.8rem,3vw,2.8rem)/1.12 "Manrope",sans-serif; letter-spacing:-.045em; }
+.service-related-links-grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); border-top:1px solid var(--line); border-left:1px solid var(--line); }
+.service-related-links-grid a { display:flex; flex-direction:column; gap:8px; min-height:112px; padding:20px 22px; border-right:1px solid var(--line); border-bottom:1px solid var(--line); transition:background-color .18s ease; }
+.service-related-links-grid a:hover,.service-related-links-grid a:focus-visible { background:rgba(93,202,165,.12); }
+.service-related-links-grid a:focus-visible { outline:3px solid var(--brand); outline-offset:2px; }
+.service-related-links-grid strong { font-family:"Manrope",sans-serif; font-size:1.05rem; }
+.service-related-links-grid span { color:#52645c; font-size:.9rem; }
 @media(max-width:700px) {
-  .service-draft-related { padding:42px 22px; }
-  .service-draft-related-grid { grid-template-columns:minmax(0,1fr); }
-  .service-draft-related-grid a { min-height:88px; padding:17px 16px; }
+  .service-related-links { padding:42px 22px; }
+  .service-related-links-grid { grid-template-columns:minmax(0,1fr); }
+  .service-related-links-grid a { min-height:88px; padding:17px 16px; }
 }

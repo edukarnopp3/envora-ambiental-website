@@ -152,7 +152,7 @@ const serviceVisualBySlug: Record<string, ServiceVisual> = {
 export function generateStaticParams() {
   return [
     ...servicePages.map(({ slug }) => ({ slug })),
-    ...(process.env.NODE_ENV !== "production" ? commercialServiceDrafts.map(({ slug }) => ({ slug })) : []),
+    ...commercialServiceDrafts.map(({ slug }) => ({ slug })),
     ...["pgrs", "pgrss", "pgrcc"].map((slug) => ({ slug })),
   ];
 }
@@ -161,12 +161,19 @@ export async function generateMetadata({ params }: ServicePageProps): Promise<Me
   const { slug } = await params;
   const draft = commercialServiceDraftBySlug.get(slug);
   if (draft) {
-    if (process.env.NODE_ENV === "production") notFound();
     return {
       title: draft.metaTitle,
       description: draft.metaDescription,
       alternates: { canonical: `/servicos/${draft.slug}` },
-      robots: { index: false, follow: false },
+      openGraph: {
+        title: draft.metaTitle,
+        description: draft.metaDescription,
+        url: `/servicos/${draft.slug}`,
+        type: "website",
+        locale: "pt_BR",
+        siteName: "Envora Consultoria Ambiental",
+        images: [{ url: "/og.png", width: 8192, height: 4302, alt: `${draft.shortTitle} — Envora` }],
+      },
     };
   }
   const service = servicePageBySlug.get(slug);
@@ -194,7 +201,6 @@ export default async function ServicePage({ params }: ServicePageProps) {
   if (["pgrs", "pgrss", "pgrcc"].includes(slug)) redirect("/servicos/planos-de-gerenciamento-de-residuos");
   const draft = commercialServiceDraftBySlug.get(slug);
   if (draft) {
-    if (process.env.NODE_ENV === "production") notFound();
     return <CommercialServiceDraftLanding content={draft} />;
   }
   const service = servicePageBySlug.get(slug);
@@ -342,14 +348,14 @@ export default async function ServicePage({ params }: ServicePageProps) {
           </>
         )}
 
-        {process.env.NODE_ENV !== "production" && service.slug === "licenciamento-ambiental" && (
-          <section className="service-draft-related" aria-labelledby="service-draft-related-title">
-            <p className="section-index">Rascunho local · não publicado</p>
-            <h2 id="service-draft-related-title">Outros enquadramentos para avaliar.</h2>
-            <div className="service-draft-related-grid">
+        {service.slug === "licenciamento-ambiental" && (
+          <section className="service-related-links" aria-labelledby="service-related-links-title">
+            <p className="section-index">Outros serviços</p>
+            <h2 id="service-related-links-title">Outras necessidades ambientais.</h2>
+            <div className="service-related-links-grid">
               <Link href="/servicos/assessoria-ctf-app-ibama"><strong>CTF/APP do Ibama</strong><span>A obrigação depende da atividade e do enquadramento federal.</span></Link>
               <Link href="/servicos/inscricao-inicial-car"><strong>Inscrição inicial no CAR</strong><span>Cadastro declaratório, distinto do licenciamento ambiental.</span></Link>
-              <Link href="/servicos/avaliacao-de-passivo-ambiental"><strong>Avaliação de passivo ambiental</strong><span>Rascunho condicionado à confirmação da oferta regular.</span></Link>
+              <Link href="/servicos/avaliacao-de-passivo-ambiental"><strong>Avaliação de passivo ambiental</strong><span>Avaliação técnica com escopo definido caso a caso.</span></Link>
               <Link href="/servicos/lac-transporte-produtos-perigosos"><strong>LAC para transporte em SC</strong><span>Avaliação da rota estadual prevista na IN IMA nº 77.</span></Link>
             </div>
           </section>

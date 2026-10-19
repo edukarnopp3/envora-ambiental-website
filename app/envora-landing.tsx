@@ -69,7 +69,7 @@ function ServiceGroupMark({ group }: { group: string }) {
           <path d="M20 14v9" fill="none" stroke="var(--paper)" strokeWidth="2.8" strokeLinecap="round" />
           <circle cx="20" cy="28" r="1.6" fill="var(--paper)" />
         </>}
-        {group === "novos-servicos-rascunho" && <>
+        {group === "outros-servicos" && <>
           <path d="M9 5h17a3 3 0 0 1 3 3v22H12a3 3 0 0 1-3-3V5Z" fill="currentColor" />
           <path d="M9 9H7a3 3 0 0 0-3 3v16a3 3 0 0 0 3 3h19" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" />
           <path d="M15 13h9M15 18h9M15 23h6" fill="none" stroke="var(--paper)" strokeWidth="2" strokeLinecap="round" />
@@ -169,15 +169,15 @@ const services = [
   { code: "15", group: "residuos", title: "Laudo e controle acústico", href: "/servicos/laudo-e-controle-acustico" },
   { code: "16", group: "licenciamento", title: "Responsabilidade Técnica Ambiental (RT)", href: "/servicos/responsabilidade-tecnica-ambiental" },
   { code: "17", group: "licenciamento", title: "Outorga e regularização de poços/uso da água", href: "/servicos/outorga-e-regularizacao-de-uso-da-agua" },
-  { code: "18", group: "novos-servicos-rascunho", title: "Assessoria CTF/APP do Ibama", href: "/servicos/assessoria-ctf-app-ibama" },
-  { code: "19", group: "novos-servicos-rascunho", title: "Inscrição inicial no CAR", href: "/servicos/inscricao-inicial-car" },
-  { code: "20", group: "novos-servicos-rascunho", title: "Avaliação de passivo ambiental · oferta a confirmar", href: "/servicos/avaliacao-de-passivo-ambiental" },
-  { code: "21", group: "novos-servicos-rascunho", title: "LAC para transporte rodoviário de produtos perigosos", href: "/servicos/lac-transporte-produtos-perigosos" },
+  { code: "18", group: "outros-servicos", title: "Assessoria CTF/APP do Ibama", href: "/servicos/assessoria-ctf-app-ibama" },
+  { code: "19", group: "outros-servicos", title: "Inscrição inicial no CAR", href: "/servicos/inscricao-inicial-car" },
+  { code: "20", group: "outros-servicos", title: "Avaliação de passivo ambiental", href: "/servicos/avaliacao-de-passivo-ambiental" },
+  { code: "21", group: "outros-servicos", title: "LAC para transporte rodoviário de produtos perigosos", href: "/servicos/lac-transporte-produtos-perigosos" },
 ];
 
 const serviceGroups = [
   { id: "licenciamento", title: "Licenciamento e regularização" },
-  ...(process.env.NODE_ENV !== "production" ? [{ id: "novos-servicos-rascunho", title: "Novos serviços · rascunho local" }] : []),
+  { id: "outros-servicos", title: "Outros serviços ambientais" },
   { id: "vegetacao", title: "Vegetação" },
   { id: "residuos", title: "Resíduos e controle técnico" },
   { id: "autos", title: "Autos e exigências" },
@@ -499,7 +499,9 @@ export default function EnvoraLanding() {
                     <ServiceGroupMark group={group.id} />
                     <h3 id={`service-category-${group.id}`}>{group.title}</h3>
                   </div>
-                  <WhatsAppLink className="button service-contact-button service-contact-button-mobile" source={`servicos_${group.id}`} message={`Olá, encontrei a Envora pesquisando por consultoria ambiental em Joinville. Tenho uma demanda de ${group.title.toLowerCase()} e gostaria de explicar minha situação.`}>Falar no WhatsApp <WhatsAppMark /></WhatsAppLink>
+                  {group.id === "outros-servicos"
+                    ? <WhatsAppLink className="button service-other-contact" source={`servicos_${group.id}`} message="Olá, encontrei a Envora pesquisando por consultoria ambiental. Tenho uma demanda de CTF/APP, CAR, avaliação de passivo ambiental ou LAC para transporte rodoviário e gostaria de explicar minha situação.">Fale sobre estes serviços <WhatsAppMark /></WhatsAppLink>
+                    : <WhatsAppLink className="button service-contact-button service-contact-button-mobile" source={`servicos_${group.id}`} message={`Olá, encontrei a Envora pesquisando por consultoria ambiental em Joinville. Tenho uma demanda de ${group.title.toLowerCase()} e gostaria de explicar minha situação.`}>Falar no WhatsApp <WhatsAppMark /></WhatsAppLink>}
                 </div>
                 <div className="service-grid">
                   {group.items.map((service) => {

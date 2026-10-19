@@ -1,131 +1,179 @@
 import Image from "next/image";
 import Link from "next/link";
+import type { CSSProperties } from "react";
 import ServiceWhatsAppLink from "../service-whatsapp-link";
 import WhatsAppMark from "../whatsapp-mark";
+import { SITE_URL } from "../site-url";
 import type { CommercialServiceDraft } from "./commercial-service-drafts";
 import styles from "./contact-service.module.css";
 
-function ContentList({ items }: { items: string[] }) {
-  return <ul className={styles.draftList}>{items.map((item) => <li key={item}>{item}</li>)}</ul>;
+function hasReviewMarker(text: string) {
+  return /\[\s*CONFIRMAR(?:[^\]]*)\]/i.test(text);
+}
+
+function CopyList({ items, isProduction }: { items: string[]; isProduction: boolean }) {
+  const publicItems = isProduction ? items.filter((item) => !hasReviewMarker(item)) : items;
+  return <ul>{publicItems.map((item) => <li key={item}>{item}</li>)}</ul>;
+}
+
+function CopyParagraphs({ items, isProduction }: { items: string[]; isProduction: boolean }) {
+  const publicItems = isProduction ? items.filter((item) => !hasReviewMarker(item)) : items;
+  return <>{publicItems.map((item) => <p key={item}>{item}</p>)}</>;
 }
 
 export default function CommercialServiceDraftLanding({ content: c }: { content: CommercialServiceDraft }) {
   const contact = { service: c.shortTitle, message: c.message };
   const headingPrefix = `draft-${c.slug}`;
+  const isProduction = process.env.NODE_ENV === "production";
+  const showReviewNotes = !isProduction;
+  const structuredData = {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Service",
+        "@id": `${SITE_URL}/servicos/${c.slug}#service`,
+        "mainEntityOfPage": `${SITE_URL}/servicos/${c.slug}`,
+        "serviceType": c.shortTitle,
+        "name": c.shortTitle,
+        "description": c.metaDescription,
+        "provider": { "@type": "ProfessionalService", "@id": `${SITE_URL}/#business`, "name": "Envora Consultoria Ambiental", "url": SITE_URL },
+        "url": `${SITE_URL}/servicos/${c.slug}`,
+      },
+      {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Início", "item": SITE_URL },
+          { "@type": "ListItem", "position": 2, "name": "Serviços", "item": `${SITE_URL}/#solucoes` },
+          { "@type": "ListItem", "position": 3, "name": c.shortTitle, "item": `${SITE_URL}/servicos/${c.slug}` },
+        ],
+      },
+    ],
+  };
 
-  return <div className={styles.page}>
-    <a className={styles.skip} href="#conteudo-servico">Ir para o conteúdo</a>
-    <header className={styles.header}>
-      <Link href="/" aria-label="Envora — início"><Image src="/envora-logo-horizontal.svg" alt="Envora Consultoria Ambiental" width={198} height={49} priority /></Link>
-      <Link href="/#solucoes" className={styles.servicesLink}>Serviços</Link>
-      <ServiceWhatsAppLink {...contact} placement="header" className={`${styles.cta} ${styles.headerCta}`}>Falar no WhatsApp <WhatsAppMark /></ServiceWhatsAppLink>
+  return <div className="service-page-shell">
+    {showReviewNotes && <a className={styles.skip} href="#conteudo-servico">Ir para o conteúdo</a>}
+    <header className="service-topbar">
+      <Link className="brand" href="/" aria-label="Envora Ambiental — início">
+        <Image src="/envora-logo-horizontal.svg" alt="Envora Ambiental" width={360} height={88} priority />
+      </Link>
+      <nav aria-label="Navegação da página de serviço">
+        <Link href="/#solucoes">Todos os serviços</Link>
+        <Link href="/#triagem">Triagem</Link>
+      </nav>
+      <ServiceWhatsAppLink {...contact} placement="header" className="button button-small">Falar com especialista <WhatsAppMark /></ServiceWhatsAppLink>
     </header>
-    <aside className={styles.draftNotice} aria-label="Aviso de rascunho">
-      <strong>Rascunho local · não publicado</strong>
+
+    {showReviewNotes && <aside className={styles.draftNotice} aria-label="Aviso de rascunho">
+      <strong>Notas internas · somente local</strong>
       <span>{c.statusNote ?? "Revisar os pontos [CONFIRMAR] antes de aprovar qualquer publicação."}</span>
-    </aside>
+    </aside>}
+
     <main id="conteudo-servico">
-      <section className={styles.hero} aria-labelledby={`${headingPrefix}-title`}>
-        <div className={styles.heroCopy}>
-          <p className={styles.eyebrow}>{c.eyebrow} · Envora</p>
-          <h1 id={`${headingPrefix}-title`}>{c.title}</h1>
-          <p className={styles.lead}>{c.intro}</p>
-          <ul className={styles.needs} aria-label="Situações que podem ser avaliadas">{c.situations.map((item) => <li key={item}>{item}</li>)}</ul>
-          <ServiceWhatsAppLink {...contact} placement="hero" className={styles.cta}>{c.action}<WhatsAppMark /></ServiceWhatsAppLink>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData).replace(/</g, "\\u003c") }} />
+      <section aria-labelledby={`${headingPrefix}-title`}>
+        <ServiceWhatsAppLink
+          {...contact}
+          placement="hero"
+          className="service-visual-hero"
+          style={{ "--service-visual": `url('${c.image}')`, ...(c.imagePosition ? { "--service-position": c.imagePosition } : {}) } as CSSProperties}
+        >
+          <div className="service-visual-copy">
+            <p className="eyebrow">{c.shortTitle}</p>
+            <h1 id={`${headingPrefix}-title`}>{c.title}</h1>
+            <p>{c.intro}</p>
+            <span className="visually-hidden">{c.imageAlt}</span>
+            <span className="service-visual-link">{c.action} <WhatsAppMark /></span>
+          </div>
+          <span className="service-image-note" aria-hidden="true">Imagem ilustrativa</span>
+        </ServiceWhatsAppLink>
+      </section>
+
+      <section className="service-execution" aria-labelledby={`${headingPrefix}-execution`}>
+        <div>
+          <p className="section-index light">A Envora conduz</p>
+          <h2 id={`${headingPrefix}-execution`}>Você explica o que precisa. A Envora conduz o trabalho contratado.</h2>
         </div>
-        <figure className={styles.image}>
-          <Image src={c.image} alt={c.imageAlt} fill priority sizes="(max-width: 800px) 100vw, 44vw" style={c.imagePosition ? { objectPosition: c.imagePosition } : undefined} />
-          <figcaption>Imagem ilustrativa</figcaption>
-        </figure>
-      </section>
-
-      <section className={styles.draftIntro} aria-label="O que é e para quem se aplica">
-        <article>
-          <p className={styles.eyebrow}>O que é</p>
-          <h2>Entenda o procedimento.</h2>
-          {c.whatIs.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}
-        </article>
-        <article>
-          <p className={styles.eyebrow}>Para quem e quando se aplica</p>
-          <h2>A situação define o caminho.</h2>
-          {c.audience.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}
-        </article>
-      </section>
-
-      <section className={styles.draftDeliverables} aria-label="O que a Envora entrega e etapas do atendimento">
-        <article>
-          <p className={styles.eyebrow}>O que a Envora entrega</p>
-          <h2>Escopo claro antes de começar.</h2>
+        <div>
           <p>{c.deliverablesIntro}</p>
-          <ContentList items={c.deliverables} />
-        </article>
-        <article className={styles.draftLimit}>
-          <p className={styles.eyebrow}>Etapas do atendimento</p>
-          <h2>Da avaliação à condução.</h2>
-          <ContentList items={c.process} />
-          <ServiceWhatsAppLink {...contact} placement="process" className={styles.cta}>Quero que a Envora conduza <WhatsAppMark /></ServiceWhatsAppLink>
-        </article>
-      </section>
+          <ServiceWhatsAppLink {...contact} placement="execution" className="button service-primary">Quero que a Envora conduza <WhatsAppMark /></ServiceWhatsAppLink>
+          <small>A conversa começa pela situação informada. O escopo e os limites são definidos antes da contratação; decisões de órgãos e serviços de terceiros não são garantidos pela Envora.</small>
 
-      <section className={styles.attendance} aria-labelledby={`${headingPrefix}-process` }>
-        <div>
-          <p className={styles.eyebrow}>A Envora conduz</p>
-          <h2 id={`${headingPrefix}-process`}>Você explica o que precisa. A Envora conduz o trabalho contratado.</h2>
-          <p className={styles.lead}>A conversa começa pelo WhatsApp. A Envora entende a situação e delimita o escopo antes da contratação.</p>
-          <ServiceWhatsAppLink {...contact} placement="process" className={styles.cta}>Falar sobre esse serviço <WhatsAppMark /></ServiceWhatsAppLink>
+          <div className="service-details-group">
+            <details className="service-details">
+              <summary>O que é e quando se aplica</summary>
+              <div className="service-details-copy">
+                <h3>O que é</h3>
+                <CopyParagraphs items={c.whatIs} isProduction={isProduction} />
+                <h3>Para quem e quando se aplica</h3>
+                <CopyParagraphs items={c.audience} isProduction={isProduction} />
+                <CopyList items={c.situations} isProduction={isProduction} />
+              </div>
+            </details>
+
+            <details className="service-details">
+              <summary>O que a Envora faz</summary>
+              <div className="service-details-copy">
+                <p>{c.deliverablesIntro}</p>
+                <CopyList items={c.deliverables} isProduction={isProduction} />
+                <h3>Etapas do atendimento</h3>
+                <CopyList items={c.process} isProduction={isProduction} />
+              </div>
+            </details>
+
+            <details className="service-details">
+              <summary>O que ajuda na conversa inicial</summary>
+              <div className="service-details-copy">
+                <p>{c.clientIntro}</p>
+                <CopyList items={c.clientItems} isProduction={isProduction} />
+              </div>
+            </details>
+
+            <details className="service-details">
+              <summary>O que depende de órgão ou terceiros</summary>
+              <div className="service-details-copy">
+                <p>{c.dependencyIntro}</p>
+                <CopyList items={c.dependencyItems} isProduction={isProduction} />
+              </div>
+            </details>
+
+            <details className="service-details">
+              <summary>Limites do escopo</summary>
+              <div className="service-details-copy">
+                <p>{c.notIncludedIntro}</p>
+                <CopyList items={c.notIncludedItems} isProduction={isProduction} />
+              </div>
+            </details>
+
+            <details className="service-details">
+              <summary>Dúvidas frequentes</summary>
+              <div className="service-details-copy">
+                {c.questions.filter((item) => !isProduction || (!hasReviewMarker(item.question) && !hasReviewMarker(item.answer))).map((item) => <details className="service-details-nested" key={item.question}>
+                  <summary>{item.question}</summary>
+                  <p>{item.answer}</p>
+                </details>)}
+              </div>
+            </details>
+          </div>
+
+          <ServiceWhatsAppLink {...contact} placement="closing" className="button service-primary">{c.action} <WhatsAppMark /></ServiceWhatsAppLink>
         </div>
-        <div className={styles.initialInformation}>
-          <p className={styles.eyebrow}>Conversa inicial</p>
-          <h2>O que ajuda a começar.</h2>
-          <p>{c.clientIntro}</p>
-          <ContentList items={c.clientItems} />
-          <ServiceWhatsAppLink {...contact} placement="initial_information" className={styles.cta}>{c.action}<WhatsAppMark /></ServiceWhatsAppLink>
-        </div>
       </section>
 
-      <section className={styles.draftDetails} aria-label="Dependências e limites do serviço">
-        <article>
-          <p className={styles.eyebrow}>Dependências externas</p>
-          <h2>O que depende de órgãos ou terceiros.</h2>
-          <p>{c.dependencyIntro}</p>
-          <ContentList items={c.dependencyItems} />
-        </article>
-        <article className={styles.draftLimit}>
-          <p className={styles.eyebrow}>Escopo e limites</p>
-          <h2>O que não está incluído.</h2>
-          <p>{c.notIncludedIntro}</p>
-          <ContentList items={c.notIncludedItems} />
-        </article>
-      </section>
-
-      <section className={styles.draftFaq} aria-labelledby={`${headingPrefix}-faq`}>
-        <div>
-          <p className={styles.eyebrow}>Dúvidas frequentes</p>
-          <h2 id={`${headingPrefix}-faq`}>Antes de iniciar.</h2>
-        </div>
-        <div className={styles.draftQuestions}>{c.questions.map((item) => <details key={item.question}>
-          <summary>{item.question}</summary>
-          <p>{item.answer}</p>
-        </details>)}</div>
-      </section>
-
-      <aside className={styles.confirmationBox} aria-labelledby={`${headingPrefix}-confirm`}>
-        <p className={styles.eyebrow}>Revisão comercial</p>
-        <h2 id={`${headingPrefix}-confirm`}>Confirmar antes de publicar.</h2>
-        <ContentList items={c.confirmations} />
-      </aside>
-
-      <section className={styles.closing} aria-labelledby={`${headingPrefix}-closing`}>
-        <p className={styles.eyebrow}>Próximo passo</p>
-        <h2 id={`${headingPrefix}-closing`}>Você explica a situação. A Envora avalia o escopo.</h2>
-        <ServiceWhatsAppLink {...contact} placement="closing" className={styles.cta}>{c.action}<WhatsAppMark /></ServiceWhatsAppLink>
-      </section>
+      {showReviewNotes && <aside className={styles.confirmationBox} aria-labelledby={`${headingPrefix}-confirm`}>
+        <p className="section-index">Revisão técnica · somente local</p>
+        <h2 id={`${headingPrefix}-confirm`}>Pontos a validar antes de ampliar o escopo.</h2>
+        <ul>{c.confirmations.map((item) => <li key={item}>{item}</li>)}</ul>
+        {c.sources.length > 0 && <p className={styles.reviewSources}>Referências consultadas: {c.sources.map((source, index) => <span key={source.url}>{index > 0 ? " · " : ""}<a href={source.url} target="_blank" rel="noreferrer">{source.label}</a></span>)}</p>}
+      </aside>}
     </main>
-    <footer className={styles.footer}>
-      <Link href="/" aria-label="Envora — início"><Image src="/envora-logo-horizontal-dark.svg" alt="Envora Consultoria Ambiental" width={220} height={54} /></Link>
+
+    <footer className="service-footer">
+      <Link className="brand inverted" href="/" aria-label="Envora Ambiental — início">
+        <Image src="/envora-logo-horizontal-dark.svg" alt="Envora Ambiental" width={360} height={88} />
+      </Link>
       <div><strong>Envora Consultoria Ambiental</strong><span>Joinville · Santa Catarina</span><a href="tel:+5547984551622">(47) 98455-1622</a><a href="mailto:envoraambiental@gmail.com">envoraambiental@gmail.com</a></div>
-      <nav aria-label="Links e referências"><Link href="/#solucoes">Todos os serviços</Link><Link href="/privacidade">Privacidade</Link>{c.sources.map((source) => <a key={source.url} href={source.url} target="_blank" rel="noreferrer">{source.label}</a>)}</nav>
+      <nav aria-label="Links do site"><Link href="/#solucoes">Todos os serviços</Link><Link href="/privacidade">Privacidade</Link></nav>
     </footer>
-    <div className={styles.sticky}><ServiceWhatsAppLink {...contact} placement="mobile_sticky" className={styles.cta}>Falar no WhatsApp <WhatsAppMark /></ServiceWhatsAppLink></div>
+    <div className="service-mobile-sticky"><ServiceWhatsAppLink {...contact} placement="mobile_sticky" className="button service-mobile-cta">Falar com a Envora <WhatsAppMark /></ServiceWhatsAppLink></div>
   </div>;
 }

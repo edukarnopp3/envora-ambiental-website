@@ -1,6 +1,7 @@
 import type { MetadataRoute } from "next";
 import { SITE_URL } from "./site-url";
 import { servicePages } from "./servicos/service-data";
+import { commercialServiceDrafts } from "./servicos/commercial-service-drafts";
 import { contentArticles } from "./conteudos/content-data";
 
 export default function sitemap(): MetadataRoute.Sitemap {
@@ -24,6 +25,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.65,
     },
     ...servicePages.map(({ slug }) => ({
+      url: `${SITE_URL}/servicos/${slug}`,
+      lastModified: new Date(),
+      changeFrequency: "monthly" as const,
+      priority: 0.8,
+    })),
+    ...commercialServiceDrafts.map(({ slug }) => ({
       url: `${SITE_URL}/servicos/${slug}`,
       lastModified: new Date(),
       changeFrequency: "monthly" as const,
