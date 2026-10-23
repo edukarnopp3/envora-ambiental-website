@@ -8,7 +8,7 @@ const outputFile = path.join(root, "app", "conteudos", "editorial-articles.ts");
 const publicationDate = "2026-10-15";
 
 const articleSettings = {
-  "01-licenca-vencida.md": { category: "Renovação ambiental", serviceSlug: "renovacao-e-regularizacao" },
+  "01-licenca-vencida.md": { category: "Renovação ambiental", serviceSlug: "renovacao-e-regularizacao", updatedAt: "2026-10-23", readingTime: "5 min" },
   "02-auto-infracao.md": { category: "Autos e exigências", serviceSlug: "auto-de-infracao-ambiental" },
   "03-oficio-ambiental.md": { category: "Autos e exigências", serviceSlug: "diagnostico-e-enquadramento-ambiental" },
   "04-danc-cca-aua-licenca.md": { category: "Enquadramento ambiental", serviceSlug: "diagnostico-e-enquadramento-ambiental", publishedAt: "2026-09-04" },
@@ -17,7 +17,7 @@ const articleSettings = {
   "07-transportadora.md": { category: "Resíduos e transporte", serviceSlug: "mtr-e-documentacao-de-residuos" },
   "08-residuos-limpeza-manutencao.md": { category: "Resíduos", serviceSlug: "planos-de-gerenciamento-de-residuos" },
   "09-custo-licenciamento.md": { category: "Planejamento do licenciamento", serviceSlug: "licenciamento-ambiental", publishedAt: "2026-10-11" },
-  "10-checklist-renovacao.md": { category: "Renovação ambiental", serviceSlug: "renovacao-e-regularizacao", publishedAt: "2026-10-11" },
+  "10-checklist-renovacao.md": { category: "Renovação ambiental", serviceSlug: "renovacao-e-regularizacao", publishedAt: "2026-10-11", updatedAt: "2026-10-23", readingTime: "5 min" },
 };
 
 function textFromLines(lines) {
@@ -119,8 +119,8 @@ function parseDraft(fileName, raw) {
     title: articleTitle,
     description: metaDescription,
     publishedAt,
-    ...(isRevision ? { updatedAt: publicationDate } : {}),
-    readingTime: "7 min",
+    ...(settings.updatedAt ? { updatedAt: settings.updatedAt } : isRevision ? { updatedAt: publicationDate } : {}),
+    readingTime: settings.readingTime ?? "7 min",
     serviceSlug: settings.serviceSlug,
     lead,
     sections,

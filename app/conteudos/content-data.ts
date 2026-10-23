@@ -31,29 +31,50 @@ const baseContentArticles: ContentArticle[] = [
     slug: "lap-lai-lao-entenda-as-etapas",
     category: "Licenciamento ambiental",
     title: "LAP, LAI e LAO: o que muda em cada etapa?",
-    description: "Entenda, de forma objetiva, as funções da LAP, da LAI e da LAO no licenciamento ambiental em Santa Catarina.",
+    description: "Veja o que LAP, LAI e LAO autorizam, como se relacionam e o que conferir antes de iniciar a operação em Joinville.",
     publishedAt: "2026-09-04",
+    updatedAt: "2026-10-23",
     readingTime: "3 min",
-    lead: "As três licenças não são documentos equivalentes. Cada uma corresponde a uma fase do empreendimento e autoriza um avanço diferente.",
+    serviceSlug: "lap-lai-lao",
+    lead: "No licenciamento ambiental em fases, a LAP avalia a viabilidade, a LAI autoriza a instalação e a LAO autoriza a operação. Uma etapa não deve ser usada como se autorizasse a seguinte. A modalidade e o procedimento dependem do enquadramento da atividade e do órgão competente.",
     sections: [
       {
-        title: "A sequência em poucas palavras",
+        title: "O que cada licença autoriza?",
+        paragraphs: ["A carta de serviço de Joinville diferencia planejamento, instalação e operação e prevê a AuA por ato único para os casos aplicáveis. No procedimento em fases, as funções são estas:"],
+        table: {
+          headers: ["Etapa", "Papel da licença", "O que vem a seguir"],
+          rows: [
+            ["LAP — planejamento", "Avaliar localização e concepção, viabilidade ambiental e condições do projeto.", "Preparar os projetos e as medidas para a etapa de instalação."],
+            ["LAI — instalação", "Autorizar a implantação conforme os projetos e controles aprovados.", "Implantar e comprovar o atendimento das exigências aplicáveis."],
+            ["LAO — operação", "Autorizar o funcionamento após a verificação das exigências pertinentes.", "Cumprir condicionantes, acompanhar os controles e planejar a renovação."],
+          ],
+        },
+      },
+      {
+        title: "O que preparar para obter a LAO em Joinville?",
         paragraphs: [
-          "A Licença Ambiental Prévia (LAP) é concedida na fase de planejamento. Ela avalia a localização e a concepção do empreendimento, atesta a viabilidade ambiental e estabelece condições para as etapas seguintes.",
-          "A Licença Ambiental de Instalação (LAI) autoriza a implantação conforme os planos, programas, projetos e medidas de controle aprovados. Já a Licença Ambiental de Operação (LAO) autoriza o início da atividade depois da verificação das exigências aplicáveis.",
+          "Para os processos abrangidos pela IN SAMA nº 009/2026, o artigo 51 relaciona os documentos da LAO. Entre eles estão o relatório de atendimento das exigências anteriores, o registro fotográfico dos controles implantados, os relatórios de testes operacionais e as responsabilidades técnicas correspondentes.",
+          "A lista final depende da atividade e das instalações. A carta municipal indica quando se aplica essa instrução e quando devem ser seguidas normas específicas do IMA. Reunir os documentos exige comparar o projeto aprovado com o que foi efetivamente instalado.",
         ],
       },
       {
-        title: "O ponto que evita retrabalho",
+        title: "A empresa já opera ou pretende ampliar?",
         paragraphs: [
-          "Antes de reunir documentos, é necessário confirmar a atividade real, o porte, a localização, a fase atual e o órgão competente. A modalidade correta depende desse enquadramento.",
-          "A Envora realiza essa leitura inicial, organiza a documentação técnica, protocola e acompanha o processo. A emissão e o prazo de análise permanecem sob decisão do órgão ambiental.",
+          "Apresente o histórico das licenças e informe as mudanças realizadas ou planejadas. Operação existente, renovação, licença vencida e ampliação são situações diferentes; não se deve escolher uma etapa apenas pelo nome do documento desejado.",
+          "A Envora analisa esse cenário e define as peças e etapas técnicas antes da contratação. O cliente fornece os dados da operação; taxas e terceiros são discriminados na proposta. Decisão e emissão cabem ao órgão ambiental.",
         ],
       },
     ],
+    relatedLinks: [
+      { label: "Obtenção de LAP, LAI e LAO pela Envora", href: "/servicos/lap-lai-lao" },
+      { label: "Licenciamento ambiental em Joinville", href: "/servicos/licenciamento-ambiental" },
+      { label: "Como renovar a LAO", href: "/conteudos/como-renovar-lao-industria" },
+      { label: "LAO ou AuA: qual se aplica?", href: "/conteudos/industria-precisa-lao-ou-aua" },
+      { label: "Como acompanhar as condicionantes", href: "/conteudos/o-que-acompanhar-depois-licenca-ambiental" },
+    ],
     sources: [
-      { label: "Prefeitura de Joinville — Licença ambiental para atividades industriais e diversas", url: "https://www.joinville.sc.gov.br/servicos/requerer-licenca-ambiental-para-atividades-industriais-e-atividades-diversas/" },
-      { label: "IMA/SC — Instruções Normativas", url: "https://in.ima.sc.gov.br/" },
+      { label: "Prefeitura de Joinville — licenciamento industrial e atividades diversas", url: "https://www.joinville.sc.gov.br/servicos/requerer-licenca-ambiental-para-atividades-industriais-e-atividades-diversas/" },
+      { label: "IN SAMA nº 009/2026 — artigo 51: documentos para a LAO", url: "https://sei.joinville.sc.gov.br/sei/publicacoes/controlador_publicacoes.php?acao=publicacao_visualizar&id_documento=10000033646817&id_orgao_publicacao=0" },
     ],
   },
   {

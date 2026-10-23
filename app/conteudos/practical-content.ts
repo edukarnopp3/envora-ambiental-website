@@ -5,6 +5,11 @@ const licensingSource = {
   url: "https://www.joinville.sc.gov.br/servicos/requerer-licenca-ambiental-para-atividades-industriais-e-atividades-diversas/",
 };
 
+const municipalLicensingNorm = {
+  label: "IN SAMA nº 009/2026 — licenciamento industrial, LAO, renovação e AuA",
+  url: "https://sei.joinville.sc.gov.br/sei/publicacoes/controlador_publicacoes.php?acao=publicacao_visualizar&id_documento=10000033646817&id_orgao_publicacao=0",
+};
+
 export const practicalArticles: ContentArticle[] = [
   {
     slug: "como-obter-aua-joinville", category: "Autorização ambiental",
@@ -48,47 +53,89 @@ export const practicalArticles: ContentArticle[] = [
       ] },
     ], sources: [licensingSource],
   },
-  {
+{
     slug: "industria-precisa-lao-ou-aua", category: "Enquadramento industrial",
-    title: "Minha indústria precisa de LAO ou AuA?",
-    description: "Entenda quais dados apresentar para avaliar a modalidade ambiental da sua indústria em Joinville.",
-    publishedAt: "2026-10-11", readingTime: "3 min", serviceSlug: "lap-lai-lao",
-    lead: "A escolha depende da operação concreta. O nome da empresa e a sigla procurada no Google não resolvem o enquadramento.",
+    title: "Minha indústria precisa de LAO ou AuA em Joinville?",
+    description: "Compare LAO e AuA em Joinville e veja quais dados da atividade definem o enquadramento e o procedimento ambiental.",
+    publishedAt: "2026-10-11", updatedAt: "2026-10-23", readingTime: "3 min", serviceSlug: "lap-lai-lao",
+    lead: "No licenciamento em fases, a LAO autoriza a operação após a verificação das exigências aplicáveis. A AuA reúne a autorização em um ato único para as atividades enquadradas nessa modalidade. A empresa não escolhe entre as duas apenas por preferência: atividade, porte, localização e regras do órgão definem o procedimento.",
     sections: [
-      { title: "Descreva como a indústria funciona", paragraphs: [
-        "Explique as etapas de fabricação ou prestação de serviço, matérias-primas, capacidade, equipamentos e controles existentes. Informe resíduos, efluentes e emissões associados à rotina.",
-        "O endereço e a fase do empreendimento também entram na avaliação. Uma unidade em implantação apresenta uma situação diferente de uma operação existente que pretende ampliar.",
+      { title: "Qual é a diferença entre LAO e AuA?", paragraphs: [
+        "A carta de serviço de Joinville diferencia as fases de planejamento, instalação e operação e a Autorização Ambiental por ato único. A tabela resume essa distinção; ela não substitui o enquadramento da unidade.",
+      ], table: { headers: ["Ponto de comparação", "LAO", "AuA"], rows: [
+        ["Função", "Autorizar a operação no licenciamento em fases.", "Autorizar por ato único quando essa modalidade se aplica."],
+        ["O que verificar", "Implantação, controles ambientais e atendimento das exigências anteriores.", "Requisitos da atividade e documentos previstos para a autorização."],
+        ["Referência municipal", "IN SAMA nº 009/2026, seção D; renovação na seção E.", "IN SAMA nº 009/2026, seção G, nos casos abrangidos pela norma."],
+      ] } },
+      { title: "Quais informações definem o enquadramento?", paragraphs: [
+        "Descreva a operação real, inclusive etapas auxiliares. Uma denominação como indústria ou oficina não informa, sozinha, os processos e impactos que precisam ser avaliados.",
+      ], bullets: [
+        "produtos, matérias-primas e etapas de fabricação ou serviço;",
+        "capacidade, equipamentos e área utilizada;",
+        "endereço, instalações e situação atual: projeto, implantação, operação ou ampliação;",
+        "geração de resíduos, efluentes e emissões e os controles existentes;",
+        "licenças anteriores, condicionantes e alterações realizadas.",
       ] },
-      { title: "Identifique a modalidade aplicável", paragraphs: [
-        "Joinville apresenta as fases de licença prévia, instalação e operação, além da Autorização Ambiental por ato único para os casos previstos. A definição considera o enquadramento e as regras aplicáveis.",
-        "Se existe um documento anterior, apresente-o junto com as mudanças realizadas. Evite contratar um pacote de estudos antes de definir a modalidade e o órgão competente.",
+      { title: "E se a indústria já estiver funcionando?", paragraphs: [
+        "Apresente o histórico documental e informe se houve instalação ou alteração sem a etapa ambiental correspondente. A regularização de uma operação existente precisa ser avaliada antes de definir o pedido.",
+        "A IN SAMA nº 009/2026 possui seção própria para LAO corretiva. Isso não significa que qualquer empresa em operação deva requerê-la: é necessário examinar a atividade, o histórico e o procedimento aplicável. A carta municipal também remete a instruções específicas do IMA para os casos que não seguem a instrução municipal.",
       ] },
-      { title: "Transforme a análise em um escopo claro", paragraphs: [
-        "A Envora avalia as informações da unidade para definir o atendimento necessário. A proposta identifica entregas, etapas, responsabilidades e itens externos.",
-        "Envie o município, a atividade, a situação atual e os documentos disponíveis. Com esse ponto de partida, podemos organizar o diagnóstico e a proposta do serviço.",
+      { title: "Como a Envora começa a análise?", paragraphs: [
+        "Você apresenta a atividade e os documentos disponíveis. A Envora avalia o enquadramento e define o escopo técnico antes da contratação: levantamentos, estudos, peças, protocolo e acompanhamento.",
+        "Dados da operação e documentos existentes dependem do cliente. Taxas, laboratório e serviços de terceiros são discriminados quando necessários. A emissão e a decisão cabem ao órgão ambiental.",
       ] },
-    ], sources: [licensingSource],
+    ],
+    relatedLinks: [
+      { label: "LAP, LAI e LAO: o que cada etapa autoriza", href: "/conteudos/lap-lai-lao-entenda-as-etapas" },
+      { label: "Renovação da LAO em Joinville", href: "/conteudos/como-renovar-lao-industria" },
+      { label: "Atendimento para Autorização Ambiental (AuA)", href: "/servicos/autorizacao-ambiental-aua" },
+      { label: "DANC, CCA, AuA ou licença: qual se aplica?", href: "/conteudos/licenca-ambiental-ou-autorizacao-ambiental" },
+    ],
+    sources: [licensingSource, municipalLicensingNorm],
   },
   {
     slug: "o-que-acompanhar-depois-licenca-ambiental", category: "Acompanhamento industrial",
-    title: "O que acompanhar depois da licença ambiental?",
-    description: "Veja como organizar condicionantes, prazos, registros e entregas técnicas da rotina industrial.",
-    publishedAt: "2026-10-11", readingTime: "3 min", serviceSlug: "gestao-de-condicionantes",
-    lead: "Depois da emissão, a empresa precisa transformar os compromissos do documento em uma rotina de acompanhamento.",
+    title: "Condicionantes da LAO: como acompanhar?",
+    description: "Organize as condicionantes da LAO com prazos, responsáveis e evidências. Veja um exemplo de acompanhamento para a rotina da empresa.",
+    publishedAt: "2026-10-11", updatedAt: "2026-10-23", readingTime: "3 min", serviceSlug: "gestao-de-condicionantes",
+    lead: "Depois de obter a LAO, transforme cada condicionante em uma tarefa com prazo, responsável e evidência. O calendário deve partir do texto da licença e dos atos do processo, sem inventar uma frequência padrão de laudos ou relatórios para toda empresa.",
     sections: [
-      { title: "Crie um calendário com responsáveis", paragraphs: [
-        "Nossa recomendação é levantar cada obrigação constante nos documentos da unidade e registrar prazo, responsável, evidência necessária e situação. Diferencie entregas periódicas, providências pontuais e verificações da operação.",
-        "Defina quem fornece os dados internos e quem prepara ou revisa as peças técnicas. Um calendário só ajuda quando há responsáveis e documentos organizados para demonstrar as entregas.",
+      { title: "Como montar o calendário da licença?", paragraphs: [
+        "Leia a LAO completa e separe obrigações pontuais, periódicas e contínuas. Para cada item, registre a referência da condicionante, o que deve ser feito, a data ou frequência, o responsável e o documento que demonstra o atendimento.",
+        "Quando houver exigência de entrega, acompanhe também o protocolo: possuir um laudo não comprova, sozinho, que ele foi apresentado ao órgão no canal e no prazo previstos.",
+      ], bullets: [
+        "Obrigação: transcreva o item da licença e sua referência.",
+        "Prazo: use a data ou a frequência indicada no documento.",
+        "Responsável: identifique quem fornece dados, executa, revisa e envia.",
+        "Evidência: relacione relatório, resultado, registro e protocolo, conforme o item.",
       ] },
-      { title: "Planeje os monitoramentos do caso", paragraphs: [
-        "O levantamento deve identificar quais verificações e monitoramentos se aplicam à operação. A programação depende dos documentos, dos controles existentes e da demanda técnica da unidade.",
-        "Discrimine visitas, coleta de amostras, equipamentos, laboratório e laudos na proposta. Frequência e custo precisam corresponder ao serviço definido para a empresa.",
+      { title: "Exemplo ilustrativo de acompanhamento", paragraphs: [
+        "Os itens abaixo mostram como organizar uma rotina. Monitoramentos e documentos só entram quando forem exigidos para a unidade; use as condições da sua LAO para definir frequência e conteúdo.",
+      ], table: { headers: ["Item a acompanhar", "Quando", "Evidência a organizar"], rows: [
+        ["Monitoramento de efluentes, se exigido", "Na frequência indicada na licença ou no ato aplicável.", "Relatório de coleta, resultados e protocolo, quando exigido."],
+        ["Registros de destinação de resíduos", "Conforme o fluxo e a obrigação aplicáveis.", "Comprovantes correspondentes à unidade e ao período, como CDF ou DMR, quando cabíveis."],
+        ["Preparação da renovação da LAO", "Planejar antes do marco de 120 dias previsto no artigo 29 da IN SAMA nº 009/2026.", "Licença, RTC, anexos e comprovante do pedido."],
+      ] } },
+      { title: "O que fazer quando faltar uma evidência?", paragraphs: [
+        "Registre a pendência e confira se o trabalho foi realizado e o arquivo precisa ser recuperado, se a entrega ainda deve ser executada ou se há dúvida sobre o alcance da obrigação. Não declare atendimento apenas com base em lembrança ou em documento de outra unidade.",
+        "Se o item depende de coleta, laboratório ou outro prestador, programe a contratação e a entrega com antecedência. A responsabilidade de cada participante deve ficar definida no escopo do atendimento.",
       ] },
-      { title: "Tenha uma visão das pendências", paragraphs: [
-        "No acompanhamento contratado, a Envora pode organizar o calendário, as evidências, as visitas e a coordenação das entregas, com relatórios de situação e próximos passos.",
-        "Apresente os documentos ambientais e explique quem acompanha a rotina hoje. A partir desse levantamento, definimos responsabilidades e frequência do atendimento.",
+      { title: "Como isso se relaciona com a renovação?", paragraphs: [
+        "Nos processos de renovação abrangidos pelo artigo 52 da IN SAMA nº 009/2026, o RTC deve comprovar o atendimento das condicionantes e trazer informações atualizadas do processo produtivo e dos controles. O Anexo IV detalha seu termo de referência.",
+        "Manter as evidências organizadas permite identificar lacunas antes da preparação desse relatório. Ampliação ou alteração operacional também deve ser registrada e avaliada; renovar a LAO não dispensa analisar o que mudou.",
       ] },
-    ], sources: [licensingSource],
+      { title: "Como funciona o acompanhamento da Envora?", paragraphs: [
+        "A Envora avalia a licença e a rotina atual e define o trabalho contratado: organização do calendário, peças técnicas, visitas e acompanhamento de entregas, conforme a proposta.",
+        "A empresa fornece os dados e mantém as rotinas operacionais. Coleta, laboratório e outros serviços externos têm responsabilidades próprias quando necessários. Envie sua LAO para começarmos essa avaliação.",
+      ] },
+    ],
+    relatedLinks: [
+      { label: "Renovação de LAO em Joinville: documentos", href: "/conteudos/como-renovar-lao-industria" },
+      { label: "LAO vencida: como conferir a situação", href: "/conteudos/licenca-ambiental-vencida-o-que-fazer" },
+      { label: "Gestão de condicionantes pela Envora", href: "/servicos/gestao-de-condicionantes" },
+      { label: "Licenciamento ambiental: atendimento", href: "/servicos/licenciamento-ambiental" },
+    ],
+    sources: [licensingSource, municipalLicensingNorm],
   },
   {
     slug: "quanto-custa-licenciamento-industria", category: "Planejamento do licenciamento",

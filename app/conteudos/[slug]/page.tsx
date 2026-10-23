@@ -10,7 +10,7 @@ type ContentPageProps = { params: Promise<{ slug: string }> };
 
 const contentTitleOverrides: Record<string, string> = {
   "creditos-de-carbono-como-avaliar": "Créditos de carbono: o que avaliar?",
-  "como-renovar-lao-industria": "Renovar licença ambiental: documentos",
+  "como-renovar-lao-industria": "Renovação de LAO em Joinville: documentos",
   "antes-de-instalar-ampliar-ou-operar": "Antes de instalar ou ampliar: o que conferir?",
   "licenciamento-ambiental-oficina-mecanica-joinville": "Oficina mecânica e licença ambiental em Joinville",
   "transportadora-precisa-licenca-ambiental-joinville": "Licença ambiental para transportadora em Joinville",
@@ -37,6 +37,7 @@ export async function generateMetadata({ params }: ContentPageProps): Promise<Me
       locale: "pt_BR",
       siteName: "Envora",
       publishedTime: article.publishedAt,
+      modifiedTime: article.updatedAt ?? article.publishedAt,
       images: [{ url: "/og.png", width: 8192, height: 4302, alt: `${article.title} — Envora` }],
     },
     twitter: {

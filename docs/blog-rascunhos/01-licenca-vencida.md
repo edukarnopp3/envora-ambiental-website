@@ -1,107 +1,88 @@
 ---
-status: publicado em 2026-10-15
-tema: Licença vencida: o que fazer agora?
+status: revisão editorial de 2026-10-23
+tema: LAO vencida em Joinville
 palavra-chave: licença ambiental vencida
-data-de-revisao-das-fontes: 2026-10-15
+data-de-revisao-das-fontes: 2026-10-23
 url-existente: não
 ---
 
-# Títulos possíveis
+# Título editorial
 
-1. Minha licença ambiental venceu: o que fazer agora?
-2. Licença ambiental vencida em Joinville: próximos passos
-3. Licença vencida: como avaliar a regularização ambiental
+Licença ambiental vencida: como avaliar a LAO em Joinville
 
-**Meta description:** Sua licença ambiental venceu? Confira o documento, as pendências e o procedimento aplicável antes de decidir os próximos passos. Fale com a Envora.
+**Meta description:** Sua LAO venceu? Veja como conferir o protocolo, as condicionantes e o procedimento de regularização em Joinville. Converse com a Envora.
 
-**Slug:** `licenca-ambiental-vencida-o-que-fazer`
+**Slug:** `licenca-ambiental-vencida-o-que-fazer`.
 
 # Minha licença ambiental venceu: o que fazer agora?
 
-Se a licença ambiental venceu, comece conferindo o próprio documento e o processo que a originou. A validade, a atividade autorizada, as condicionantes e eventuais protocolos definem o que precisa ser avaliado. Não existe uma solução automática aplicável a todos os empreendimentos: a providência depende da situação da unidade e da regra do órgão que emitiu a licença.
+Se sua Licença Ambiental de Operação (LAO) venceu, confira primeiro se houve pedido de renovação e em qual data ele foi apresentado. A regra de prorrogação para pedidos feitos com antecedência mínima de 120 dias é diferente da situação de quem deixou a licença vencer sem requerer a renovação no prazo legal. Em Joinville, os artigos 29 e 35 da IN SAMA nº 009/2026 ajudam a separar esses cenários nos processos por ela abrangidos.
 
-Em Joinville, a empresa deve verificar o procedimento com a SAMA ou com o órgão competente indicado no documento. Uma consultoria pode organizar a análise técnica e o processo, mas não deve presumir que um pedido de renovação fora do prazo mantém automaticamente a autorização ou regulariza o período vencido.
+## Qual é a situação do seu pedido?
 
-## O que fazer quando a licença ambiental venceu?
+A data impressa na LAO não conta toda a história. Relacione o vencimento com o protocolo e com as manifestações posteriores do órgão.
 
-Localize a licença completa, o número do processo e as comunicações recebidas. Confira a data de validade registrada, o órgão emissor, o nome e endereço da unidade, a atividade descrita e as condições impostas. Em seguida, verifique se existe pedido protocolado, despacho, exigência ou resposta do órgão. Uma captura de tela ou um comprovante isolado pode não mostrar o histórico necessário; reúna os documentos integrais sempre que possível.
+| Situação | O que verificar |
+| --- | --- |
+| Renovação requerida com ao menos 120 dias de antecedência | A regra prevê prorrogação da validade até a manifestação definitiva do órgão. Guarde o protocolo e acompanhe exigências e decisões. |
+| Pedido apresentado com menos de 120 dias | Não aplique automaticamente a regra de antecedência cumprida. Examine o processo e as providências cabíveis com o órgão competente. |
+| LAO vencida sem renovação requerida no prazo legal | Para os casos do artigo 35 da IN SAMA nº 009/2026, requerer nova LAO e apresentar relatório de atendimento às condicionantes anteriores. |
 
-Depois, compare o documento com a operação de hoje. Houve aumento de capacidade, mudança de equipamento, novo processo produtivo, alteração de endereço ou inclusão de atividade? Essas mudanças podem alterar o enquadramento e o caminho administrativo. Se a atividade parou, mudou de responsável ou foi encerrada, isso também deve ser informado na avaliação. O diagnóstico não deve começar apenas pela pergunta “qual formulário preencher?”, mas pela identificação do que a licença autorizava e do que efetivamente ocorre.
+Essa análise considera o documento e o órgão que o emitiu. Licença suspensa, cancelada, alterada ou sujeita a decisão específica exige também a leitura desse ato.
 
-## O protocolo de renovação foi feito antes do vencimento?
+## Posso continuar operando?
 
-Se houve protocolo, localize o recibo, a data, o número do processo e a documentação entregue. Confira se o órgão publicou exigência ou decisão e se há comprovação de atendimento. Não conclua que o simples protocolo resolve qualquer situação: o efeito de um pedido apresentado em determinada data depende da norma e do procedimento aplicáveis ao caso. Confirme isso com o órgão responsável ou com orientação técnica e jurídica apropriada.
+A prorrogação prevista no artigo 29 da instrução municipal e no artigo 14, § 4º, da LC nº 140/2011 está vinculada à renovação requerida com a antecedência mínima de 120 dias. Ela mantém a validade da licença existente durante a análise, sem autorizar atividade diferente ou ampliação.
 
-Se não houve protocolo, evite reaproveitar automaticamente uma lista antiga de renovação. A providência pode envolver renovação, regularização ou outro tipo de requerimento, conforme a licença, a atividade, as mudanças realizadas e as regras atuais. Na página de serviço da Prefeitura de Joinville, o procedimento e os documentos são organizados por tipo de atividade e modalidade; o primeiro passo é identificar qual serviço realmente corresponde à unidade.
+Quando a renovação não foi pedida no prazo legal e a licença venceu, o artigo 35 da IN SAMA nº 009/2026 prevê nova LAO e mantém a sujeição à fiscalização. Um pedido em andamento não deve ser apresentado como se fosse uma licença já concedida. Havendo determinação sobre funcionamento ou consequências jurídicas, a análise técnica deve ser articulada com o órgão e com assessoria jurídica.
 
-## A empresa pode continuar operando com a licença vencida?
+## Quais documentos ajudam a resolver a situação?
 
-Não é seguro responder “sim” ou “não” sem examinar o documento, o processo e as regras aplicáveis. A licença é o ato que estabelece condições e limites para uma atividade; vencimento, protocolo pendente, alteração da operação ou obrigação específica podem produzir cenários diferentes. A empresa deve obter orientação do órgão competente sobre a situação concreta, sem interpretar silêncio administrativo ou comprovante de protocolo como autorização genérica.
+Separe os arquivos completos e mantenha as datas dos documentos originais. O objetivo é reconstruir o histórico e identificar a providência adequada, sem começar por um formulário isolado.
 
-Enquanto a situação é verificada, preserve os registros operacionais e ambientais, evite ampliar ou modificar a atividade sem avaliar as autorizações necessárias e registre as providências tomadas. Se houver risco imediato, exigência formal, fiscalização ou dúvida sobre continuidade, consulte o órgão emissor e, quando houver consequência jurídica ou risco de sanção, um advogado. A consultoria ambiental pode organizar os fatos e a documentação técnica, mas não substitui a análise jurídica.
+- LAO vencida, anexos e licenças anteriores da mesma unidade;
+- número do processo e comprovante de eventual pedido de renovação;
+- exigências, notificações e decisões recebidas;
+- registros de atendimento das condicionantes, laudos e protocolos;
+- descrição dos equipamentos, da capacidade e dos controles atuais;
+- alterações realizadas, inclusive de titularidade, endereço e atividade.
 
-## Quais documentos separar para avaliar uma licença vencida?
+## E se a empresa tiver ampliado a operação?
 
-Monte uma pasta com o que existe, sem tentar adivinhar previamente tudo o que o órgão exigirá:
+Compare o que a licença autorizava com o que existe hoje. Uma nova linha, área, equipamento ou capacidade pode exigir análise específica, além da questão do vencimento. A IN SAMA nº 009/2026 trata de alterações e ampliações no artigo 37 e de LAO corretiva no artigo 53; esses procedimentos não são intercambiáveis nem resolvidos apenas com a troca da data da licença.
 
-- licença vencida e licenças anteriores da mesma unidade;
-- número do processo, protocolo e recibos de envio;
-- exigências, notificações, despachos e comunicações do órgão;
-- documentos que descrevam a atividade e a capacidade atuais;
-- registros de cumprimento das condicionantes e monitoramentos previstos;
-- plantas, memoriais e relatórios que tenham sido apresentados;
-- evidências de alterações, paralisação, mudança de titularidade ou encerramento, quando houver.
+Informe também paralisação, encerramento ou mudança de operador. A Envora usa esse levantamento para identificar a situação técnica e definir as entregas necessárias antes da contratação.
 
-Essa organização permite localizar lacunas e separar documentos existentes daqueles que talvez precisem ser atualizados. Não produza laudos ou declarações apenas para completar uma lista genérica. A necessidade de cada peça precisa estar vinculada ao procedimento atual e às características reais da atividade.
+## Como organizar as condicionantes pendentes?
 
-## Como avaliar condicionantes e pendências?
+Associe cada obrigação da LAO à evidência correspondente, indicando período e unidade. Separe o que foi atendido e documentado, o que foi executado mas precisa ter o registro recuperado e o que continua pendente.
 
-Leia cada condicionante da licença e registre o que ela pede, a frequência, o responsável interno, a evidência disponível e o estado de cumprimento. Separe obrigações contínuas, entregas periódicas e providências pontuais. Se uma obrigação foi atendida por empresa terceirizada, localize o relatório, o certificado ou o comprovante correspondente e confirme a qual período e unidade se refere.
+Relatório fotográfico, resultado de laboratório e comprovante de protocolo têm funções diferentes. A falta de um arquivo não deve ser preenchida por declaração sem comprovação; ela entra como pendência a resolver no diagnóstico.
 
-Quando não houver evidência, identifique a lacuna sem afirmar que ela necessariamente configura infração. Pode ser necessário recuperar documentos, realizar avaliação ou solicitar orientação ao órgão. A sequência correta depende do conteúdo da licença e do processo. Um inventário honesto de pendências ajuda a preparar uma resposta técnica consistente; ocultar uma lacuna ou declarar cumprimento sem comprovação cria risco maior para a empresa.
+## Como começa o atendimento da Envora?
 
-## O que muda se a operação foi ampliada ou alterada?
+Você envia a licença e explica a situação. A Envora avalia o histórico, as mudanças e as condicionantes e apresenta o escopo técnico: levantamentos, relatórios, documentos, protocolo e acompanhamento que integrarão a contratação.
 
-Uma renovação não deve ser tratada como mera atualização de data quando a unidade mudou. Compare o escopo licenciado com os equipamentos, processos, capacidade, insumos e controles atuais. Uma alteração pode exigir análise específica, atualização de estudos ou procedimento diferente da renovação. O órgão competente define a tramitação segundo o enquadramento e os documentos aplicáveis.
-
-Descreva mudanças com datas aproximadas, local, motivo e impacto na rotina. Inclua alterações planejadas, não somente as que já ocorreram. Antes de iniciar uma ampliação, instalação ou nova atividade, verifique se existe etapa ambiental prévia. Essa checagem evita que a empresa gaste com documentação de um caminho incompatível com a obra ou com o modo de operação pretendido.
-
-## Como planejar os próximos passos sem perder o histórico?
-
-Monte uma linha do tempo com emissão da licença, vencimento, protocolos, notificações e mudanças relevantes da unidade. Associe a cada evento o documento que o comprova e a pessoa que pode esclarecer os fatos. Esse registro ajuda a equipe técnica a separar o que ocorreu antes do vencimento, o que foi feito depois e quais informações ainda precisam ser confirmadas. Não apague versões antigas de relatórios ou formulários: preserve o histórico e identifique qual arquivo foi protocolado.
-
-Com a linha do tempo organizada, defina prioridades: confirmar a situação no órgão, atender uma exigência com prazo aberto, reunir evidências de condicionantes ou avaliar o enquadramento da operação. A ordem pode variar conforme o caso. Se existe documento recente do órgão, ele deve ser considerado antes de iniciar uma demanda genérica de renovação.
-
-## E se a licença pertencer ao antigo proprietário ou operador?
-
-Uma licença antiga pode estar vinculada a um titular, endereço ou descrição operacional específica. Em caso de compra, locação ou mudança societária, reúna o documento de transferência, a identificação atual da empresa e o histórico da unidade. Não presuma que a licença foi automaticamente transferida nem que deixou de valer apenas porque mudou a razão social; confirme as regras e atualizações com a autoridade que emitiu o ato.
-
-Também verifique se o novo responsável manteve a mesma atividade, capacidade e controles descritos. Se a operação mudou junto com a gestão, essas alterações precisam entrar na análise. A checagem ajuda a evitar que a empresa apresente documento que não corresponde ao responsável atual ou ignore uma obrigação pendente da unidade.
-
-## Como a Envora pode ajudar a regularizar a situação?
-
-A Envora pode revisar a licença e o histórico documental, comparar o escopo autorizado à operação informada, organizar condicionantes e identificar quais questões precisam ser confirmadas com o órgão. Com esse diagnóstico, prepara uma proposta técnica que define as entregas, os limites do serviço, os documentos necessários e as responsabilidades de cada parte.
-
-Quando contratado, o trabalho pode incluir a elaboração de documentos técnicos, protocolo e acompanhamento do processo, conforme o escopo aprovado. A emissão da licença e as decisões administrativas são de responsabilidade do órgão competente. Taxas públicas, análises laboratoriais, ART e serviços de terceiros devem ser identificados separadamente quando aplicáveis. A empresa recebe orientação sobre a rota técnica; não uma promessa de deferimento ou de prazo do órgão.
+O cliente fornece os dados e documentos da operação. Taxas, análises laboratoriais e outros serviços externos são discriminados na proposta. A decisão e a emissão da licença cabem ao órgão ambiental.
 
 ## Perguntas frequentes
 
-### A licença vencida é renovada automaticamente?
-Não. A empresa precisa conferir o procedimento e os efeitos previstos para o caso concreto. Consulte o processo e confirme a situação com o órgão emissor.
+### Toda licença com data vencida está sem validade?
+Não necessariamente. Nos casos de renovação requerida com antecedência mínima de 120 dias, a regra citada prevê prorrogação até a manifestação definitiva do órgão. Confira o protocolo e as decisões do processo.
 
-### Posso usar o mesmo processo da licença anterior?
-O histórico é importante, mas não garante que o procedimento ou os documentos continuem iguais. Atividade, regras e formulário podem ter mudado; valide a orientação atual.
+### Pedir a renovação depois do vencimento resolve o período anterior?
+Não. O protocolo posterior não apaga o histórico. Para as situações abrangidas pelo artigo 35 da IN SAMA nº 009/2026, deve ser requerida nova LAO e apresentado o relatório das condicionantes anteriores.
 
-### Preciso parar a atividade imediatamente?
-Não é possível responder sem analisar licença, protocolo, processo e regra aplicável. Confirme a situação com o órgão e procure aconselhamento jurídico se houver risco de sanção ou decisão urgente.
+### Preciso de LAO corretiva se a minha licença venceu?
+Não presuma esse enquadramento apenas pelo vencimento. A instrução municipal diferencia nova LAO após perda do prazo e LAO corretiva. A atividade, o histórico e as instalações precisam ser avaliados.
 
-### A Envora garante a renovação?
-Não. A Envora pode preparar e acompanhar a parte técnica contratada. A análise e a decisão cabem ao órgão ambiental.
+### Um documento antigo serve para outra filial?
+Confira o titular, o endereço e a atividade autorizada. Uma licença de outra unidade não deve ser tratada como autorização para o estabelecimento em análise.
 
 ## Próximo passo
 
-Se a licença ambiental venceu, envie à Envora a licença completa, o número do processo e uma descrição objetiva da operação atual. A equipe organiza a análise técnica e apresenta uma proposta compatível com a situação real, sem presumir um procedimento antes de conferir os documentos.
+Envie a licença completa, o número do processo e o protocolo, se houver. A Envora avalia a situação da LAO e conduz a parte técnica contratada.
 
-**Links internos sugeridos:** [Renovação e regularização](/servicos/renovacao-e-regularizacao); [Gestão de condicionantes](/servicos/gestao-de-condicionantes); [Como renovar a LAO da minha indústria?](/conteudos/como-renovar-lao-industria).
+**Links internos sugeridos:** [Renovação de LAO em Joinville: documentos e etapas](/conteudos/como-renovar-lao-industria); [LAP, LAI e LAO: diferenças entre as etapas](/conteudos/lap-lai-lao-entenda-as-etapas); [Acompanhamento das condicionantes](/servicos/gestao-de-condicionantes); [Renovação e regularização](/servicos/renovacao-e-regularizacao).
 
-**Fontes oficiais para revisão final:** [Prefeitura de Joinville — licenciamento ambiental para atividades industriais e diversas](https://www.joinville.sc.gov.br/servicos/requerer-licenca-ambiental-para-atividades-industriais-e-atividades-diversas/); [IMA/SC — Instruções Normativas](https://in.ima.sc.gov.br/).
+**Fontes oficiais para revisão final:** [Prefeitura de Joinville — carta de licenciamento industrial e atividades diversas](https://www.joinville.sc.gov.br/servicos/requerer-licenca-ambiental-para-atividades-industriais-e-atividades-diversas/); [IN SAMA nº 009/2026 — artigos 29, 35, 37 e 53](https://sei.joinville.sc.gov.br/sei/publicacoes/controlador_publicacoes.php?acao=publicacao_visualizar&id_documento=10000033646817&id_orgao_publicacao=0); [Lei Complementar nº 140/2011 — artigo 14, § 4º](https://www.planalto.gov.br/ccivil_03/leis/lcp/lcp140.htm).
