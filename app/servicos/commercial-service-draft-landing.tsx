@@ -36,7 +36,7 @@ export default function CommercialServiceDraftLanding({ content: c }: { content:
         "serviceType": c.shortTitle,
         "name": c.shortTitle,
         "description": c.metaDescription,
-        "provider": { "@type": "ProfessionalService", "@id": `${SITE_URL}/#business`, "name": "Envora Consultoria Ambiental", "url": SITE_URL },
+        "provider": { "@type": "Organization", "@id": `${SITE_URL}/#business`, "name": "Envora Consultoria Ambiental", "url": SITE_URL },
         "url": `${SITE_URL}/servicos/${c.slug}`,
       },
       {

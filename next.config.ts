@@ -6,11 +6,12 @@ const contentSecurityPolicy = [
   "object-src 'none'",
   "frame-ancestors 'none'",
   "form-action 'self'",
-  "script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://www.googleadservices.com",
+  "script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://www.googleadservices.com https://www.google.com",
   "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com",
   "font-src 'self' https://fonts.gstatic.com",
-  "img-src 'self' data: https://www.google-analytics.com https://www.google.com https://www.google.com.br https://www.googleadservices.com https://googleads.g.doubleclick.net",
-  "connect-src 'self' https://www.googletagmanager.com https://www.google-analytics.com https://analytics.google.com https://region1.google-analytics.com https://www.google.com https://www.google.com.br https://www.googleadservices.com https://googleads.g.doubleclick.net",
+  "img-src 'self' data: https://www.google-analytics.com https://www.google.com https://www.google.com.br https://www.googleadservices.com https://googleads.g.doubleclick.net https://pagead2.googlesyndication.com",
+  "connect-src 'self' https://www.googletagmanager.com https://www.google-analytics.com https://analytics.google.com https://region1.google-analytics.com https://www.google.com https://www.google.com.br https://www.googleadservices.com https://googleads.g.doubleclick.net https://pagead2.googlesyndication.com https://ad.doubleclick.net",
+  "frame-src https://www.googletagmanager.com",
   "upgrade-insecure-requests",
 ].join("; ");
 

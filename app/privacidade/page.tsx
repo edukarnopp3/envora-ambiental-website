@@ -5,6 +5,21 @@ export const metadata: Metadata = {
   title: "Política de Privacidade | Envora Ambiental",
   description: "Política de privacidade e uso de dados da Envora Consultoria Ambiental.",
   alternates: { canonical: "/privacidade" },
+  openGraph: {
+    title: "Política de Privacidade | Envora Ambiental",
+    description: "Política de privacidade e uso de dados da Envora Consultoria Ambiental.",
+    url: "/privacidade",
+    type: "website",
+    locale: "pt_BR",
+    siteName: "Envora",
+    images: [{ url: "/og.png", width: 8192, height: 4302, alt: "Envora Ambiental" }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Política de Privacidade | Envora Ambiental",
+    description: "Política de privacidade e uso de dados da Envora Consultoria Ambiental.",
+    images: ["/og.png"],
+  },
 };
 
 export default function PrivacyPage() {

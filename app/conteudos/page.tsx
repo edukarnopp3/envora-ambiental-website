@@ -15,8 +15,14 @@ export const metadata: Metadata = {
     url: "/conteudos",
     type: "website",
     locale: "pt_BR",
-    siteName: "Envora Consultoria Ambiental",
+    siteName: "Envora",
     images: [{ url: "/og.png", width: 8192, height: 4302, alt: "Conteúdos ambientais — Envora" }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Blog ambiental | Envora Consultoria Ambiental",
+    description: "Conteúdos técnicos sobre licenciamento ambiental, inventários de GEE, créditos de carbono e regularização.",
+    images: ["/og.png"],
   },
 };
 

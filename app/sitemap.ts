@@ -8,37 +8,32 @@ export default function sitemap(): MetadataRoute.Sitemap {
   return [
     {
       url: SITE_URL,
-      lastModified: new Date(),
       changeFrequency: "monthly",
       priority: 1,
     },
     {
       url: `${SITE_URL}/privacidade`,
-      lastModified: new Date(),
       changeFrequency: "yearly",
       priority: 0.2,
     },
     {
       url: `${SITE_URL}/conteudos`,
-      lastModified: new Date(),
       changeFrequency: "monthly",
       priority: 0.65,
     },
     ...servicePages.map(({ slug }) => ({
       url: `${SITE_URL}/servicos/${slug}`,
-      lastModified: new Date(),
       changeFrequency: "monthly" as const,
       priority: 0.8,
     })),
     ...commercialServiceDrafts.map(({ slug }) => ({
       url: `${SITE_URL}/servicos/${slug}`,
-      lastModified: new Date(),
       changeFrequency: "monthly" as const,
       priority: 0.8,
     })),
-    ...contentArticles.map(({ slug, publishedAt }) => ({
+    ...contentArticles.map(({ slug, publishedAt, updatedAt }) => ({
       url: `${SITE_URL}/conteudos/${slug}`,
-      lastModified: new Date(publishedAt),
+      lastModified: new Date(updatedAt ?? publishedAt),
       changeFrequency: "monthly" as const,
       priority: 0.65,
     })),

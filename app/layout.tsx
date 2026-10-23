@@ -10,7 +10,7 @@ export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: "Envora | Consultoria Ambiental em Joinville",
   description:
-    "Consultoria ambiental em Joinville para autos de infração e exigências ambientais, licenciamento, DANC, CCA, PGRS, PGRSS, PGRCC, resíduos e controle acústico.",
+    "Licenciamento, regularização e resíduos em Joinville. Consultoria ambiental para autos de infração, controle acústico e exigências técnicas.",
   alternates: { canonical: "/" },
   openGraph: {
     title: "Envora | Consultoria Ambiental em Joinville",
@@ -18,14 +18,14 @@ export const metadata: Metadata = {
       "Regularização com clareza técnica, escopo transparente e acompanhamento ambiental em Joinville.",
     type: "website",
     locale: "pt_BR",
-    siteName: "Envora Consultoria Ambiental",
+    siteName: "Envora",
     url: "/",
     images: [{ url: "/og.png", width: 8192, height: 4302, alt: "Envora Ambiental" }],
   },
   twitter: {
     card: "summary_large_image",
     title: "Envora | Consultoria Ambiental em Joinville",
-    description: "Licenciamento e regularização ambiental em Joinville.",
+    description: "Consultoria ambiental em Joinville para licenciamento, regularização e gestão de resíduos.",
     images: ["/og.png"],
   },
   icons: {
@@ -48,9 +48,9 @@ export const viewport: Viewport = {
   themeColor: "#173b35",
 };
 
-const localBusinessSchema = {
+const organizationSchema = {
   "@context": "https://schema.org",
-  "@type": "ProfessionalService",
+  "@type": "Organization",
   "@id": `${SITE_URL}/#business`,
   name: "Envora Consultoria Ambiental",
   description: "Consultoria ambiental independente em Joinville para licenciamento, regularização, resíduos, autos de infração e gestão de condicionantes.",
@@ -72,12 +72,6 @@ const localBusinessSchema = {
       "@type": "State",
       name: "Santa Catarina",
     },
-  },
-  address: {
-    "@type": "PostalAddress",
-    addressLocality: "Joinville",
-    addressRegion: "SC",
-    addressCountry: "BR",
   },
   knowsAbout: [
     "Licenciamento ambiental",
@@ -130,7 +124,7 @@ gtag('config', '${GOOGLE_TAG_ID}');`}
       <body>
         <script
           type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessSchema).replace(/</g, "\\u003c") }}
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema).replace(/</g, "\\u003c") }}
         />
         {children}
         <GoogleConsent />

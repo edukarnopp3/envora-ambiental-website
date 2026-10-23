@@ -8,6 +8,14 @@ import { contentArticleBySlug, contentArticles } from "../content-data";
 
 type ContentPageProps = { params: Promise<{ slug: string }> };
 
+const contentTitleOverrides: Record<string, string> = {
+  "creditos-de-carbono-como-avaliar": "Créditos de carbono: o que avaliar?",
+  "como-renovar-lao-industria": "Renovar licença ambiental: documentos",
+  "antes-de-instalar-ampliar-ou-operar": "Antes de instalar ou ampliar: o que conferir?",
+  "licenciamento-ambiental-oficina-mecanica-joinville": "Oficina mecânica e licença ambiental em Joinville",
+  "transportadora-precisa-licenca-ambiental-joinville": "Licença ambiental para transportadora em Joinville",
+};
+
 export function generateStaticParams() {
   return contentArticles.map(({ slug }) => ({ slug }));
 }
@@ -16,19 +24,26 @@ export async function generateMetadata({ params }: ContentPageProps): Promise<Me
   const { slug } = await params;
   const article = contentArticleBySlug.get(slug);
   if (!article) return {};
+  const title = `${contentTitleOverrides[article.slug] ?? article.title} | Envora`;
   return {
-    title: `${article.title} | Envora`,
+    title,
     description: article.description,
     alternates: { canonical: `/conteudos/${article.slug}` },
     openGraph: {
-      title: article.title,
+      title,
       description: article.description,
       url: `/conteudos/${article.slug}`,
       type: "article",
       locale: "pt_BR",
-      siteName: "Envora Consultoria Ambiental",
+      siteName: "Envora",
       publishedTime: article.publishedAt,
       images: [{ url: "/og.png", width: 8192, height: 4302, alt: `${article.title} — Envora` }],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title,
+      description: article.description,
+      images: ["/og.png"],
     },
   };
 }

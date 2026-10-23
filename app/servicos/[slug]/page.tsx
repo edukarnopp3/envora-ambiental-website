@@ -14,6 +14,28 @@ import { commercialServiceDraftBySlug, commercialServiceDrafts } from "../commer
 
 type ServicePageProps = { params: Promise<{ slug: string }> };
 
+const serviceMetadataOverrides: Record<string, { title: string; description?: string }> = {
+  "autorizacao-ambiental-aua": {
+    title: "Autorização Ambiental (AuA) em Joinville | Envora",
+  },
+  "autorizacao-corte-vegetacao-auc": {
+    title: "Autorização para corte de vegetação em Joinville | Envora",
+  },
+  "projeto-recuperacao-area-degradada-prad": {
+    title: "Projeto de recuperação de área degradada | Envora",
+  },
+  "autorizacao-corte-arvores-isoladas-cai": {
+    title: "Autorização de corte de árvores isoladas | Envora",
+    description: "Consultoria para autorização de corte de árvores isoladas em Joinville, com análise do local, justificativa técnica e documentação aplicável.",
+  },
+  "responsabilidade-tecnica-ambiental": {
+    title: "Responsabilidade Técnica Ambiental em Joinville | Envora",
+  },
+  "outorga-e-regularizacao-de-uso-da-agua": {
+    title: "Outorga de uso da água em Joinville | Envora",
+  },
+};
+
 const licenseStages = [
   {
     code: "LAP",
@@ -171,26 +193,41 @@ export async function generateMetadata({ params }: ServicePageProps): Promise<Me
         url: `/servicos/${draft.slug}`,
         type: "website",
         locale: "pt_BR",
-        siteName: "Envora Consultoria Ambiental",
+        siteName: "Envora",
         images: [{ url: "/og.png", width: 8192, height: 4302, alt: `${draft.shortTitle} — Envora` }],
+      },
+      twitter: {
+        card: "summary_large_image",
+        title: draft.metaTitle,
+        description: draft.metaDescription,
+        images: ["/og.png"],
       },
     };
   }
   const service = servicePageBySlug.get(slug);
   if (!service) return {};
+  const metadata = serviceMetadataOverrides[service.slug];
+  const title = metadata?.title ?? `${service.shortTitle} em Joinville | Envora`;
+  const description = metadata?.description ?? service.description;
 
   return {
-    title: `${service.shortTitle} em Joinville | Envora`,
-    description: service.description,
+    title,
+    description,
     alternates: { canonical: `/servicos/${service.slug}` },
     openGraph: {
-      title: `${service.shortTitle} em Joinville | Envora`,
-      description: service.description,
+      title,
+      description,
       url: `/servicos/${service.slug}`,
       type: "website",
       locale: "pt_BR",
-      siteName: "Envora Consultoria Ambiental",
+      siteName: "Envora",
       images: [{ url: "/og.png", width: 8192, height: 4302, alt: `${service.shortTitle} — Envora` }],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title,
+      description,
+      images: ["/og.png"],
     },
   };
 }
@@ -213,7 +250,7 @@ export default async function ServicePage({ params }: ServicePageProps) {
     serviceType: service.shortTitle,
     name: service.shortTitle,
     description: service.description,
-    provider: { "@type": "ProfessionalService", "@id": `${SITE_URL}/#business`, name: "Envora Consultoria Ambiental", url: SITE_URL },
+    provider: { "@type": "Organization", "@id": `${SITE_URL}/#business`, name: "Envora Consultoria Ambiental", url: SITE_URL },
     areaServed: { "@type": "City", name: "Joinville" },
     url: `${SITE_URL}/servicos/${service.slug}`,
   };
