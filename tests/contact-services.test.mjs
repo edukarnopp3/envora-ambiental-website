@@ -40,7 +40,7 @@ for (const service of services) {
     assert.equal(whatsappLinks.length, 5);
     for (const [, href] of whatsappLinks) {
       const url = new URL(href.replaceAll("&amp;", "&"));
-      assert.equal(url.pathname, "/5547984551622");
+      assert.equal(url.pathname, "/554784940063");
       assert.equal(url.searchParams.get("text"), service.message);
     }
     assert.doesNotMatch(html, /<form\b/i);

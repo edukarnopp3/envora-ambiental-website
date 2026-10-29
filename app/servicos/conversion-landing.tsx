@@ -11,7 +11,7 @@ export default function ConversionLanding({ content: c, service }: { content: Co
     <header className={styles.header}>
       <Link href="/" aria-label="Envora — início"><Image src="/envora-logo-horizontal.svg" alt="Envora" width={198} height={49} priority /></Link>
       <nav aria-label="Nesta página"><a href="#como-funciona">Como funciona</a><a href="#duvidas">Dúvidas</a></nav>
-      <a className={styles.phone} href="tel:+5547984551622">(47) 98455-1622</a>
+      <a className={styles.phone} href="tel:+554784940063">(47) 8494-0063</a>
     </header>
     <main id="conteudo-servico">
       <section className={styles.hero}>
@@ -45,7 +45,7 @@ export default function ConversionLanding({ content: c, service }: { content: Co
       <section id="duvidas" className={`${styles.section} ${styles.faq}`} aria-labelledby="duvidas-titulo"><div><h2 id="duvidas-titulo">Dúvidas frequentes</h2></div><div><details><summary>O que está incluído?</summary><ul>{c.deliverables.map(d => <li key={d}>{d}</li>)}</ul><p>{c.boundary}</p></details>{c.questions.map(q => <details key={q.question}><summary>{q.question}</summary><p>{q.answer}</p></details>)}</div></section>
       <section className={styles.closing}><p className={styles.eyebrow}>O próximo passo começa com contexto</p><h2>Conte o que sua empresa precisa resolver.</h2><ServiceWhatsAppLink service={service} contextPrompt={c.contactPrompt} placement="closing" className={styles.cta}>{c.action}<span aria-hidden="true">↗</span></ServiceWhatsAppLink><p>O primeiro contato define a demanda. A análise técnica completa segue o escopo contratado.</p><a className={styles.textLink} href="mailto:envoraambiental@gmail.com">Prefere e-mail? Escreva para a Envora</a></section>
     </main>
-    <footer className={styles.footer}><Image src="/envora-logo-horizontal-dark.svg" alt="Envora Consultoria Ambiental" width={220} height={54} /><div><strong>Joinville · Santa Catarina</strong><a href="tel:+5547984551622">(47) 98455-1622</a><a href="mailto:envoraambiental@gmail.com">envoraambiental@gmail.com</a></div><div><Link href="/#solucoes">Todos os serviços</Link><Link href="/privacidade">Privacidade</Link></div></footer>
+    <footer className={styles.footer}><Image src="/envora-logo-horizontal-dark.svg" alt="Envora Consultoria Ambiental" width={220} height={54} /><div><strong>Joinville · Santa Catarina</strong><a href="tel:+554784940063">(47) 8494-0063</a><a href="mailto:envoraambiental@gmail.com">envoraambiental@gmail.com</a></div><div><Link href="/#solucoes">Todos os serviços</Link><Link href="/privacidade">Privacidade</Link></div></footer>
     <div className={styles.sticky}><ServiceWhatsAppLink service={service} contextPrompt={c.contactPrompt} placement="mobile_sticky" className={styles.cta}>{c.action}<span aria-hidden="true">↗</span></ServiceWhatsAppLink></div>
   </div>;
 }

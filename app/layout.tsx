@@ -57,7 +57,7 @@ const organizationSchema = {
   url: SITE_URL,
   logo: `${SITE_URL}/envora-mark.svg`,
   image: `${SITE_URL}/og.png`,
-  telephone: "+55 47 98455-1622",
+  telephone: "+55 47 8494-0063",
   email: "envoraambiental@gmail.com",
   sameAs: ["https://www.instagram.com/envoraambiental/"],
   founder: {

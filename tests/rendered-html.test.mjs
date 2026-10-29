@@ -48,7 +48,7 @@ test("server-renders the Envora landing page with production metadata", async ()
   assert.match(html, /<title>Envora \| Consultoria Ambiental em Joinville<\/title>/);
   assert.match(html, /Clareza para seu projeto avançar\./i);
   assert.match(html, /https:\/\/envorambiental\.com\.br/);
-  assert.match(html, /https:\/\/wa\.me\/5547984551622/);
+  assert.match(html, /https:\/\/wa\.me\/554784940063/);
   assert.match(html, /mailto:envoraambiental@gmail\.com/);
   assert.match(html, /id="splash"/);
   assert.match(html, /id="site"/);
@@ -97,8 +97,8 @@ test("publishes only the approved service scope and complete contact details", a
   assert.doesNotMatch(html, />Eduardo Karnopp</);
   assert.doesNotMatch(html, /Consultoria ambiental em Joinville para empresas/i);
   assert.match(html, /Engenheiro Ambiental e Sanitarista/);
-  assert.match(html, /\(47\) 98455-1622/);
-  assert.match(html, /href="tel:\+5547984551622"/);
+  assert.match(html, /\(47\) 8494-0063/);
+  assert.match(html, /href="tel:\+554784940063"/);
   assert.match(html, /https:\/\/www\.instagram\.com\/envoraambiental\//);
   assert.match(html, /href="\/privacidade">Privacidade<\/a>/);
   assert.doesNotMatch(html, /passivos ambientais|investigação (?:ambiental )?de solo|movimentação de solo|supressão|gestão ambiental de obras|canteiro|projeto de sistema de tratamento de efluentes|alvará sanitário/i);
@@ -151,7 +151,7 @@ test("links every service card to a dedicated official-source page", async () =>
       assert.match(serviceHtml, /<video[^>]*autoPlay/);
       for (const [, href] of contactLinks) {
         const contact = new URL(href.replaceAll("&amp;", "&"));
-        assert.equal(contact.pathname, "/5547984551622");
+        assert.equal(contact.pathname, "/554784940063");
         assert.ok(contact.searchParams.get("text").includes("Envora"));
       }
       assert.match(serviceHtml, /Minha%20situa/);
@@ -224,7 +224,7 @@ test("serves the isolated Instagram links hub with only the three approved chann
   assert.match(html, /<title>Envora \| Contato<\/title>/);
   assert.match(html, /name="robots" content="noindex, follow"/);
   assert.match(html, /WhatsApp/);
-  assert.match(html, /https:\/\/wa\.me\/5547984551622/);
+  assert.match(html, /https:\/\/wa\.me\/554784940063/);
   assert.match(html, /Conhecer a consultoria/);
   assert.match(html, /mailto:envoraambiental@gmail\.com/);
   assert.doesNotMatch(html, /<strong>(?:Instagram|LinkedIn|Google Maps|Triagem inicial)<\/strong>/);

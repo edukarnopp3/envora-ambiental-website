@@ -616,7 +616,7 @@ export default function EnvoraLanding() {
         <div className="site-footer-column site-footer-contact">
           <h2>Contato</h2>
           <a href={wa(baseMessage)} target="_blank" rel="noreferrer" onClick={(event) => trackWhatsAppClick(event, "footer_contact", baseMessage)}>WhatsApp</a>
-          <a href="tel:+5547984551622" onClick={() => track("phone_click", { source: "footer" })}>(47) 98455-1622</a>
+          <a href="tel:+554784940063" onClick={() => track("phone_click", { source: "footer" })}>(47) 8494-0063</a>
           <a href="mailto:envoraambiental@gmail.com" onClick={() => track("email_click", { source: "footer" })}>envoraambiental@gmail.com</a>
           <span>Joinville · Santa Catarina</span>
           <span>Engenheiro Ambiental e Sanitarista</span>

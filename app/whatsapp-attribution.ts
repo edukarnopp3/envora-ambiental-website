@@ -1,7 +1,7 @@
 const CONSENT_KEY = "envora_google_consent";
 const CLICK_ID_KEY = "envora_google_ads_gclid";
 const CLICK_ID_MAX_AGE_MS = 90 * 24 * 60 * 60 * 1000;
-const WA_NUMBER = "5547984551622";
+const WA_NUMBER = "554784940063";
 
 type StoredClickId = {
   value: string;
