@@ -1,15 +1,15 @@
 .page {
-  --links-paper: #f2f0e8;
-  --links-ink: #1d2422;
-  --links-forest: #0f6e56;
-  --links-mint: #5dcaa5;
+  --links-paper: #f2f8e8;
+  --links-ink: #16210a;
+  --links-forest: #385020;
+  --links-mint: #8bc53f;
   min-height: 100svh;
   display: grid;
   place-items: center;
   padding: 42px 20px;
   overflow: hidden;
   background:
-    radial-gradient(circle at 18% 12%, rgba(93, 202, 165, .12), transparent 28%),
+    radial-gradient(circle at 18% 12%, rgba(139,197,63, .12), transparent 28%),
     linear-gradient(135deg, #f6f4ed 0%, var(--links-paper) 58%, #e9e6dc 100%);
   color: var(--links-ink);
 }
@@ -20,7 +20,7 @@
   padding: clamp(30px, 7vw, 54px);
   border: 1px solid rgba(29, 36, 34, .14);
   background: rgba(247, 247, 245, .82);
-  box-shadow: 0 28px 80px rgba(23, 59, 53, .11);
+  box-shadow: 0 28px 80px rgba(22, 33, 10, .11);
   backdrop-filter: blur(12px);
 }
 
@@ -75,7 +75,7 @@
 .link:focus-visible {
   z-index: 1;
   color: white;
-  background: #173b35;
+  background: #16210a;
   transform: translateX(6px);
 }
 
