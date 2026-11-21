@@ -334,7 +334,7 @@ export default async function ServicePage({ params }: ServicePageProps) {
               <ServiceWhatsAppLink {...contactLinkProps} placement="hero" className="service-visual-hero" style={{ "--service-visual": `url('${visual.image}')`, ...(visual.imagePosition ? { "--service-position": visual.imagePosition } : {}) } as CSSProperties}>
                 <div className="service-visual-copy">
                   <p className="eyebrow">{service.shortTitle}</p>
-                  <h1 id="service-visual-title">{visual.headline}</h1>
+                  <h1 id="service-visual-title"><span className="visually-hidden">{service.shortTitle} em Joinville: </span>{visual.headline}</h1>
                   <p>{visual.description}</p>
                   {contactService && <span className="visually-hidden">{contactService.contact.imageAlt}</span>}
                   <span className="service-visual-link">{actionLabel}<WhatsAppMark /></span>
@@ -402,7 +402,7 @@ export default async function ServicePage({ params }: ServicePageProps) {
 
       <footer className="service-footer">
         <Link className="brand inverted" href="/" aria-label="Envora Ambiental - início"><Image src="/envora-logo-horizontal-dark.svg" alt="Envora Ambiental" width={360} height={88} /></Link>
-        <div><strong>Envora Consultoria Ambiental</strong><span>Joinville · Santa Catarina</span><a href="tel:+554784940063">(47) 8494-0063</a><a href="mailto:envoraambiental@gmail.com">envoraambiental@gmail.com</a></div>
+        <div><strong>Envora Consultoria Ambiental</strong><span>Joinville · Santa Catarina</span><a href="tel:+5547984940063">(47) 98494-0063</a><a href="mailto:envoraambiental@gmail.com">envoraambiental@gmail.com</a></div>
       </footer>
       <div className="service-mobile-sticky"><ServiceWhatsAppLink {...contactLinkProps} placement="mobile_sticky" className="button service-mobile-cta">Falar com a Envora <WhatsAppMark /></ServiceWhatsAppLink></div>
     </div>

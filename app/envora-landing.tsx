@@ -6,6 +6,7 @@ import Link from "next/link";
 import HeroBackgroundVideo from "./hero-background-video";
 import { trackWhatsAppClickConversion } from "./google-ads-events";
 import { buildWhatsAppHref } from "./whatsapp-attribution";
+import { BUSINESS } from "./business-info";
 
 declare global {
   interface Window {
@@ -448,6 +449,7 @@ export default function EnvoraLanding() {
           <div className="hero-copy">
             <p className="eyebrow">Consultoria Ambiental · Joinville</p>
             <h1>
+              <span className="visually-hidden">Consultoria ambiental em Joinville: </span>
               <span className="hero-headline-line">Você explica o que precisa.</span>
               <span className="hero-headline-line hero-headline-accent">A Envora conduz a parte técnica.</span>
             </h1>
@@ -616,10 +618,12 @@ export default function EnvoraLanding() {
         <div className="site-footer-column site-footer-contact">
           <h2>Contato</h2>
           <a href={wa(baseMessage)} target="_blank" rel="noreferrer" onClick={(event) => trackWhatsAppClick(event, "footer_contact", baseMessage)}>WhatsApp</a>
-          <a href="tel:+554784940063" onClick={() => track("phone_click", { source: "footer" })}>(47) 8494-0063</a>
+          <a href="tel:+5547984940063" onClick={() => track("phone_click", { source: "footer" })}>(47) 98494-0063</a>
           <a href="mailto:envoraambiental@gmail.com" onClick={() => track("email_click", { source: "footer" })}>envoraambiental@gmail.com</a>
           <span>Joinville · Santa Catarina</span>
           <span>Engenheiro Ambiental e Sanitarista</span>
+          {BUSINESS.crea && <span>{BUSINESS.crea}</span>}
+          {BUSINESS.cnpj && <span>CNPJ {BUSINESS.cnpj}</span>}
         </div>
 
         <div className="site-footer-bottom">

@@ -79,7 +79,7 @@ export default function CommercialServiceDraftLanding({ content: c }: { content:
         >
           <div className="service-visual-copy">
             <p className="eyebrow">{c.shortTitle}</p>
-            <h1 id={`${headingPrefix}-title`}>{c.title}</h1>
+            <h1 id={`${headingPrefix}-title`}><span className="visually-hidden">{c.shortTitle} em Joinville: </span>{c.title}</h1>
             <p>{c.intro}</p>
             <span className="visually-hidden">{c.imageAlt}</span>
             <span className="service-visual-link">{c.action} <WhatsAppMark /></span>
@@ -171,7 +171,7 @@ export default function CommercialServiceDraftLanding({ content: c }: { content:
       <Link className="brand inverted" href="/" aria-label="Envora Ambiental — início">
         <Image src="/envora-logo-horizontal-dark.svg" alt="Envora Ambiental" width={360} height={88} />
       </Link>
-      <div><strong>Envora Consultoria Ambiental</strong><span>Joinville · Santa Catarina</span><a href="tel:+554784940063">(47) 8494-0063</a><a href="mailto:envoraambiental@gmail.com">envoraambiental@gmail.com</a></div>
+      <div><strong>Envora Consultoria Ambiental</strong><span>Joinville · Santa Catarina</span><a href="tel:+5547984940063">(47) 98494-0063</a><a href="mailto:envoraambiental@gmail.com">envoraambiental@gmail.com</a></div>
       <nav aria-label="Links do site"><Link href="/#solucoes">Todos os serviços</Link><Link href="/privacidade">Privacidade</Link></nav>
     </footer>
     <div className="service-mobile-sticky"><ServiceWhatsAppLink {...contact} placement="mobile_sticky" className="button service-mobile-cta">Falar com a Envora <WhatsAppMark /></ServiceWhatsAppLink></div>

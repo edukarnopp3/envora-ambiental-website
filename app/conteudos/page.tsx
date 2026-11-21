@@ -83,7 +83,7 @@ export default function ContentIndexPage() {
 
       <footer className="service-footer">
         <Link className="brand inverted" href="/" aria-label="Envora Ambiental - início"><Image src="/envora-logo-horizontal-dark.svg" alt="Envora Ambiental" width={360} height={88} /></Link>
-        <div><strong>Envora Consultoria Ambiental</strong><span>Joinville · Santa Catarina</span><Link href="/">Voltar ao início</Link><a href="tel:+554784940063">(47) 8494-0063</a><a href="mailto:envoraambiental@gmail.com">envoraambiental@gmail.com</a></div>
+        <div><strong>Envora Consultoria Ambiental</strong><span>Joinville · Santa Catarina</span><Link href="/">Voltar ao início</Link><a href="tel:+5547984940063">(47) 98494-0063</a><a href="mailto:envoraambiental@gmail.com">envoraambiental@gmail.com</a></div>
       </footer>
     </div>
   );

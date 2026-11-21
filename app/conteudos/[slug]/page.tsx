@@ -62,7 +62,7 @@ export default async function ContentPage({ params }: ContentPageProps) {
     datePublished: article.publishedAt,
     dateModified: article.updatedAt ?? article.publishedAt,
     mainEntityOfPage: `${SITE_URL}/conteudos/${article.slug}`,
-    author: { "@type": "Organization", name: "Envora Consultoria Ambiental", url: SITE_URL },
+    author: { "@type": "Person", name: "Eduardo Karnopp", jobTitle: "Engenheiro Ambiental e Sanitarista", worksFor: { "@id": `${SITE_URL}/#business` } },
     publisher: { "@type": "Organization", name: "Envora Consultoria Ambiental", url: SITE_URL },
   };
 
@@ -135,7 +135,7 @@ export default async function ContentPage({ params }: ContentPageProps) {
 
       <footer className="service-footer">
         <Link className="brand inverted" href="/" aria-label="Envora Ambiental - início"><Image src="/envora-logo-horizontal-dark.svg" alt="Envora Ambiental" width={360} height={88} /></Link>
-        <div><strong>Envora Consultoria Ambiental</strong><span>Joinville · Santa Catarina</span><a href="tel:+554784940063">(47) 8494-0063</a><a href="mailto:envoraambiental@gmail.com">envoraambiental@gmail.com</a></div>
+        <div><strong>Envora Consultoria Ambiental</strong><span>Joinville · Santa Catarina</span><a href="tel:+5547984940063">(47) 98494-0063</a><a href="mailto:envoraambiental@gmail.com">envoraambiental@gmail.com</a></div>
       </footer>
     </div>
   );

@@ -3,6 +3,7 @@ import Script from "next/script";
 import "./globals.css";
 import GoogleConsent from "./google-consent";
 import { SITE_URL } from "./site-url";
+import { BUSINESS } from "./business-info";
 
 const GOOGLE_TAG_ID = process.env.NEXT_PUBLIC_GOOGLE_TAG_ID ?? "AW-18413899550";
 
@@ -50,29 +51,36 @@ export const viewport: Viewport = {
 
 const organizationSchema = {
   "@context": "https://schema.org",
-  "@type": "Organization",
+  "@type": "ProfessionalService",
   "@id": `${SITE_URL}/#business`,
-  name: "Envora Consultoria Ambiental",
+  name: BUSINESS.name,
   description: "Consultoria ambiental independente em Joinville para licenciamento, regularização, resíduos, autos de infração e gestão de condicionantes.",
   url: SITE_URL,
   logo: `${SITE_URL}/envora-mark.svg`,
   image: `${SITE_URL}/og.png`,
-  telephone: "+55 47 8494-0063",
-  email: "envoraambiental@gmail.com",
+  telephone: BUSINESS.phoneSchema,
+  email: BUSINESS.email,
+  ...(BUSINESS.cnpj ? { taxID: BUSINESS.cnpj } : {}),
+  address: {
+    "@type": "PostalAddress",
+    addressLocality: "Joinville",
+    addressRegion: "SC",
+    addressCountry: "BR",
+  },
   sameAs: ["https://www.instagram.com/envoraambiental/"],
   founder: {
     "@type": "Person",
-    name: "Eduardo Karnopp",
-    jobTitle: "Engenheiro Ambiental e Sanitarista",
+    name: BUSINESS.responsible,
+    jobTitle: BUSINESS.responsibleTitle,
+    ...(BUSINESS.crea
+      ? { hasCredential: { "@type": "EducationalOccupationalCredential", credentialCategory: "Registro profissional", name: BUSINESS.crea } }
+      : {}),
   },
-  areaServed: {
+  areaServed: BUSINESS.citiesServed.map((city) => ({
     "@type": "City",
-    name: "Joinville",
-    containedInPlace: {
-      "@type": "State",
-      name: "Santa Catarina",
-    },
-  },
+    name: city,
+    containedInPlace: { "@type": "State", name: "Santa Catarina" },
+  })),
   knowsAbout: [
     "Licenciamento ambiental",
     "Licença Ambiental Prévia (LAP)",

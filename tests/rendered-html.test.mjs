@@ -97,8 +97,12 @@ test("publishes only the approved service scope and complete contact details", a
   assert.doesNotMatch(html, />Eduardo Karnopp</);
   assert.doesNotMatch(html, /Consultoria ambiental em Joinville para empresas/i);
   assert.match(html, /Engenheiro Ambiental e Sanitarista/);
-  assert.match(html, /\(47\) 8494-0063/);
-  assert.match(html, /href="tel:\+554784940063"/);
+  assert.match(html, /\(47\) 98494-0063/);
+  assert.match(html, /href="tel:\+5547984940063"/);
+  assert.doesNotMatch(html, /tel:\+554784940063/);
+  assert.match(html, /<h1[^>]*>.*Consultoria ambiental em Joinville/s);
+  assert.match(html, /"@type":"ProfessionalService"/);
+  assert.match(html, /"telephone":"\+55 47 98494-0063"/);
   assert.match(html, /https:\/\/www\.instagram\.com\/envoraambiental\//);
   assert.match(html, /href="\/privacidade">Privacidade<\/a>/);
   assert.doesNotMatch(html, /passivos ambientais|investigação (?:ambiental )?de solo|movimentação de solo|supressão|gestão ambiental de obras|canteiro|projeto de sistema de tratamento de efluentes|alvará sanitário/i);
